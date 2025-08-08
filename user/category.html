@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electronics - E-Commerce</title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <!-- User Styles -->
+    <link rel="stylesheet" href="../assets/css/user/styles.css" />
+
+    <!-- Tailwind Configuration -->
+    <script src="../assets/js/user/tailwind-config.js"></script>
+  </head>
+  <body class="bg-gray-900 text-white">
+    <!-- Header -->
+    <header
+      class="bg-gray-800/95 backdrop-blur-sm py-6 px-6 flex justify-between items-center flex-wrap gap-3 animate-fade-in-down shadow-2xl sticky top-0 z-50"
+    >
+      <h1 class="text-2xl font-bold animate-fade-in-left">
+        <a
+          href="../user/home.html"
+          class="hover:text-blue-400 transition-colors duration-300"
+        >
+          <i class="fas fa-store mr-2 text-blue-400"></i>E-Commerce
+        </a>
+      </h1>
+      <nav class="animate-fade-in-right">
+        <ul class="flex space-x-6 items-center">
+          <li class="animate-fade-in-up delay-100">
+            <a
+              href="../user/home.html"
+              class="hover:text-blue-400 transition-all duration-300 relative group"
+            >
+              <span>Home</span>
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+          </li>
+          <li class="animate-fade-in-up delay-200">
+            <a
+              href="../user/products.html"
+              class="hover:text-blue-400 transition-all duration-300 relative group"
+            >
+              <span>Shop</span>
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+          </li>
+          <li class="relative animate-fade-in-up delay-300">
+            <a
+              href="../user/cart.html"
+              class="hover:text-blue-400 transition-all duration-300 hover:scale-105 transform"
+            >
+              <i class="fa fa-shopping-cart text-lg"></i>
+              <span
+                id="cart-badge"
+                class="w-5 h-5 absolute -top-2 -right-2 bg-red-500 text-sm text-white p-1 rounded-full hidden flex items-center justify-center animate-pulse"
+                >0</span
+              >
+            </a>
+          </li>
+          <!-- Admin Dashboard Link (conditional) -->
+          <li class="animate-fade-in-up delay-500">
+            <a
+              href="../admin/dashboard.html"
+              class="hover:text-blue-400 transition-all duration-300 hover:scale-105 transform"
+              ><i class="fa fa-user-gear text-lg"></i
+            ></a>
+          </li>
+          <!-- User Profile Link -->
+          <li class="animate-fade-in-up delay-700">
+            <a
+              href="../user/profile.html"
+              class="hover:text-blue-400 transition-all duration-300 hover:scale-105 transform"
+              ><i class="fa fa-user text-lg"></i
+            ></a>
+          </li>
+          <!-- Logout Button -->
+          <li class="animate-fade-in-up delay-700">
+            <button
+              type="button"
+              class="bg-red-600 text-sm text-white px-4 py-2 rounded-lg hover:bg-red-700 hover:shadow-lg hover:shadow-red-500/50 transition-all duration-300 hover:scale-105 transform"
+              onclick="logout()"
+            >
+              <i class="fas fa-sign-out-alt mr-1"></i>Logout
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="relative py-20 px-6 bg-gradient-to-br from-blue-900/50 to-purple-900/50 overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"
+      ></div>
+      <!-- Animated background elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute top-20 left-10 w-4 h-4 bg-blue-400 rounded-full animate-bounce"
+        ></div>
+        <div
+          class="absolute top-40 right-20 w-6 h-6 bg-purple-400 rounded-full animate-ping"
+        ></div>
+        <div
+          class="absolute bottom-40 left-20 w-8 h-8 bg-pink-400 rounded-full animate-pulse"
+        ></div>
+        <div
+          class="absolute bottom-20 right-10 w-3 h-3 bg-yellow-400 rounded-full animate-spin"
+        ></div>
+      </div>
+
+      <div class="relative z-10 max-w-6xl mx-auto">
+        <div
+          class="flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-12"
+        >
+          <div class="lg:w-1/2 text-center lg:text-left animate-fade-in-left">
+            <div class="relative mb-8">
+              <div
+                class="w-32 h-32 lg:w-40 lg:h-40 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center mx-auto lg:mx-0 shadow-2xl"
+              >
+                <i class="fas fa-laptop text-5xl lg:text-6xl text-white"></i>
+              </div>
+              <div
+                class="absolute -top-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center border-4 border-gray-900"
+              >
+                <i class="fas fa-check text-white text-sm"></i>
+              </div>
+            </div>
+            <h1 class="text-5xl lg:text-6xl font-bold text-white mb-6">
+              <span
+                class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
+              >
+                Electronics
+              </span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+              Discover the latest in technology with our comprehensive
+              collection of electronics. From smartphones and laptops to audio
+              equipment and smart home devices.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              <a
+                href="#products"
+                class="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 transform hover:shadow-lg hover:shadow-blue-500/25 text-lg font-semibold"
+              >
+                <i class="fas fa-eye mr-2"></i>View Products
+              </a>
+              <a
+                href="../user/products.html"
+                class="inline-flex items-center glass text-white px-8 py-4 rounded-xl hover:bg-white/20 transition-all duration-300 hover:scale-105 transform text-lg font-semibold"
+              >
+                <i class="fas fa-th-large mr-2"></i>All Categories
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:w-1/2 animate-fade-in-right">
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300"
+              >
+                <i class="fas fa-mobile-alt text-3xl text-blue-400 mb-4"></i>
+                <h3 class="text-lg font-semibold text-white mb-2">
+                  Smartphones
+                </h3>
+                <p class="text-gray-400 text-sm">Latest mobile technology</p>
+              </div>
+              <div
+                class="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300"
+              >
+                <i class="fas fa-headphones text-3xl text-purple-400 mb-4"></i>
+                <h3 class="text-lg font-semibold text-white mb-2">Audio</h3>
+                <p class="text-gray-400 text-sm">Premium sound quality</p>
+              </div>
+              <div
+                class="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700/50 hover:border-green-500/50 transition-all duration-300"
+              >
+                <i class="fas fa-camera text-3xl text-green-400 mb-4"></i>
+                <h3 class="text-lg font-semibold text-white mb-2">Cameras</h3>
+                <p class="text-gray-400 text-sm">Capture every moment</p>
+              </div>
+              <div
+                class="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300"
+              >
+                <i class="fas fa-gamepad text-3xl text-orange-400 mb-4"></i>
+                <h3 class="text-lg font-semibold text-white mb-2">Gaming</h3>
+                <p class="text-gray-400 text-sm">Next-level gaming</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 px-6 bg-gray-900">
+      <div class="max-w-7xl mx-auto">
+        <h2
+          class="text-4xl font-bold text-center mb-12 text-white animate-fade-in-up"
+        >
+          <span
+            class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
+          >
+            Electronics Products
+          </span>
+          <div
+            class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mt-4 rounded-full"
+          ></div>
+        </h2>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+        >
+          <!-- Product 1 - Smartphone -->
+          <div
+            class="group bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105 transform animate-fade-in-up delay-100"
+          >
+            <div class="relative overflow-hidden">
+              <a href="../user/product.html">
+                <img
+                  src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                  alt="Latest Smartphone"
+                  class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                ></div>
+              </a>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold"
+                  >Featured</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-xl font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300"
+              >
+                Latest Smartphone
+              </h3>
+              <p class="text-gray-400 text-sm mb-4 line-clamp-2">
+                High-performance smartphone with advanced camera and AI
+                features.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-1">
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <span class="text-gray-400 text-sm ml-2">(4.8)</span>
+                </div>
+                <p class="text-2xl font-bold text-blue-400">$699.99</p>
+              </div>
+              <button
+                onclick="addToCart(1, 'Latest Smartphone', 699.99, 1, 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"
+                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105"
+              >
+                <i class="fas fa-cart-plus mr-2"></i>Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 2 - Gaming Laptop -->
+          <div
+            class="group bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105 transform animate-fade-in-up delay-200"
+          >
+            <div class="relative overflow-hidden">
+              <a href="../user/product.html">
+                <img
+                  src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                  alt="Gaming Laptop"
+                  class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                ></div>
+              </a>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold"
+                  >Hot</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-xl font-semibold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300"
+              >
+                Gaming Laptop
+              </h3>
+              <p class="text-gray-400 text-sm mb-4 line-clamp-2">
+                Powerful gaming laptop with RTX graphics and high refresh rate
+                display.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-1">
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-gray-400"></i>
+                  <span class="text-gray-400 text-sm ml-2">(4.6)</span>
+                </div>
+                <p class="text-2xl font-bold text-purple-400">$1299.99</p>
+              </div>
+              <button
+                onclick="addToCart(2, 'Gaming Laptop', 1299.99, 1, 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"
+                class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 transform hover:scale-105"
+              >
+                <i class="fas fa-cart-plus mr-2"></i>Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 3 - Wireless Headphones -->
+          <div
+            class="group bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-green-500/25 transition-all duration-300 hover:scale-105 transform animate-fade-in-up delay-300"
+          >
+            <div class="relative overflow-hidden">
+              <a href="../user/product.html">
+                <img
+                  src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                  alt="Wireless Headphones"
+                  class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                ></div>
+              </a>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold"
+                  >New</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-xl font-semibold text-white mb-2 group-hover:text-green-400 transition-colors duration-300"
+              >
+                Wireless Headphones
+              </h3>
+              <p class="text-gray-400 text-sm mb-4 line-clamp-2">
+                Premium noise-cancelling wireless headphones with superior sound
+                quality.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-1">
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <span class="text-gray-400 text-sm ml-2">(4.9)</span>
+                </div>
+                <p class="text-2xl font-bold text-green-400">$199.99</p>
+              </div>
+              <button
+                onclick="addToCart(3, 'Wireless Headphones', 199.99, 1, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"
+                class="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-green-500/25 transform hover:scale-105"
+              >
+                <i class="fas fa-cart-plus mr-2"></i>Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product 4 - Smart Watch -->
+          <div
+            class="group bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 hover:scale-105 transform animate-fade-in-up delay-400"
+          >
+            <div class="relative overflow-hidden">
+              <a href="../user/product.html">
+                <img
+                  src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                  alt="Smart Watch"
+                  class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                ></div>
+              </a>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold animate-pulse"
+                  >Limited</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3
+                class="text-xl font-semibold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300"
+              >
+                Smart Watch
+              </h3>
+              <p class="text-gray-400 text-sm mb-4 line-clamp-2">
+                Advanced fitness tracking and smart features with GPS and heart
+                monitoring.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-1">
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-gray-400"></i>
+                  <span class="text-gray-400 text-sm ml-2">(4.3)</span>
+                </div>
+                <p class="text-2xl font-bold text-orange-400">$299.99</p>
+              </div>
+              <button
+                onclick="addToCart(4, 'Smart Watch', 299.99, 1, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"
+                class="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/25 transform hover:scale-105"
+              >
+                <i class="fas fa-cart-plus mr-2"></i>Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="mt-6 flex justify-center">
+        <nav class="flex space-x-2">
+          <a href="#" class="px-3 py-2 text-gray-400 hover:text-white"
+            >Previous</a
+          >
+          <a href="#" class="px-3 py-2 bg-blue-600 text-white rounded">1</a>
+          <a href="#" class="px-3 py-2 text-gray-400 hover:text-white">2</a>
+          <a href="#" class="px-3 py-2 text-gray-400 hover:text-white">3</a>
+          <a href="#" class="px-3 py-2 text-gray-400 hover:text-white">Next</a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Scripts -->
+    <!-- User Scripts -->
+    <script src="../assets/js/user/cart.js"></script>
+    <script src="../assets/js/user/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Category-specific JavaScript
+
+        // Dynamic category title based on URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get("category");
+        if (category) {
+          const categoryMap = {
+            electronics: { name: "Electronics", icon: "fas fa-laptop" },
+            clothing: { name: "Clothing", icon: "fas fa-tshirt" },
+            books: { name: "Books", icon: "fas fa-book" },
+            home: { name: "Home & Garden", icon: "fas fa-home" },
+          };
+
+          if (categoryMap[category]) {
+            document.title = `${categoryMap[category].name} - E-Commerce`;
+            // Update hero section title and icon
+            const heroTitle = document.querySelector("h1 span");
+            const heroIcon = document.querySelector(".w-32 i, .w-40 i");
+            if (heroTitle) heroTitle.textContent = categoryMap[category].name;
+            if (heroIcon)
+              heroIcon.className = `${categoryMap[category].icon} text-5xl lg:text-6xl text-white`;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

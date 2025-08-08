@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Messages - E-Commerce Admin</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../assets/css/admin.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- Toastr CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="../../assets/js/admin.js"></script>
+  </head>
+  <body class="admin-bg text-white flex min-h-screen">
+    <!-- Sidebar -->
+    <div
+      id="sidebar"
+      class="glass w-64 min-h-screen fixed transition-all duration-300 transform -translate-x-full md:translate-x-0 z-50 border-r border-white/10 flex flex-col"
+    >
+      <!-- Logo Section -->
+      <div class="p-6 pb-4 flex-shrink-0">
+        <div class="animate-bounce-in">
+          <div class="flex items-center space-x-3">
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center"
+            >
+              <i class="fas fa-store text-white text-lg"></i>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-white">
+                <a
+                  href="../../user/home.html"
+                  class="hover:text-blue-400 transition-colors"
+                  >E-Commerce</a
+                >
+              </h2>
+              <p class="text-xs text-gray-400">Admin Panel</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="flex-1 overflow-y-auto px-6 pb-6">
+        <div class="space-y-2">
+          <!-- Main Navigation -->
+          <div class="mb-6">
+            <p
+              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
+            >
+              Main
+            </p>
+            <ul class="space-y-1">
+              <!-- Dashboard -->
+              <li>
+                <a
+                  href="../dashboard.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-chart-line text-blue-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Dashboard</span>
+                </a>
+              </li>
+
+              <!-- Users Management -->
+              <li>
+                <a
+                  href="../users/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-users text-green-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Users</span>
+                </a>
+              </li>
+
+              <!-- Roles -->
+              <li>
+                <a
+                  href="../roles/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-user-shield text-purple-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Roles</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Catalog Management -->
+          <div class="mb-6">
+            <p
+              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
+            >
+              Catalog
+            </p>
+            <ul class="space-y-1">
+              <!-- Categories -->
+              <li>
+                <a
+                  href="../categories/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-tags text-yellow-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Categories</span>
+                </a>
+              </li>
+
+              <!-- Products -->
+              <li>
+                <a
+                  href="../products/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-box text-orange-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Products</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Sales & Communication -->
+          <div class="mb-6">
+            <p
+              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
+            >
+              Sales
+            </p>
+            <ul class="space-y-1">
+              <!-- Orders -->
+              <li>
+                <a
+                  href="../orders/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-shopping-cart text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Orders</span>
+                </a>
+              </li>
+
+              <!-- Messages -->
+              <li>
+                <a
+                  href="index.html"
+                  class="sidebar-item active flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-envelope text-cyan-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Messages</span>
+                  <span
+                    class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full badge-pulse"
+                    >5</span
+                  >
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Account -->
+          <div class="border-t border-white/10 pt-4">
+            <ul class="space-y-1">
+              <li>
+                <a
+                  href="../profile.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-user-circle text-indigo-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Profile</span>
+                </a>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onclick="logout()"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-red-400 group w-full text-left"
+                >
+                  <i
+                    class="fas fa-sign-out-alt text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Logout</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 md:ml-64 min-h-screen">
+      <!-- Top Header -->
+      <header class="glass border-b border-white/10 p-4 sticky top-0 z-40">
+        <div class="flex items-center justify-between">
+          <!-- Mobile Menu Button -->
+          <button
+            id="toggleSidebar"
+            class="md:hidden glass p-2 rounded-xl text-white hover:bg-white/10 transition-colors"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <!-- Page Title Area -->
+          <div class="flex items-center space-x-4">
+            <div class="text-sm text-gray-400">
+              <span>Admin</span>
+              <i class="fas fa-chevron-right mx-2"></i>
+              <span class="text-white">Messages</span>
+            </div>
+          </div>
+
+          <!-- Header Actions -->
+          <div class="flex items-center space-x-3">
+            <!-- Notifications -->
+            <button
+              class="glass p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors relative"
+            >
+              <i class="fas fa-bell"></i>
+              <span
+                class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center"
+                >3</span
+              >
+            </button>
+
+            <!-- User Profile -->
+            <div class="flex items-center space-x-2 glass px-3 py-2 rounded-xl">
+              <div
+                class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm"
+              >
+                A
+              </div>
+              <div class="hidden sm:block">
+                <p class="text-sm font-medium text-white">Admin User</p>
+                <p class="text-xs text-gray-400">Administrator</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <main class="p-6 animate-fade-in">
+        <!-- Messages Header -->
+        <div class="admin-card p-8 rounded-2xl mb-8 animate-bounce-in">
+          <div
+            class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6"
+          >
+            <!-- Header Info -->
+            <div class="text-center lg:text-left">
+              <h1 class="text-4xl font-bold text-white mb-4">
+                Messages Center
+              </h1>
+              <p class="text-gray-400 text-lg mb-6">
+                Manage customer inquiries, support requests, and communications
+              </p>
+
+              <!-- Quick Stats -->
+              <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                <div class="glass px-4 py-2 rounded-xl">
+                  <i class="fas fa-envelope text-blue-400 mr-2"></i>
+                  <span class="text-sm">5 New Messages</span>
+                </div>
+                <div class="glass px-4 py-2 rounded-xl">
+                  <i class="fas fa-clock text-yellow-400 mr-2"></i>
+                  <span class="text-sm">3 Pending</span>
+                </div>
+                <div class="glass px-4 py-2 rounded-xl">
+                  <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                  <span class="text-sm">15 Resolved Today</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap gap-3 justify-center lg:justify-end">
+              <button
+                onclick="openModal('markAllReadModal')"
+                class="btn-success px-6 py-3 rounded-xl text-white font-bold"
+              >
+                <i class="fas fa-check-double mr-2"></i>
+                Mark All Read
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Messages List -->
+        <div class="admin-card rounded-2xl animate-slide-in">
+          <div class="p-6 border-b border-white/10">
+            <div
+              class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+            >
+              <h2 class="text-xl font-bold text-white">Customer Messages</h2>
+            </div>
+          </div>
+
+          <!-- Messages List Container -->
+          <div class="p-6">
+            <div class="space-y-4" id="messagesList">
+              <!-- Message Card 1 - Unread -->
+              <div
+                class="message-card unread admin-card p-6 rounded-xl cursor-pointer"
+                onclick="openMessageActionModal(1, 'John Doe', 'Hello, I am interested in your iPhone 14 Pro. Can you please provide more details about the warranty and return policy? I would also like to know if you have any current promotions or discounts available. Thank you for your time and I look forward to hearing from you soon.', 'john.doe@example.com', '2 hours ago', false, 'high')"
+              >
+                <div class="flex items-start space-x-4">
+                  <!-- Avatar -->
+                  <div class="flex-shrink-0">
+                    <div
+                      class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-lg"
+                    >
+                      J
+                    </div>
+                  </div>
+
+                  <!-- Message Content -->
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between mb-2">
+                      <h3 class="text-lg font-semibold text-white">John Doe</h3>
+                      <div class="flex items-center space-x-2">
+                        <span class="text-sm text-gray-400">2 hours ago</span>
+                        <span
+                          class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full"
+                        >
+                          New
+                        </span>
+                      </div>
+                    </div>
+                    <p class="text-blue-400 text-sm mb-3">
+                      john.doe@example.com
+                    </p>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                      Hello, I am interested in your iPhone 14 Pro. Can you
+                      please provide more details about the warranty and return
+                      policy?...
+                    </p>
+                    <div class="flex items-center mt-4 space-x-4">
+                      <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-tag mr-1"></i>
+                        <span>Product Inquiry</span>
+                      </div>
+                      <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-mobile-alt mr-1"></i>
+                        <span>iPhone 14 Pro</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Message Card 2 - Unread -->
+              <div
+                class="message-card unread admin-card p-6 rounded-xl cursor-pointer"
+                onclick="openMessageActionModal(2, 'Jane Smith', 'I recently ordered a MacBook Pro from your store and I am having some issues with the delivery. The tracking shows it was delivered but I never received it. Can you help me resolve this issue? This is quite urgent as I need it for work. Please get back to me as soon as possible.', 'jane.smith@example.com', '5 hours ago', false, 'urgent')"
+              >
+                <div class="flex items-start space-x-4">
+                  <!-- Avatar -->
+                  <div class="flex-shrink-0">
+                    <div
+                      class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white font-bold text-lg"
+                    >
+                      J
+                    </div>
+                  </div>
+
+                  <!-- Message Content -->
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between mb-2">
+                      <h3 class="text-lg font-semibold text-white">
+                        Jane Smith
+                      </h3>
+                      <div class="flex items-center space-x-2">
+                        <span class="text-sm text-gray-400">5 hours ago</span>
+                        <span
+                          class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full"
+                        >
+                          New
+                        </span>
+                      </div>
+                    </div>
+                    <p class="text-blue-400 text-sm mb-3">
+                      jane.smith@example.com
+                    </p>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                      I recently ordered a MacBook Pro from your store and I am
+                      having some issues with the delivery. The tracking shows
+                      it was delivered...
+                    </p>
+                    <div class="flex items-center mt-4 space-x-4">
+                      <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-shipping-fast mr-1"></i>
+                        <span>Delivery Issue</span>
+                      </div>
+                      <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-laptop mr-1"></i>
+                        <span>MacBook Pro</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Message Card 3 - Read -->
+              <div
+                class="message-card admin-card p-6 rounded-xl cursor-pointer opacity-75"
+                onclick="openMessageActionModal(3, 'Mike Johnson', 'Thank you for the excellent service! The AirPods Pro I ordered arrived quickly and in perfect condition. I really appreciate your fast shipping and great customer service. Keep up the good work! I will definitely recommend your store to my friends and family.', 'mike.johnson@example.com', '1 day ago', true, 'low')"
+              >
+                <div class="flex items-start space-x-4">
+                  <!-- Avatar -->
+                  <div class="flex-shrink-0">
+                    <div
+                      class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg"
+                    >
+                      M
+                    </div>
+                  </div>
+
+                  <!-- Message Content -->
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between mb-2">
+                      <h3 class="text-lg font-semibold text-gray-300">
+                        Mike Johnson
+                      </h3>
+                      <div class="flex items-center space-x-2">
+                        <span class="text-sm text-gray-400">1 day ago</span>
+                        <span
+                          class="bg-green-500 text-white text-xs px-2 py-1 rounded-full"
+                        >
+                          <i class="fas fa-check mr-1"></i>Read
+                        </span>
+                      </div>
+                    </div>
+                    <p class="text-blue-400 text-sm mb-3">
+                      mike.johnson@example.com
+                    </p>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                      Thank you for the excellent service! The AirPods Pro I
+                      ordered arrived quickly and in perfect condition...
+                    </p>
+                    <div class="flex items-center mt-4 space-x-4">
+                      <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-heart mr-1"></i>
+                        <span>Feedback</span>
+                      </div>
+                      <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-headphones mr-1"></i>
+                        <span>AirPods Pro</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Message Card 4 - Unread -->
+              <div
+                class="message-card unread admin-card p-6 rounded-xl cursor-pointer"
+                onclick="openMessageActionModal(4, 'Sarah Wilson', 'I would like to return the Designer Leather Jacket I purchased last week. It does not fit properly and I would like to exchange it for a different size. What is your return policy and how can I proceed with this exchange? Please provide me with the necessary steps.', 'sarah.wilson@example.com', '2 days ago', false)"
+              >
+                <div class="flex items-start space-x-4">
+                  <!-- Avatar -->
+                  <div class="flex-shrink-0">
+                    <div
+                      class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center text-white font-bold text-lg"
+                    >
+                      S
+                    </div>
+                  </div>
+
+                  <!-- Message Content -->
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between mb-2">
+                      <h3 class="text-lg font-semibold text-white">
+                        Sarah Wilson
+                      </h3>
+                      <div class="flex items-center space-x-2">
+                        <span class="text-sm text-gray-400">2 days ago</span>
+                        <span
+                          class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full"
+                        >
+                          New
+                        </span>
+                      </div>
+                    </div>
+                    <p class="text-blue-400 text-sm mb-3">
+                      sarah.wilson@example.com
+                    </p>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                      I would like to return the Designer Leather Jacket I
+                      purchased last week. It does not fit properly and I would
+                      like to exchange...
+                    </p>
+                    <div class="flex items-center mt-4 space-x-4">
+                      <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-undo mr-1"></i>
+                        <span>Return Request</span>
+                      </div>
+                      <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-tshirt mr-1"></i>
+                        <span>Leather Jacket</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Message Card 5 - Read -->
+              <div
+                class="message-card admin-card p-6 rounded-xl cursor-pointer opacity-75"
+                onclick="openMessageActionModal(5, 'David Brown', 'I am interested in bulk purchasing running shoes for my sports club. Do you offer any discounts for bulk orders? We would need about 20 pairs in various sizes. Please let me know your best pricing and if you can accommodate this order. Thank you for your assistance.', 'david.brown@example.com', '3 days ago', true, 'low')"
+              >
+                <div class="flex items-start space-x-4">
+                  <!-- Avatar -->
+                  <div class="flex-shrink-0">
+                    <div
+                      class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white font-bold text-lg"
+                    >
+                      D
+                    </div>
+                  </div>
+
+                  <!-- Message Content -->
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between mb-2">
+                      <h3 class="text-lg font-semibold text-gray-300">
+                        David Brown
+                      </h3>
+                      <div class="flex items-center space-x-2">
+                        <span class="text-sm text-gray-400">3 days ago</span>
+                        <span
+                          class="bg-green-500 text-white text-xs px-2 py-1 rounded-full"
+                        >
+                          <i class="fas fa-check mr-1"></i>Read
+                        </span>
+                      </div>
+                    </div>
+                    <p class="text-blue-400 text-sm mb-3">
+                      david.brown@example.com
+                    </p>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                      I am interested in bulk purchasing running shoes for my
+                      sports club. Do you offer any discounts for bulk
+                      orders?...
+                    </p>
+                    <div class="flex items-center mt-4 space-x-4">
+                      <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-shopping-cart mr-1"></i>
+                        <span>Bulk Order</span>
+                      </div>
+                      <div class="flex items-center text-gray-400 text-sm">
+                        <i class="fas fa-running mr-1"></i>
+                        <span>Running Shoes</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="p-6 border-t border-white/10">
+            <div class="flex justify-center">
+              <nav class="flex space-x-2">
+                <button
+                  class="glass px-4 py-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+                >
+                  <i class="fas fa-chevron-left mr-2"></i>Previous
+                </button>
+                <button
+                  class="bg-blue-500 px-4 py-2 rounded-xl text-white font-medium"
+                >
+                  1
+                </button>
+                <button
+                  class="glass px-4 py-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+                >
+                  2
+                </button>
+                <button
+                  class="glass px-4 py-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+                >
+                  3
+                </button>
+                <button
+                  class="glass px-4 py-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+                >
+                  Next<i class="fas fa-chevron-right ml-2"></i>
+                </button>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div
+      id="sidebarOverlay"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden md:hidden"
+      onclick="toggleMobileSidebar()"
+    ></div>
+
+    <!-- Mark All Read Modal -->
+    <div
+      id="markAllReadModal"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+    >
+      <div class="glass rounded-2xl max-w-md w-full p-8 animate-bounce-in">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl font-bold text-white">
+            Mark All Messages as Read
+          </h3>
+          <button
+            onclick="closeModal('markAllReadModal')"
+            class="text-gray-400 hover:text-white"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="space-y-6">
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-check-double text-green-400 text-2xl"></i>
+            </div>
+            <h4 class="text-lg font-semibold text-white mb-2">
+              Confirm Action
+            </h4>
+            <p class="text-gray-400 text-sm">
+              Are you sure you want to mark all messages as read? This will
+              affect 5 unread messages.
+            </p>
+          </div>
+
+          <div class="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
+            <h5 class="text-blue-400 font-medium mb-2">This will:</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• Mark 5 unread messages as read</li>
+              <li>• Remove new message indicators</li>
+              <li>• Update message status in the system</li>
+            </ul>
+          </div>
+
+          <div class="flex items-center space-x-4">
+            <button
+              type="button"
+              onclick="closeModal('markAllReadModal')"
+              class="flex-1 glass px-6 py-3 rounded-xl text-gray-400 hover:text-white transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              onclick="markAllAsRead()"
+              class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-3 rounded-xl text-white font-bold hover:scale-105 transition-transform"
+            >
+              Mark All Read
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message Action Modal -->
+    <div
+      id="markAllReadModal"
+      class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50"
+    >
+      <div class="bg-gray-800 p-6 rounded shadow-md w-96">
+        <h3 class="text-xl font-bold mb-4">Mark all read</h3>
+        <p class="mb-4">Are you sure you want to mark all messages as read?</p>
+        <form onsubmit="markAllAsRead(event)">
+          <div class="flex justify-end space-x-2">
+            <button
+              type="button"
+              onclick="closeModal('markAllReadModal')"
+              class="bg-gray-500 text-white px-4 py-2 rounded"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="bg-blue-500 text-white px-4 py-2 rounded"
+            >
+              Confirm
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Message Action Modal -->
+    <div
+      id="messageActionModal"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+    >
+      <div
+        class="glass rounded-2xl max-w-4xl w-full p-8 animate-bounce-in max-h-[90vh] overflow-y-auto"
+      >
+        <div class="flex items-start justify-between mb-6">
+          <div class="flex items-start space-x-4">
+            <!-- Customer Avatar -->
+            <div
+              id="messageAvatar"
+              class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl flex-shrink-0"
+            >
+              U
+            </div>
+            <div>
+              <h2
+                class="text-2xl font-bold text-white mb-1"
+                id="message-name"
+              ></h2>
+              <a
+                href=""
+                class="text-blue-400 hover:underline mb-2 block"
+                id="message-email"
+              ></a>
+              <div class="flex items-center space-x-3">
+                <span class="text-gray-400 text-sm" id="message-time"></span>
+                <span
+                  id="messagePriorityBadge"
+                  class="px-2 py-1 rounded-full text-xs font-medium"
+                ></span>
+                <span
+                  id="messageStatusBadge"
+                  class="px-2 py-1 rounded-full text-xs font-medium"
+                ></span>
+              </div>
+            </div>
+          </div>
+          <button
+            onclick="closeModal('messageActionModal')"
+            class="text-gray-400 hover:text-white text-xl"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <!-- Message Content -->
+        <div class="glass p-6 rounded-xl mb-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Message Content</h3>
+          <div class="max-h-60 overflow-y-auto">
+            <p class="text-gray-300 leading-relaxed" id="message-message"></p>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <button
+            id="markAsReadBtn"
+            onclick="markAsRead()"
+            class="btn-success px-4 py-3 rounded-xl text-white font-bold"
+          >
+            <i class="fas fa-check mr-2"></i>Mark as Read
+          </button>
+          <button
+            onclick="openModal('deleteMessageModal')"
+            class="btn-danger px-4 py-3 rounded-xl text-white font-bold"
+          >
+            <i class="fas fa-trash mr-2"></i>Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Message Confirmation Modal -->
+    <div
+      id="deleteMessageModal"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+    >
+      <div class="glass rounded-2xl max-w-md w-full p-8 animate-bounce-in">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl font-bold text-white">Delete Message</h3>
+          <button
+            onclick="closeModal('deleteMessageModal')"
+            class="text-gray-400 hover:text-white"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="space-y-6">
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-exclamation-triangle text-red-400 text-2xl"></i>
+            </div>
+            <h4 class="text-lg font-semibold text-white mb-2">Are you sure?</h4>
+            <p class="text-gray-400 text-sm">
+              This action will permanently delete this message. This cannot be
+              undone.
+            </p>
+          </div>
+
+          <div class="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
+            <h5 class="text-red-400 font-medium mb-2">Message from:</h5>
+            <p class="text-gray-300 text-sm" id="deleteMessageFrom">
+              John Doe (john@example.com)
+            </p>
+          </div>
+
+          <div class="flex items-center space-x-4">
+            <button
+              type="button"
+              onclick="closeModal('deleteMessageModal')"
+              class="flex-1 glass px-6 py-3 rounded-xl text-gray-400 hover:text-white transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              onclick="confirmDeleteMessage()"
+              class="flex-1 bg-gradient-to-r from-red-500 to-red-600 px-6 py-3 rounded-xl text-white font-bold hover:scale-105 transition-transform"
+            >
+              Delete Message
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Initialize functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize Toastr
+        toastr.options = {
+          closeButton: true,
+          progressBar: true,
+          timeOut: "3500",
+          positionClass: "toast-top-right",
+          showDuration: "300",
+          hideDuration: "300",
+          showEasing: "swing",
+          hideEasing: "linear",
+          showMethod: "fadeIn",
+          hideMethod: "fadeOut",
+        };
+      });
+
+      // Message management functions
+      function openMessageActionModal(
+        id,
+        name,
+        message,
+        email,
+        createdAt,
+        isRead,
+        priority
+      ) {
+        currentMessageId = id;
+        currentMessageIsRead = isRead;
+        currentMessageData = {
+          id,
+          name,
+          message,
+          email,
+          createdAt,
+          isRead,
+          priority,
+        };
+
+        // Set message details
+        document.getElementById("message-name").innerText = name;
+        document.getElementById("message-email").innerText = email;
+        document.getElementById("message-email").href = "mailto:" + email;
+        document.getElementById("message-time").innerText = createdAt;
+        document.getElementById("message-message").innerText = message;
+
+        // Update avatar
+        const avatar = document.getElementById("messageAvatar");
+        avatar.textContent = name.charAt(0).toUpperCase();
+
+        // Set status badge
+        const statusBadge = document.getElementById("messageStatusBadge");
+        if (isRead) {
+          statusBadge.className =
+            "px-2 py-1 rounded-full text-xs font-medium bg-green-500 text-white";
+          statusBadge.innerHTML = '<i class="fas fa-check mr-1"></i>Read';
+        } else {
+          statusBadge.className =
+            "px-2 py-1 rounded-full text-xs font-medium bg-blue-500 text-white";
+          statusBadge.textContent = "New";
+        }
+
+        // Show/hide Mark as Read button
+        const markAsReadBtn = document.getElementById("markAsReadBtn");
+        if (isRead) {
+          markAsReadBtn.style.display = "none";
+        } else {
+          markAsReadBtn.style.display = "block";
+        }
+        // Set delete modal data
+        document.getElementById(
+          "deleteMessageFrom"
+        ).textContent = `${name} (${email})`;
+
+        // Open Modal
+        openModal("messageActionModal");
+      }
+
+      function markAsRead() {
+        if (currentMessageId && !currentMessageIsRead) {
+          toastr.success("Message marked as read");
+          closeModal("messageActionModal");
+
+          // Update UI
+          setTimeout(() => {
+            location.reload();
+          }, 1000);
+        }
+      }
+
+      function markAllAsRead() {
+        toastr.success("All messages marked as read");
+        closeModal("markAllReadModal");
+
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      }
+
+      // Modal functions
+      function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        // Focus first input
+        const firstInput = modal.querySelector("input, select, textarea");
+        if (firstInput) {
+          setTimeout(() => firstInput.focus(), 100);
+        }
+      }
+
+      function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+
+      // Mobile sidebar functionality
+      function toggleMobileSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebarOverlay");
+
+        sidebar.classList.toggle("-translate-x-full");
+        overlay.classList.toggle("hidden");
+      }
+
+      // Desktop sidebar toggle
+      const toggleSidebar = document.getElementById("toggleSidebar");
+      if (toggleSidebar) {
+        toggleSidebar.addEventListener("click", toggleMobileSidebar);
+      }
+
+      // Close modal when clicking outside
+      document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("backdrop-blur-sm")) {
+          const modalId = event.target.id;
+          if (modalId && modalId.includes("Modal")) {
+            closeModal(modalId);
+          }
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          const openModal = document.querySelector(
+            ".fixed.inset-0.z-50:not(.hidden)"
+          );
+          if (openModal) {
+            const modalId = openModal.id;
+            closeModal(modalId);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile - E-Commerce Admin</title>
+
+    <link rel="stylesheet" href="../assets/css/admin.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/admin-common.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="../assets/js/admin.js"></script>
+    <!-- Cropper.js CSS and JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <style>
+      /* Custom slider styles */
+      .slider {
+        background: linear-gradient(to right, #374151 0%, #6b7280 100%);
+      }
+
+      .slider::-webkit-slider-thumb {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        cursor: pointer;
+        border: 2px solid white;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      .slider::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        cursor: pointer;
+        border: 2px solid white;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Crop canvas cursor styles */
+      #cropCanvas {
+        cursor: crosshair;
+      }
+
+      #cropCanvas:active {
+        cursor: move;
+      }
+
+      /* Cropper.js custom styles */
+      .cropper-container {
+        background-color: transparent !important;
+      }
+
+      .cropper-view-box {
+        outline: 2px solid #3b82f6 !important;
+        outline-offset: -2px;
+      }
+
+      .cropper-face {
+        background-color: rgba(59, 130, 246, 0.1) !important;
+      }
+
+      .aspect-ratio-btn.active {
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6) !important;
+        color: white !important;
+      }
+    </style>
+  </head>
+  <body class="admin-bg text-white flex min-h-screen">
+    <!-- Sidebar -->
+    <div
+      id="sidebar"
+      class="glass w-64 min-h-screen fixed transition-all duration-300 transform -translate-x-full md:translate-x-0 z-50 border-r border-white/10 flex flex-col"
+    >
+      <!-- Logo Section -->
+      <div class="p-6 pb-4 flex-shrink-0">
+        <div class="animate-bounce-in">
+          <div class="flex items-center space-x-3">
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center"
+            >
+              <i class="fas fa-store text-white text-lg"></i>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-white">
+                <a
+                  href="../user/home.html"
+                  class="hover:text-blue-400 transition-colors"
+                  >E-Commerce</a
+                >
+              </h2>
+              <p class="text-xs text-gray-400">Admin Panel</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="flex-1 overflow-y-auto px-6 pb-6">
+        <div class="space-y-2">
+          <!-- Main Navigation -->
+          <div class="mb-6">
+            <p
+              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
+            >
+              Main
+            </p>
+            <ul class="space-y-1">
+              <!-- Dashboard -->
+              <li>
+                <a
+                  href="dashboard.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-chart-line text-blue-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Dashboard</span>
+                </a>
+              </li>
+
+              <!-- Users Management -->
+              <li>
+                <a
+                  href="users/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-users text-green-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Users</span>
+                </a>
+              </li>
+
+              <!-- Roles -->
+              <li>
+                <a
+                  href="roles/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-user-shield text-purple-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Roles</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Catalog Management -->
+          <div class="mb-6">
+            <p
+              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
+            >
+              Catalog
+            </p>
+            <ul class="space-y-1">
+              <!-- Categories -->
+              <li>
+                <a
+                  href="categories/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-tags text-yellow-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Categories</span>
+                </a>
+              </li>
+
+              <!-- Products -->
+              <li>
+                <a
+                  href="products/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-box text-orange-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Products</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Sales & Communication -->
+          <div class="mb-6">
+            <p
+              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
+            >
+              Sales
+            </p>
+            <ul class="space-y-1">
+              <!-- Orders -->
+              <li>
+                <a
+                  href="orders/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-shopping-cart text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Orders</span>
+                </a>
+              </li>
+
+              <!-- Messages -->
+              <li>
+                <a
+                  href="messages/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-envelope text-cyan-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Messages</span>
+                  <span
+                    class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full"
+                    >3</span
+                  >
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Account -->
+          <div class="border-t border-white/10 pt-4">
+            <ul class="space-y-1">
+              <li>
+                <a
+                  href="profile.html"
+                  class="sidebar-item active flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-user-circle text-indigo-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Profile</span>
+                </a>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onclick="logout()"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-red-400 group w-full text-left"
+                >
+                  <i
+                    class="fas fa-sign-out-alt text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Logout</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 md:ml-64 min-h-screen">
+      <!-- Top Header -->
+      <header class="glass border-b border-white/10 p-4 sticky top-0 z-40">
+        <div class="flex items-center justify-between">
+          <!-- Mobile Menu Button -->
+          <button
+            id="toggleSidebar"
+            class="md:hidden glass p-2 rounded-xl text-white hover:bg-white/10 transition-colors"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <!-- Page Title Area -->
+          <div class="flex items-center space-x-4">
+            <div class="text-sm text-gray-400">
+              <span>Admin</span>
+              <i class="fas fa-chevron-right mx-2"></i>
+              <span class="text-white">Profile</span>
+            </div>
+          </div>
+
+          <!-- Header Actions -->
+          <div class="flex items-center space-x-3">
+            <!-- Notifications -->
+            <button
+              class="glass p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors relative"
+            >
+              <i class="fas fa-bell"></i>
+              <span
+                class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center"
+                >3</span
+              >
+            </button>
+
+            <!-- User Profile -->
+            <div class="flex items-center space-x-2 glass px-3 py-2 rounded-xl">
+              <div
+                class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm"
+              >
+                A
+              </div>
+              <div class="hidden sm:block">
+                <p class="text-sm font-medium text-white">Admin User</p>
+                <p class="text-xs text-gray-400">Administrator</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <main class="p-6 animate-fade-in">
+        <!-- Profile Header -->
+        <div class="admin-card p-8 rounded-2xl mb-8 animate-bounce-in">
+          <div
+            class="flex flex-col lg:flex-row items-center lg:items-start gap-8"
+          >
+            <!-- Profile Image -->
+            <div class="relative">
+              <div class="profile-image-container w-32 h-32 p-1">
+                <div
+                  id="profileAvatar"
+                  class="w-full h-full rounded-full bg-gradient-to-br from-blue-600 to-purple-700 flex items-center justify-center text-white font-bold text-4xl"
+                >
+                  A
+                </div>
+              </div>
+              <input
+                type="file"
+                id="imageUpload"
+                class="hidden"
+                accept="image/*"
+                onchange="handleImageUpload(this)"
+              />
+              <button
+                onclick="document.getElementById('imageUpload').click()"
+                class="absolute -bottom-0 -right-0 bg-blue-500 hover:bg-blue-600 p-2 rounded-full text-white transition-colors"
+              >
+                <i class="fas fa-edit text-sm"></i>
+              </button>
+            </div>
+
+            <!-- Profile Info -->
+            <div class="flex-1 text-center lg:text-left">
+              <h1 class="text-3xl font-bold text-white mb-2">Admin User</h1>
+              <p class="text-gray-400 mb-4">System Administrator</p>
+              <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                <div class="glass px-4 py-2 rounded-xl">
+                  <i class="fas fa-envelope text-blue-400 mr-2"></i>
+                  <span class="text-sm">admin@ecommerce.com</span>
+                </div>
+                <div class="glass px-4 py-2 rounded-xl">
+                  <i class="fas fa-calendar text-green-400 mr-2"></i>
+                  <span class="text-sm">Joined Dec 2023</span>
+                </div>
+                <div class="glass px-4 py-2 rounded-xl">
+                  <i class="fas fa-shield-alt text-purple-400 mr-2"></i>
+                  <span class="text-sm">Super Admin</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Profile Stats -->
+            <div class="grid grid-cols-3 gap-4 text-center">
+              <div class="glass p-4 rounded-xl">
+                <p class="text-2xl font-bold text-blue-400">245</p>
+                <p class="text-xs text-gray-400">Orders</p>
+              </div>
+              <div class="glass p-4 rounded-xl">
+                <p class="text-2xl font-bold text-green-400">89</p>
+                <p class="text-xs text-gray-400">Products</p>
+              </div>
+              <div class="glass p-4 rounded-xl">
+                <p class="text-2xl font-bold text-purple-400">156</p>
+                <p class="text-xs text-gray-400">Users</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Management Section -->
+        <div class="admin-card rounded-2xl animate-slide-in">
+          <!-- Tab Navigation -->
+          <div class="border-b border-white/10 px-8 pt-6">
+            <nav class="flex space-x-8">
+              <button
+                onclick="switchTab('personal')"
+                id="personal-tab"
+                class="tab-button active py-3 px-1 text-blue-400 font-medium"
+              >
+                <i class="fas fa-user mr-2"></i>Personal Info
+              </button>
+              <button
+                onclick="switchTab('password')"
+                id="password-tab"
+                class="tab-button py-3 px-1 text-gray-400 font-medium hover:text-white transition-colors"
+              >
+                <i class="fas fa-shield-alt mr-2"></i>Change Password
+              </button>
+              <button
+                onclick="switchTab('security')"
+                id="security-tab"
+                class="tab-button py-3 px-1 text-gray-400 font-medium hover:text-white transition-colors"
+              >
+                <i class="fas fa-shield-alt mr-2"></i>Security
+              </button>
+            </nav>
+          </div>
+
+          <!-- Tab Content -->
+          <div class="p-8">
+            <!-- Personal Info Tab -->
+            <div id="personal-content" class="tab-content">
+              <h3 class="text-xl font-bold text-white mb-6">
+                Personal Information
+              </h3>
+              <form onsubmit="updateProfile(event)" class="space-y-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <!-- First Name -->
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      id="firstName"
+                      class="form-input w-full px-4 py-3 glass rounded-xl text-white placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="First Name"
+                      value="Admin"
+                    />
+                    <label for="firstName" class="floating-label"
+                      >First Name</label
+                    >
+                  </div>
+
+                  <!-- Last Name -->
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      id="lastName"
+                      class="form-input w-full px-4 py-3 glass rounded-xl text-white placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Last Name"
+                      value="User"
+                    />
+                    <label for="lastName" class="floating-label"
+                      >Last Name</label
+                    >
+                  </div>
+
+                  <!-- Email -->
+                  <div class="form-group">
+                    <input
+                      type="email"
+                      id="email"
+                      class="form-input w-full px-4 py-3 glass rounded-xl text-white placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Email Address"
+                      value="admin@ecommerce.com"
+                    />
+                    <label for="email" class="floating-label"
+                      >Email Address</label
+                    >
+                  </div>
+
+                  <!-- Phone -->
+                  <div class="form-group">
+                    <input
+                      type="tel"
+                      id="phone"
+                      class="form-input w-full px-4 py-3 glass rounded-xl text-white placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Phone Number"
+                      value="+1 (555) 123-4567"
+                    />
+                    <label for="phone" class="floating-label"
+                      >Phone Number</label
+                    >
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex justify-end">
+                  <button
+                    type="submit"
+                    class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105"
+                  >
+                    <i class="fas fa-save mr-2"></i>
+                    Update Profile
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Change Password Tab -->
+            <div id="password-content" class="tab-content hidden">
+              <h3 class="text-xl font-bold text-white mb-6">Change Password</h3>
+
+              <!-- Change Password Form -->
+              <form onsubmit="changePassword(event)" class="space-y-6 mb-8">
+                <div class="grid grid-cols-1 gap-6">
+                  <!-- Current Password -->
+                  <div class="form-group relative">
+                    <input
+                      type="password"
+                      id="currentPassword"
+                      class="form-input w-full px-4 py-3 pr-12 glass rounded-xl text-white placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Current Password"
+                    />
+                    <label for="currentPassword" class="floating-label"
+                      >Current Password</label
+                    >
+                    <button
+                      type="button"
+                      onclick="togglePassword('currentPassword')"
+                      class="absolute right-3 top-3 text-gray-400 hover:text-white"
+                    >
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </div>
+
+                  <!-- New Password -->
+                  <div class="form-group relative">
+                    <input
+                      type="password"
+                      id="newPassword"
+                      class="form-input w-full px-4 py-3 pr-12 glass rounded-xl text-white placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="New Password"
+                    />
+                    <label for="newPassword" class="floating-label"
+                      >New Password</label
+                    >
+                    <button
+                      type="button"
+                      onclick="togglePassword('newPassword')"
+                      class="absolute right-3 top-3 text-gray-400 hover:text-white"
+                    >
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </div>
+
+                  <!-- Confirm Password -->
+                  <div class="form-group relative">
+                    <input
+                      type="password"
+                      id="confirmPassword"
+                      class="form-input w-full px-4 py-3 pr-12 glass rounded-xl text-white placeholder-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Confirm New Password"
+                    />
+                    <label for="confirmPassword" class="floating-label"
+                      >Confirm New Password</label
+                    >
+                    <button
+                      type="button"
+                      onclick="togglePassword('confirmPassword')"
+                      class="absolute right-3 top-3 text-gray-400 hover:text-white"
+                    >
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+                >
+                  <i class="fas fa-key mr-2"></i>
+                  Change Password
+                </button>
+              </form>
+            </div>
+
+            <!-- Security Tab -->
+            <div id="security-content" class="tab-content hidden">
+              <h3 class="text-xl font-bold text-white mb-6">
+                Security Settings
+              </h3>
+
+              <!-- Session Management -->
+              <div class="glass p-6 rounded-2xl mb-6 border border-blue-500/20">
+                <div
+                  class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+                >
+                  <div class="flex-1">
+                    <div class="flex items-center mb-2">
+                      <i class="fas fa-devices text-blue-400 mr-3 text-lg"></i>
+                      <h4 class="text-lg font-semibold text-white">
+                        Active Sessions
+                      </h4>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                      Logout from all other devices and sessions for enhanced
+                      security
+                    </p>
+                    <div class="mt-3 flex items-center text-sm text-gray-300">
+                      <i class="fas fa-info-circle text-blue-400 mr-2"></i>
+                      <span>Currently active on 3 devices</span>
+                    </div>
+                  </div>
+                  <button
+                    onclick="openModal('logoutDevicesModal')"
+                    class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
+                  >
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                    Logout Other Devices
+                  </button>
+                </div>
+              </div>
+
+              <!-- Account Security -->
+              <div
+                class="glass p-6 rounded-2xl mb-6 border border-yellow-500/20"
+              >
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-shield-alt text-yellow-400 mr-3 text-lg"></i>
+                  <h4 class="text-lg font-semibold text-white">
+                    Account Security
+                  </h4>
+                </div>
+                <div class="space-y-4">
+                  <div
+                    class="flex items-center justify-between p-3 glass rounded-lg"
+                  >
+                    <div class="flex items-center">
+                      <i class="fas fa-key text-green-400 mr-3"></i>
+                      <div>
+                        <p class="text-white font-medium">Password</p>
+                        <p class="text-gray-400 text-sm">
+                          Last changed 30 days ago
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      onclick="switchTab('password')"
+                      class="text-blue-400 hover:text-blue-300 font-medium"
+                    >
+                      Change
+                    </button>
+                  </div>
+                  <div
+                    class="flex items-center justify-between p-3 glass rounded-lg"
+                  >
+                    <div class="flex items-center">
+                      <i class="fas fa-envelope text-blue-400 mr-3"></i>
+                      <div>
+                        <p class="text-white font-medium">Email Verification</p>
+                        <p class="text-gray-400 text-sm">Verified and secure</p>
+                      </div>
+                    </div>
+                    <div class="flex items-center text-green-400">
+                      <i class="fas fa-check-circle mr-1"></i>
+                      <span class="text-sm font-medium">Verified</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Danger Zone -->
+              <div class="glass p-6 rounded-2xl border border-red-500/20">
+                <div class="flex items-center mb-4">
+                  <i
+                    class="fas fa-exclamation-triangle text-red-400 mr-3 text-lg"
+                  ></i>
+                  <h4 class="text-lg font-semibold text-red-400">
+                    Danger Zone
+                  </h4>
+                </div>
+                <div
+                  class="bg-red-500/10 border border-red-500/20 rounded-xl p-4 mb-4"
+                >
+                  <p class="text-gray-300 text-sm mb-2">
+                    <strong class="text-red-400">Warning:</strong> This action
+                    cannot be undone.
+                  </p>
+                  <p class="text-gray-400 text-sm">
+                    Once you delete your account, all your data will be
+                    permanently removed from our servers.
+                  </p>
+                </div>
+                <button
+                  onclick="openModal('deleteAccountModal')"
+                  class="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/25"
+                >
+                  <i class="fas fa-trash-alt mr-2"></i>
+                  Delete Account
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div
+      id="sidebarOverlay"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden md:hidden"
+      onclick="toggleMobileSidebar()"
+    ></div>
+
+    <!-- Logout Other Devices Modal -->
+    <div
+      id="logoutDevicesModal"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+    >
+      <div class="glass rounded-2xl max-w-md w-full p-8 animate-bounce-in">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl font-bold text-white">Logout Other Devices</h3>
+          <button
+            onclick="closeModal('logoutDevicesModal')"
+            class="text-gray-400 hover:text-white"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="space-y-6">
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-devices text-blue-400 text-2xl"></i>
+            </div>
+            <h4 class="text-lg font-semibold text-white mb-2">
+              Active Sessions
+            </h4>
+            <p class="text-gray-400 text-sm">
+              This will logout all other active sessions and devices. You will
+              remain logged in on this device.
+            </p>
+          </div>
+
+          <div class="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
+            <h5 class="text-blue-400 font-medium mb-2">
+              Current Active Sessions:
+            </h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li class="flex items-center">
+                <i class="fas fa-desktop text-green-400 mr-2"></i>
+                Current Session (This Device)
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-mobile-alt text-yellow-400 mr-2"></i>
+                iPhone - 2 hours ago
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-laptop text-yellow-400 mr-2"></i>
+                MacBook Pro - 1 day ago
+              </li>
+            </ul>
+          </div>
+
+          <form onsubmit="confirmLogoutDevices(event)" class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-400 mb-2">
+                Enter your password to confirm
+              </label>
+              <div class="relative">
+                <input
+                  type="password"
+                  id="logoutDevicesPassword"
+                  class="w-full glass px-4 py-3 pr-12 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter your password"
+                  required
+                />
+                <button
+                  type="button"
+                  onclick="togglePassword('logoutDevicesPassword')"
+                  class="absolute right-3 top-3 text-gray-400 hover:text-white"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-4">
+              <button
+                type="button"
+                onclick="closeModal('logoutDevicesModal')"
+                class="flex-1 glass px-6 py-3 rounded-xl text-gray-400 hover:text-white transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-3 rounded-xl text-white font-bold hover:scale-105 transition-transform"
+              >
+                Logout Devices
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Crop Modal -->
+    <div
+      id="imageCropModal"
+      class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+    >
+      <div class="glass rounded-xl max-w-lg w-full animate-bounce-in">
+        <div
+          class="flex items-center justify-between p-4 border-b border-white/10"
+        >
+          <h3 class="text-lg font-bold text-white">Crop Image</h3>
+          <button
+            onclick="closeModal('imageCropModal')"
+            class="text-gray-400 hover:text-white"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="p-4">
+          <!-- Main Image Display with Cropper -->
+          <div class="mb-4">
+            <div
+              class="bg-black/20 rounded-lg p-2 flex items-center justify-center"
+            >
+              <div class="max-w-full max-h-64 overflow-hidden rounded">
+                <img
+                  id="cropperImage"
+                  src=""
+                  alt="Image to crop"
+                  class="max-w-full max-h-64"
+                  style="display: none; max-width: 100%; height: auto"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Cropper Controls -->
+          <div class="grid grid-cols-4 gap-2 mb-4">
+            <button
+              onclick="cropperZoomIn()"
+              class="glass px-2 py-2 rounded-lg text-gray-400 hover:text-white transition-colors text-xs"
+              title="Zoom In"
+            >
+              <i class="fas fa-search-plus"></i>
+            </button>
+            <button
+              onclick="cropperZoomOut()"
+              class="glass px-2 py-2 rounded-lg text-gray-400 hover:text-white transition-colors text-xs"
+              title="Zoom Out"
+            >
+              <i class="fas fa-search-minus"></i>
+            </button>
+            <button
+              onclick="cropperRotateLeft()"
+              class="glass px-2 py-2 rounded-lg text-gray-400 hover:text-white transition-colors text-xs"
+              title="Rotate Left"
+            >
+              <i class="fas fa-undo"></i>
+            </button>
+            <button
+              onclick="cropperRotateRight()"
+              class="glass px-2 py-2 rounded-lg text-gray-400 hover:text-white transition-colors text-xs"
+              title="Rotate Right"
+            >
+              <i class="fas fa-redo"></i>
+            </button>
+          </div>
+
+          <!-- Aspect Ratio Controls -->
+          <div class="mb-4">
+            <div class="grid grid-cols-4 gap-2">
+              <button
+                onclick="setAspectRatio(1)"
+                class="aspect-ratio-btn glass px-2 py-1 rounded text-xs text-gray-400 hover:text-white transition-colors active"
+              >
+                1:1
+              </button>
+              <button
+                onclick="setAspectRatio(4/3)"
+                class="aspect-ratio-btn glass px-2 py-1 rounded text-xs text-gray-400 hover:text-white transition-colors"
+              >
+                4:3
+              </button>
+              <button
+                onclick="setAspectRatio(16/9)"
+                class="aspect-ratio-btn glass px-2 py-1 rounded text-xs text-gray-400 hover:text-white transition-colors"
+              >
+                16:9
+              </button>
+              <button
+                onclick="setAspectRatio(NaN)"
+                class="aspect-ratio-btn glass px-2 py-1 rounded text-xs text-gray-400 hover:text-white transition-colors"
+              >
+                Free
+              </button>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex items-center justify-end space-x-3">
+            <button
+              onclick="closeModal('imageCropModal')"
+              class="glass px-4 py-2 rounded-lg text-gray-400 hover:text-white transition-colors text-sm"
+            >
+              Cancel
+            </button>
+            <button
+              onclick="applyCrop()"
+              class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 text-sm"
+            >
+              <i class="fas fa-check mr-1"></i>
+              Apply
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Account Modal -->
+    <div
+      id="deleteAccountModal"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+    >
+      <div class="glass rounded-2xl max-w-md w-full p-8 animate-bounce-in">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl font-bold text-white">Delete Account</h3>
+          <button
+            onclick="closeModal('deleteAccountModal')"
+            class="text-gray-400 hover:text-white"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="space-y-6">
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="fas fa-exclamation-triangle text-red-400 text-2xl"></i>
+            </div>
+            <h4 class="text-lg font-semibold text-white mb-2">
+              Are you absolutely sure?
+            </h4>
+            <p class="text-gray-400 text-sm">
+              This action
+              <strong class="text-red-400">cannot be undone</strong>. This will
+              permanently delete your account and remove all your data from our
+              servers.
+            </p>
+          </div>
+
+          <div class="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
+            <h5 class="text-red-400 font-medium mb-2">
+              This will permanently delete:
+            </h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• Your profile and account information</li>
+              <li>• All your orders and transaction history</li>
+              <li>• Saved addresses and payment methods</li>
+            </ul>
+          </div>
+
+          <form onsubmit="confirmDeleteAccount(event)" class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-400 mb-2">
+                Enter your password to confirm
+              </label>
+              <div class="relative">
+                <input
+                  type="password"
+                  id="deleteAccountPassword"
+                  class="w-full glass px-4 py-3 pr-12 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
+                  placeholder="Enter your password"
+                  required
+                />
+                <button
+                  type="button"
+                  onclick="togglePassword('deleteAccountPassword')"
+                  class="absolute right-3 top-3 text-gray-400 hover:text-white"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-4">
+              <button
+                type="button"
+                onclick="closeModal('deleteAccountModal')"
+                class="flex-1 glass px-6 py-3 rounded-xl text-gray-400 hover:text-white transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="flex-1 bg-gradient-to-r from-red-500 to-red-600 px-6 py-3 rounded-xl text-white font-bold hover:scale-105 transition-transform"
+              >
+                Delete Account
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Tab switching functionality
+      function switchTab(tabName) {
+        // Hide all tab contents
+        const tabContents = document.querySelectorAll(".tab-content");
+        tabContents.forEach((content) => content.classList.add("hidden"));
+
+        // Remove active class from all tab buttons
+        const tabButtons = document.querySelectorAll(".tab-button");
+        tabButtons.forEach((button) => {
+          button.classList.remove("active", "text-blue-400");
+          button.classList.add("text-gray-400");
+        });
+
+        // Show selected tab content
+        document
+          .getElementById(tabName + "-content")
+          .classList.remove("hidden");
+
+        // Add active class to selected tab button
+        const activeTab = document.getElementById(tabName + "-tab");
+        activeTab.classList.add("active", "text-blue-400");
+        activeTab.classList.remove("text-gray-400");
+      }
+
+      // Global variables for image cropping
+      let currentImageFile = null;
+      let cropper = null;
+
+      // Profile image upload handler
+      function handleImageUpload(input) {
+        if (input.files && input.files[0]) {
+          const file = input.files[0];
+
+          // Validate file type
+          if (!file.type.startsWith("image/")) {
+            toastr.error("Please select a valid image file!");
+            return;
+          }
+
+          // Validate file size (max 5MB)
+          if (file.size > 5 * 1024 * 1024) {
+            toastr.error("Image size should be less than 5MB!");
+            return;
+          }
+
+          currentImageFile = file;
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            openImageCropModal(e.target.result);
+          };
+          reader.readAsDataURL(file);
+
+          // Clear the input
+          input.value = "";
+        }
+      }
+
+      // Open image crop modal
+      function openImageCropModal(imageSrc) {
+        const modal = document.getElementById("imageCropModal");
+        const cropperImage = document.getElementById("cropperImage");
+
+        // Set up the image
+        cropperImage.src = imageSrc;
+        cropperImage.style.display = "block";
+
+        // Show modal
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+
+        // Wait for image to load then initialize cropper
+        cropperImage.onload = function () {
+          initializeCropper();
+        };
+      }
+
+      // Initialize Cropper.js
+      function initializeCropper() {
+        const image = document.getElementById("cropperImage");
+
+        // Destroy existing cropper if it exists
+        if (cropper) {
+          cropper.destroy();
+        }
+
+        // Initialize new cropper
+        cropper = new Cropper(image, {
+          aspectRatio: 1, // Default to square
+          viewMode: 1,
+          dragMode: "move",
+          autoCropArea: 0.8,
+          restore: false,
+          guides: true,
+          center: true,
+          highlight: false,
+          cropBoxMovable: true,
+          cropBoxResizable: true,
+          toggleDragModeOnDblclick: false,
+          background: false,
+          modal: true,
+          responsive: true,
+          checkOrientation: false,
+        });
+      }
+
+      // Cropper control functions
+      function cropperZoomIn() {
+        if (cropper) {
+          cropper.zoom(0.1);
+        }
+      }
+
+      function cropperZoomOut() {
+        if (cropper) {
+          cropper.zoom(-0.1);
+        }
+      }
+
+      function cropperRotateLeft() {
+        if (cropper) {
+          cropper.rotate(-45);
+        }
+      }
+
+      function cropperRotateRight() {
+        if (cropper) {
+          cropper.rotate(45);
+        }
+      }
+
+      // Set aspect ratio
+      function setAspectRatio(ratio) {
+        if (cropper) {
+          cropper.setAspectRatio(ratio);
+        }
+
+        // Update button states
+        document.querySelectorAll(".aspect-ratio-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+        event.target.classList.add("active");
+      }
+
+      // Apply crop using Cropper.js
+      function applyCrop() {
+        if (!cropper) {
+          toastr.error("Cropper not initialized!");
+          return;
+        }
+
+        // Get cropped canvas
+        const canvas = cropper.getCroppedCanvas({
+          width: 300,
+          height: 300,
+          minWidth: 200,
+          minHeight: 200,
+          maxWidth: 500,
+          maxHeight: 500,
+          fillColor: "#fff",
+          imageSmoothingEnabled: true,
+          imageSmoothingQuality: "high",
+        });
+
+        if (!canvas) {
+          toastr.error("Error generating cropped image!");
+          return;
+        }
+
+        // Convert to data URL
+        const croppedImageData = canvas.toDataURL("image/png", 0.9);
+
+        // Update profile avatar
+        const profileAvatar = document.getElementById("profileAvatar");
+        profileAvatar.innerHTML = `<img src="${croppedImageData}" alt="Admin Profile" class="w-full h-full rounded-full object-cover">`;
+
+        // Close modal and cleanup
+        closeModal("imageCropModal");
+        if (cropper) {
+          cropper.destroy();
+          cropper = null;
+        }
+
+        // Show success message
+        toastr.success("Profile image updated successfully!");
+      }
+
+      // Password visibility toggle
+      function togglePassword(inputId) {
+        const input = document.getElementById(inputId);
+        const button = input.nextElementSibling;
+        const icon = button.querySelector("i");
+
+        if (input.type === "password") {
+          input.type = "text";
+          icon.classList.remove("fa-eye");
+          icon.classList.add("fa-eye-slash");
+        } else {
+          input.type = "password";
+          icon.classList.remove("fa-eye-slash");
+          icon.classList.add("fa-eye");
+        }
+      }
+
+      function changePassword(event) {
+        event.preventDefault();
+
+        const newPassword = document.getElementById("newPassword").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+
+        if (newPassword !== confirmPassword) {
+          toastr.error("Passwords do not match!");
+          return;
+        }
+
+        if (newPassword.length < 8) {
+          toastr.error("Password must be at least 8 characters long!");
+          return;
+        }
+
+        event.target.submit();
+      }
+
+      // Two-Factor Authentication toggle
+      function confirmLogoutDevices(event) {
+        event.preventDefault();
+        const password = document.getElementById("logoutDevicesPassword").value;
+
+        if (!password) {
+          toastr.error("Please enter your password to confirm!");
+          return;
+        }
+
+        event.target.submit();
+      }
+
+      function confirmDeleteAccount(event) {
+        event.preventDefault();
+        const password = document.getElementById("deleteAccountPassword").value;
+
+        if (!password) {
+          toastr.error("Please enter your password to confirm!");
+          return;
+        }
+
+        event.target.submit();
+      }
+
+      // Mobile sidebar functionality
+      function toggleMobileSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebarOverlay");
+
+        sidebar.classList.toggle("-translate-x-full");
+        overlay.classList.toggle("hidden");
+      }
+
+      // Modal functions
+      function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        // Focus first input
+        const firstInput = modal.querySelector("input, select, textarea");
+        if (firstInput) {
+          setTimeout(() => firstInput.focus(), 100);
+        }
+      }
+
+      function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+
+        // Cleanup cropper when closing image crop modal
+        if (modalId === "imageCropModal" && cropper) {
+          cropper.destroy();
+          cropper = null;
+        }
+      }
+
+      // Desktop sidebar toggle
+      const toggleSidebar = document.getElementById("toggleSidebar");
+      if (toggleSidebar) {
+        toggleSidebar.addEventListener("click", toggleMobileSidebar);
+      }
+
+      // Close sidebar when clicking outside on mobile
+      document.addEventListener("click", (event) => {
+        const sidebar = document.getElementById("sidebar");
+        const toggleBtn = document.getElementById("toggleSidebar");
+
+        if (
+          !sidebar.contains(event.target) &&
+          !toggleBtn.contains(event.target)
+        ) {
+          if (window.innerWidth < 768) {
+            sidebar.classList.add("-translate-x-full");
+            document.getElementById("sidebarOverlay").classList.add("hidden");
+          }
+        }
+      });
+
+      // Close modal when clicking outside
+      document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("backdrop-blur-sm")) {
+          const modalId = event.target.id;
+          if (modalId && modalId.includes("Modal")) {
+            closeModal(modalId);
+          }
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          const openModal = document.querySelector(
+            ".fixed.inset-0.z-50:not(.hidden)"
+          );
+          if (openModal) {
+            const modalId = openModal.id;
+            closeModal(modalId);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

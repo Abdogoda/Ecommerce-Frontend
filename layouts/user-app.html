@@ -1,0 +1,128 @@
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{TITLE}} - E-Commerce</title>
+    
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    
+    <!-- User Styles -->
+    <link rel="stylesheet" href="assets/css/user/styles.css" />
+    
+    <!-- Tailwind Configuration -->
+    <script src="assets/js/user/tailwind-config.js"></script>
+
+    <!-- Additional CSS will be inserted here -->
+    {{CSS_SECTION}}
+  </head>
+  <body class="bg-gray-900 text-white">
+    <!-- Header -->
+    <header
+      class="bg-gray-800/95 backdrop-blur-sm py-6 px-6 flex justify-between items-center flex-wrap gap-3 animate-fade-in-down shadow-2xl sticky top-0 z-50"
+    >
+      <h1 class="text-2xl font-bold animate-fade-in-left">
+        <a href="/" class="hover:text-blue-400 transition-colors duration-300">
+          <i class="fas fa-store mr-2 text-blue-400"></i>E-Commerce
+        </a>
+      </h1>
+      <nav class="animate-fade-in-right">
+        <ul class="flex space-x-6 items-center">
+          <li class="animate-fade-in-up delay-100">
+            <a
+              href="/"
+              class="hover:text-blue-400 transition-all duration-300 relative group"
+            >
+              <span>Home</span>
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+          </li>
+          <li class="animate-fade-in-up delay-200">
+            <a
+              href="/shop"
+              class="hover:text-blue-400 transition-all duration-300 relative group"
+            >
+              <span>Shop</span>
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+          </li>
+          <li class="relative animate-fade-in-up delay-300">
+            <a
+              href="/cart"
+              class="hover:text-blue-400 transition-all duration-300 hover:scale-105 transform"
+            >
+              <i class="fa fa-shopping-cart text-lg"></i>
+              <span
+                id="cart-badge"
+                class="w-5 h-5 absolute -top-2 -right-2 bg-red-500 text-sm text-white p-1 rounded-full hidden flex items-center justify-center animate-pulse"
+                >0</span
+              >
+            </a>
+          </li>
+          <!-- Admin Dashboard Link (conditional) -->
+          <li class="animate-fade-in-up delay-500">
+            <a
+              href="/admin/dashboard"
+              class="hover:text-blue-400 transition-all duration-300 hover:scale-105 transform"
+              ><i class="fa fa-user-gear text-lg"></i
+            ></a>
+          </li>
+          <!-- User Profile Link -->
+          <li class="animate-fade-in-up delay-700">
+            <a
+              href="/profile"
+              class="hover:text-blue-400 transition-all duration-300 hover:scale-105 transform"
+              ><i class="fa fa-user text-lg"></i
+            ></a>
+          </li>
+          <!-- Logout Button -->
+          <li class="animate-fade-in-up delay-700">
+            <button
+              type="button"
+              class="bg-red-600 text-sm text-white px-4 py-2 rounded-lg hover:bg-red-700 hover:shadow-lg hover:shadow-red-500/50 transition-all duration-300 hover:scale-105 transform"
+              onclick="logout()"
+            >
+              <i class="fas fa-sign-out-alt mr-1"></i>Logout
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    {{CONTENT}}
+
+    <!-- Scripts -->
+    <!-- User Scripts -->
+    <script src="assets/js/user/cart.js"></script>
+    <script src="assets/js/user/main.js"></script>
+    
+    <script>
+      // Layout-specific JavaScript
+      
+      // Handle logout with specific redirect for layout
+      function logout() {
+        // Add logout functionality here
+        window.location.href = "/logout";
+      }
+    </script>
+    <!-- Additional JavaScript will be inserted here -->
+    {{SCRIPT_SECTION}}
+  </body>
+</html>
