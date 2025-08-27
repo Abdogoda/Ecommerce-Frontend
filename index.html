@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main Interface</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
+
+  <!-- Main Text -->
+  <h1 class="text-3xl font-bold mb-10 text-gray-800">Choose Your Interface</h1>
+
+  <!-- Main Buttons -->
+  <div class="flex flex-col gap-4 w-64">
+    <a href="./user/home.html" 
+       class="px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded-2xl shadow hover:bg-blue-700 text-center">
+       Web Interface
+    </a>
+    <a href="./admin/dashboard.html" 
+       class="px-6 py-3 text-lg font-semibold text-white bg-green-600 rounded-2xl shadow hover:bg-green-700 text-center">
+       Admin Interface
+    </a>
+    <a href="./auth/login.html" 
+       class="px-6 py-3 text-lg font-semibold text-white bg-purple-600 rounded-2xl shadow hover:bg-purple-700 text-center">
+       Auth Interface
+    </a>
+  </div>
+
+  <!-- Divider -->
+  <div class="my-8 border-t w-2/3 border-gray-300"></div>
+
+  <!-- Smaller Buttons -->
+  <div class="flex gap-3">
+    <a href="./layouts/admin-app.html" 
+       class="px-4 py-2 text-sm font-medium text-white bg-gray-700 rounded-lg shadow hover:bg-gray-800">
+       Admin Layout
+    </a>
+    <a href="./layouts/user-app.html" 
+       class="px-4 py-2 text-sm font-medium text-white bg-gray-700 rounded-lg shadow hover:bg-gray-800">
+       User Layout
+    </a>
+    <a href="./layouts/auth-app.html" 
+       class="px-4 py-2 text-sm font-medium text-white bg-gray-700 rounded-lg shadow hover:bg-gray-800">
+       Auth Layout
+    </a>
+  </div>
+
+</body>
+</html>
