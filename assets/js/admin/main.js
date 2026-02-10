@@ -169,16 +169,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const sidebar = document.getElementById("sidebar");
         const sidebarOverlay = document.getElementById("sidebarOverlay");
 
-        sidebar.classList.remove("-translate-x-full");
-        sidebarOverlay.classList.remove("hidden");
+        sidebar && sidebar.classList.remove("-translate-x-full");
+        sidebarOverlay && sidebarOverlay.classList.remove("hidden");
       }
 
       function closeSidebar() {
         const sidebar = document.getElementById("sidebar");
         const sidebarOverlay = document.getElementById("sidebarOverlay");
 
-        sidebar.classList.add("-translate-x-full");
-        sidebarOverlay.classList.add("hidden");
+        sidebar && sidebar.classList.add("-translate-x-full");
+        sidebarOverlay && sidebarOverlay.classList.add("hidden");
       }
 
       // Close modals when clicking outside
