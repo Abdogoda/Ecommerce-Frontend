@@ -1,1380 +1,1113 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Details - E-Commerce Admin</title>
 
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../../assets/css/admin/styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="../../assets/js/admin/main.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Details - E-Commerce Admin</title>
 
-  <body class="admin-bg text-white flex min-h-screen">
-    <!-- Sidebar -->
-    <sidebar
-      id="sidebar"
-      class="glass w-64 min-h-screen fixed transition-all duration-300 transform -translate-x-full md:translate-x-0 z-50 border-r border-white/10 flex flex-col"
-    >
-      <!-- Logo Section -->
-      <div class="p-6 pb-4 flex-shrink-0">
-        <div class="animate-bounce-in">
-          <div class="flex items-center space-x-3">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../assets/css/admin/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="../../assets/js/admin/main.js"></script>
+</head>
+
+<body class="admin-bg text-white flex min-h-screen">
+  <!-- Sidebar -->
+  <sidebar id="sidebar"
+    class="glass w-64 min-h-screen fixed transition-all duration-300 transform -translate-x-full md:translate-x-0 z-50 border-r border-white/10 flex flex-col">
+    <!-- Logo Section -->
+    <div class="p-6 pb-4 flex-shrink-0">
+      <div class="animate-bounce-in">
+        <div class="flex items-center space-x-3">
+          <div
+            class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+            <i class="fas fa-store text-white text-lg"></i>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-white">E-Commerce</h2>
+            <p class="text-xs text-gray-400">Admin Panel</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="flex-1 overflow-y-auto px-6 pb-6">
+      <div class="space-y-2">
+        <!-- Main Navigation -->
+        <div class="mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            Main
+          </p>
+          <ul class="space-y-1">
+            <!-- Dashboard -->
+            <li>
+              <a href="../dashboard.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-chart-line text-blue-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Dashboard</span>
+              </a>
+            </li>
+
+            <!-- Users Management -->
+            <li>
+              <a href="../users/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-users text-green-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Users</span>
+              </a>
+            </li>
+
+            <!-- Roles -->
+            <li>
+              <a href="../roles/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-user-shield text-purple-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Roles</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Catalog Management -->
+        <div class="mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            Catalog
+          </p>
+          <ul class="space-y-1">
+            <!-- Categories -->
+            <li>
+              <a href="../categories/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-tags text-yellow-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Categories</span>
+              </a>
+            </li>
+
+            <!-- Products -->
+            <li>
+              <a href="index.html" class="sidebar-item active flex items-center p-3 rounded-xl text-white group">
+                <i class="fas fa-box text-orange-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Products</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Sales & Communication -->
+        <div class="mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            Sales
+          </p>
+          <ul class="space-y-1">
+            <!-- Orders -->
+            <li>
+              <a href="../orders/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-shopping-cart text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Orders</span>
+              </a>
+            </li>
+
+            <!-- Messages -->
+            <li>
+              <a href="../messages/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-envelope text-cyan-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Messages</span>
+                <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">3</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Account -->
+        <div class="border-t border-white/10 pt-4">
+          <ul class="space-y-1">
+            <li>
+              <a href="../profile.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-user-circle text-indigo-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Profile</span>
+              </a>
+            </li>
+            <li>
+              <button type="button"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-red-400 group w-full text-left">
+                <i class="fas fa-sign-out-alt text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Logout</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </sidebar>
+
+  <!-- Main Content -->
+  <main class="max-w-full flex-1 md:ml-64 min-h-screen">
+    <!-- Top Header -->
+    <header class="glass border-b border-white/10 p-4 sticky top-0 z-40">
+      <div class="flex items-center justify-between">
+        <!-- Mobile Menu Button -->
+        <button id="toggleSidebar"
+          class="md:hidden glass p-2 rounded-xl text-white hover:bg-white/10 transition-colors">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Page Title Area -->
+        <div class="hidden md:flex items-center space-x-4">
+          <div id="breadcrumb" class="text-sm text-gray-400">
+            <span>Admin</span>
+            <i class="fas fa-chevron-right mx-2"></i>
+            <a href="index.html" class="hover:text-white transition-colors">Products</a>
+            <i class="fas fa-chevron-right mx-2"></i>
+            <span class="text-white">Product Details</span>
+          </div>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="flex items-center space-x-3">
+          <!-- Notifications -->
+          <button
+            class="glass p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors relative">
+            <i class="fas fa-bell"></i>
+            <span
+              class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">3</span>
+          </button>
+
+          <!-- User Profile -->
+          <div class="flex items-center space-x-2 glass px-3 py-2 rounded-xl">
             <div
-              class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center"
-            >
-              <i class="fas fa-store text-white text-lg"></i>
+              class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+              A
             </div>
-            <div>
-              <h2 class="text-xl font-bold text-white">E-Commerce</h2>
-              <p class="text-xs text-gray-400">Admin Panel</p>
+            <div class="hidden sm:block">
+              <p class="text-sm font-medium text-white">Admin User</p>
+              <p class="text-xs text-gray-400">Administrator</p>
             </div>
           </div>
         </div>
       </div>
+    </header>
 
-      <!-- Navigation Menu -->
-      <nav class="flex-1 overflow-y-auto px-6 pb-6">
-        <div class="space-y-2">
-          <!-- Main Navigation -->
-          <div class="mb-6">
-            <p
-              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
-            >
-              Main
-            </p>
-            <ul class="space-y-1">
-              <!-- Dashboard -->
-              <li>
-                <a
-                  href="../dashboard.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-chart-line text-blue-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Dashboard</span>
-                </a>
-              </li>
-
-              <!-- Users Management -->
-              <li>
-                <a
-                  href="../users/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-users text-green-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Users</span>
-                </a>
-              </li>
-
-              <!-- Roles -->
-              <li>
-                <a
-                  href="../roles/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-user-shield text-purple-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Roles</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Catalog Management -->
-          <div class="mb-6">
-            <p
-              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
-            >
-              Catalog
-            </p>
-            <ul class="space-y-1">
-              <!-- Categories -->
-              <li>
-                <a
-                  href="../categories/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-tags text-yellow-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Categories</span>
-                </a>
-              </li>
-
-              <!-- Products -->
-              <li>
-                <a
-                  href="index.html"
-                  class="sidebar-item active flex items-center p-3 rounded-xl text-white group"
-                >
-                  <i
-                    class="fas fa-box text-orange-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Products</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Sales & Communication -->
-          <div class="mb-6">
-            <p
-              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
-            >
-              Sales
-            </p>
-            <ul class="space-y-1">
-              <!-- Orders -->
-              <li>
-                <a
-                  href="../orders/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-shopping-cart text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Orders</span>
-                </a>
-              </li>
-
-              <!-- Messages -->
-              <li>
-                <a
-                  href="../messages/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-envelope text-cyan-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Messages</span>
-                  <span
-                    class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full"
-                    >3</span
-                  >
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Account -->
-          <div class="border-t border-white/10 pt-4">
-            <ul class="space-y-1">
-              <li>
-                <a
-                  href="../profile.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-user-circle text-indigo-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Profile</span>
-                </a>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-red-400 group w-full text-left"
-                >
-                  <i
-                    class="fas fa-sign-out-alt text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Logout</span>
+    <!-- Page Content -->
+    <div class="p-6 page-enter">
+      <!-- Product Details -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <!-- Product Images -->
+        <div class="space-y-4 card-entrance delay-200">
+          <div class="admin-card rounded-xl p-6 float-animation">
+            <div class="aspect-square bg-gray-800 rounded-lg overflow-hidden mb-4 relative group image-hover-effect">
+              <img id="mainProductImage" src="https://picsum.photos/500/500?random=1" alt="Product Image"
+                class="w-full h-full object-cover transition-all duration-300" />
+              <div
+                class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <button onclick="openImageModal()"
+                  class="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-lg text-white hover:bg-white/30 transition-colors">
+                  <i class="fas fa-expand mr-2"></i>
+                  View Full Size
                 </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </sidebar>
-
-    <!-- Main Content -->
-    <main class="max-w-full flex-1 md:ml-64 min-h-screen">
-      <!-- Top Header -->
-      <header class="glass border-b border-white/10 p-4 sticky top-0 z-40">
-        <div class="flex items-center justify-between">
-          <!-- Mobile Menu Button -->
-          <button
-            id="toggleSidebar"
-            class="md:hidden glass p-2 rounded-xl text-white hover:bg-white/10 transition-colors"
-          >
-            <i class="fas fa-bars"></i>
-          </button>
-
-          <!-- Page Title Area -->
-          <div class="flex items-center space-x-4">
-            <div id="breadcrumb" class="text-sm text-gray-400">
-              <span>Admin</span>
-              <i class="fas fa-chevron-right mx-2"></i>
-              <a href="index.html" class="hover:text-white transition-colors"
-                >Products</a
-              >
-              <i class="fas fa-chevron-right mx-2"></i>
-              <span class="text-white">Product Details</span>
-            </div>
-          </div>
-
-          <!-- Header Actions -->
-          <div class="flex items-center space-x-3">
-            <!-- Notifications -->
-            <button
-              class="glass p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors relative"
-            >
-              <i class="fas fa-bell"></i>
-              <span
-                class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center"
-                >3</span
-              >
-            </button>
-
-            <!-- User Profile -->
-            <div class="flex items-center space-x-2 glass px-3 py-2 rounded-xl">
-              <div
-                class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm"
-              >
-                A
-              </div>
-              <div class="hidden sm:block">
-                <p class="text-sm font-medium text-white">Admin User</p>
-                <p class="text-xs text-gray-400">Administrator</p>
               </div>
             </div>
-          </div>
-        </div>
-      </header>
 
-      <!-- Page Content -->
-      <div class="p-6 page-enter">
-        <!-- Product Details -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-          <!-- Product Images -->
-          <div class="space-y-4 card-entrance delay-200">
-            <div class="admin-card rounded-xl p-6 float-animation">
+            <!-- Thumbnail Gallery -->
+            <div class="grid grid-cols-4 gap-2" id="thumbnailGallery">
+              <!-- Thumbnail 1 (Primary) -->
               <div
-                class="aspect-square bg-gray-800 rounded-lg overflow-hidden mb-4 relative group image-hover-effect"
-              >
-                <img
-                  id="mainProductImage"
-                  src="https://picsum.photos/500/500?random=1"
-                  alt="Product Image"
-                  class="w-full h-full object-cover transition-all duration-300"
-                />
-                <div
-                  class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                >
-                  <button
-                    onclick="openImageModal()"
-                    class="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-lg text-white hover:bg-white/30 transition-colors"
-                  >
-                    <i class="fas fa-expand mr-2"></i>
-                    View Full Size
-                  </button>
-                </div>
-              </div>
-
-              <!-- Thumbnail Gallery -->
-              <div class="grid grid-cols-4 gap-2" id="thumbnailGallery">
-                <!-- Thumbnail 1 (Primary) -->
-                <div
-                  class="aspect-square bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:opacity-75 transition-opacity border-2 border-blue-500 relative group"
-                  onclick="
+                class="aspect-square bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:opacity-75 transition-opacity border-2 border-blue-500 relative group"
+                onclick="
                     changeMainImage(
                       'https://picsum.photos/500/500?random=1',
                       this,
                     )
-                  "
-                  data-image-id="1"
-                  data-is-primary="true"
-                >
-                  <img
-                    src="https://picsum.photos/150/150?random=1"
-                    alt="Thumbnail 1"
-                    class="w-full h-full object-cover"
-                  />
-                  <!-- Action buttons -->
-                  <div
-                    class="absolute top-1 left-1 right-1 flex justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  >
-                    <button
-                      onclick="
+                  " data-image-id="1" data-is-primary="true">
+                <img src="https://picsum.photos/150/150?random=1" alt="Thumbnail 1"
+                  class="w-full h-full object-cover" />
+                <!-- Action buttons -->
+                <div
+                  class="absolute top-1 left-1 right-1 flex justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <button onclick="
                         event.stopPropagation();
                         setPrimaryImage(1);
                       "
-                      class="w-6 h-6 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center text-white text-xs transition-all duration-300 hover:scale-110"
-                      title="Set as Primary"
-                    >
-                      ✓
-                    </button>
-                    <button
-                      onclick="
+                    class="w-6 h-6 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center text-white text-xs transition-all duration-300 hover:scale-110"
+                    title="Set as Primary">
+                    ✓
+                  </button>
+                  <button onclick="
                         event.stopPropagation();
                         openDeleteImageModal(1);
                       "
-                      class="w-6 h-6 bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center text-white text-xs transition-all duration-300 hover:scale-110"
-                      title="Delete Image"
-                    >
-                      ×
-                    </button>
-                  </div>
-                  <!-- Primary indicator -->
-                  <div
-                    class="absolute bottom-1 left-1 bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full opacity-90"
-                  >
-                    Primary
-                  </div>
+                    class="w-6 h-6 bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center text-white text-xs transition-all duration-300 hover:scale-110"
+                    title="Delete Image">
+                    ×
+                  </button>
                 </div>
-
-                <!-- Thumbnail 2 -->
+                <!-- Primary indicator -->
                 <div
-                  class="aspect-square bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:opacity-75 transition-opacity border-2 border-transparent relative group"
-                  onclick="
+                  class="absolute bottom-1 left-1 bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full opacity-90">
+                  Primary
+                </div>
+              </div>
+
+              <!-- Thumbnail 2 -->
+              <div
+                class="aspect-square bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:opacity-75 transition-opacity border-2 border-transparent relative group"
+                onclick="
                     changeMainImage(
                       'https://picsum.photos/500/500?random=2',
                       this,
                     )
-                  "
-                  data-image-id="2"
-                  data-is-primary="false"
-                >
-                  <img
-                    src="https://picsum.photos/150/150?random=2"
-                    alt="Thumbnail 2"
-                    class="w-full h-full object-cover"
-                  />
-                  <!-- Action buttons -->
-                  <div
-                    class="absolute top-1 left-1 right-1 flex justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  >
-                    <button
-                      onclick="
+                  " data-image-id="2" data-is-primary="false">
+                <img src="https://picsum.photos/150/150?random=2" alt="Thumbnail 2"
+                  class="w-full h-full object-cover" />
+                <!-- Action buttons -->
+                <div
+                  class="absolute top-1 left-1 right-1 flex justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <button onclick="
                         event.stopPropagation();
                         setPrimaryImage(2);
                       "
-                      class="w-6 h-6 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center text-white text-xs transition-all duration-300 hover:scale-110"
-                      title="Set as Primary"
-                    >
-                      ✓
-                    </button>
-                    <button
-                      onclick="
+                    class="w-6 h-6 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center text-white text-xs transition-all duration-300 hover:scale-110"
+                    title="Set as Primary">
+                    ✓
+                  </button>
+                  <button onclick="
                         event.stopPropagation();
                         openDeleteImageModal(2);
                       "
-                      class="w-6 h-6 bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center text-white text-xs transition-all duration-300 hover:scale-110"
-                      title="Delete Image"
-                    >
-                      ×
-                    </button>
-                  </div>
+                    class="w-6 h-6 bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center text-white text-xs transition-all duration-300 hover:scale-110"
+                    title="Delete Image">
+                    ×
+                  </button>
                 </div>
+              </div>
 
-                <!-- Thumbnail 3 -->
-                <div
-                  class="aspect-square bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:opacity-75 transition-opacity border-2 border-transparent relative group"
-                  onclick="
+              <!-- Thumbnail 3 -->
+              <div
+                class="aspect-square bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:opacity-75 transition-opacity border-2 border-transparent relative group"
+                onclick="
                     changeMainImage(
                       'https://picsum.photos/500/500?random=3',
                       this,
                     )
-                  "
-                  data-image-id="3"
-                  data-is-primary="false"
-                >
-                  <img
-                    src="https://picsum.photos/150/150?random=3"
-                    alt="Thumbnail 3"
-                    class="w-full h-full object-cover"
-                  />
-                  <!-- Action buttons -->
-                  <div
-                    class="absolute top-1 left-1 right-1 flex justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  >
-                    <button
-                      onclick="
+                  " data-image-id="3" data-is-primary="false">
+                <img src="https://picsum.photos/150/150?random=3" alt="Thumbnail 3"
+                  class="w-full h-full object-cover" />
+                <!-- Action buttons -->
+                <div
+                  class="absolute top-1 left-1 right-1 flex justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <button onclick="
                         event.stopPropagation();
                         setPrimaryImage(3);
                       "
-                      class="w-6 h-6 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center text-white text-xs transition-all duration-300 hover:scale-110"
-                      title="Set as Primary"
-                    >
-                      ✓
-                    </button>
-                    <button
-                      onclick="
+                    class="w-6 h-6 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center text-white text-xs transition-all duration-300 hover:scale-110"
+                    title="Set as Primary">
+                    ✓
+                  </button>
+                  <button onclick="
                         event.stopPropagation();
                         openDeleteImageModal(3);
                       "
-                      class="w-6 h-6 bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center text-white text-xs transition-all duration-300 hover:scale-110"
-                      title="Delete Image"
-                    >
-                      ×
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Add New Image Slot -->
-                <div
-                  class="aspect-square bg-gray-800/30 rounded-lg border-2 border-dashed border-gray-600 hover:border-blue-500 cursor-pointer transition-all duration-300 hover:bg-gray-800/50 flex items-center justify-center group"
-                  onclick="openAddImageModal()"
-                  title="Add New Image"
-                >
-                  <div
-                    class="text-center text-gray-400 group-hover:text-blue-400 transition-colors"
-                  >
-                    <i class="fas fa-plus text-2xl mb-2"></i>
-                    <p class="text-xs">Add Image</p>
-                  </div>
+                    class="w-6 h-6 bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center text-white text-xs transition-all duration-300 hover:scale-110"
+                    title="Delete Image">
+                    ×
+                  </button>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <!-- Product Information -->
-          <div class="space-y-6 card-entrance delay-300">
-            <div class="admin-card rounded-xl p-6 pulse-glow">
-              <div class="flex justify-between items-start mb-4">
-                <h1 class="text-2xl font-bold text-white">
-                  Premium Wireless Headphones
-                </h1>
-              </div>
-
-              <div class="space-y-4">
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center space-x-2">
-                    <span
-                      class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm font-medium flex items-center"
-                    >
-                      <i class="fas fa-check-circle mr-1 text-xs"></i>
-                      In Stock
-                    </span>
-                    <span
-                      class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium"
-                    >
-                      Electronics
-                    </span>
-                    <span
-                      class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium"
-                    >
-                      Featured
-                    </span>
-                  </div>
-                  <div class="flex items-center space-x-1 text-yellow-400">
-                    <i class="fas fa-fire text-xs"></i>
-                    <span class="text-xs font-medium">Hot Deal</span>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 class="text-lg font-semibold mb-2">Price</h3>
-                  <div class="flex items-center space-x-3">
-                    <span class="text-3xl font-bold text-blue-400"
-                      >$299.99</span
-                    >
-                  </div>
-                </div>
-
-                <div>
-                  <h3 class="text-lg font-semibold mb-2">Description</h3>
-                  <p class="text-gray-300 leading-relaxed mb-4">
-                    Experience exceptional sound quality with these premium
-                    wireless headphones. Featuring active noise cancellation,
-                    30-hour battery life, and comfortable over-ear design
-                    perfect for long listening sessions.
-                  </p>
-                </div>
-
-                <div class="flex space-x-2">
-                  <button
-                    onclick="openEditModal()"
-                    class="btn-warning btn-ripple px-4 py-2 rounded-lg text-white font-medium hover:shadow-lg transition-all"
-                  >
-                    <i class="fas fa-edit mr-2"></i>
-                    Edit
-                  </button>
-                  <button
-                    onclick="openDeleteModal()"
-                    class="btn-danger btn-ripple px-4 py-2 rounded-lg text-white font-medium hover:shadow-lg transition-all"
-                  >
-                    <i class="fas fa-trash mr-2"></i>
-                    Delete
-                  </button>
-
-                  <button
-                    onclick="previewProduct()"
-                    class="btn-gray btn-ripple px-4 py-2 rounded-lg text-white font-medium hover:shadow-lg transition-all"
-                  >
-                    <i class="fas fa-eye mr-2"></i>
-                    Preview on Store
-                  </button>
+              <!-- Add New Image Slot -->
+              <div
+                class="aspect-square bg-gray-800/30 rounded-lg border-2 border-dashed border-gray-600 hover:border-blue-500 cursor-pointer transition-all duration-300 hover:bg-gray-800/50 flex items-center justify-center group"
+                onclick="openAddImageModal()" title="Add New Image">
+                <div class="text-center text-gray-400 group-hover:text-blue-400 transition-colors">
+                  <i class="fas fa-plus text-2xl mb-2"></i>
+                  <p class="text-xs">Add Image</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Category Products Section -->
-        <div class="admin-card rounded-2xl animate-slide-in mb-8">
-          <div class="p-6 border-b border-white/10">
-            <div
-              class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
-            >
-              <h2 class="text-xl font-bold text-white">
-                Products in this Category
-              </h2>
+        <!-- Product Information -->
+        <div class="space-y-6 card-entrance delay-300">
+          <div class="admin-card rounded-xl p-6 pulse-glow">
+            <div class="flex justify-between items-start mb-4">
+              <h1 class="text-2xl font-bold text-white">
+                Premium Wireless Headphones
+              </h1>
             </div>
-          </div>
 
-          <!-- Products Grid -->
-          <div class="p-6">
-            <div
-              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-            >
-              <!-- Product Card 1 -->
-              <div class="product-card admin-card p-4 rounded-xl">
-                <div class="relative mb-4">
-                  <img
-                    src="https://picsum.photos/200/150?random=4"
-                    alt="iPhone 15"
-                    class="w-full h-36 object-cover rounded-lg"
-                  />
-                  <div
-                    class="absolute top-2 right-2 bg-green-500 px-2 py-1 rounded-full text-xs text-white"
-                  >
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span
+                    class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm font-medium flex items-center">
+                    <i class="fas fa-check-circle mr-1 text-xs"></i>
                     In Stock
-                  </div>
+                  </span>
+                  <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium">
+                    Electronics
+                  </span>
+                  <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium">
+                    Featured
+                  </span>
                 </div>
-                <h3 class="text-white font-semibold mb-2">iPhone 15 Pro Max</h3>
-                <p class="text-gray-400 text-sm mb-3">
-                  Latest flagship smartphone with advanced features
-                </p>
-                <div class="flex items-center justify-between mb-3">
-                  <span class="text-blue-400 font-bold text-lg">$1,199</span>
-                  <div class="flex items-center text-yellow-400">
-                    <i class="fas fa-star mr-1"></i>
-                    <span class="text-sm">4.9</span>
-                  </div>
-                </div>
-                <div class="w-full">
-                  <button
-                    onclick="viewProduct(1)"
-                    class="glass w-full px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
-                    <i class="fas fa-eye mr-1"></i> View
-                  </button>
+                <div class="flex items-center space-x-1 text-yellow-400">
+                  <i class="fas fa-fire text-xs"></i>
+                  <span class="text-xs font-medium">Hot Deal</span>
                 </div>
               </div>
 
-              <!-- Product Card 2 -->
-              <div class="product-card admin-card p-4 rounded-xl">
-                <div class="relative mb-4">
-                  <img
-                    src="https://picsum.photos/200/150?random=5"
-                    alt="MacBook Pro"
-                    class="w-full h-36 object-cover rounded-lg"
-                  />
-                  <div
-                    class="absolute top-2 right-2 bg-green-500 px-2 py-1 rounded-full text-xs text-white"
-                  >
-                    In Stock
-                  </div>
-                </div>
-                <h3 class="text-white font-semibold mb-2">MacBook Pro M3</h3>
-                <p class="text-gray-400 text-sm mb-3">
-                  Professional laptop with M3 chip
-                </p>
-                <div class="flex items-center justify-between mb-3">
-                  <span class="text-blue-400 font-bold text-lg">$2,499</span>
-                  <div class="flex items-center text-yellow-400">
-                    <i class="fas fa-star mr-1"></i>
-                    <span class="text-sm">4.7</span>
-                  </div>
-                </div>
-                <div class="w-full">
-                  <button
-                    onclick="viewProduct(2)"
-                    class="glass px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
-                    <i class="fas fa-eye mr-1"></i> View
-                  </button>
+              <div>
+                <h3 class="text-lg font-semibold mb-2">Price</h3>
+                <div class="flex items-center space-x-3">
+                  <span class="text-3xl font-bold text-blue-400">$299.99</span>
                 </div>
               </div>
 
-              <!-- Product Card 3 -->
-              <div class="product-card admin-card p-4 rounded-xl">
-                <div class="relative mb-4">
-                  <img
-                    src="https://picsum.photos/200/150?random=6"
-                    alt="AirPods Pro"
-                    class="w-full h-36 object-cover rounded-lg"
-                  />
-                  <div
-                    class="absolute top-2 right-2 bg-yellow-500 px-2 py-1 rounded-full text-xs text-white"
-                  >
-                    Low Stock
-                  </div>
-                </div>
-                <h3 class="text-white font-semibold mb-2">
-                  AirPods Pro 2nd Gen
-                </h3>
-                <p class="text-gray-400 text-sm mb-3">
-                  Wireless earbuds with noise cancellation
+              <div>
+                <h3 class="text-lg font-semibold mb-2">Description</h3>
+                <p class="text-gray-300 leading-relaxed mb-4">
+                  Experience exceptional sound quality with these premium
+                  wireless headphones. Featuring active noise cancellation,
+                  30-hour battery life, and comfortable over-ear design
+                  perfect for long listening sessions.
                 </p>
-                <div class="flex items-center justify-between mb-3">
-                  <span class="text-blue-400 font-bold text-lg">$249</span>
-                  <div class="flex items-center text-yellow-400">
-                    <i class="fas fa-star mr-1"></i>
-                    <span class="text-sm">4.6</span>
-                  </div>
-                </div>
-                <div class="w-full">
-                  <button
-                    onclick="viewProduct(3)"
-                    class="glass px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
-                    <i class="fas fa-eye mr-1"></i> View
-                  </button>
-                </div>
               </div>
 
-              <!-- Product Card 4 -->
-              <div class="product-card admin-card p-4 rounded-xl">
-                <div class="relative mb-4">
-                  <img
-                    src="https://picsum.photos/200/150?random=7"
-                    alt="iPad Air"
-                    class="w-full h-36 object-cover rounded-lg"
-                  />
-                  <div
-                    class="absolute top-2 right-2 bg-red-500 px-2 py-1 rounded-full text-xs text-white"
-                  >
-                    Out of Stock
-                  </div>
-                </div>
-                <h3 class="text-white font-semibold mb-2">iPad Air 5th Gen</h3>
-                <p class="text-gray-400 text-sm mb-3">
-                  Powerful tablet for creativity and productivity
-                </p>
-                <div class="flex items-center justify-between mb-3">
-                  <span class="text-blue-400 font-bold text-lg">$599</span>
-                  <div class="flex items-center text-yellow-400">
-                    <i class="fas fa-star mr-1"></i>
-                    <span class="text-sm">4.8</span>
-                  </div>
-                </div>
-                <div class="w-full">
-                  <button
-                    onclick="viewProduct(4)"
-                    class="glass px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
-                    <i class="fas fa-eye mr-1"></i> View
-                  </button>
-                </div>
+              <div class="flex space-x-2">
+                <button onclick="openEditModal()"
+                  class="btn-warning btn-ripple px-4 py-2 rounded-lg text-white font-medium hover:shadow-lg transition-all">
+                  <i class="fas fa-edit mr-2"></i>
+                  Edit
+                </button>
+                <button onclick="openDeleteModal()"
+                  class="btn-danger btn-ripple px-4 py-2 rounded-lg text-white font-medium hover:shadow-lg transition-all">
+                  <i class="fas fa-trash mr-2"></i>
+                  Delete
+                </button>
+
+                <button onclick="previewProduct()"
+                  class="btn-gray btn-ripple px-4 py-2 rounded-lg text-white font-medium hover:shadow-lg transition-all">
+                  <i class="fas fa-eye mr-2"></i>
+                  Preview on Store
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </main>
 
-    <!-- Image View Modal -->
-    <div
-      id="imageModal"
-      class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300"
-    >
-      <div class="w-full h-full flex items-center justify-center p-4">
-        <div class="relative max-w-4xl max-h-full">
-          <button
-            onclick="closeModal('imageModal')"
-            class="absolute -top-12 right-0 text-white hover:text-gray-300 text-2xl transition-colors z-10"
-          >
-            <i class="fas fa-times"></i>
-          </button>
-          <img
-            id="modalImage"
-            src=""
-            alt="Product Image"
-            class="max-w-full max-h-full object-contain rounded-lg"
-          />
+      <!-- Category Products Section -->
+      <div class="admin-card rounded-2xl animate-slide-in mb-8">
+        <div class="p-6 border-b border-white/10">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <h2 class="text-xl font-bold text-white">
+              Products in this Category
+            </h2>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Product Card 1 -->
+            <div class="product-card admin-card p-4 rounded-xl">
+              <div class="relative mb-4">
+                <img src="https://picsum.photos/200/150?random=4" alt="iPhone 15"
+                  class="w-full h-36 object-cover rounded-lg" />
+                <div class="absolute top-2 right-2 bg-green-500 px-2 py-1 rounded-full text-xs text-white">
+                  In Stock
+                </div>
+              </div>
+              <h3 class="text-white font-semibold mb-2">iPhone 15 Pro Max</h3>
+              <p class="text-gray-400 text-sm mb-3">
+                Latest flagship smartphone with advanced features
+              </p>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-blue-400 font-bold text-lg">$1,199</span>
+                <div class="flex items-center text-yellow-400">
+                  <i class="fas fa-star mr-1"></i>
+                  <span class="text-sm">4.9</span>
+                </div>
+              </div>
+              <div class="w-full">
+                <button onclick="viewProduct(1)"
+                  class="glass w-full px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center">
+                  <i class="fas fa-eye mr-1"></i> View
+                </button>
+              </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="product-card admin-card p-4 rounded-xl">
+              <div class="relative mb-4">
+                <img src="https://picsum.photos/200/150?random=5" alt="MacBook Pro"
+                  class="w-full h-36 object-cover rounded-lg" />
+                <div class="absolute top-2 right-2 bg-green-500 px-2 py-1 rounded-full text-xs text-white">
+                  In Stock
+                </div>
+              </div>
+              <h3 class="text-white font-semibold mb-2">MacBook Pro M3</h3>
+              <p class="text-gray-400 text-sm mb-3">
+                Professional laptop with M3 chip
+              </p>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-blue-400 font-bold text-lg">$2,499</span>
+                <div class="flex items-center text-yellow-400">
+                  <i class="fas fa-star mr-1"></i>
+                  <span class="text-sm">4.7</span>
+                </div>
+              </div>
+              <div class="w-full">
+                <button onclick="viewProduct(2)"
+                  class="glass px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center">
+                  <i class="fas fa-eye mr-1"></i> View
+                </button>
+              </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="product-card admin-card p-4 rounded-xl">
+              <div class="relative mb-4">
+                <img src="https://picsum.photos/200/150?random=6" alt="AirPods Pro"
+                  class="w-full h-36 object-cover rounded-lg" />
+                <div class="absolute top-2 right-2 bg-yellow-500 px-2 py-1 rounded-full text-xs text-white">
+                  Low Stock
+                </div>
+              </div>
+              <h3 class="text-white font-semibold mb-2">
+                AirPods Pro 2nd Gen
+              </h3>
+              <p class="text-gray-400 text-sm mb-3">
+                Wireless earbuds with noise cancellation
+              </p>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-blue-400 font-bold text-lg">$249</span>
+                <div class="flex items-center text-yellow-400">
+                  <i class="fas fa-star mr-1"></i>
+                  <span class="text-sm">4.6</span>
+                </div>
+              </div>
+              <div class="w-full">
+                <button onclick="viewProduct(3)"
+                  class="glass px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center">
+                  <i class="fas fa-eye mr-1"></i> View
+                </button>
+              </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="product-card admin-card p-4 rounded-xl">
+              <div class="relative mb-4">
+                <img src="https://picsum.photos/200/150?random=7" alt="iPad Air"
+                  class="w-full h-36 object-cover rounded-lg" />
+                <div class="absolute top-2 right-2 bg-red-500 px-2 py-1 rounded-full text-xs text-white">
+                  Out of Stock
+                </div>
+              </div>
+              <h3 class="text-white font-semibold mb-2">iPad Air 5th Gen</h3>
+              <p class="text-gray-400 text-sm mb-3">
+                Powerful tablet for creativity and productivity
+              </p>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-blue-400 font-bold text-lg">$599</span>
+                <div class="flex items-center text-yellow-400">
+                  <i class="fas fa-star mr-1"></i>
+                  <span class="text-sm">4.8</span>
+                </div>
+              </div>
+              <div class="w-full">
+                <button onclick="viewProduct(4)"
+                  class="glass px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center">
+                  <i class="fas fa-eye mr-1"></i> View
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </main>
 
-    <!-- Edit Product Modal -->
+  <!-- Image View Modal -->
+  <div id="imageModal"
+    class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
+    <div class="w-full h-full flex items-center justify-center p-4">
+      <div class="relative max-w-4xl max-h-full">
+        <button onclick="closeModal('imageModal')"
+          class="absolute -top-12 right-0 text-white hover:text-gray-300 text-2xl transition-colors z-10">
+          <i class="fas fa-times"></i>
+        </button>
+        <img id="modalImage" src="" alt="Product Image" class="max-w-full max-h-full object-contain rounded-lg" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Product Modal -->
+  <div id="editModal"
+    class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
     <div
-      id="editModal"
-      class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300"
-    >
-      <div
-        class="modal-content bg-black/90 rounded-xl p-6 w-full max-w-2xl mx-4 transform scale-95 transition-all duration-300"
-      >
-        <div class="flex justify-between items-center mb-6">
-          <h3 class="text-xl font-bold text-white">
-            <i class="fas fa-edit mr-2 text-yellow-500"></i>
-            Edit Product
-          </h3>
-          <button
-            onclick="closeModal('editModal')"
-            class="text-gray-400 hover:text-white text-xl transition-colors"
-          >
-            <i class="fas fa-times"></i>
-          </button>
+      class="modal-content bg-black/90 rounded-xl p-6 w-full max-w-2xl mx-4 transform scale-95 transition-all duration-300">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-bold text-white">
+          <i class="fas fa-edit mr-2 text-yellow-500"></i>
+          Edit Product
+        </h3>
+        <button onclick="closeModal('editModal')" class="text-gray-400 hover:text-white text-xl transition-colors">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <form class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-300 mb-2">Product Name</label>
+            <input type="text" value="Premium Wireless Headphones"
+              class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-300 mb-2">SKU</label>
+            <input type="text" value="WH-2024-001"
+              class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors" />
+          </div>
         </div>
 
-        <form class="space-y-4">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2"
-                >Product Name</label
-              >
-              <input
-                type="text"
-                value="Premium Wireless Headphones"
-                class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2"
-                >SKU</label
-              >
-              <input
-                type="text"
-                value="WH-2024-001"
-                class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
-              />
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2"
-                >Price</label
-              >
-              <input
-                type="number"
-                value="299.99"
-                step="0.01"
-                class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2"
-                >Stock</label
-              >
-              <input
-                type="number"
-                value="45"
-                class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
-              />
-            </div>
-          </div>
-
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label class="block text-sm font-medium text-gray-300 mb-2"
-              >Category</label
-            >
-            <select
-              class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
-            >
-              <option value="electronics">Electronics</option>
-              <option value="accessories">Accessories</option>
-              <option value="audio">Audio</option>
-            </select>
+            <label class="block text-sm font-medium text-gray-300 mb-2">Price</label>
+            <input type="number" value="299.99" step="0.01"
+              class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors" />
           </div>
-
           <div>
-            <label class="block text-sm font-medium text-gray-300 mb-2"
-              >Description</label
-            >
-            <textarea
-              rows="3"
-              class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
-            >
-Experience exceptional sound quality with these premium wireless headphones. Featuring active noise cancellation, 30-hour battery life, and comfortable over-ear design perfect for long listening sessions.</textarea
-            >
+            <label class="block text-sm font-medium text-gray-300 mb-2">Stock</label>
+            <input type="number" value="45"
+              class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors" />
           </div>
+        </div>
 
-          <div class="flex justify-end space-x-3 pt-4">
-            <button
-              type="button"
-              onclick="closeModal('editModal')"
-              class="px-6 py-2 bg-gray-600/50 hover:bg-gray-600/70 rounded-lg text-white font-medium transition-colors"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              onclick="
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-2">Category</label>
+          <select
+            class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors">
+            <option value="electronics">Electronics</option>
+            <option value="accessories">Accessories</option>
+            <option value="audio">Audio</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-2">Description</label>
+          <textarea rows="3"
+            class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors">
+Experience exceptional sound quality with these premium wireless headphones. Featuring active noise cancellation, 30-hour battery life, and comfortable over-ear design perfect for long listening sessions.</textarea>
+        </div>
+
+        <div class="flex justify-end space-x-3 pt-4">
+          <button type="button" onclick="closeModal('editModal')"
+            class="px-6 py-2 bg-gray-600/50 hover:bg-gray-600/70 rounded-lg text-white font-medium transition-colors">
+            Cancel
+          </button>
+          <button type="submit" onclick="
                 updateProduct();
                 return false;
-              "
-              class="btn-primary px-6 py-2 rounded-lg text-white font-medium"
-            >
-              <i class="fas fa-save mr-2"></i>
-              Update Product
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Delete Confirmation Modal -->
-    <div
-      id="deleteModal"
-      class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300"
-    >
-      <div
-        class="modal-content bg-black/90 rounded-xl p-6 w-full max-w-md mx-4 transform scale-95 transition-all duration-300"
-      >
-        <div class="text-center">
-          <div
-            class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-500/20 mb-4"
-          >
-            <i class="fas fa-exclamation-triangle text-red-500 text-xl"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Delete Product</h3>
-          <p class="text-gray-300 mb-6">
-            Are you sure you want to delete "Premium Wireless Headphones"? This
-            action cannot be undone.
-          </p>
-          <div class="flex justify-center space-x-3">
-            <button
-              onclick="closeModal('deleteModal')"
-              class="px-6 py-2 bg-gray-600/50 hover:bg-gray-600/70 rounded-lg text-white font-medium transition-colors"
-            >
-              Cancel
-            </button>
-            <button
-              onclick="deleteProduct()"
-              class="btn-danger px-6 py-2 rounded-lg text-white font-medium"
-            >
-              <i class="fas fa-trash mr-2"></i>
-              Delete
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Delete Image Confirmation Modal -->
-    <div
-      id="deleteImageModal"
-      class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300"
-    >
-      <div
-        class="modal-content bg-black/90 rounded-xl p-6 w-full max-w-md mx-4 transform scale-95 transition-all duration-300"
-      >
-        <div class="text-center">
-          <div
-            class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-500/20 mb-4"
-          >
-            <i class="fas fa-trash text-red-500 text-xl"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Delete Image</h3>
-          <p class="text-gray-300 mb-6">
-            Are you sure you want to delete this image? This action cannot be
-            undone.
-          </p>
-          <div class="flex justify-center space-x-3">
-            <button
-              onclick="closeModal('deleteImageModal')"
-              class="px-6 py-2 bg-gray-600/50 hover:bg-gray-600/70 rounded-lg text-white font-medium transition-colors"
-            >
-              Cancel
-            </button>
-            <button
-              onclick="confirmDeleteImage()"
-              class="btn-danger px-6 py-2 rounded-lg text-white font-medium"
-            >
-              <i class="fas fa-trash mr-2"></i>
-              Delete Image
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Add New Image Modal -->
-    <div
-      id="addImageModal"
-      class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300"
-    >
-      <div
-        class="modal-content bg-black/90 rounded-xl p-6 w-full max-w-lg mx-4 transform scale-95 transition-all duration-300"
-      >
-        <div class="flex justify-between items-center mb-6">
-          <h3 class="text-xl font-bold text-white">
-            <i class="fas fa-plus mr-2 text-blue-500"></i>
-            Add New Image
-          </h3>
-          <button
-            onclick="closeModal('addImageModal')"
-            class="text-gray-400 hover:text-white text-xl transition-colors"
-          >
-            <i class="fas fa-times"></i>
+              " class="btn-primary px-6 py-2 rounded-lg text-white font-medium">
+            <i class="fas fa-save mr-2"></i>
+            Update Product
           </button>
         </div>
+      </form>
+    </div>
+  </div>
 
-        <div class="space-y-4">
-          <!-- Image Upload Area -->
-          <div
-            id="dropZone"
-            class="border-2 border-dashed border-gray-600 rounded-lg p-8 text-center hover:border-blue-500 transition-colors"
-            ondrop="handleDrop(event)"
-            ondragover="handleDragOver(event)"
-            ondragenter="handleDragEnter(event)"
-            ondragleave="handleDragLeave(event)"
-          >
-            <div id="imageUploadArea" class="space-y-4">
-              <div class="text-gray-400">
-                <i class="fas fa-cloud-upload-alt text-4xl mb-4"></i>
-                <p class="text-lg font-medium">Drop your image here</p>
-                <p class="text-sm">or click to browse</p>
-              </div>
-              <input
-                type="file"
-                id="imageInput"
-                accept="image/*"
-                class="hidden"
-                onchange="handleImageUpload(this)"
-              />
-              <button
-                type="button"
-                onclick="document.getElementById('imageInput').click()"
-                class="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-medium transition-colors"
-              >
-                <i class="fas fa-folder-open mr-2"></i>
-                Choose File
-              </button>
-            </div>
-
-            <!-- Image Preview -->
-            <div id="imagePreview" class="hidden">
-              <img
-                id="previewImg"
-                src=""
-                alt="Preview"
-                class="max-w-full h-48 object-contain mx-auto rounded-lg"
-              />
-              <p id="fileName" class="text-gray-400 text-sm mt-2"></p>
-              <button
-                type="button"
-                onclick="removeImagePreview()"
-                class="mt-2 px-4 py-1 bg-red-600 hover:bg-red-700 rounded text-white text-sm transition-colors"
-              >
-                Remove
-              </button>
-            </div>
-          </div>
-
-          <!-- Image Options -->
-          <div class="space-y-3">
-            <div>
-              <label class="block text-sm font-medium text-gray-300 mb-2">
-                Image Alt Text
-              </label>
-              <input
-                type="text"
-                id="imageAlt"
-                placeholder="Describe the image"
-                class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
-              />
-            </div>
-
-            <div class="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id="setPrimary"
-                class="w-4 h-4 text-blue-600 bg-gray-800 border-gray-600 rounded focus:ring-blue-500"
-              />
-              <label for="setPrimary" class="text-sm text-gray-300">
-                Set as primary image
-              </label>
-            </div>
-          </div>
-
-          <!-- Modal Actions -->
-          <div class="flex justify-end space-x-3 pt-4">
-            <button
-              type="button"
-              onclick="closeModal('addImageModal')"
-              class="px-6 py-2 bg-gray-600/50 hover:bg-gray-600/70 rounded-lg text-white font-medium transition-colors"
-            >
-              Cancel
-            </button>
-            <button
-              type="button"
-              onclick="addNewImage()"
-              class="btn-primary px-6 py-2 rounded-lg text-white font-medium"
-              id="addImageBtn"
-              disabled
-            >
-              <i class="fas fa-plus mr-2"></i>
-              Add Image
-            </button>
-          </div>
+  <!-- Delete Confirmation Modal -->
+  <div id="deleteModal"
+    class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
+    <div
+      class="modal-content bg-black/90 rounded-xl p-6 w-full max-w-md mx-4 transform scale-95 transition-all duration-300">
+      <div class="text-center">
+        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-500/20 mb-4">
+          <i class="fas fa-exclamation-triangle text-red-500 text-xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Delete Product</h3>
+        <p class="text-gray-300 mb-6">
+          Are you sure you want to delete "Premium Wireless Headphones"? This
+          action cannot be undone.
+        </p>
+        <div class="flex justify-center space-x-3">
+          <button onclick="closeModal('deleteModal')"
+            class="px-6 py-2 bg-gray-600/50 hover:bg-gray-600/70 rounded-lg text-white font-medium transition-colors">
+            Cancel
+          </button>
+          <button onclick="deleteProduct()" class="btn-danger px-6 py-2 rounded-lg text-white font-medium">
+            <i class="fas fa-trash mr-2"></i>
+            Delete
+          </button>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- JavaScript for mobile menu and sidebar -->
-    <script>
-      // Mobile sidebar toggle
-      const toggleSidebar = document.getElementById("toggleSidebar");
-      const sidebar = document.getElementById("sidebar");
+  <!-- Delete Image Confirmation Modal -->
+  <div id="deleteImageModal"
+    class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
+    <div
+      class="modal-content bg-black/90 rounded-xl p-6 w-full max-w-md mx-4 transform scale-95 transition-all duration-300">
+      <div class="text-center">
+        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-500/20 mb-4">
+          <i class="fas fa-trash text-red-500 text-xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">Delete Image</h3>
+        <p class="text-gray-300 mb-6">
+          Are you sure you want to delete this image? This action cannot be
+          undone.
+        </p>
+        <div class="flex justify-center space-x-3">
+          <button onclick="closeModal('deleteImageModal')"
+            class="px-6 py-2 bg-gray-600/50 hover:bg-gray-600/70 rounded-lg text-white font-medium transition-colors">
+            Cancel
+          </button>
+          <button onclick="confirmDeleteImage()" class="btn-danger px-6 py-2 rounded-lg text-white font-medium">
+            <i class="fas fa-trash mr-2"></i>
+            Delete Image
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      toggleSidebar.addEventListener("click", () => {
-        sidebar.classList.toggle("-translate-x-full");
-      });
+  <!-- Add New Image Modal -->
+  <div id="addImageModal"
+    class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
+    <div
+      class="modal-content bg-black/90 rounded-xl p-6 w-full max-w-lg mx-4 transform scale-95 transition-all duration-300">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-bold text-white">
+          <i class="fas fa-plus mr-2 text-blue-500"></i>
+          Add New Image
+        </h3>
+        <button onclick="closeModal('addImageModal')" class="text-gray-400 hover:text-white text-xl transition-colors">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
 
-      // Close sidebar when clicking outside on mobile
-      document.addEventListener("click", (e) => {
-        if (window.innerWidth < 768) {
-          if (
-            !sidebar.contains(e.target) &&
-            !toggleSidebar.contains(e.target)
-          ) {
-            sidebar.classList.add("-translate-x-full");
-          }
-        }
-      });
+      <div class="space-y-4">
+        <!-- Image Upload Area -->
+        <div id="dropZone"
+          class="border-2 border-dashed border-gray-600 rounded-lg p-8 text-center hover:border-blue-500 transition-colors"
+          ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragenter="handleDragEnter(event)"
+          ondragleave="handleDragLeave(event)">
+          <div id="imageUploadArea" class="space-y-4">
+            <div class="text-gray-400">
+              <i class="fas fa-cloud-upload-alt text-4xl mb-4"></i>
+              <p class="text-lg font-medium">Drop your image here</p>
+              <p class="text-sm">or click to browse</p>
+            </div>
+            <input type="file" id="imageInput" accept="image/*" class="hidden" onchange="handleImageUpload(this)" />
+            <button type="button" onclick="document.getElementById('imageInput').click()"
+              class="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-medium transition-colors">
+              <i class="fas fa-folder-open mr-2"></i>
+              Choose File
+            </button>
+          </div>
 
-      // Handle window resize
-      window.addEventListener("resize", () => {
-        if (window.innerWidth >= 768) {
-          sidebar.classList.remove("-translate-x-full");
-        } else {
+          <!-- Image Preview -->
+          <div id="imagePreview" class="hidden">
+            <img id="previewImg" src="" alt="Preview" class="max-w-full h-48 object-contain mx-auto rounded-lg" />
+            <p id="fileName" class="text-gray-400 text-sm mt-2"></p>
+            <button type="button" onclick="removeImagePreview()"
+              class="mt-2 px-4 py-1 bg-red-600 hover:bg-red-700 rounded text-white text-sm transition-colors">
+              Remove
+            </button>
+          </div>
+        </div>
+
+        <!-- Image Options -->
+        <div class="space-y-3">
+          <div>
+            <label class="block text-sm font-medium text-gray-300 mb-2">
+              Image Alt Text
+            </label>
+            <input type="text" id="imageAlt" placeholder="Describe the image"
+              class="w-full px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors" />
+          </div>
+
+          <div class="flex items-center space-x-2">
+            <input type="checkbox" id="setPrimary"
+              class="w-4 h-4 text-blue-600 bg-gray-800 border-gray-600 rounded focus:ring-blue-500" />
+            <label for="setPrimary" class="text-sm text-gray-300">
+              Set as primary image
+            </label>
+          </div>
+        </div>
+
+        <!-- Modal Actions -->
+        <div class="flex justify-end space-x-3 pt-4">
+          <button type="button" onclick="closeModal('addImageModal')"
+            class="px-6 py-2 bg-gray-600/50 hover:bg-gray-600/70 rounded-lg text-white font-medium transition-colors">
+            Cancel
+          </button>
+          <button type="button" onclick="addNewImage()" class="btn-primary px-6 py-2 rounded-lg text-white font-medium"
+            id="addImageBtn" disabled>
+            <i class="fas fa-plus mr-2"></i>
+            Add Image
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript for mobile menu and sidebar -->
+  <script>
+    // Mobile sidebar toggle
+    const toggleSidebar = document.getElementById("toggleSidebar");
+    const sidebar = document.getElementById("sidebar");
+
+    toggleSidebar.addEventListener("click", () => {
+      sidebar.classList.toggle("-translate-x-full");
+    });
+
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener("click", (e) => {
+      if (window.innerWidth < 768) {
+        if (
+          !sidebar.contains(e.target) &&
+          !toggleSidebar.contains(e.target)
+        ) {
           sidebar.classList.add("-translate-x-full");
         }
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) {
+        sidebar.classList.remove("-translate-x-full");
+      } else {
+        sidebar.classList.add("-translate-x-full");
+      }
+    });
+
+    // Modal Functions
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.remove("opacity-0", "pointer-events-none");
+      modal.classList.add("opacity-100");
+      modal.querySelector(".modal-content").classList.remove("scale-95");
+      modal.querySelector(".modal-content").classList.add("scale-100");
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.add("opacity-0", "pointer-events-none");
+      modal.classList.remove("opacity-100");
+      modal.querySelector(".modal-content").classList.add("scale-95");
+      modal.querySelector(".modal-content").classList.remove("scale-100");
+
+      // Reset add image modal when closed
+      if (modalId === "addImageModal") {
+        removeImagePreview();
+        document.getElementById("imageAlt").value = "";
+        document.getElementById("setPrimary").checked = false;
+      }
+    }
+
+    function openEditModal() {
+      openModal("editModal");
+    }
+
+    function openDeleteModal() {
+      openModal("deleteModal");
+    }
+
+    // Product Actions
+    function updateProduct() {
+      // Simulate API call
+      toastr.success("Product updated successfully!");
+      closeModal("editModal");
+
+      // Update the page content (simulate)
+      setTimeout(() => {
+        location.reload();
+      }, 1500);
+    }
+
+    function deleteProduct() {
+      // Simulate API call
+      toastr.success("Product deleted successfully!");
+      closeModal("deleteModal");
+
+      // Redirect to products list
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 1500);
+    }
+
+    function previewProduct() {
+      // Open in new tab (simulate store preview)
+      toastr.info("Opening product preview...");
+      setTimeout(() => {
+        window.open("../../user/product.html", "_blank");
+      }, 500);
+    }
+
+    function toggleAdjustmentReason() {
+      const type = document.getElementById("adjustmentType").value;
+      const reasonField = document.getElementById("reasonField");
+
+      if (type === "remove") {
+        reasonField.style.display = "block";
+        reasonField.querySelector("textarea").required = true;
+      } else {
+        reasonField.style.display = "block"; // Always show for better UX
+        reasonField.querySelector("textarea").required = false;
+      }
+    }
+
+    // Close modals when clicking outside
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("modal")) {
+        const modalId = e.target.id;
+        closeModal(modalId);
+      }
+    });
+
+    // Initialize toastr options
+    toastr.options = {
+      closeButton: true,
+      debug: false,
+      newestOnTop: true,
+      progressBar: true,
+      positionClass: "toast-top-right",
+      preventDuplicates: false,
+      onclick: null,
+      showDuration: "300",
+      hideDuration: "1000",
+      timeOut: "5000",
+      extendedTimeOut: "1000",
+      showEasing: "swing",
+      hideEasing: "linear",
+      showMethod: "fadeIn",
+      hideMethod: "fadeOut",
+    };
+
+    // Tab Switching Functionality
+    function switchTab(tabName) {
+      // Hide all tab contents
+      const tabContents = document.querySelectorAll(".tab-content");
+      tabContents.forEach((content) => {
+        content.classList.add("hidden");
       });
 
-      // Modal Functions
-      function openModal(modalId) {
-        const modal = document.getElementById(modalId);
-        modal.classList.remove("opacity-0", "pointer-events-none");
-        modal.classList.add("opacity-100");
-        modal.querySelector(".modal-content").classList.remove("scale-95");
-        modal.querySelector(".modal-content").classList.add("scale-100");
-      }
-
-      function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        modal.classList.add("opacity-0", "pointer-events-none");
-        modal.classList.remove("opacity-100");
-        modal.querySelector(".modal-content").classList.add("scale-95");
-        modal.querySelector(".modal-content").classList.remove("scale-100");
-
-        // Reset add image modal when closed
-        if (modalId === "addImageModal") {
-          removeImagePreview();
-          document.getElementById("imageAlt").value = "";
-          document.getElementById("setPrimary").checked = false;
-        }
-      }
-
-      function openEditModal() {
-        openModal("editModal");
-      }
-
-      function openDeleteModal() {
-        openModal("deleteModal");
-      }
-
-      // Product Actions
-      function updateProduct() {
-        // Simulate API call
-        toastr.success("Product updated successfully!");
-        closeModal("editModal");
-
-        // Update the page content (simulate)
-        setTimeout(() => {
-          location.reload();
-        }, 1500);
-      }
-
-      function deleteProduct() {
-        // Simulate API call
-        toastr.success("Product deleted successfully!");
-        closeModal("deleteModal");
-
-        // Redirect to products list
-        setTimeout(() => {
-          window.location.href = "index.html";
-        }, 1500);
-      }
-
-      function previewProduct() {
-        // Open in new tab (simulate store preview)
-        toastr.info("Opening product preview...");
-        setTimeout(() => {
-          window.open("../../user/product.html", "_blank");
-        }, 500);
-      }
-
-      function toggleAdjustmentReason() {
-        const type = document.getElementById("adjustmentType").value;
-        const reasonField = document.getElementById("reasonField");
-
-        if (type === "remove") {
-          reasonField.style.display = "block";
-          reasonField.querySelector("textarea").required = true;
-        } else {
-          reasonField.style.display = "block"; // Always show for better UX
-          reasonField.querySelector("textarea").required = false;
-        }
-      }
-
-      // Close modals when clicking outside
-      document.addEventListener("click", (e) => {
-        if (e.target.classList.contains("modal")) {
-          const modalId = e.target.id;
-          closeModal(modalId);
-        }
+      // Remove active state from all tabs
+      const tabButtons = document.querySelectorAll(".tab-button");
+      tabButtons.forEach((button) => {
+        button.classList.remove("border-blue-500", "text-blue-400");
+        button.classList.add("border-transparent", "text-gray-400");
       });
 
-      // Initialize toastr options
-      toastr.options = {
-        closeButton: true,
-        debug: false,
-        newestOnTop: true,
-        progressBar: true,
-        positionClass: "toast-top-right",
-        preventDuplicates: false,
-        onclick: null,
-        showDuration: "300",
-        hideDuration: "1000",
-        timeOut: "5000",
-        extendedTimeOut: "1000",
-        showEasing: "swing",
-        hideEasing: "linear",
-        showMethod: "fadeIn",
-        hideMethod: "fadeOut",
-      };
-
-      // Tab Switching Functionality
-      function switchTab(tabName) {
-        // Hide all tab contents
-        const tabContents = document.querySelectorAll(".tab-content");
-        tabContents.forEach((content) => {
-          content.classList.add("hidden");
-        });
-
-        // Remove active state from all tabs
-        const tabButtons = document.querySelectorAll(".tab-button");
-        tabButtons.forEach((button) => {
-          button.classList.remove("border-blue-500", "text-blue-400");
-          button.classList.add("border-transparent", "text-gray-400");
-        });
-
-        // Show selected tab content
-        const selectedContent = document.getElementById(tabName + "-content");
-        if (selectedContent) {
-          selectedContent.classList.remove("hidden");
-        }
-
-        // Activate selected tab button
-        const selectedTab = document.getElementById(tabName + "-tab");
-        if (selectedTab) {
-          selectedTab.classList.remove("border-transparent", "text-gray-400");
-          selectedTab.classList.add("border-blue-500", "text-blue-400");
-        }
+      // Show selected tab content
+      const selectedContent = document.getElementById(tabName + "-content");
+      if (selectedContent) {
+        selectedContent.classList.remove("hidden");
       }
 
-      // Initialize page
-      document.addEventListener("DOMContentLoaded", function () {
-        // Initialize tab state
-        switchTab("details");
-
-        // Add interactive enhancements
-        enhanceInteractivity();
-      });
-
-      // Image Gallery Functions
-      function changeMainImage(imageSrc, thumbnailElement) {
-        const mainImage = document.getElementById("mainProductImage");
-        mainImage.src = imageSrc;
-
-        // Remove border from all thumbnails
-        const thumbnails = document.querySelectorAll(".aspect-square");
-        thumbnails.forEach((thumb) => {
-          if (thumb.querySelector("img")) {
-            // Only image thumbnails, not add button
-            thumb.classList.remove("border-blue-500");
-            thumb.classList.add("border-transparent");
-          }
-        });
-
-        // Add border to clicked thumbnail
-        thumbnailElement.classList.remove("border-transparent");
-        thumbnailElement.classList.add("border-blue-500");
+      // Activate selected tab button
+      const selectedTab = document.getElementById(tabName + "-tab");
+      if (selectedTab) {
+        selectedTab.classList.remove("border-transparent", "text-gray-400");
+        selectedTab.classList.add("border-blue-500", "text-blue-400");
       }
+    }
 
-      function openImageModal() {
-        const mainImage = document.getElementById("mainProductImage");
-        const modalImage = document.getElementById("modalImage");
-        modalImage.src = mainImage.src;
-        openModal("imageModal");
-      }
+    // Initialize page
+    document.addEventListener("DOMContentLoaded", function () {
+      // Initialize tab state
+      switchTab("details");
 
-      // Thumbnail Management Functions
-      let imageToDelete = null;
+      // Add interactive enhancements
+      enhanceInteractivity();
+    });
 
-      function setPrimaryImage(imageId) {
-        // Remove primary status from all thumbnails
-        const thumbnails = document.querySelectorAll("[data-image-id]");
-        thumbnails.forEach((thumb) => {
-          thumb.setAttribute("data-is-primary", "false");
-          const primaryBadge = thumb.querySelector(".absolute.bottom-1");
-          if (primaryBadge) {
-            primaryBadge.remove();
-          }
+    // Image Gallery Functions
+    function changeMainImage(imageSrc, thumbnailElement) {
+      const mainImage = document.getElementById("mainProductImage");
+      mainImage.src = imageSrc;
+
+      // Remove border from all thumbnails
+      const thumbnails = document.querySelectorAll(".aspect-square");
+      thumbnails.forEach((thumb) => {
+        if (thumb.querySelector("img")) {
+          // Only image thumbnails, not add button
           thumb.classList.remove("border-blue-500");
           thumb.classList.add("border-transparent");
-        });
+        }
+      });
 
-        // Set new primary image
-        const newPrimary = document.querySelector(
-          `[data-image-id="${imageId}"]`,
+      // Add border to clicked thumbnail
+      thumbnailElement.classList.remove("border-transparent");
+      thumbnailElement.classList.add("border-blue-500");
+    }
+
+    function openImageModal() {
+      const mainImage = document.getElementById("mainProductImage");
+      const modalImage = document.getElementById("modalImage");
+      modalImage.src = mainImage.src;
+      openModal("imageModal");
+    }
+
+    // Thumbnail Management Functions
+    let imageToDelete = null;
+
+    function setPrimaryImage(imageId) {
+      // Remove primary status from all thumbnails
+      const thumbnails = document.querySelectorAll("[data-image-id]");
+      thumbnails.forEach((thumb) => {
+        thumb.setAttribute("data-is-primary", "false");
+        const primaryBadge = thumb.querySelector(".absolute.bottom-1");
+        if (primaryBadge) {
+          primaryBadge.remove();
+        }
+        thumb.classList.remove("border-blue-500");
+        thumb.classList.add("border-transparent");
+      });
+
+      // Set new primary image
+      const newPrimary = document.querySelector(
+        `[data-image-id="${imageId}"]`,
+      );
+      newPrimary.setAttribute("data-is-primary", "true");
+      newPrimary.classList.remove("border-transparent");
+      newPrimary.classList.add("border-blue-500");
+
+      // Add primary badge
+      const primaryBadge = document.createElement("div");
+      primaryBadge.className =
+        "absolute bottom-1 left-1 bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full opacity-90";
+      primaryBadge.textContent = "Primary";
+      newPrimary.appendChild(primaryBadge);
+
+      // Update main image
+      const newPrimaryImg = newPrimary.querySelector("img");
+      const mainImage = document.getElementById("mainProductImage");
+      mainImage.src = newPrimaryImg.src.replace("150x150", "500x500");
+
+      toastr.success("Primary image updated successfully!");
+    }
+
+    function openDeleteImageModal(imageId) {
+      imageToDelete = imageId;
+      openModal("deleteImageModal");
+    }
+
+    function confirmDeleteImage() {
+      if (imageToDelete) {
+        const imageElement = document.querySelector(
+          `[data-image-id="${imageToDelete}"]`,
         );
-        newPrimary.setAttribute("data-is-primary", "true");
-        newPrimary.classList.remove("border-transparent");
-        newPrimary.classList.add("border-blue-500");
+        const isPrimary =
+          imageElement.getAttribute("data-is-primary") === "true";
 
-        // Add primary badge
-        const primaryBadge = document.createElement("div");
-        primaryBadge.className =
-          "absolute bottom-1 left-1 bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full opacity-90";
-        primaryBadge.textContent = "Primary";
-        newPrimary.appendChild(primaryBadge);
-
-        // Update main image
-        const newPrimaryImg = newPrimary.querySelector("img");
-        const mainImage = document.getElementById("mainProductImage");
-        mainImage.src = newPrimaryImg.src.replace("150x150", "500x500");
-
-        toastr.success("Primary image updated successfully!");
-      }
-
-      function openDeleteImageModal(imageId) {
-        imageToDelete = imageId;
-        openModal("deleteImageModal");
-      }
-
-      function confirmDeleteImage() {
-        if (imageToDelete) {
-          const imageElement = document.querySelector(
-            `[data-image-id="${imageToDelete}"]`,
+        if (isPrimary) {
+          toastr.error(
+            "Cannot delete primary image. Set another image as primary first.",
           );
-          const isPrimary =
-            imageElement.getAttribute("data-is-primary") === "true";
-
-          if (isPrimary) {
-            toastr.error(
-              "Cannot delete primary image. Set another image as primary first.",
-            );
-            closeModal("deleteImageModal");
-            return;
-          }
-
-          // Remove the image element
-          imageElement.remove();
-
-          // Check if we need to show more add slots
-          updateThumbnailGrid();
-
-          toastr.success("Image deleted successfully!");
           closeModal("deleteImageModal");
-          imageToDelete = null;
-        }
-      }
-
-      function openAddImageModal() {
-        const currentImages =
-          document.querySelectorAll("[data-image-id]").length;
-        if (currentImages >= 4) {
-          toastr.warning("Maximum 4 images allowed");
-          return;
-        }
-        openModal("addImageModal");
-      }
-
-      function handleImageUpload(input) {
-        const file = input.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            const uploadArea = document.getElementById("imageUploadArea");
-            const preview = document.getElementById("imagePreview");
-            const previewImg = document.getElementById("previewImg");
-            const fileName = document.getElementById("fileName");
-            const addBtn = document.getElementById("addImageBtn");
-
-            uploadArea.classList.add("hidden");
-            preview.classList.remove("hidden");
-            previewImg.src = e.target.result;
-            fileName.textContent = file.name;
-            addBtn.disabled = false;
-          };
-          reader.readAsDataURL(file);
-        }
-      }
-
-      function removeImagePreview() {
-        const uploadArea = document.getElementById("imageUploadArea");
-        const preview = document.getElementById("imagePreview");
-        const input = document.getElementById("imageInput");
-        const addBtn = document.getElementById("addImageBtn");
-
-        uploadArea.classList.remove("hidden");
-        preview.classList.add("hidden");
-        input.value = "";
-        addBtn.disabled = true;
-      }
-
-      function addNewImage() {
-        const previewImg = document.getElementById("previewImg");
-        const altText = document.getElementById("imageAlt").value;
-        const setPrimary = document.getElementById("setPrimary").checked;
-
-        if (!previewImg.src) {
-          toastr.error("Please select an image");
           return;
         }
 
-        // Get next image ID
-        const existingImages = document.querySelectorAll("[data-image-id]");
-        const nextId = existingImages.length + 1;
+        // Remove the image element
+        imageElement.remove();
 
-        // Create new thumbnail
-        const thumbnailContainer = document.getElementById("thumbnailGallery");
-        const addSlot = thumbnailContainer.querySelector(".border-dashed");
+        // Check if we need to show more add slots
+        updateThumbnailGrid();
 
-        const newThumbnail = document.createElement("div");
-        newThumbnail.className =
-          "aspect-square bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:opacity-75 transition-opacity border-2 border-transparent relative group";
-        newThumbnail.setAttribute("data-image-id", nextId);
-        newThumbnail.setAttribute(
-          "data-is-primary",
-          setPrimary ? "true" : "false",
-        );
-        newThumbnail.onclick = function () {
-          changeMainImage(previewImg.src, this);
+        toastr.success("Image deleted successfully!");
+        closeModal("deleteImageModal");
+        imageToDelete = null;
+      }
+    }
+
+    function openAddImageModal() {
+      const currentImages =
+        document.querySelectorAll("[data-image-id]").length;
+      if (currentImages >= 4) {
+        toastr.warning("Maximum 4 images allowed");
+        return;
+      }
+      openModal("addImageModal");
+    }
+
+    function handleImageUpload(input) {
+      const file = input.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const uploadArea = document.getElementById("imageUploadArea");
+          const preview = document.getElementById("imagePreview");
+          const previewImg = document.getElementById("previewImg");
+          const fileName = document.getElementById("fileName");
+          const addBtn = document.getElementById("addImageBtn");
+
+          uploadArea.classList.add("hidden");
+          preview.classList.remove("hidden");
+          previewImg.src = e.target.result;
+          fileName.textContent = file.name;
+          addBtn.disabled = false;
         };
+        reader.readAsDataURL(file);
+      }
+    }
 
-        newThumbnail.innerHTML = `
+    function removeImagePreview() {
+      const uploadArea = document.getElementById("imageUploadArea");
+      const preview = document.getElementById("imagePreview");
+      const input = document.getElementById("imageInput");
+      const addBtn = document.getElementById("addImageBtn");
+
+      uploadArea.classList.remove("hidden");
+      preview.classList.add("hidden");
+      input.value = "";
+      addBtn.disabled = true;
+    }
+
+    function addNewImage() {
+      const previewImg = document.getElementById("previewImg");
+      const altText = document.getElementById("imageAlt").value;
+      const setPrimary = document.getElementById("setPrimary").checked;
+
+      if (!previewImg.src) {
+        toastr.error("Please select an image");
+        return;
+      }
+
+      // Get next image ID
+      const existingImages = document.querySelectorAll("[data-image-id]");
+      const nextId = existingImages.length + 1;
+
+      // Create new thumbnail
+      const thumbnailContainer = document.getElementById("thumbnailGallery");
+      const addSlot = thumbnailContainer.querySelector(".border-dashed");
+
+      const newThumbnail = document.createElement("div");
+      newThumbnail.className =
+        "aspect-square bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:opacity-75 transition-opacity border-2 border-transparent relative group";
+      newThumbnail.setAttribute("data-image-id", nextId);
+      newThumbnail.setAttribute(
+        "data-is-primary",
+        setPrimary ? "true" : "false",
+      );
+      newThumbnail.onclick = function () {
+        changeMainImage(previewImg.src, this);
+      };
+
+      newThumbnail.innerHTML = `
           <img
             src="${previewImg.src}"
             alt="${altText || "Product image"}"
@@ -1398,113 +1131,114 @@ Experience exceptional sound quality with these premium wireless headphones. Fea
           </div>
         `;
 
-        // If this should be primary, update accordingly
-        if (setPrimary) {
-          // Remove primary from current primary
-          const currentPrimary = document.querySelector(
-            '[data-is-primary="true"]',
-          );
-          if (currentPrimary) {
-            currentPrimary.setAttribute("data-is-primary", "false");
-            const badge = currentPrimary.querySelector(".absolute.bottom-1");
-            if (badge) badge.remove();
-            currentPrimary.classList.remove("border-blue-500");
-            currentPrimary.classList.add("border-transparent");
-          }
-
-          newThumbnail.classList.add("border-blue-500");
-          newThumbnail.innerHTML +=
-            '<div class="absolute bottom-1 left-1 bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full opacity-90">Primary</div>';
-
-          // Update main image
-          document.getElementById("mainProductImage").src = previewImg.src;
+      // If this should be primary, update accordingly
+      if (setPrimary) {
+        // Remove primary from current primary
+        const currentPrimary = document.querySelector(
+          '[data-is-primary="true"]',
+        );
+        if (currentPrimary) {
+          currentPrimary.setAttribute("data-is-primary", "false");
+          const badge = currentPrimary.querySelector(".absolute.bottom-1");
+          if (badge) badge.remove();
+          currentPrimary.classList.remove("border-blue-500");
+          currentPrimary.classList.add("border-transparent");
         }
 
-        // Insert before add slot
-        thumbnailContainer.insertBefore(newThumbnail, addSlot);
+        newThumbnail.classList.add("border-blue-500");
+        newThumbnail.innerHTML +=
+          '<div class="absolute bottom-1 left-1 bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full opacity-90">Primary</div>';
 
-        // Update grid and close modal
-        updateThumbnailGrid();
-        closeModal("addImageModal");
-
-        // Reset form
-        removeImagePreview();
-        document.getElementById("imageAlt").value = "";
-        document.getElementById("setPrimary").checked = false;
-
-        toastr.success("Image added successfully!");
+        // Update main image
+        document.getElementById("mainProductImage").src = previewImg.src;
       }
 
-      function updateThumbnailGrid() {
-        const thumbnailContainer = document.getElementById("thumbnailGallery");
-        const currentImages =
-          thumbnailContainer.querySelectorAll("[data-image-id]").length;
-        const addSlots = thumbnailContainer.querySelectorAll(".border-dashed");
+      // Insert before add slot
+      thumbnailContainer.insertBefore(newThumbnail, addSlot);
 
-        // Remove existing add slots
-        addSlots.forEach((slot) => slot.remove());
+      // Update grid and close modal
+      updateThumbnailGrid();
+      closeModal("addImageModal");
 
-        // Add new add slots up to 4 total images
-        for (let i = currentImages; i < 4; i++) {
-          const addSlot = document.createElement("div");
-          addSlot.className =
-            "aspect-square bg-gray-800/30 rounded-lg border-2 border-dashed border-gray-600 hover:border-blue-500 cursor-pointer transition-all duration-300 hover:bg-gray-800/50 flex items-center justify-center group";
-          addSlot.onclick = openAddImageModal;
-          addSlot.title = "Add New Image";
-          addSlot.innerHTML = `
+      // Reset form
+      removeImagePreview();
+      document.getElementById("imageAlt").value = "";
+      document.getElementById("setPrimary").checked = false;
+
+      toastr.success("Image added successfully!");
+    }
+
+    function updateThumbnailGrid() {
+      const thumbnailContainer = document.getElementById("thumbnailGallery");
+      const currentImages =
+        thumbnailContainer.querySelectorAll("[data-image-id]").length;
+      const addSlots = thumbnailContainer.querySelectorAll(".border-dashed");
+
+      // Remove existing add slots
+      addSlots.forEach((slot) => slot.remove());
+
+      // Add new add slots up to 4 total images
+      for (let i = currentImages; i < 4; i++) {
+        const addSlot = document.createElement("div");
+        addSlot.className =
+          "aspect-square bg-gray-800/30 rounded-lg border-2 border-dashed border-gray-600 hover:border-blue-500 cursor-pointer transition-all duration-300 hover:bg-gray-800/50 flex items-center justify-center group";
+        addSlot.onclick = openAddImageModal;
+        addSlot.title = "Add New Image";
+        addSlot.innerHTML = `
             <div class="text-center text-gray-400 group-hover:text-blue-400 transition-colors">
               <i class="fas fa-plus text-2xl mb-2"></i>
               <p class="text-xs">Add Image</p>
             </div>
           `;
-          thumbnailContainer.appendChild(addSlot);
-        }
+        thumbnailContainer.appendChild(addSlot);
       }
+    }
 
-      // Drag and Drop Functions
-      function handleDragOver(e) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
+    // Drag and Drop Functions
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
 
-      function handleDragEnter(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const dropZone = document.getElementById("dropZone");
-        dropZone.classList.add("border-blue-500", "bg-blue-500/10");
-      }
+    function handleDragEnter(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const dropZone = document.getElementById("dropZone");
+      dropZone.classList.add("border-blue-500", "bg-blue-500/10");
+    }
 
-      function handleDragLeave(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const dropZone = document.getElementById("dropZone");
-        // Only remove styling if we're actually leaving the drop zone
-        if (!dropZone.contains(e.relatedTarget)) {
-          dropZone.classList.remove("border-blue-500", "bg-blue-500/10");
-        }
-      }
-
-      function handleDrop(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const dropZone = document.getElementById("dropZone");
+    function handleDragLeave(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const dropZone = document.getElementById("dropZone");
+      // Only remove styling if we're actually leaving the drop zone
+      if (!dropZone.contains(e.relatedTarget)) {
         dropZone.classList.remove("border-blue-500", "bg-blue-500/10");
+      }
+    }
 
-        const files = e.dataTransfer.files;
-        if (files.length > 0) {
-          const file = files[0];
-          if (file.type.startsWith("image/")) {
-            const input = document.getElementById("imageInput");
-            const dt = new DataTransfer();
-            dt.items.add(file);
-            input.files = dt.files;
-            handleImageUpload(input);
-          } else {
-            toastr.error("Please drop an image file");
-          }
+    function handleDrop(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const dropZone = document.getElementById("dropZone");
+      dropZone.classList.remove("border-blue-500", "bg-blue-500/10");
+
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        const file = files[0];
+        if (file.type.startsWith("image/")) {
+          const input = document.getElementById("imageInput");
+          const dt = new DataTransfer();
+          dt.items.add(file);
+          input.files = dt.files;
+          handleImageUpload(input);
+        } else {
+          toastr.error("Please drop an image file");
         }
       }
-    </script>
-  </body>
+    }
+  </script>
+</body>
+
 </html>
