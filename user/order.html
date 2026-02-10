@@ -1,625 +1,463 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Order Details - E-Commerce</title>
 
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Details - E-Commerce</title>
 
-    <!-- User Styles -->
-    <link rel="stylesheet" href="../assets/css/user/styles.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-    <!-- Tailwind Configuration -->
-    <script src="../assets/js/user/tailwind-config.js"></script>
-  </head>
+  <!-- User Styles -->
+  <link rel="stylesheet" href="../assets/css/user/styles.css" />
 
-  <body class="bg-gray-900 text-white">
-    <!-- Header -->
-    <header
-      class="bg-gray-800/95 backdrop-blur-sm py-6 px-6 flex justify-between items-center flex-wrap gap-3 animate-fade-in-down shadow-2xl sticky top-0 z-50"
-    >
-      <h1 class="text-2xl font-bold animate-fade-in-left">
-        <a
-          href="../user/home.html"
-          class="hover:text-blue-400 transition-colors duration-300"
-        >
-          <i class="fas fa-store mr-2 text-blue-400"></i>E-Commerce
-        </a>
-      </h1>
-      <nav class="animate-fade-in-right">
-        <ul class="flex space-x-6 items-center">
-          <li class="animate-fade-in-up delay-100">
-            <a
-              href="../user/home.html"
-              class="hover:text-blue-400 transition-all duration-300 relative group"
-            >
-              <span>Home</span>
-              <span
-                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"
-              ></span>
-            </a>
-          </li>
-          <li class="animate-fade-in-up delay-200">
-            <a
-              href="../user/products.html"
-              class="hover:text-blue-400 transition-all duration-300 relative group"
-            >
-              <span>Shop</span>
-              <span
-                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"
-              ></span>
-            </a>
-          </li>
-          <li class="relative animate-fade-in-up delay-300">
-            <a
-              href="../user/cart.html"
-              class="hover:text-blue-400 transition-all duration-300 hover:scale-105 transform"
-            >
-              <i class="fa fa-shopping-cart text-lg"></i>
-              <span
-                id="cart-badge"
-                class="w-5 h-5 absolute -top-2 -right-2 bg-red-500 text-sm text-white p-1 rounded-full hidden flex items-center justify-center animate-pulse"
-                >0</span
-              >
-            </a>
-          </li>
-          <!-- Admin Dashboard Link (conditional) -->
-          <li class="animate-fade-in-up delay-500">
-            <a
-              href="../admin/dashboard.html"
-              class="hover:text-blue-400 transition-all duration-300 hover:scale-105 transform"
-              ><i class="fa fa-user-gear text-lg"></i
-            ></a>
-          </li>
-          <!-- User Profile Link -->
-          <li class="animate-fade-in-up delay-700">
-            <a
-              href="../user/profile.html"
-              class="hover:text-blue-400 transition-all duration-300 hover:scale-105 transform"
-              ><i class="fa fa-user text-lg"></i
-            ></a>
-          </li>
-          <!-- Logout Button -->
-          <li class="animate-fade-in-up delay-700">
-            <button
-              type="button"
-              class="bg-red-600 text-sm text-white px-4 py-2 rounded-lg hover:bg-red-700 hover:shadow-lg hover:shadow-red-500/50 transition-all duration-300 hover:scale-105 transform"
-            >
-              <i class="fas fa-sign-out-alt mr-1"></i>Logout
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </header>
+  <!-- Tailwind Configuration -->
 
-    <!-- Main Content -->
-    <main
-      class="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 px-6 py-12"
-    >
-      <div class="max-w-6xl mx-auto">
-        <!-- Page Header -->
-        <div class="text-center mb-12 animate-fade-in-up">
-          <div
-            class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mb-6 shadow-lg animate-float"
-          >
-            <i class="fas fa-receipt text-2xl text-white"></i>
-          </div>
-          <h1 class="text-4xl lg:text-5xl font-bold text-white mb-4">
+</head>
+
+<body class="bg-gray-900 text-white">
+  <!-- Header -->
+  <header
+    class="bg-gray-800/95 backdrop-blur-sm py-6 px-6 flex justify-between items-center flex-wrap gap-3 animate-fade-in-down shadow-2xl sticky top-0 z-50">
+    <h1 class="text-2xl font-bold animate-fade-in-left">
+      <a href="../user/home.html" class="hover:text-blue-400 transition-colors duration-300">
+        <i class="fas fa-store mr-2 text-blue-400"></i>E-Commerce
+      </a>
+    </h1>
+    <nav class="animate-fade-in-right">
+      <ul class="flex space-x-6 items-center">
+        <li class="animate-fade-in-up delay-100">
+          <a href="../user/home.html" class="hover:text-blue-400 transition-all duration-300 relative group">
+            <span>Home</span>
             <span
-              class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
-            >
-              Order Details
-            </span>
-          </h1>
-          <p class="text-xl text-gray-300 mb-2">Order #ORD-12345</p>
-          <div
-            class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto rounded-full"
-          ></div>
-        </div>
+              class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </li>
+        <li class="animate-fade-in-up delay-200">
+          <a href="../user/products.html" class="hover:text-blue-400 transition-all duration-300 relative group">
+            <span>Shop</span>
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </li>
+        <li class="relative animate-fade-in-up delay-300">
+          <a href="../user/cart.html" class="hover:text-blue-400 transition-all duration-300 hover:scale-105 transform">
+            <i class="fa fa-shopping-cart text-lg"></i>
+            <span id="cart-badge"
+              class="w-5 h-5 absolute -top-2 -right-2 bg-red-500 text-sm text-white p-1 rounded-full hidden flex items-center justify-center animate-pulse">0</span>
+          </a>
+        </li>
+        <!-- Admin Dashboard Link (conditional) -->
+        <li class="animate-fade-in-up delay-500">
+          <a href="../admin/dashboard.html"
+            class="hover:text-blue-400 transition-all duration-300 hover:scale-105 transform"><i
+              class="fa fa-user-gear text-lg"></i></a>
+        </li>
+        <!-- User Profile Link -->
+        <li class="animate-fade-in-up delay-700">
+          <a href="../user/profile.html"
+            class="hover:text-blue-400 transition-all duration-300 hover:scale-105 transform"><i
+              class="fa fa-user text-lg"></i></a>
+        </li>
+        <!-- Logout Button -->
+        <li class="animate-fade-in-up delay-700">
+          <button type="button"
+            class="bg-red-600 text-sm text-white px-4 py-2 rounded-lg hover:bg-red-700 hover:shadow-lg hover:shadow-red-500/50 transition-all duration-300 hover:scale-105 transform">
+            <i class="fas fa-sign-out-alt mr-1"></i>Logout
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-        <!-- Tab Navigation -->
+  <!-- Main Content -->
+  <main class="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 px-6 py-12">
+    <div class="max-w-6xl mx-auto">
+      <!-- Page Header -->
+      <div class="text-center mb-12 animate-fade-in-up">
         <div
-          class="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in-up delay-200"
-        >
-          <button
-            class="tab-button glass px-6 py-3 rounded-xl text-white font-semibold transition-all duration-300 hover:bg-white/20 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-            onclick="showTab('info')"
-          >
-            <i class="fas fa-info-circle mr-2"></i>Order Info
-          </button>
-          <button
-            class="tab-button glass px-6 py-3 rounded-xl text-white font-semibold transition-all duration-300 hover:bg-white/20 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-            onclick="showTab('items')"
-          >
-            <i class="fas fa-shopping-bag mr-2"></i>Order Items
-          </button>
-          <button
-            class="tab-button glass px-6 py-3 rounded-xl text-white font-semibold transition-all duration-300 hover:bg-white/20 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-            onclick="showTab('statuses')"
-          >
-            <i class="fas fa-truck mr-2"></i>Order Status
-          </button>
+          class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mb-6 shadow-lg animate-float">
+          <i class="fas fa-receipt text-2xl text-white"></i>
         </div>
+        <h1 class="text-4xl lg:text-5xl font-bold text-white mb-4">
+          <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            Order Details
+          </span>
+        </h1>
+        <p class="text-xl text-gray-300 mb-2">Order #ORD-12345</p>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto rounded-full"></div>
+      </div>
 
-        <!-- Order Information Tab -->
-        <div
-          id="infoTab"
-          class="order-tab-content animate-fade-in-up delay-300"
-        >
-          <div class="glass rounded-2xl p-8 shadow-2xl">
-            <h3 class="text-2xl font-bold text-white mb-8 flex items-center">
-              <i class="fas fa-file-invoice text-blue-400 mr-3"></i>
-              Order Information
-            </h3>
+      <!-- Tab Navigation -->
+      <div class="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in-up delay-200">
+        <button
+          class="tab-button glass px-6 py-3 rounded-xl text-white font-semibold transition-all duration-300 hover:bg-white/20 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+          onclick="showTab('info')">
+          <i class="fas fa-info-circle mr-2"></i>Order Info
+        </button>
+        <button
+          class="tab-button glass px-6 py-3 rounded-xl text-white font-semibold transition-all duration-300 hover:bg-white/20 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+          onclick="showTab('items')">
+          <i class="fas fa-shopping-bag mr-2"></i>Order Items
+        </button>
+        <button
+          class="tab-button glass px-6 py-3 rounded-xl text-white font-semibold transition-all duration-300 hover:bg-white/20 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+          onclick="showTab('statuses')">
+          <i class="fas fa-truck mr-2"></i>Order Status
+        </button>
+      </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="space-y-4">
-                <div
-                  class="flex items-center justify-between p-4 bg-gray-800/50 rounded-xl"
-                >
-                  <span class="text-gray-400 font-medium">Order Number:</span>
-                  <span class="text-white font-bold">ORD-12345</span>
-                </div>
-                <div
-                  class="flex items-center justify-between p-4 bg-gray-800/50 rounded-xl"
-                >
-                  <span class="text-gray-400 font-medium">Placed on:</span>
-                  <span class="text-white">Dec 15, 2024 2:30 PM</span>
-                </div>
-                <div
-                  class="flex items-center justify-between p-4 bg-gray-800/50 rounded-xl"
-                >
-                  <span class="text-gray-400 font-medium">Total:</span>
-                  <span class="text-2xl font-bold text-green-400">$249.97</span>
-                </div>
-                <div
-                  class="flex items-center justify-between p-4 bg-gray-800/50 rounded-xl"
-                >
-                  <span class="text-gray-400 font-medium">Status:</span>
-                  <span
-                    class="px-3 py-1 bg-green-500 text-white rounded-full text-sm font-semibold"
-                  >
-                    <i class="fas fa-check-circle mr-1"></i>Completed
-                  </span>
-                </div>
+      <!-- Order Information Tab -->
+      <div id="infoTab" class="order-tab-content animate-fade-in-up delay-300">
+        <div class="glass rounded-2xl p-8 shadow-2xl">
+          <h3 class="text-2xl font-bold text-white mb-8 flex items-center">
+            <i class="fas fa-file-invoice text-blue-400 mr-3"></i>
+            Order Information
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-xl">
+                <span class="text-gray-400 font-medium">Order Number:</span>
+                <span class="text-white font-bold">ORD-12345</span>
               </div>
-
-              <div class="space-y-4">
-                <div class="p-4 bg-gray-800/50 rounded-xl">
-                  <h4 class="text-gray-400 font-medium mb-2">
-                    Shipping Address:
-                  </h4>
-                  <p class="text-white">
-                    123 Main Street, Apt 4B<br />Los Angeles, California<br />United
-                    States
-                  </p>
-                </div>
-                <div class="p-4 bg-gray-800/50 rounded-xl">
-                  <h4 class="text-gray-400 font-medium mb-2">
-                    Shipping Phone:
-                  </h4>
-                  <p class="text-white">+1234567890</p>
-                </div>
+              <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-xl">
+                <span class="text-gray-400 font-medium">Placed on:</span>
+                <span class="text-white">Dec 15, 2024 2:30 PM</span>
+              </div>
+              <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-xl">
+                <span class="text-gray-400 font-medium">Total:</span>
+                <span class="text-2xl font-bold text-green-400">$249.97</span>
+              </div>
+              <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-xl">
+                <span class="text-gray-400 font-medium">Status:</span>
+                <span class="px-3 py-1 bg-green-500 text-white rounded-full text-sm font-semibold">
+                  <i class="fas fa-check-circle mr-1"></i>Completed
+                </span>
               </div>
             </div>
-
-            <div class="flex flex-wrap gap-4 mt-8 hidden">
-              <button
-                onclick="openModal('changeShippingAddressModal')"
-                class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105"
-              >
-                <i class="fas fa-edit mr-2"></i>Change Shipping Address
-              </button>
-              <button
-                onclick="openModal('cancelOrderModal')"
-                class="bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/25 transform hover:scale-105"
-              >
-                <i class="fas fa-times mr-2"></i>Cancel Order
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Order Items Tab -->
-        <div
-          id="itemsTab"
-          class="order-tab-content hidden animate-fade-in-up delay-400"
-        >
-          <div class="glass rounded-2xl p-8 shadow-2xl">
-            <h3 class="text-2xl font-bold text-white mb-8 flex items-center">
-              <i class="fas fa-shopping-bag text-purple-400 mr-3"></i>
-              Order Items
-            </h3>
 
             <div class="space-y-4">
-              <!-- Order Item 1 -->
-              <div
-                class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 hover:bg-gray-800/70 transition-all duration-300"
-              >
-                <div class="flex items-center space-x-6">
-                  <div class="flex-shrink-0">
-                    <img
-                      src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
-                      class="w-20 h-20 object-cover rounded-xl shadow-lg"
-                      alt="Wireless Bluetooth Headphones"
-                    />
+              <div class="p-4 bg-gray-800/50 rounded-xl">
+                <h4 class="text-gray-400 font-medium mb-2">
+                  Shipping Address:
+                </h4>
+                <p class="text-white">
+                  123 Main Street, Apt 4B<br />Los Angeles, California<br />United
+                  States
+                </p>
+              </div>
+              <div class="p-4 bg-gray-800/50 rounded-xl">
+                <h4 class="text-gray-400 font-medium mb-2">
+                  Shipping Phone:
+                </h4>
+                <p class="text-white">+1234567890</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4 mt-8 hidden">
+            <button onclick="openModal('changeShippingAddressModal')"
+              class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105">
+              <i class="fas fa-edit mr-2"></i>Change Shipping Address
+            </button>
+            <button onclick="openModal('cancelOrderModal')"
+              class="bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/25 transform hover:scale-105">
+              <i class="fas fa-times mr-2"></i>Cancel Order
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Items Tab -->
+      <div id="itemsTab" class="order-tab-content hidden animate-fade-in-up delay-400">
+        <div class="glass rounded-2xl p-8 shadow-2xl">
+          <h3 class="text-2xl font-bold text-white mb-8 flex items-center">
+            <i class="fas fa-shopping-bag text-purple-400 mr-3"></i>
+            Order Items
+          </h3>
+
+          <div class="space-y-4">
+            <!-- Order Item 1 -->
+            <div
+              class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 hover:bg-gray-800/70 transition-all duration-300">
+              <div class="flex items-center space-x-6">
+                <div class="flex-shrink-0">
+                  <img
+                    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                    class="w-20 h-20 object-cover rounded-xl shadow-lg" alt="Wireless Bluetooth Headphones" />
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-semibold text-white mb-2">
+                    Wireless Bluetooth Headphones
+                  </h4>
+                  <div class="flex items-center space-x-4 text-sm text-gray-400">
+                    <span>Quantity:
+                      <span class="text-white font-medium">1</span></span>
+                    <span>Price:
+                      <span class="text-green-400 font-bold">$129.99</span></span>
                   </div>
-                  <div class="flex-1">
-                    <h4 class="text-lg font-semibold text-white mb-2">
-                      Wireless Bluetooth Headphones
-                    </h4>
-                    <div
-                      class="flex items-center space-x-4 text-sm text-gray-400"
-                    >
-                      <span
-                        >Quantity:
-                        <span class="text-white font-medium">1</span></span
-                      >
-                      <span
-                        >Price:
-                        <span class="text-green-400 font-bold"
-                          >$129.99</span
-                        ></span
-                      >
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <p class="text-2xl font-bold text-green-400">$129.99</p>
-                  </div>
+                </div>
+                <div class="text-right">
+                  <p class="text-2xl font-bold text-green-400">$129.99</p>
                 </div>
               </div>
+            </div>
 
-              <!-- Order Item 2 -->
-              <div
-                class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 hover:bg-gray-800/70 transition-all duration-300"
-              >
-                <div class="flex items-center space-x-6">
-                  <div class="flex-shrink-0">
-                    <img
-                      src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
-                      class="w-20 h-20 object-cover rounded-xl shadow-lg"
-                      alt="Wireless Gaming Mouse"
-                    />
+            <!-- Order Item 2 -->
+            <div
+              class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 hover:bg-gray-800/70 transition-all duration-300">
+              <div class="flex items-center space-x-6">
+                <div class="flex-shrink-0">
+                  <img
+                    src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                    class="w-20 h-20 object-cover rounded-xl shadow-lg" alt="Wireless Gaming Mouse" />
+                </div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-semibold text-white mb-2">
+                    Wireless Gaming Mouse
+                  </h4>
+                  <div class="flex items-center space-x-4 text-sm text-gray-400">
+                    <span>Quantity:
+                      <span class="text-white font-medium">2</span></span>
+                    <span>Price:
+                      <span class="text-green-400 font-bold">$59.99</span></span>
                   </div>
-                  <div class="flex-1">
-                    <h4 class="text-lg font-semibold text-white mb-2">
-                      Wireless Gaming Mouse
-                    </h4>
-                    <div
-                      class="flex items-center space-x-4 text-sm text-gray-400"
-                    >
-                      <span
-                        >Quantity:
-                        <span class="text-white font-medium">2</span></span
-                      >
-                      <span
-                        >Price:
-                        <span class="text-green-400 font-bold"
-                          >$59.99</span
-                        ></span
-                      >
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <p class="text-2xl font-bold text-green-400">$119.98</p>
-                  </div>
+                </div>
+                <div class="text-right">
+                  <p class="text-2xl font-bold text-green-400">$119.98</p>
                 </div>
               </div>
+            </div>
 
-              <!-- Order Summary -->
-              <div class="border-t border-gray-700 pt-6 mt-6">
-                <div class="flex justify-between items-center text-xl">
-                  <span class="font-semibold text-gray-300">Total Amount:</span>
-                  <span class="font-bold text-3xl text-green-400">$249.97</span>
-                </div>
+            <!-- Order Summary -->
+            <div class="border-t border-gray-700 pt-6 mt-6">
+              <div class="flex justify-between items-center text-xl">
+                <span class="font-semibold text-gray-300">Total Amount:</span>
+                <span class="font-bold text-3xl text-green-400">$249.97</span>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Order Status Tab -->
-        <div
-          id="statusesTab"
-          class="order-tab-content hidden animate-fade-in-up delay-500"
-        >
-          <div class="glass rounded-2xl p-8 shadow-2xl">
-            <h3 class="text-2xl font-bold text-white mb-8 flex items-center">
-              <i class="fas fa-truck text-orange-400 mr-3"></i>
-              Order Status History
-            </h3>
+      <!-- Order Status Tab -->
+      <div id="statusesTab" class="order-tab-content hidden animate-fade-in-up delay-500">
+        <div class="glass rounded-2xl p-8 shadow-2xl">
+          <h3 class="text-2xl font-bold text-white mb-8 flex items-center">
+            <i class="fas fa-truck text-orange-400 mr-3"></i>
+            Order Status History
+          </h3>
 
-            <div class="relative">
-              <!-- Status Timeline -->
-              <div
-                class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-blue-500 to-yellow-500"
-              ></div>
+          <div class="relative">
+            <!-- Status Timeline -->
+            <div
+              class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-blue-500 to-yellow-500">
+            </div>
 
-              <div class="space-y-8">
-                <!-- Completed Status -->
-                <div class="relative flex items-start">
-                  <div
-                    class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-lg"
-                  >
-                    <i class="fas fa-check text-white text-xl"></i>
-                  </div>
-                  <div
-                    class="ml-6 bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 flex-1"
-                  >
-                    <div class="flex items-center justify-between mb-2">
-                      <h4 class="text-lg font-semibold text-green-400">
-                        Completed
-                      </h4>
-                      <span class="text-sm text-gray-400"
-                        >Dec 18, 2024 4:30 PM</span
-                      >
-                    </div>
-                    <p class="text-gray-300">
-                      Order has been delivered successfully
-                    </p>
-                  </div>
+            <div class="space-y-8">
+              <!-- Completed Status -->
+              <div class="relative flex items-start">
+                <div
+                  class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-lg">
+                  <i class="fas fa-check text-white text-xl"></i>
                 </div>
-
-                <!-- Processing Status -->
-                <div class="relative flex items-start">
-                  <div
-                    class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg"
-                  >
-                    <i class="fas fa-cog fa-spin text-white text-xl"></i>
+                <div class="ml-6 bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 flex-1">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-lg font-semibold text-green-400">
+                      Completed
+                    </h4>
+                    <span class="text-sm text-gray-400">Dec 18, 2024 4:30 PM</span>
                   </div>
-                  <div
-                    class="ml-6 bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 flex-1"
-                  >
-                    <div class="flex items-center justify-between mb-2">
-                      <h4 class="text-lg font-semibold text-blue-400">
-                        Processing
-                      </h4>
-                      <span class="text-sm text-gray-400"
-                        >Dec 16, 2024 10:15 AM</span
-                      >
-                    </div>
-                    <p class="text-gray-300">
-                      Order is being prepared for shipment
-                    </p>
-                  </div>
+                  <p class="text-gray-300">
+                    Order has been delivered successfully
+                  </p>
                 </div>
+              </div>
 
-                <!-- Pending Status -->
-                <div class="relative flex items-start">
-                  <div
-                    class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-full flex items-center justify-center shadow-lg"
-                  >
-                    <i class="fas fa-clock text-white text-xl"></i>
+              <!-- Processing Status -->
+              <div class="relative flex items-start">
+                <div
+                  class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                  <i class="fas fa-cog fa-spin text-white text-xl"></i>
+                </div>
+                <div class="ml-6 bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 flex-1">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-lg font-semibold text-blue-400">
+                      Processing
+                    </h4>
+                    <span class="text-sm text-gray-400">Dec 16, 2024 10:15 AM</span>
                   </div>
-                  <div
-                    class="ml-6 bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 flex-1"
-                  >
-                    <div class="flex items-center justify-between mb-2">
-                      <h4 class="text-lg font-semibold text-yellow-400">
-                        Pending
-                      </h4>
-                      <span class="text-sm text-gray-400"
-                        >Dec 15, 2024 2:30 PM</span
-                      >
-                    </div>
-                    <p class="text-gray-300">
-                      Order has been placed and is awaiting confirmation
-                    </p>
+                  <p class="text-gray-300">
+                    Order is being prepared for shipment
+                  </p>
+                </div>
+              </div>
+
+              <!-- Pending Status -->
+              <div class="relative flex items-start">
+                <div
+                  class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-full flex items-center justify-center shadow-lg">
+                  <i class="fas fa-clock text-white text-xl"></i>
+                </div>
+                <div class="ml-6 bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 flex-1">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-lg font-semibold text-yellow-400">
+                      Pending
+                    </h4>
+                    <span class="text-sm text-gray-400">Dec 15, 2024 2:30 PM</span>
                   </div>
+                  <p class="text-gray-300">
+                    Order has been placed and is awaiting confirmation
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
+  </main>
 
-    <!-- Modals -->
-    <div
-      id="changeShippingAddressModal"
-      class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center"
-    >
-      <div class="bg-gray-800 p-6 rounded shadow-md w-96">
-        <h3 class="text-xl font-bold mb-4">Change Shipping Address?</h3>
-        <form action="#" method="POST">
+  <!-- Modals -->
+  <div id="changeShippingAddressModal"
+    class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+    <div class="bg-gray-800 p-6 rounded shadow-md w-96">
+      <h3 class="text-xl font-bold mb-4">Change Shipping Address?</h3>
+      <form action="#" method="POST">
+        <div class="mb-4">
+          <label for="shipping_address" class="block text-sm font-medium text-gray-400">Shipping Address</label>
+          <input type="text" name="shipping_address" id="shipping_address" value="123 Main Street, Apt 4B"
+            class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded bg-gray-800 text-gray-300" />
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div class="mb-4">
-            <label
-              for="shipping_address"
-              class="block text-sm font-medium text-gray-400"
-              >Shipping Address</label
-            >
-            <input
-              type="text"
-              name="shipping_address"
-              id="shipping_address"
-              value="123 Main Street, Apt 4B"
-              class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded bg-gray-800 text-gray-300"
-            />
+            <label for="shipping_country" class="block text-sm font-medium text-gray-400">Country</label>
+            <input type="text" name="shipping_country" id="shipping_country" value="United States"
+              class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded bg-gray-800 text-gray-300" />
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="mb-4">
-              <label
-                for="shipping_country"
-                class="block text-sm font-medium text-gray-400"
-                >Country</label
-              >
-              <input
-                type="text"
-                name="shipping_country"
-                id="shipping_country"
-                value="United States"
-                class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded bg-gray-800 text-gray-300"
-              />
-            </div>
-            <div class="mb-4">
-              <label
-                for="shipping_state"
-                class="block text-sm font-medium text-gray-400"
-                >State</label
-              >
-              <input
-                type="text"
-                name="shipping_state"
-                id="shipping_state"
-                value="California"
-                class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded bg-gray-800 text-gray-300"
-              />
-            </div>
-            <div class="mb-4">
-              <label
-                for="shipping_city"
-                class="block text-sm font-medium text-gray-400"
-                >City</label
-              >
-              <input
-                type="text"
-                name="shipping_city"
-                id="shipping_city"
-                value="Los Angeles"
-                class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded bg-gray-800 text-gray-300"
-              />
-            </div>
+          <div class="mb-4">
+            <label for="shipping_state" class="block text-sm font-medium text-gray-400">State</label>
+            <input type="text" name="shipping_state" id="shipping_state" value="California"
+              class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded bg-gray-800 text-gray-300" />
           </div>
-
-          <label class="block text-gray-400 mb-1">Shipping Phone</label>
-          <input
-            type="text"
-            name="shipping_phone"
-            value="+1234567890"
-            placeholder="Shipping Phone"
-            class="mb-3 w-full p-3 rounded bg-gray-700 text-gray-100 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-
-          <label class="block text-gray-400 mb-1">Notes</label>
-          <textarea
-            name="notes"
-            placeholder="Shipping Notes"
-            class="mb-3 w-full p-3 rounded bg-gray-700 text-gray-100 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-Please deliver during business hours</textarea
-          >
-
-          <div class="flex justify-end space-x-2 mt-4">
-            <button
-              type="button"
-              onclick="closeModal('changeShippingAddressModal')"
-              class="bg-gray-500 text-white px-4 py-2 rounded"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              class="bg-red-500 text-white px-4 py-2 rounded"
-            >
-              Confirm
-            </button>
+          <div class="mb-4">
+            <label for="shipping_city" class="block text-sm font-medium text-gray-400">City</label>
+            <input type="text" name="shipping_city" id="shipping_city" value="Los Angeles"
+              class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded bg-gray-800 text-gray-300" />
           </div>
-        </form>
-      </div>
+        </div>
+
+        <label class="block text-gray-400 mb-1">Shipping Phone</label>
+        <input type="text" name="shipping_phone" value="+1234567890" placeholder="Shipping Phone"
+          class="mb-3 w-full p-3 rounded bg-gray-700 text-gray-100 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+        <label class="block text-gray-400 mb-1">Notes</label>
+        <textarea name="notes" placeholder="Shipping Notes"
+          class="mb-3 w-full p-3 rounded bg-gray-700 text-gray-100 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+Please deliver during business hours</textarea>
+
+        <div class="flex justify-end space-x-2 mt-4">
+          <button type="button" onclick="closeModal('changeShippingAddressModal')"
+            class="bg-gray-500 text-white px-4 py-2 rounded">
+            Cancel
+          </button>
+          <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">
+            Confirm
+          </button>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <div
-      id="cancelOrderModal"
-      class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center"
-    >
-      <div class="bg-gray-800 p-6 rounded shadow-md w-96">
-        <h3 class="text-xl font-bold mb-4">Cancel Order?</h3>
-        <p>Are you sure you want to cancel your order ORD-12345?</p>
-        <form action="#" method="POST">
-          <div class="flex justify-end space-x-2 mt-4">
-            <button
-              type="button"
-              onclick="closeModal('cancelOrderModal')"
-              class="bg-gray-500 text-white px-4 py-2 rounded"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              class="bg-red-500 text-white px-4 py-2 rounded"
-            >
-              Confirm
-            </button>
-          </div>
-        </form>
-      </div>
+  <div id="cancelOrderModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+    <div class="bg-gray-800 p-6 rounded shadow-md w-96">
+      <h3 class="text-xl font-bold mb-4">Cancel Order?</h3>
+      <p>Are you sure you want to cancel your order ORD-12345?</p>
+      <form action="#" method="POST">
+        <div class="flex justify-end space-x-2 mt-4">
+          <button type="button" onclick="closeModal('cancelOrderModal')"
+            class="bg-gray-500 text-white px-4 py-2 rounded">
+            Cancel
+          </button>
+          <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">
+            Confirm
+          </button>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <!-- Scripts -->
-    <!-- User Scripts -->
-    <script src="../assets/js/user/cart.js"></script>
-    <script src="../assets/js/user/main.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Order-specific JavaScript
+  <!-- Scripts -->
+  <!-- User Scripts -->
+  <script src="../assets/js/user/cart.js"></script>
+  <script src="../assets/js/user/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Order-specific JavaScript
 
-        // Initialize first tab
-        showTab("info");
+      // Initialize first tab
+      showTab("info");
+    });
+
+    // Tab switching functionality
+    function showTab(tabName) {
+      // Hide all tab contents
+      const tabs = document.querySelectorAll(".order-tab-content");
+      tabs.forEach((tab) => {
+        tab.classList.add("hidden");
       });
 
-      // Tab switching functionality
-      function showTab(tabName) {
-        // Hide all tab contents
-        const tabs = document.querySelectorAll(".order-tab-content");
-        tabs.forEach((tab) => {
-          tab.classList.add("hidden");
-        });
-
-        // Remove active class from all buttons
-        const buttons = document.querySelectorAll(".tab-button");
-        buttons.forEach((button) => {
-          button.classList.remove(
-            "bg-blue-600",
-            "shadow-lg",
-            "shadow-blue-500/25",
-            "scale-105",
-          );
-          button.classList.add("glass");
-        });
-
-        // Show selected tab
-        const selectedTab = document.getElementById(tabName + "Tab");
-        if (selectedTab) {
-          selectedTab.classList.remove("hidden");
-        }
-
-        // Highlight active button
-        const activeButton =
-          event?.target ||
-          document.querySelector(`[onclick="showTab('${tabName}')"]`);
-        if (activeButton) {
-          activeButton.classList.remove("glass");
-          activeButton.classList.add(
-            "bg-blue-600",
-            "shadow-lg",
-            "shadow-blue-500/25",
-            "scale-105",
-          );
-        }
-      }
-
-      function showTab(tab) {
-        document.getElementById("infoTab").classList.add("hidden");
-        document.getElementById("itemsTab").classList.add("hidden");
-        document.getElementById("statusesTab").classList.add("hidden");
-
-        document.getElementById(tab + "Tab").classList.remove("hidden");
-      }
-
-      // Initialize with first tab
-      document.addEventListener("DOMContentLoaded", function () {
-        showTab("info");
+      // Remove active class from all buttons
+      const buttons = document.querySelectorAll(".tab-button");
+      buttons.forEach((button) => {
+        button.classList.remove(
+          "bg-blue-600",
+          "shadow-lg",
+          "shadow-blue-500/25",
+          "scale-105",
+        );
+        button.classList.add("glass");
       });
-    </script>
-  </body>
+
+      // Show selected tab
+      const selectedTab = document.getElementById(tabName + "Tab");
+      if (selectedTab) {
+        selectedTab.classList.remove("hidden");
+      }
+
+      // Highlight active button
+      const activeButton =
+        event?.target ||
+        document.querySelector(`[onclick="showTab('${tabName}')"]`);
+      if (activeButton) {
+        activeButton.classList.remove("glass");
+        activeButton.classList.add(
+          "bg-blue-600",
+          "shadow-lg",
+          "shadow-blue-500/25",
+          "scale-105",
+        );
+      }
+    }
+
+    function showTab(tab) {
+      document.getElementById("infoTab").classList.add("hidden");
+      document.getElementById("itemsTab").classList.add("hidden");
+      document.getElementById("statusesTab").classList.add("hidden");
+
+      document.getElementById(tab + "Tab").classList.remove("hidden");
+    }
+
+    // Initialize with first tab
+    document.addEventListener("DOMContentLoaded", function () {
+      showTab("info");
+    });
+  </script>
+</body>
+
 </html>
