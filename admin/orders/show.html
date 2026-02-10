@@ -208,7 +208,7 @@
         <div class="flex items-center justify-between">
           <!-- Mobile Menu Button -->
           <button
-            onclick="AdminUtils.toggleSidebar()"
+            onclick="toggleSidebar()"
             class="md:hidden glass p-2 rounded-xl text-white hover:bg-white/10 transition-colors"
           >
             <i class="fas fa-bars"></i>
@@ -302,7 +302,7 @@
             </div>
             <div class="flex space-x-3">
               <button
-                onclick="AdminUtils.showUpdateStatusModal()"
+                onclick="showUpdateStatusModal()"
                 class="glass-button px-4 py-2 rounded-xl text-white hover:scale-105 transition-all"
               >
                 <i class="fas fa-edit mr-2"></i>
@@ -317,7 +317,7 @@
           <div class="flex space-x-1 p-1 bg-white/5 rounded-xl mb-6">
             <button
               id="infoTabBtn"
-              onclick="AdminUtils.showTab('info')"
+              onclick="showTab('info')"
               class="tab-button active flex-1 py-3 px-4 rounded-lg text-white font-medium transition-all"
             >
               <i class="fas fa-info-circle mr-2"></i>
@@ -325,7 +325,7 @@
             </button>
             <button
               id="itemsTabBtn"
-              onclick="AdminUtils.showTab('items')"
+              onclick="showTab('items')"
               class="tab-button flex-1 py-3 px-4 rounded-lg text-gray-400 font-medium transition-all"
             >
               <i class="fas fa-shopping-bag mr-2"></i>
@@ -333,7 +333,7 @@
             </button>
             <button
               id="statusesTabBtn"
-              onclick="AdminUtils.showTab('statuses')"
+              onclick="showTab('statuses')"
               class="tab-button flex-1 py-3 px-4 rounded-lg text-gray-400 font-medium transition-all"
             >
               <i class="fas fa-history mr-2"></i>
@@ -624,7 +624,7 @@
     <div
       id="sidebarOverlay"
       class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden md:hidden"
-      onclick="AdminUtils.toggleMobileSidebar()"
+      onclick="toggleMobileSidebar()"
     ></div>
 
     <!-- Update Status Modal -->
@@ -637,14 +637,14 @@
           </h3>
           <button
             type="button"
-            onclick="AdminUtils.closeModal('updateStatusModal')"
+            onclick="closeModal('updateStatusModal')"
             class="modal-close"
           >
             <i class="fas fa-times"></i>
           </button>
         </div>
 
-        <form onsubmit="AdminUtils.updateOrderStatus(event)" class="modal-body">
+        <form onsubmit="updateOrderStatus(event)" class="modal-body">
           <div class="form-group">
             <label for="status" class="form-label">Status</label>
             <select id="status" name="status" class="form-select" required>
@@ -672,7 +672,7 @@
           <div class="modal-footer">
             <button
               type="button"
-              onclick="AdminUtils.closeModal('updateStatusModal')"
+              onclick="closeModal('updateStatusModal')"
               class="btn-secondary"
             >
               Cancel
@@ -701,127 +701,125 @@
       });
 
       // Admin utilities
-      const AdminUtils = {
-        // Toggle mobile sidebar
-        toggleSidebar() {
-          const sidebar = document.getElementById("sidebar");
-          const overlay = document.getElementById("sidebarOverlay");
+      // Toggle mobile sidebar
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebarOverlay");
 
-          if (sidebar.classList.contains("-translate-x-full")) {
-            sidebar.classList.remove("-translate-x-full");
-            overlay.classList.remove("hidden");
-          } else {
-            sidebar.classList.add("-translate-x-full");
-            overlay.classList.add("hidden");
+        if (sidebar.classList.contains("-translate-x-full")) {
+          sidebar.classList.remove("-translate-x-full");
+          overlay.classList.remove("hidden");
+        } else {
+          sidebar.classList.add("-translate-x-full");
+          overlay.classList.add("hidden");
+        }
+      }
+
+      function toggleMobileSidebar() {
+        toggleSidebar();
+      }
+
+      // Modal functions
+      function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.classList.add("active");
+          modal.style.display = "flex";
+        }
+      }
+
+      function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.classList.remove("active");
+          modal.style.display = "none";
+        }
+      }
+
+      // Toast notifications
+      function showToast(type, message) {
+        if (typeof toastr !== "undefined") {
+          toastr[type](message);
+        } else {
+          alert(message); // Fallback
+        }
+      }
+
+      // Initialize page
+      function initializeToast() {
+        if (typeof toastr !== "undefined") {
+          toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            timeOut: "3500",
+          };
+        }
+      }
+
+      function initializePage() {
+        // Set active sidebar item
+        const currentPage = window.location.pathname.split("/").pop();
+        const sidebarItems = document.querySelectorAll(".sidebar-item");
+        sidebarItems.forEach((item) => {
+          const href = item.getAttribute("href");
+          if (href && href.includes(currentPage)) {
+            item.classList.add("active");
           }
-        },
+        });
+      }
 
-        toggleMobileSidebar() {
-          this.toggleSidebar();
-        },
+      function showUpdateStatusModal() {
+        openModal("updateStatusModal");
+      }
 
-        // Modal functions
-        openModal(modalId) {
-          const modal = document.getElementById(modalId);
-          if (modal) {
-            modal.classList.add("active");
-            modal.style.display = "flex";
-          }
-        },
+      function updateOrderStatus(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const status = formData.get("status");
+        const description = formData.get("description");
 
-        closeModal(modalId) {
-          const modal = document.getElementById(modalId);
-          if (modal) {
-            modal.classList.remove("active");
-            modal.style.display = "none";
-          }
-        },
+        showToast("success", `Order status updated to ${status}!`);
+        closeModal("updateStatusModal");
+        event.target.reset();
 
-        // Toast notifications
-        showToast(type, message) {
-          if (typeof toastr !== "undefined") {
-            toastr[type](message);
-          } else {
-            alert(message); // Fallback
-          }
-        },
+        // In a real application, you would send this data to the server
+        setTimeout(() => {
+          location.reload();
+        }, 1500);
+      }
 
-        // Initialize page
-        initializeToast() {
-          if (typeof toastr !== "undefined") {
-            toastr.options = {
-              closeButton: true,
-              progressBar: true,
-              timeOut: "3500",
-            };
-          }
-        },
+      function showTab(tabName) {
+        // Hide all tab contents
+        const tabContents = document.querySelectorAll(".tab-content");
+        tabContents.forEach((content) => content.classList.add("hidden"));
 
-        initializePage() {
-          // Set active sidebar item
-          const currentPage = window.location.pathname.split("/").pop();
-          const sidebarItems = document.querySelectorAll(".sidebar-item");
-          sidebarItems.forEach((item) => {
-            const href = item.getAttribute("href");
-            if (href && href.includes(currentPage)) {
-              item.classList.add("active");
-            }
-          });
-        },
+        // Remove active class from all tab buttons
+        const tabButtons = document.querySelectorAll(".tab-button");
+        tabButtons.forEach((button) => {
+          button.classList.remove("active");
+          button.classList.add("text-gray-400");
+          button.classList.remove("text-white");
+        });
 
-        showUpdateStatusModal() {
-          this.openModal("updateStatusModal");
-        },
+        // Show selected tab content
+        const selectedTab = document.getElementById(tabName + "Tab");
+        if (selectedTab) {
+          selectedTab.classList.remove("hidden");
+        }
 
-        updateOrderStatus(event) {
-          event.preventDefault();
-          const formData = new FormData(event.target);
-          const status = formData.get("status");
-          const description = formData.get("description");
-
-          this.showToast("success", `Order status updated to ${status}!`);
-          this.closeModal("updateStatusModal");
-          event.target.reset();
-
-          // In a real application, you would send this data to the server
-          setTimeout(() => {
-            location.reload();
-          }, 1500);
-        },
-
-        showTab(tabName) {
-          // Hide all tab contents
-          const tabContents = document.querySelectorAll(".tab-content");
-          tabContents.forEach((content) => content.classList.add("hidden"));
-
-          // Remove active class from all tab buttons
-          const tabButtons = document.querySelectorAll(".tab-button");
-          tabButtons.forEach((button) => {
-            button.classList.remove("active");
-            button.classList.add("text-gray-400");
-            button.classList.remove("text-white");
-          });
-
-          // Show selected tab content
-          const selectedTab = document.getElementById(tabName + "Tab");
-          if (selectedTab) {
-            selectedTab.classList.remove("hidden");
-          }
-
-          // Activate selected tab button
-          const selectedButton = document.getElementById(tabName + "TabBtn");
-          if (selectedButton) {
-            selectedButton.classList.add("active");
-            selectedButton.classList.remove("text-gray-400");
-            selectedButton.classList.add("text-white");
-          }
-        },
-      };
+        // Activate selected tab button
+        const selectedButton = document.getElementById(tabName + "TabBtn");
+        if (selectedButton) {
+          selectedButton.classList.add("active");
+          selectedButton.classList.remove("text-gray-400");
+          selectedButton.classList.add("text-white");
+        }
+      }
 
       // Initialize when DOM is loaded
       document.addEventListener("DOMContentLoaded", function () {
-        AdminUtils.initializeToast();
-        AdminUtils.initializePage();
+        initializeToast();
+        initializePage();
       });
 
       // Close modal when clicking outside
@@ -829,7 +827,7 @@
         if (event.target.classList.contains("modal-overlay")) {
           const modalId = event.target.id;
           if (modalId) {
-            AdminUtils.closeModal(modalId);
+            closeModal(modalId);
           }
         }
       });
@@ -839,7 +837,7 @@
         if (event.key === "Escape") {
           const activeModal = document.querySelector(".modal-overlay.active");
           if (activeModal) {
-            AdminUtils.closeModal(activeModal.id);
+            closeModal(activeModal.id);
           }
         }
       });

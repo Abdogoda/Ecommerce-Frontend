@@ -490,49 +490,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Quick Actions -->
-        <div class="admin-card p-6 rounded-2xl animate-slide-in">
-          <h3 class="text-xl font-bold text-white mb-6">Quick Actions</h3>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <button
-              onclick="adminUtils.openModal('addProductModal')"
-              class="glass p-4 rounded-xl text-center hover:bg-white/10 transition-all group cursor-pointer"
-            >
-              <i
-                class="fas fa-plus text-blue-400 text-2xl mb-2 group-hover:scale-110 transition-transform"
-              ></i>
-              <p class="text-white font-medium">Add Product</p>
-            </button>
-            <button
-              onclick="adminUtils.openModal('addUserModal')"
-              class="glass p-4 rounded-xl text-center hover:bg-white/10 transition-all group cursor-pointer"
-            >
-              <i
-                class="fas fa-user-plus text-green-400 text-2xl mb-2 group-hover:scale-110 transition-transform"
-              ></i>
-              <p class="text-white font-medium">Add User</p>
-            </button>
-            <button
-              onclick="adminUtils.openModal('analyticsModal')"
-              class="glass p-4 rounded-xl text-center hover:bg-white/10 transition-all group cursor-pointer"
-            >
-              <i
-                class="fas fa-chart-line text-yellow-400 text-2xl mb-2 group-hover:scale-110 transition-transform"
-              ></i>
-              <p class="text-white font-medium">View Analytics</p>
-            </button>
-            <button
-              onclick="adminUtils.openModal('settingsModal')"
-              class="glass p-4 rounded-xl text-center hover:bg-white/10 transition-all group cursor-pointer"
-            >
-              <i
-                class="fas fa-cog text-purple-400 text-2xl mb-2 group-hover:scale-110 transition-transform"
-              ></i>
-              <p class="text-white font-medium">Settings</p>
-            </button>
-          </div>
-        </div>
       </div>
     </main>
 
@@ -540,7 +497,7 @@
     <div
       id="sidebarOverlay"
       class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden md:hidden"
-      onclick="adminUtils.toggleMobileSidebar()"
+      onclick="toggleMobileSidebar()"
     ></div>
     <script>
       // Initialize animations and functionality
@@ -557,23 +514,6 @@
           });
         }, 1000);
       });
-
-      // Quick action handlers
-      function quickAddProduct() {
-        window.location.href = "products/index.html";
-      }
-
-      function quickManageCategories() {
-        window.location.href = "categories/index.html";
-      }
-
-      function quickViewOrders() {
-        window.location.href = "orders/index.html";
-      }
-
-      function quickManageUsers() {
-        window.location.href = "users/index.html";
-      }
     </script>
 
     <!-- Modal and Interaction Functions -->
@@ -583,7 +523,7 @@
         if (event.target.classList.contains("backdrop-blur-sm")) {
           const modalId = event.target.id;
           if (modalId && modalId.includes("Modal")) {
-            adminUtils.closeModal(modalId);
+            closeModal(modalId);
           }
         }
       });
