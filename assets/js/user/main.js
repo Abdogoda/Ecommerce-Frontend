@@ -233,7 +233,6 @@ function closeModal(modalId) {
 // Export functions for use in other scripts
 window.UserCommon = {
   showToast,
-  logout,
   openModal,
   closeModal,
   // Remove updateCartBadge and cartItems from here to avoid conflicts
