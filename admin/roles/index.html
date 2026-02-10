@@ -194,6 +194,9 @@
       </div>
     </header>
 
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden" onclick="closeSidebar()"></div>
+
     <!-- Page Content -->
     <div class="p-6 animate-fade-in">
       <!-- Page Header -->
@@ -491,13 +494,11 @@
     </div>
   </main>
 
-  <!-- Mobile Sidebar Overlay -->
-  <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden" onclick="closeSidebar()"></div>
 
   <!-- Add Role Modal -->
   <div id="addModal" class="hidden fixed inset-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center">
     <div class="p-4 w-full max-w-md">
-      <div class="modal-content rounded-2xl p-8 w-full mx-auto animate-bounce-in">
+      <div class="modal-content bg-black/90 rounded-2xl p-8 w-full mx-auto animate-bounce-in">
         <div class="flex items-center justify-between mb-6">
           <div class="flex items-center">
             <div
@@ -539,7 +540,7 @@
   <!-- Edit Role Modal -->
   <div id="editModal" class="hidden fixed inset-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center">
     <div class="p-4 w-full max-w-md">
-      <div class="modal-content rounded-2xl p-8 w-full mx-auto animate-bounce-in">
+      <div class="modal-content bg-black/90 rounded-2xl p-8 w-full mx-auto animate-bounce-in">
         <div class="flex items-center justify-between mb-6">
           <div class="flex items-center">
             <div
@@ -583,7 +584,8 @@
   <div id="permissionsModal"
     class="hidden fixed inset-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center">
     <div class="p-4 w-full max-w-4xl max-h-[90vh]">
-      <div class="modal-content rounded-2xl p-8 w-full mx-auto animate-bounce-in overflow-y-auto max-h-full">
+      <div
+        class="modal-content bg-black/90 rounded-2xl p-8 w-full mx-auto animate-bounce-in overflow-y-auto max-h-full">
         <div class="flex items-center justify-between mb-6">
           <div class="flex items-center">
             <div
@@ -841,7 +843,8 @@
   <div id="detailsModal"
     class="hidden fixed inset-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center">
     <div class="p-4 w-full max-w-2xl max-h-[90vh]">
-      <div class="modal-content rounded-2xl p-8 w-full mx-auto animate-bounce-in overflow-y-auto max-h-full">
+      <div
+        class="modal-content bg-black/90 rounded-2xl p-8 w-full mx-auto animate-bounce-in overflow-y-auto max-h-full">
         <div class="flex items-center justify-between mb-6">
           <div class="flex items-center">
             <div
@@ -877,7 +880,7 @@
   <!-- Delete Confirmation Modal -->
   <div id="deleteModal" class="hidden fixed inset-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center">
     <div class="p-4 w-full max-w-md">
-      <div class="modal-content rounded-2xl p-8 w-full mx-auto animate-bounce-in">
+      <div class="modal-content bg-black/90 rounded-2xl p-8 w-full mx-auto animate-bounce-in">
         <div class="flex items-center justify-between mb-6">
           <div class="flex items-center">
             <div
