@@ -25,6 +25,9 @@ function initializeUserCommon() {
   // Initialize smooth scrolling
   initializeSmoothScrolling();
   
+  // Initialize mobile menu toggler
+  initializeMenuToggler();
+  
   // Initialize user session
   initializeUserSession();
   
@@ -108,6 +111,51 @@ function initializeSmoothScrolling() {
       }
     });
   });
+}
+
+/**
+ * Initialize mobile menu toggler
+ */
+function initializeMenuToggler() {
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  
+  if (mobileMenuToggle && mobileNav) {
+    // Toggle menu
+    mobileMenuToggle.addEventListener('click', function() {
+      mobileNav.classList.toggle('hidden');
+      
+      // Animate hamburger icon
+      const spans = mobileMenuToggle.querySelectorAll('span');
+      mobileMenuToggle.classList.toggle('active');
+      
+      if (mobileMenuToggle.classList.contains('active')) {
+        // Transform to X shape
+        spans[0].style.transform = 'translateY(9px) rotate(45deg)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'translateY(-9px) rotate(-45deg)';
+      } else {
+        // Reset to hamburger
+        spans[0].style.transform = 'translateY(0) rotate(0)';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'translateY(0) rotate(0)';
+      }
+    });
+    
+    // Close menu when a link is clicked
+    const navLinks = mobileNav.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        mobileNav.classList.add('hidden');
+        mobileMenuToggle.classList.remove('active');
+        
+        const spans = mobileMenuToggle.querySelectorAll('span');
+        spans[0].style.transform = 'translateY(0) rotate(0)';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'translateY(0) rotate(0)';
+      });
+    });
+  }
 }
 
 /**

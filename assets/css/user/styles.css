@@ -211,3 +211,43 @@ html {
     color: black !important;
   }
 }
+
+/* Mobile Navigation Menu Styles */
+#mobile-nav {
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  #mobile-nav.hidden {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+  
+  #mobile-nav:not(.hidden) {
+    max-height: 500px;
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  #mobile-nav {
+    max-height: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Mobile menu toggle button animation */
+#mobile-menu-toggle span {
+  display: block;
+}
+
+#mobile-menu-toggle:hover span {
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* Smooth color transition on hover */
+#mobile-menu-toggle:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-radius: 6px;
+}
