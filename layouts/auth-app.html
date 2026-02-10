@@ -11,59 +11,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-  <style>
-    /* Auth-specific styles */
-    .input-focus:focus {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
-    }
-
-    /* Animated background */
-    .auth-bg {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      background-size: 400% 400%;
-      animation: gradientShift 8s ease infinite;
-    }
-
-    @keyframes gradientShift {
-
-      0%,
-      100% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-    }
-
-    /* Floating animation */
-    .float-animation {
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0px) rotate(0deg);
-      }
-
-      33% {
-        transform: translateY(-10px) rotate(1deg);
-      }
-
-      66% {
-        transform: translateY(5px) rotate(-1deg);
-      }
-    }
-  </style>
-
-
-
+  <link rel="stylesheet" href="../assets/css/auth/styles.css" />
   <!-- Additional CSS will be inserted here -->
-  {{CSS_SECTION}}
+  <!-- {{CSS_SECTION}} -->
 </head>
 
 <body class="auth-bg min-h-screen relative">
@@ -95,7 +45,7 @@
 
   <!-- Main Content -->
   <main class="min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 relative z-10">
-    {{CONTENT}}
+    Conntent will be injected here by the auth pages
   </main>
 
   <!-- Scripts -->
@@ -142,7 +92,7 @@
       toastr[type](message);
     }
   </script>
-  {{SCRIPT_SECTION}}
+  <!-- {{SCRIPT_SECTION}} -->
 </body>
 
 </html>
