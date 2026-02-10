@@ -22,10 +22,8 @@
     <!-- Scripts -->
     <!-- Admin Scripts -->
     <script src="../assets/js/admin/main.js"></script>
-    <script src="../assets/js/admin/main.js"></script>
 
     <!-- Additional CSS will be inserted here -->
-    <!-- {{CSS_SECTION}} -->
   </head>
   <body class="admin-bg text-white flex min-h-screen">
     <!-- Sidebar -->
@@ -259,55 +257,20 @@
           </div>
         </div>
       </header>
+  
+      <!-- Mobile Sidebar Overlay -->
+      <div
+        id="sidebarOverlay"
+        class="fixed inset-0 bg-black/50 z-40 hidden md:hidden"
+        onclick="closeSidebar()"
+      ></div>
 
-      <!-- Page Content -->
-      <main class="p-6 animate-fade-in">{{CONTENT}}</main>
+      <!-- PAGE CONTENT -->
+      <main class="p-6 animate-fade-in">
+        Content will be injected here based on the page being rendered.
+      </main>
     </div>
-
-    <!-- Mobile Sidebar Overlay -->
-    <div
-      id="sidebarOverlay"
-      class="fixed inset-0 bg-black/50 z-40 hidden md:hidden"
-      onclick="closeSidebar()"
-    ></div>
-
-    <script>
-      // Utility functions for admin pages
-      function confirmDelete(itemName, callback) {
-        if (
-          confirm(
-            `Are you sure you want to delete ${itemName}? This action cannot be undone.`
-          )
-        ) {
-          callback();
-        }
-      }
-
-      function handleFormSubmit(formId, successMessage) {
-        const form = document.getElementById(formId);
-        if (form) {
-          form.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            // Show loading state
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML =
-              '<i class="fas fa-spinner fa-spin mr-2"></i>Processing...';
-            submitBtn.disabled = true;
-
-            // Simulate API call
-            setTimeout(() => {
-              submitBtn.innerHTML = originalText;
-              submitBtn.disabled = false;
-              showToast("success", successMessage);
-            }, 1500);
-          });
-        }
-      }
-    </script>
-
+    
     <!-- Additional JavaScript will be inserted here -->
-    <!-- {{SCRIPT_SECTION}} -->
   </body>
 </html>

@@ -215,3 +215,37 @@ document.addEventListener("DOMContentLoaded", function () {
           openModal("addModal");
         }
       });
+
+      // Utility functions for admin pages
+      function confirmDelete(itemName, callback) {
+        if (
+          confirm(
+            `Are you sure you want to delete ${itemName}? This action cannot be undone.`
+          )
+        ) {
+          callback();
+        }
+      }
+
+      function handleFormSubmit(formId, successMessage) {
+        const form = document.getElementById(formId);
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Show loading state
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML =
+              '<i class="fas fa-spinner fa-spin mr-2"></i>Processing...';
+            submitBtn.disabled = true;
+
+            // Simulate API call
+            setTimeout(() => {
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+              showToast("success", successMessage);
+            }, 1500);
+          });
+        }
+      }
