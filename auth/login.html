@@ -1,368 +1,430 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - E-Commerce</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - E-Commerce</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/auth/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+  </head>
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="../assets/css/auth/styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  <script src="https://www.google.com/recaptcha/api.js"></script>
-
-
-</head>
-
-<body class="auth-bg min-h-screen relative">
-  <!-- Animated Background Elements -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl float-animation"></div>
-    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl float-animation"
-      style="animation-delay: 2s"></div>
-    <div
-      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-400/5 rounded-full blur-3xl float-animation"
-      style="animation-delay: 4s"></div>
-  </div>
-
-  <!-- Header -->
-  <header class="absolute top-0 left-0 right-0 z-50 py-6 px-6">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <a href="../user/home.html"
-        class="text-2xl font-bold text-white hover:text-blue-200 transition-colors duration-300 animate-fade-in-down">
-        <i class="fas fa-store mr-2 text-blue-200"></i>E-Commerce
-      </a>
-      <nav class="animate-fade-in-down" style="animation-delay: 0.2s">
-        <a href="../user/home.html"
-          class="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium">
-          <i class="fas fa-home mr-1"></i>Back to Home
-        </a>
-      </nav>
+  <body class="auth-bg min-h-screen relative">
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div
+        class="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl float-animation"
+      ></div>
+      <div
+        class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl float-animation"
+        style="animation-delay: 2s"
+      ></div>
+      <div
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-400/5 rounded-full blur-3xl float-animation"
+        style="animation-delay: 4s"
+      ></div>
     </div>
-  </header>
 
-  <!-- Main Content -->
-  <main class="min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="w-full max-w-md animate-scale-in">
-      <!-- Logo Section -->
-      <div class="text-center mb-8 animate-bounce-in">
-        <h2 class="text-4xl font-bold text-white mb-2">Welcome Back</h2>
-        <p class="text-blue-100">Sign in to your account to continue</p>
+    <!-- Header -->
+    <header class="absolute top-0 left-0 right-0 z-50 py-6 px-6">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a
+          href="../user/home.html"
+          class="text-2xl font-bold text-white hover:text-blue-200 transition-colors duration-300 animate-fade-in-down"
+        >
+          <i class="fas fa-store mr-2 text-blue-200"></i>E-Commerce
+        </a>
+        <nav class="animate-fade-in-down" style="animation-delay: 0.2s">
+          <a
+            href="../user/home.html"
+            class="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium"
+          >
+            <i class="fas fa-home mr-1"></i>Back to Home
+          </a>
+        </nav>
       </div>
+    </header>
 
-      <!-- Login Form -->
-      <div class="glass rounded-2xl p-8 shadow-2xl animate-fade-in-up mb-5" style="animation-delay: 0.3s">
-        <!-- Success/Error Messages -->
-        <div id="message-container" class="mb-6"></div>
+    <!-- Main Content -->
+    <main
+      class="min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 relative z-10"
+    >
+      <div class="w-full max-w-md animate-scale-in">
+        <!-- Logo Section -->
+        <div class="text-center mb-8 animate-bounce-in">
+          <h2 class="text-4xl font-bold text-white mb-2">Welcome Back</h2>
+          <p class="text-blue-100">Sign in to your account to continue</p>
+        </div>
 
-        <form action="/login" method="POST" class="space-y-6" id="login-form">
-          <div class="space-y-4">
-            <div>
-              <label for="email" class="block text-sm font-semibold text-white mb-2">
-                <i class="fas fa-envelope mr-2 text-blue-300"></i>Email
-                Address
-              </label>
-              <input type="email" id="email" name="email" autocomplete="email" autofocus required
-                class="input-focus w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
-                placeholder="Enter your email" />
-              <div id="email-error" class="text-red-300 text-sm mt-2 hidden flex items-center">
-                <i class="fas fa-exclamation-triangle mr-1"></i>
-                <span></span>
+        <!-- Login Form -->
+        <div
+          class="glass rounded-2xl p-8 shadow-2xl animate-fade-in-up mb-5"
+          style="animation-delay: 0.3s"
+        >
+          <!-- Success/Error Messages -->
+          <div id="message-container" class="mb-6"></div>
+
+          <form action="/login" method="POST" class="space-y-6" id="login-form">
+            <div class="space-y-4">
+              <div>
+                <label
+                  for="email"
+                  class="block text-sm font-semibold text-white mb-2"
+                >
+                  <i class="fas fa-envelope mr-2 text-blue-300"></i>Email
+                  Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  autofocus
+                  required
+                  class="input-focus w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
+                  placeholder="Enter your email"
+                />
+                <div
+                  id="email-error"
+                  class="text-red-300 text-sm mt-2 hidden flex items-center"
+                >
+                  <i class="fas fa-exclamation-triangle mr-1"></i>
+                  <span></span>
+                </div>
+              </div>
+
+              <div>
+                <label
+                  for="password"
+                  class="block text-sm font-semibold text-white mb-2"
+                >
+                  <i class="fas fa-lock mr-2 text-blue-300"></i>Password
+                </label>
+                <div class="relative">
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    autocomplete="current-password"
+                    required
+                    class="input-focus w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 pr-12"
+                    placeholder="Enter your password"
+                  />
+                  <button
+                    type="button"
+                    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-white transition-colors duration-300"
+                    onclick="togglePassword()"
+                  >
+                    <i class="fas fa-eye" id="password-toggle"></i>
+                  </button>
+                </div>
+                <div
+                  id="password-error"
+                  class="text-red-300 text-sm mt-2 hidden flex items-center"
+                >
+                  <i class="fas fa-exclamation-triangle mr-1"></i>
+                  <span></span>
+                </div>
               </div>
             </div>
 
-            <div>
-              <label for="password" class="block text-sm font-semibold text-white mb-2">
-                <i class="fas fa-lock mr-2 text-blue-300"></i>Password
-              </label>
-              <div class="relative">
-                <input type="password" id="password" name="password" autocomplete="current-password" required
-                  class="input-focus w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 pr-12"
-                  placeholder="Enter your password" />
-                <button type="button"
-                  class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-white transition-colors duration-300"
-                  onclick="togglePassword()">
-                  <i class="fas fa-eye" id="password-toggle"></i>
-                </button>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  name="remember"
+                  id="remember"
+                  class="w-4 h-4 bg-white/10 border-white/20 rounded focus:ring-2 focus:ring-blue-400"
+                />
+                <label for="remember" class="ml-2 text-sm text-white/80">
+                  Remember me
+                </label>
               </div>
-              <div id="password-error" class="text-red-300 text-sm mt-2 hidden flex items-center">
-                <i class="fas fa-exclamation-triangle mr-1"></i>
-                <span></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex items-center justify-between">
-            <div class="flex items-center">
-              <input type="checkbox" name="remember" id="remember"
-                class="w-4 h-4 bg-white/10 border-white/20 rounded focus:ring-2 focus:ring-blue-400" />
-              <label for="remember" class="ml-2 text-sm text-white/80">
-                Remember me
-              </label>
-            </div>
-            <a href="../auth/forgot-password.html"
-              class="text-sm text-blue-300 hover:text-blue-200 transition-colors duration-300 hover:underline">
-              Forgot password?
-            </a>
-          </div>
-
-          <button type="submit"
-            class="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-xl font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 flex items-center justify-center">
-            <i class="fas fa-sign-in-alt mr-2"></i>
-            <span>Sign In</span>
-          </button>
-
-          <div class="text-center">
-            <p class="text-white/60 text-sm">
-              Don't have an account?
-              <a href="../auth/register.html"
-                class="text-blue-300 hover:text-blue-200 font-semibold transition-colors duration-300 hover:underline">
-                Create Account
+              <a
+                href="../auth/forgot-password.html"
+                class="text-sm text-blue-300 hover:text-blue-200 transition-colors duration-300 hover:underline"
+              >
+                Forgot password?
               </a>
-            </p>
-          </div>
-        </form>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-xl font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 flex items-center justify-center"
+            >
+              <i class="fas fa-sign-in-alt mr-2"></i>
+              <span>Sign In</span>
+            </button>
+
+            <div class="text-center">
+              <p class="text-white/60 text-sm">
+                Don't have an account?
+                <a
+                  href="../auth/register.html"
+                  class="text-blue-300 hover:text-blue-200 font-semibold transition-colors duration-300 hover:underline"
+                >
+                  Create Account
+                </a>
+              </p>
+            </div>
+          </form>
+        </div>
+        <div class="flex justify-center space-x-6 text-sm">
+          <a
+            href="#"
+            class="text-white/60 hover:text-white transition-colors duration-300"
+          >
+            <i class="fas fa-shield-alt mr-1"></i>Security
+          </a>
+          <a
+            href="#"
+            class="text-white/60 hover:text-white transition-colors duration-300"
+          >
+            <i class="fas fa-life-ring mr-1"></i>Support
+          </a>
+          <a
+            href="#"
+            class="text-white/60 hover:text-white transition-colors duration-300"
+          >
+            <i class="fas fa-question-circle mr-1"></i>FAQ
+          </a>
+        </div>
       </div>
-      <div class="flex justify-center space-x-6 text-sm">
-        <a href="#" class="text-white/60 hover:text-white transition-colors duration-300">
-          <i class="fas fa-shield-alt mr-1"></i>Security
-        </a>
-        <a href="#" class="text-white/60 hover:text-white transition-colors duration-300">
-          <i class="fas fa-life-ring mr-1"></i>Support
-        </a>
-        <a href="#" class="text-white/60 hover:text-white transition-colors duration-300">
-          <i class="fas fa-question-circle mr-1"></i>FAQ
-        </a>
-      </div>
-    </div>
-  </main>
+    </main>
 
-  <!-- Scripts -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Initialize toastr
-      toastr.options = {
-        closeButton: true,
-        progressBar: true,
-        timeOut: "3500",
-        positionClass: "toast-top-right",
-        preventDuplicates: true,
-      };
+    <!-- Scripts -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize toastr
+        toastr.options = {
+          closeButton: true,
+          progressBar: true,
+          timeOut: "3500",
+          positionClass: "toast-top-right",
+          preventDuplicates: true,
+        };
 
-      // Intersection Observer for animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
+        // Intersection Observer for animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        }, observerOptions);
+
+        // Observe animated elements
+        document.querySelectorAll('[class*="animate-"]').forEach((el) => {
+          if (!el.classList.contains("float-animation")) {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition =
+              "opacity 0.8s ease-out, transform 0.8s ease-out";
+            observer.observe(el);
           }
         });
-      }, observerOptions);
-
-      // Observe animated elements
-      document.querySelectorAll('[class*="animate-"]').forEach((el) => {
-        if (!el.classList.contains("float-animation")) {
-          el.style.opacity = "0";
-          el.style.transform = "translateY(30px)";
-          el.style.transition =
-            "opacity 0.8s ease-out, transform 0.8s ease-out";
-          observer.observe(el);
-        }
       });
-    });
 
-    // Toggle password visibility
-    function togglePassword() {
-      const passwordField = document.getElementById("password");
-      const toggleIcon = document.getElementById("password-toggle");
+      // Toggle password visibility
+      function togglePassword() {
+        const passwordField = document.getElementById("password");
+        const toggleIcon = document.getElementById("password-toggle");
 
-      if (passwordField.type === "password") {
-        passwordField.type = "text";
-        toggleIcon.classList.remove("fa-eye");
-        toggleIcon.classList.add("fa-eye-slash");
-      } else {
-        passwordField.type = "password";
-        toggleIcon.classList.remove("fa-eye-slash");
-        toggleIcon.classList.add("fa-eye");
-      }
-    }
-
-    // Success/Error messages handling
-    function showToast(type, message) {
-      toastr[type](message);
-    }
-
-    function showError(field, message) {
-      const errorDiv = document.getElementById(field + "-error");
-      const input = document.getElementById(field);
-
-      if (errorDiv && input) {
-        errorDiv.querySelector("span").textContent = message;
-        errorDiv.classList.remove("hidden");
-        input.classList.add("border-red-400", "focus:ring-red-400");
-        input.classList.remove("border-white/20", "focus:ring-blue-400");
-      }
-    }
-
-    function clearError(field) {
-      const errorDiv = document.getElementById(field + "-error");
-      const input = document.getElementById(field);
-
-      if (errorDiv && input) {
-        errorDiv.classList.add("hidden");
-        input.classList.remove("border-red-400", "focus:ring-red-400");
-        input.classList.add("border-white/20", "focus:ring-blue-400");
-      }
-    }
-
-    function clearAllErrors() {
-      ["email", "password"].forEach((field) => clearError(field));
-    }
-
-    // Real-time validation functions
-    function validateField(fieldId) {
-      const element = document.getElementById(fieldId);
-      const value = element ? element.value.trim() : "";
-      let error = null;
-
-      switch (fieldId) {
-        case "email":
-          if (!value) {
-            error = "Email is required";
-          } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-            error = "Please enter a valid email address";
-          }
-          break;
-        case "password":
-          if (!value) {
-            error = "Password is required";
-          } else if (value.length < 6) {
-            error = "Password must be at least 6 characters";
-          }
-          break;
+        if (passwordField.type === "password") {
+          passwordField.type = "text";
+          toggleIcon.classList.remove("fa-eye");
+          toggleIcon.classList.add("fa-eye-slash");
+        } else {
+          passwordField.type = "password";
+          toggleIcon.classList.remove("fa-eye-slash");
+          toggleIcon.classList.add("fa-eye");
+        }
       }
 
-      if (error) {
-        showError(fieldId, error);
-        return false;
-      } else {
-        clearError(fieldId);
-        return true;
-      }
-    }
-
-    // Add real-time validation listeners
-    function initializeValidation() {
-      const emailInput = document.getElementById("email");
-      const passwordInput = document.getElementById("password");
-
-      if (emailInput) {
-        emailInput.addEventListener("blur", () => validateField("email"));
-        emailInput.addEventListener("input", () => {
-          if (
-            emailInput.value &&
-            document
-              .getElementById("email-error")
-              .classList.contains("hidden") === false
-          ) {
-            validateField("email");
-          }
-        });
+      // Success/Error messages handling
+      function showToast(type, message) {
+        toastr[type](message);
       }
 
-      if (passwordInput) {
-        passwordInput.addEventListener("blur", () =>
-          validateField("password"),
-        );
-        passwordInput.addEventListener("input", () => {
-          if (
-            passwordInput.value &&
-            document
-              .getElementById("password-error")
-              .classList.contains("hidden") === false
-          ) {
-            validateField("password");
-          }
-        });
+      function showError(field, message) {
+        const errorDiv = document.getElementById(field + "-error");
+        const input = document.getElementById(field);
+
+        if (errorDiv && input) {
+          errorDiv.querySelector("span").textContent = message;
+          errorDiv.classList.remove("hidden");
+          input.classList.add("border-red-400", "focus:ring-red-400");
+          input.classList.remove("border-white/20", "focus:ring-blue-400");
+        }
       }
-    }
 
-    // Handle form submission
-    document
-      .getElementById("login-form")
-      .addEventListener("submit", function (e) {
-        e.preventDefault();
-        clearAllErrors();
+      function clearError(field) {
+        const errorDiv = document.getElementById(field + "-error");
+        const input = document.getElementById(field);
 
-        const formData = new FormData(this);
-        const email = formData.get("email");
-        const password = formData.get("password");
-        let hasErrors = false;
+        if (errorDiv && input) {
+          errorDiv.classList.add("hidden");
+          input.classList.remove("border-red-400", "focus:ring-red-400");
+          input.classList.add("border-white/20", "focus:ring-blue-400");
+        }
+      }
 
-        // Validate all fields
-        if (!validateField("email")) hasErrors = true;
-        if (!validateField("password")) hasErrors = true;
+      function clearAllErrors() {
+        ["email", "password"].forEach((field) => clearError(field));
+      }
 
-        if (hasErrors) {
-          showToast("error", "Please fix the errors above");
-          return;
+      // Real-time validation functions
+      function validateField(fieldId) {
+        const element = document.getElementById(fieldId);
+        const value = element ? element.value.trim() : "";
+        let error = null;
+
+        switch (fieldId) {
+          case "email":
+            if (!value) {
+              error = "Email is required";
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+              error = "Please enter a valid email address";
+            }
+            break;
+          case "password":
+            if (!value) {
+              error = "Password is required";
+            } else if (value.length < 6) {
+              error = "Password must be at least 6 characters";
+            }
+            break;
         }
 
-        // Show loading state
-        const submitButton = this.querySelector('button[type="submit"]');
-        const originalText = submitButton.innerHTML;
-        submitButton.innerHTML =
-          '<i class="fas fa-spinner fa-spin mr-2"></i>Signing In...';
-        submitButton.disabled = true;
+        if (error) {
+          showError(fieldId, error);
+          return false;
+        } else {
+          clearError(fieldId);
+          return true;
+        }
+      }
 
-        // Simulate login (replace with actual API call)
-        setTimeout(() => {
-          showToast("success", "Login successful! Redirecting...");
+      // Add real-time validation listeners
+      function initializeValidation() {
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
 
+        if (emailInput) {
+          emailInput.addEventListener("blur", () => validateField("email"));
+          emailInput.addEventListener("input", () => {
+            if (
+              emailInput.value &&
+              document
+                .getElementById("email-error")
+                .classList.contains("hidden") === false
+            ) {
+              validateField("email");
+            }
+          });
+        }
+
+        if (passwordInput) {
+          passwordInput.addEventListener("blur", () =>
+            validateField("password"),
+          );
+          passwordInput.addEventListener("input", () => {
+            if (
+              passwordInput.value &&
+              document
+                .getElementById("password-error")
+                .classList.contains("hidden") === false
+            ) {
+              validateField("password");
+            }
+          });
+        }
+      }
+
+      // Handle form submission
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          clearAllErrors();
+
+          const formData = new FormData(this);
+          const email = formData.get("email");
+          const password = formData.get("password");
+          let hasErrors = false;
+
+          // Validate all fields
+          if (!validateField("email")) hasErrors = true;
+          if (!validateField("password")) hasErrors = true;
+
+          if (hasErrors) {
+            showToast("error", "Please fix the errors above");
+            return;
+          }
+
+          // Show loading state
+          const submitButton = this.querySelector('button[type="submit"]');
+          const originalText = submitButton.innerHTML;
+          submitButton.innerHTML =
+            '<i class="fas fa-spinner fa-spin mr-2"></i>Signing In...';
+          submitButton.disabled = true;
+
+          // Simulate login (replace with actual API call)
           setTimeout(() => {
-            window.location.href = "../user/home.html";
-          }, 1500);
-        }, 2000);
+            showToast("success", "Login successful! Redirecting...");
 
-        // Reset button after some time (in case of error)
-        setTimeout(() => {
-          submitButton.innerHTML = originalText;
-          submitButton.disabled = false;
-        }, 3000);
-      });
+            setTimeout(() => {
+              window.location.href = "../user/home.html";
+            }, 1500);
+          }, 2000);
 
-    // Initialize real-time validation
-    initializeValidation();
+          // Reset button after some time (in case of error)
+          setTimeout(() => {
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+          }, 3000);
+        });
 
-    // Configure Toastr
-    if (typeof toastr !== "undefined") {
-      toastr.options = {
-        closeButton: true,
-        debug: false,
-        newestOnTop: true,
-        progressBar: true,
-        positionClass: "toast-top-right",
-        preventDuplicates: false,
-        onclick: null,
-        showDuration: "300",
-        hideDuration: "1000",
-        timeOut: "5000",
-        extendedTimeOut: "1000",
-        showEasing: "swing",
-        hideEasing: "linear",
-        showMethod: "fadeIn",
-        hideMethod: "fadeOut",
-      };
-    }
-  </script>
-</body>
+      // Initialize real-time validation
+      initializeValidation();
 
+      // Configure Toastr
+      if (typeof toastr !== "undefined") {
+        toastr.options = {
+          closeButton: true,
+          debug: false,
+          newestOnTop: true,
+          progressBar: true,
+          positionClass: "toast-top-right",
+          preventDuplicates: false,
+          onclick: null,
+          showDuration: "300",
+          hideDuration: "1000",
+          timeOut: "5000",
+          extendedTimeOut: "1000",
+          showEasing: "swing",
+          hideEasing: "linear",
+          showMethod: "fadeIn",
+          hideMethod: "fadeOut",
+        };
+      }
+    </script>
+  </body>
 </html>

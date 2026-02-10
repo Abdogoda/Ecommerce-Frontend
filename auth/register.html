@@ -1,496 +1,594 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - E-Commerce</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Register - E-Commerce</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/auth/styles.css" />
+  </head>
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  <link rel="stylesheet" href="../assets/css/auth/styles.css" />
-
-
-</head>
-
-<body class="auth-bg min-h-screen relative">
-  <!-- Animated Background Elements -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl float-animation"></div>
-    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl float-animation"
-      style="animation-delay: 2s"></div>
-    <div
-      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-400/5 rounded-full blur-3xl float-animation"
-      style="animation-delay: 4s"></div>
-  </div>
-
-  <!-- Header -->
-  <header class="absolute top-0 left-0 right-0 z-50 py-6 px-6">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <a href="../user/home.html"
-        class="text-2xl font-bold text-white hover:text-blue-200 transition-colors duration-300 animate-fade-in-down">
-        <i class="fas fa-store mr-2 text-blue-200"></i>E-Commerce
-      </a>
-      <nav class="animate-fade-in-down" style="animation-delay: 0.2s">
-        <a href="../user/home.html"
-          class="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium">
-          <i class="fas fa-home mr-1"></i>Back to Home
-        </a>
-      </nav>
+  <body class="auth-bg min-h-screen relative">
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div
+        class="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl float-animation"
+      ></div>
+      <div
+        class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl float-animation"
+        style="animation-delay: 2s"
+      ></div>
+      <div
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-400/5 rounded-full blur-3xl float-animation"
+        style="animation-delay: 4s"
+      ></div>
     </div>
-  </header>
 
-  <!-- Main Content -->
-  <main class="min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="w-full max-w-lg animate-scale-in">
-      <!-- Logo Section -->
-      <div class="text-center mb-8 animate-bounce-in">
-        <h2 class="text-4xl font-bold text-white mb-2">Join Us</h2>
-        <p class="text-blue-100">Create your account to get started</p>
+    <!-- Header -->
+    <header class="absolute top-0 left-0 right-0 z-50 py-6 px-6">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a
+          href="../user/home.html"
+          class="text-2xl font-bold text-white hover:text-blue-200 transition-colors duration-300 animate-fade-in-down"
+        >
+          <i class="fas fa-store mr-2 text-blue-200"></i>E-Commerce
+        </a>
+        <nav class="animate-fade-in-down" style="animation-delay: 0.2s">
+          <a
+            href="../user/home.html"
+            class="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium"
+          >
+            <i class="fas fa-home mr-1"></i>Back to Home
+          </a>
+        </nav>
       </div>
+    </header>
 
-      <!-- Register Form -->
-      <div class="glass rounded-2xl p-8 shadow-2xl animate-fade-in-up mb-5" style="animation-delay: 0.3s">
-        <!-- Success/Error Messages -->
-        <div id="message-container" class="mb-6"></div>
+    <!-- Main Content -->
+    <main
+      class="min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 relative z-10"
+    >
+      <div class="w-full max-w-lg animate-scale-in">
+        <!-- Logo Section -->
+        <div class="text-center mb-8 animate-bounce-in">
+          <h2 class="text-4xl font-bold text-white mb-2">Join Us</h2>
+          <p class="text-blue-100">Create your account to get started</p>
+        </div>
 
-        <form action="/register" method="POST" id="register-form" class="space-y-6">
-          <div class="space-y-4">
-            <!-- Full Name -->
-            <div>
-              <label for="name" class="block text-sm font-semibold text-white mb-2">
-                <i class="fas fa-user mr-2 text-green-300"></i>Full Name
-              </label>
-              <input type="text" id="name" name="name" autofocus autocomplete="name" required
-                class="input-focus w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
-                placeholder="Enter your full name" />
-              <div id="name-error" class="text-red-300 text-sm mt-2 hidden flex items-center">
-                <i class="fas fa-exclamation-triangle mr-1"></i>
-                <span></span>
-              </div>
-            </div>
+        <!-- Register Form -->
+        <div
+          class="glass rounded-2xl p-8 shadow-2xl animate-fade-in-up mb-5"
+          style="animation-delay: 0.3s"
+        >
+          <!-- Success/Error Messages -->
+          <div id="message-container" class="mb-6"></div>
 
-            <!-- Email and Phone Row -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <form
+            action="/register"
+            method="POST"
+            id="register-form"
+            class="space-y-6"
+          >
+            <div class="space-y-4">
+              <!-- Full Name -->
               <div>
-                <label for="email" class="block text-sm font-semibold text-white mb-2">
-                  <i class="fas fa-envelope mr-2 text-green-300"></i>Email
+                <label
+                  for="name"
+                  class="block text-sm font-semibold text-white mb-2"
+                >
+                  <i class="fas fa-user mr-2 text-green-300"></i>Full Name
                 </label>
-                <input type="email" id="email" name="email" autocomplete="email" required
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  autofocus
+                  autocomplete="name"
+                  required
                   class="input-focus w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
-                  placeholder="your@email.com" />
-                <div id="email-error" class="text-red-300 text-sm mt-2 hidden flex items-center">
+                  placeholder="Enter your full name"
+                />
+                <div
+                  id="name-error"
+                  class="text-red-300 text-sm mt-2 hidden flex items-center"
+                >
                   <i class="fas fa-exclamation-triangle mr-1"></i>
                   <span></span>
                 </div>
               </div>
 
-              <div>
-                <label for="phone" class="block text-sm font-semibold text-white mb-2">
-                  <i class="fas fa-phone mr-2 text-green-300"></i>Phone
-                </label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel"
-                  class="input-focus w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
-                  placeholder="+1 234 567 8900" />
-                <div id="phone-error" class="text-red-300 text-sm mt-2 hidden flex items-center">
-                  <i class="fas fa-exclamation-triangle mr-1"></i>
-                  <span></span>
+              <!-- Email and Phone Row -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-semibold text-white mb-2"
+                  >
+                    <i class="fas fa-envelope mr-2 text-green-300"></i>Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                    class="input-focus w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
+                    placeholder="your@email.com"
+                  />
+                  <div
+                    id="email-error"
+                    class="text-red-300 text-sm mt-2 hidden flex items-center"
+                  >
+                    <i class="fas fa-exclamation-triangle mr-1"></i>
+                    <span></span>
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    for="phone"
+                    class="block text-sm font-semibold text-white mb-2"
+                  >
+                    <i class="fas fa-phone mr-2 text-green-300"></i>Phone
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    autocomplete="tel"
+                    class="input-focus w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300"
+                    placeholder="+1 234 567 8900"
+                  />
+                  <div
+                    id="phone-error"
+                    class="text-red-300 text-sm mt-2 hidden flex items-center"
+                  >
+                    <i class="fas fa-exclamation-triangle mr-1"></i>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Password and Confirm Password Row -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    for="password"
+                    class="block text-sm font-semibold text-white mb-2"
+                  >
+                    <i class="fas fa-lock mr-2 text-green-300"></i>Password
+                  </label>
+                  <div class="relative">
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      autocomplete="new-password"
+                      class="input-focus w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300 pr-12"
+                      placeholder="Create password"
+                    />
+                    <button
+                      type="button"
+                      class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-white transition-colors duration-300"
+                      onclick="togglePassword('password')"
+                    >
+                      <i class="fas fa-eye" id="password-toggle"></i>
+                    </button>
+                  </div>
+                  <div
+                    id="password-error"
+                    class="text-red-300 text-sm mt-2 hidden flex items-center"
+                  >
+                    <i class="fas fa-exclamation-triangle mr-1"></i>
+                    <span></span>
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    for="password_confirmation"
+                    class="block text-sm font-semibold text-white mb-2"
+                  >
+                    <i class="fas fa-lock mr-2 text-green-300"></i>Confirm
+                  </label>
+                  <div class="relative">
+                    <input
+                      type="password"
+                      id="password_confirmation"
+                      name="password_confirmation"
+                      autocomplete="new-password"
+                      class="input-focus w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300 pr-12"
+                      placeholder="Confirm password"
+                    />
+                    <button
+                      type="button"
+                      class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-white transition-colors duration-300"
+                      onclick="togglePassword('password_confirmation')"
+                    >
+                      <i
+                        class="fas fa-eye"
+                        id="password_confirmation-toggle"
+                      ></i>
+                    </button>
+                  </div>
+                  <div
+                    id="password_confirmation-error"
+                    class="text-red-300 text-sm mt-2 hidden flex items-center"
+                  >
+                    <i class="fas fa-exclamation-triangle mr-1"></i>
+                    <span></span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Password and Confirm Password Row -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label for="password" class="block text-sm font-semibold text-white mb-2">
-                  <i class="fas fa-lock mr-2 text-green-300"></i>Password
-                </label>
-                <div class="relative">
-                  <input type="password" id="password" name="password" autocomplete="new-password"
-                    class="input-focus w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300 pr-12"
-                    placeholder="Create password" />
-                  <button type="button"
-                    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-white transition-colors duration-300"
-                    onclick="togglePassword('password')">
-                    <i class="fas fa-eye" id="password-toggle"></i>
-                  </button>
-                </div>
-                <div id="password-error" class="text-red-300 text-sm mt-2 hidden flex items-center">
-                  <i class="fas fa-exclamation-triangle mr-1"></i>
-                  <span></span>
-                </div>
-              </div>
+            <button
+              type="submit"
+              class="w-full py-4 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 rounded-xl font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-green-500/25 transform hover:scale-105 flex items-center justify-center"
+            >
+              <i class="fas fa-user-plus mr-2"></i>
+              <span>Create Account</span>
+            </button>
 
-              <div>
-                <label for="password_confirmation" class="block text-sm font-semibold text-white mb-2">
-                  <i class="fas fa-lock mr-2 text-green-300"></i>Confirm
-                </label>
-                <div class="relative">
-                  <input type="password" id="password_confirmation" name="password_confirmation"
-                    autocomplete="new-password"
-                    class="input-focus w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300 pr-12"
-                    placeholder="Confirm password" />
-                  <button type="button"
-                    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-white transition-colors duration-300"
-                    onclick="togglePassword('password_confirmation')">
-                    <i class="fas fa-eye" id="password_confirmation-toggle"></i>
-                  </button>
-                </div>
-                <div id="password_confirmation-error" class="text-red-300 text-sm mt-2 hidden flex items-center">
-                  <i class="fas fa-exclamation-triangle mr-1"></i>
-                  <span></span>
-                </div>
-              </div>
+            <div class="text-center">
+              <p class="text-white/60 text-sm">
+                Already have an account?
+                <a
+                  href="../auth/login.html"
+                  class="text-green-300 hover:text-green-200 font-semibold transition-colors duration-300 hover:underline"
+                >
+                  Sign In
+                </a>
+              </p>
             </div>
-          </div>
-
-          <button type="submit"
-            class="w-full py-4 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 rounded-xl font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-green-500/25 transform hover:scale-105 flex items-center justify-center">
-            <i class="fas fa-user-plus mr-2"></i>
-            <span>Create Account</span>
-          </button>
-
-          <div class="text-center">
-            <p class="text-white/60 text-sm">
-              Already have an account?
-              <a href="../auth/login.html"
-                class="text-green-300 hover:text-green-200 font-semibold transition-colors duration-300 hover:underline">
-                Sign In
-              </a>
-            </p>
-          </div>
-        </form>
+          </form>
+        </div>
+        <div class="flex justify-center space-x-6 text-sm">
+          <a
+            href="#"
+            class="text-white/60 hover:text-white transition-colors duration-300"
+          >
+            <i class="fas fa-shield-alt mr-1"></i>Security
+          </a>
+          <a
+            href="#"
+            class="text-white/60 hover:text-white transition-colors duration-300"
+          >
+            <i class="fas fa-life-ring mr-1"></i>Support
+          </a>
+          <a
+            href="#"
+            class="text-white/60 hover:text-white transition-colors duration-300"
+          >
+            <i class="fas fa-question-circle mr-1"></i>FAQ
+          </a>
+        </div>
       </div>
-      <div class="flex justify-center space-x-6 text-sm">
-        <a href="#" class="text-white/60 hover:text-white transition-colors duration-300">
-          <i class="fas fa-shield-alt mr-1"></i>Security
-        </a>
-        <a href="#" class="text-white/60 hover:text-white transition-colors duration-300">
-          <i class="fas fa-life-ring mr-1"></i>Support
-        </a>
-        <a href="#" class="text-white/60 hover:text-white transition-colors duration-300">
-          <i class="fas fa-question-circle mr-1"></i>FAQ
-        </a>
-      </div>
-    </div>
-  </main>
+    </main>
 
-  <script>
-    // Handle form submission
-    document
-      .getElementById("register-form")
-      .addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        // Clear previous errors
-        clearErrors();
-
-        // Get form data
-        const formData = new FormData(this);
-
-        // Basic validation
-        let hasErrors = false;
-
-        if (!formData.get("name").trim()) {
-          showError("name", "Name is required");
-          hasErrors = true;
-        }
-
-        if (!formData.get("email").trim()) {
-          showError("email", "Email is required");
-          hasErrors = true;
-        }
-
-        if (!formData.get("phone").trim()) {
-          showError("phone", "Phone is required");
-          hasErrors = true;
-        }
-
-        if (!formData.get("password").trim()) {
-          showError("password", "Password is required");
-          hasErrors = true;
-        }
-
-        if (
-          formData.get("password") !== formData.get("password_confirmation")
-        ) {
-          showError("password-confirmation", "Passwords do not match");
-          hasErrors = true;
-        }
-
-        if (!hasErrors) {
-          showMessage(
-            "Registration successful! Redirecting to verification page...",
-            "success",
-          );
-          // Redirect to verification page after successful registration
-          setTimeout(() => {
-            window.location.href = "../auth/verify-account.html";
-          }, 2000);
-        }
-      });
-
-    function clearErrors() {
-      document.getElementById("name-error").classList.add("hidden");
-      document.getElementById("email-error").classList.add("hidden");
-      document.getElementById("phone-error").classList.add("hidden");
-      document.getElementById("password-error").classList.add("hidden");
+    <script>
+      // Handle form submission
       document
-        .getElementById("password-confirmation-error")
-        .classList.add("hidden");
-      document.getElementById("message-container").innerHTML = "";
-    }
-
-    function showMessage(message, type) {
-      const container = document.getElementById("message-container");
-      const bgColor = type === "success" ? "bg-green-500" : "bg-red-500";
-      container.innerHTML = `<div class="${bgColor} text-white rounded p-3 my-1">${message}</div>`;
-    }
-
-    function showError(field, message) {
-      const errorElement = document.getElementById(field + "-error");
-      errorElement.textContent = message;
-      errorElement.classList.remove("hidden");
-    }
-  </script>
-  <script>
-    // Password visibility toggle
-    function togglePassword(fieldId) {
-      const passwordField = document.getElementById(fieldId);
-      const toggleIcon = document.getElementById(fieldId + "-toggle");
-
-      if (passwordField.type === "password") {
-        passwordField.type = "text";
-        toggleIcon.classList.remove("fa-eye");
-        toggleIcon.classList.add("fa-eye-slash");
-      } else {
-        passwordField.type = "password";
-        toggleIcon.classList.remove("fa-eye-slash");
-        toggleIcon.classList.add("fa-eye");
-      }
-    }
-
-    // Real-time validation
-    const validators = {
-      name: (value) => {
-        if (!value.trim()) return "Full name is required";
-        if (value.trim().length < 2)
-          return "Name must be at least 2 characters";
-        if (!/^[a-zA-Z\s]+$/.test(value))
-          return "Name can only contain letters and spaces";
-        return null;
-      },
-      email: (value) => {
-        if (!value.trim()) return "Email is required";
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(value))
-          return "Please enter a valid email address";
-        return null;
-      },
-      phone: (value) => {
-        if (!value.trim()) return "Phone number is required";
-        const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-        if (!phoneRegex.test(value.replace(/[\s\-\(\)]/g, "")))
-          return "Please enter a valid phone number";
-        return null;
-      },
-      password: (value) => {
-        if (!value) return "Password is required";
-        if (value.length < 8) return "Password must be at least 8 characters";
-        if (!/(?=.*[a-z])/.test(value))
-          return "Password must contain at least one lowercase letter";
-        if (!/(?=.*[A-Z])/.test(value))
-          return "Password must contain at least one uppercase letter";
-        if (!/(?=.*\d)/.test(value))
-          return "Password must contain at least one number";
-        return null;
-      },
-      password_confirmation: (value) => {
-        const password = document.getElementById("password").value;
-        if (!value) return "Please confirm your password";
-        if (value !== password) return "Passwords do not match";
-        return null;
-      },
-      terms: (checked) => {
-        if (!checked) return "You must agree to the terms and conditions";
-        return null;
-      },
-    };
-
-    function showError(fieldId, message) {
-      const errorElement = document.getElementById(fieldId + "-error");
-      const inputElement = document.getElementById(fieldId);
-
-      if (errorElement && message) {
-        errorElement.querySelector("span").textContent = message;
-        errorElement.classList.remove("hidden");
-        if (inputElement) {
-          inputElement.classList.add("border-red-400", "focus:ring-red-400");
-          inputElement.classList.remove(
-            "border-white/20",
-            "focus:ring-green-400",
-          );
-        }
-      } else if (errorElement) {
-        errorElement.classList.add("hidden");
-        if (inputElement) {
-          inputElement.classList.remove(
-            "border-red-400",
-            "focus:ring-red-400",
-          );
-          inputElement.classList.add(
-            "border-white/20",
-            "focus:ring-green-400",
-          );
-        }
-      }
-    }
-
-    function validateField(fieldId) {
-      const element = document.getElementById(fieldId);
-      let value, error;
-
-      if (fieldId === "terms") {
-        value = element.checked;
-        error = validators[fieldId](value);
-      } else {
-        value = element.value;
-        error = validators[fieldId](value);
-      }
-
-      showError(fieldId, error);
-      return !error;
-    }
-
-    // Add real-time validation listeners
-    document.addEventListener("DOMContentLoaded", function () {
-      // Input field validation
-      const inputFields = [
-        "name",
-        "email",
-        "phone",
-        "password",
-        "password_confirmation",
-      ];
-      inputFields.forEach((fieldId) => {
-        const element = document.getElementById(fieldId);
-        if (element) {
-          element.addEventListener("blur", () => validateField(fieldId));
-          element.addEventListener("input", () => {
-            if (fieldId === "password_confirmation" && element.value) {
-              validateField(fieldId);
-            }
-          });
-        }
-      });
-
-      // Terms checkbox validation
-      const termsCheckbox = document.getElementById("terms");
-      if (termsCheckbox) {
-        termsCheckbox.addEventListener("change", () =>
-          validateField("terms"),
-        );
-      }
-
-      // Form submission
-      const form = document.getElementById("register-form");
-      if (form) {
-        form.addEventListener("submit", function (e) {
+        .getElementById("register-form")
+        .addEventListener("submit", function (e) {
           e.preventDefault();
 
-          // Validate all fields
-          const fields = [
-            "name",
-            "email",
-            "phone",
-            "password",
-            "password_confirmation",
-            "terms",
-          ];
-          let isValid = true;
+          // Clear previous errors
+          clearErrors();
 
-          fields.forEach((fieldId) => {
-            if (!validateField(fieldId)) {
-              isValid = false;
-            }
-          });
+          // Get form data
+          const formData = new FormData(this);
 
-          if (!isValid) {
-            toastr.error("Please fix the errors above", "Validation Error");
-            return;
+          // Basic validation
+          let hasErrors = false;
+
+          if (!formData.get("name").trim()) {
+            showError("name", "Name is required");
+            hasErrors = true;
           }
 
-          // Show loading state
-          const submitButton = form.querySelector('button[type="submit"]');
-          const originalHTML = submitButton.innerHTML;
-          submitButton.innerHTML =
-            '<i class="fas fa-spinner fa-spin mr-2"></i>Creating Account...';
-          submitButton.disabled = true;
+          if (!formData.get("email").trim()) {
+            showError("email", "Email is required");
+            hasErrors = true;
+          }
 
-          // Simulate form submission (replace with actual API call)
-          setTimeout(() => {
-            // Reset button
-            submitButton.innerHTML = originalHTML;
-            submitButton.disabled = false;
+          if (!formData.get("phone").trim()) {
+            showError("phone", "Phone is required");
+            hasErrors = true;
+          }
 
-            // Show success message
-            toastr.success(
-              "Account created successfully! Please check your email to verify your account.",
-              "Registration Successful",
+          if (!formData.get("password").trim()) {
+            showError("password", "Password is required");
+            hasErrors = true;
+          }
+
+          if (
+            formData.get("password") !== formData.get("password_confirmation")
+          ) {
+            showError("password-confirmation", "Passwords do not match");
+            hasErrors = true;
+          }
+
+          if (!hasErrors) {
+            showMessage(
+              "Registration successful! Redirecting to verification page...",
+              "success",
             );
-
-            // Optionally redirect after a delay
+            // Redirect to verification page after successful registration
             setTimeout(() => {
-              window.location.href = "login.html";
+              window.location.href = "../auth/verify-account.html";
             }, 2000);
-          }, 2000);
+          }
         });
+
+      function clearErrors() {
+        document.getElementById("name-error").classList.add("hidden");
+        document.getElementById("email-error").classList.add("hidden");
+        document.getElementById("phone-error").classList.add("hidden");
+        document.getElementById("password-error").classList.add("hidden");
+        document
+          .getElementById("password-confirmation-error")
+          .classList.add("hidden");
+        document.getElementById("message-container").innerHTML = "";
       }
 
-      // Add floating animations with intersection observer
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
+      function showMessage(message, type) {
+        const container = document.getElementById("message-container");
+        const bgColor = type === "success" ? "bg-green-500" : "bg-red-500";
+        container.innerHTML = `<div class="${bgColor} text-white rounded p-3 my-1">${message}</div>`;
+      }
+
+      function showError(field, message) {
+        const errorElement = document.getElementById(field + "-error");
+        errorElement.textContent = message;
+        errorElement.classList.remove("hidden");
+      }
+    </script>
+    <script>
+      // Password visibility toggle
+      function togglePassword(fieldId) {
+        const passwordField = document.getElementById(fieldId);
+        const toggleIcon = document.getElementById(fieldId + "-toggle");
+
+        if (passwordField.type === "password") {
+          passwordField.type = "text";
+          toggleIcon.classList.remove("fa-eye");
+          toggleIcon.classList.add("fa-eye-slash");
+        } else {
+          passwordField.type = "password";
+          toggleIcon.classList.remove("fa-eye-slash");
+          toggleIcon.classList.add("fa-eye");
+        }
+      }
+
+      // Real-time validation
+      const validators = {
+        name: (value) => {
+          if (!value.trim()) return "Full name is required";
+          if (value.trim().length < 2)
+            return "Name must be at least 2 characters";
+          if (!/^[a-zA-Z\s]+$/.test(value))
+            return "Name can only contain letters and spaces";
+          return null;
+        },
+        email: (value) => {
+          if (!value.trim()) return "Email is required";
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(value))
+            return "Please enter a valid email address";
+          return null;
+        },
+        phone: (value) => {
+          if (!value.trim()) return "Phone number is required";
+          const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+          if (!phoneRegex.test(value.replace(/[\s\-\(\)]/g, "")))
+            return "Please enter a valid phone number";
+          return null;
+        },
+        password: (value) => {
+          if (!value) return "Password is required";
+          if (value.length < 8) return "Password must be at least 8 characters";
+          if (!/(?=.*[a-z])/.test(value))
+            return "Password must contain at least one lowercase letter";
+          if (!/(?=.*[A-Z])/.test(value))
+            return "Password must contain at least one uppercase letter";
+          if (!/(?=.*\d)/.test(value))
+            return "Password must contain at least one number";
+          return null;
+        },
+        password_confirmation: (value) => {
+          const password = document.getElementById("password").value;
+          if (!value) return "Please confirm your password";
+          if (value !== password) return "Passwords do not match";
+          return null;
+        },
+        terms: (checked) => {
+          if (!checked) return "You must agree to the terms and conditions";
+          return null;
+        },
       };
 
-      const observer = new IntersectionObserver(function (entries) {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = "running";
+      function showError(fieldId, message) {
+        const errorElement = document.getElementById(fieldId + "-error");
+        const inputElement = document.getElementById(fieldId);
+
+        if (errorElement && message) {
+          errorElement.querySelector("span").textContent = message;
+          errorElement.classList.remove("hidden");
+          if (inputElement) {
+            inputElement.classList.add("border-red-400", "focus:ring-red-400");
+            inputElement.classList.remove(
+              "border-white/20",
+              "focus:ring-green-400",
+            );
+          }
+        } else if (errorElement) {
+          errorElement.classList.add("hidden");
+          if (inputElement) {
+            inputElement.classList.remove(
+              "border-red-400",
+              "focus:ring-red-400",
+            );
+            inputElement.classList.add(
+              "border-white/20",
+              "focus:ring-green-400",
+            );
+          }
+        }
+      }
+
+      function validateField(fieldId) {
+        const element = document.getElementById(fieldId);
+        let value, error;
+
+        if (fieldId === "terms") {
+          value = element.checked;
+          error = validators[fieldId](value);
+        } else {
+          value = element.value;
+          error = validators[fieldId](value);
+        }
+
+        showError(fieldId, error);
+        return !error;
+      }
+
+      // Add real-time validation listeners
+      document.addEventListener("DOMContentLoaded", function () {
+        // Input field validation
+        const inputFields = [
+          "name",
+          "email",
+          "phone",
+          "password",
+          "password_confirmation",
+        ];
+        inputFields.forEach((fieldId) => {
+          const element = document.getElementById(fieldId);
+          if (element) {
+            element.addEventListener("blur", () => validateField(fieldId));
+            element.addEventListener("input", () => {
+              if (fieldId === "password_confirmation" && element.value) {
+                validateField(fieldId);
+              }
+            });
           }
         });
-      }, observerOptions);
 
-      // Observe animated elements
-      document.querySelectorAll('[class*="animate-"]').forEach((el) => {
-        observer.observe(el);
+        // Terms checkbox validation
+        const termsCheckbox = document.getElementById("terms");
+        if (termsCheckbox) {
+          termsCheckbox.addEventListener("change", () =>
+            validateField("terms"),
+          );
+        }
+
+        // Form submission
+        const form = document.getElementById("register-form");
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Validate all fields
+            const fields = [
+              "name",
+              "email",
+              "phone",
+              "password",
+              "password_confirmation",
+              "terms",
+            ];
+            let isValid = true;
+
+            fields.forEach((fieldId) => {
+              if (!validateField(fieldId)) {
+                isValid = false;
+              }
+            });
+
+            if (!isValid) {
+              toastr.error("Please fix the errors above", "Validation Error");
+              return;
+            }
+
+            // Show loading state
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalHTML = submitButton.innerHTML;
+            submitButton.innerHTML =
+              '<i class="fas fa-spinner fa-spin mr-2"></i>Creating Account...';
+            submitButton.disabled = true;
+
+            // Simulate form submission (replace with actual API call)
+            setTimeout(() => {
+              // Reset button
+              submitButton.innerHTML = originalHTML;
+              submitButton.disabled = false;
+
+              // Show success message
+              toastr.success(
+                "Account created successfully! Please check your email to verify your account.",
+                "Registration Successful",
+              );
+
+              // Optionally redirect after a delay
+              setTimeout(() => {
+                window.location.href = "login.html";
+              }, 2000);
+            }, 2000);
+          });
+        }
+
+        // Add floating animations with intersection observer
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.animationPlayState = "running";
+            }
+          });
+        }, observerOptions);
+
+        // Observe animated elements
+        document.querySelectorAll('[class*="animate-"]').forEach((el) => {
+          observer.observe(el);
+        });
       });
-    });
 
-    // Configure Toastr
-    if (typeof toastr !== "undefined") {
-      toastr.options = {
-        closeButton: true,
-        debug: false,
-        newestOnTop: true,
-        progressBar: true,
-        positionClass: "toast-top-right",
-        preventDuplicates: false,
-        onclick: null,
-        showDuration: "300",
-        hideDuration: "1000",
-        timeOut: "5000",
-        extendedTimeOut: "1000",
-        showEasing: "swing",
-        hideEasing: "linear",
-        showMethod: "fadeIn",
-        hideMethod: "fadeOut",
-      };
-    }
-  </script>
-</body>
-
+      // Configure Toastr
+      if (typeof toastr !== "undefined") {
+        toastr.options = {
+          closeButton: true,
+          debug: false,
+          newestOnTop: true,
+          progressBar: true,
+          positionClass: "toast-top-right",
+          preventDuplicates: false,
+          onclick: null,
+          showDuration: "300",
+          hideDuration: "1000",
+          timeOut: "5000",
+          extendedTimeOut: "1000",
+          showEasing: "swing",
+          hideEasing: "linear",
+          showMethod: "fadeIn",
+          hideMethod: "fadeOut",
+        };
+      }
+    </script>
+  </body>
 </html>
