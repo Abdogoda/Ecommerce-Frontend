@@ -1,708 +1,836 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - E-Commerce Admin</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard - E-Commerce Admin</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../assets/css/admin/styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="../../assets/js/admin/main.js"></script>
+  </head>
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/css/admin/styles.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  <script src="../../assets/js/admin/main.js"></script>
-</head>
-
-<body class="admin-bg text-white flex min-h-screen">
-  <!-- Sidebar -->
-  <sidebar id="sidebar"
-    class="glass w-64 min-h-screen fixed transition-all duration-300 transform -translate-x-full md:translate-x-0 z-50 border-r border-white/10 flex flex-col">
-    <!-- Logo Section -->
-    <div class="p-6 pb-4 flex-shrink-0">
-      <div class="animate-bounce-in">
-        <div class="flex items-center space-x-3">
-          <div
-            class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-            <i class="fas fa-store text-white text-lg"></i>
-          </div>
-          <div>
-            <h2 class="text-xl font-bold text-white">
-              <a href="../user/home.html" class="hover:text-blue-400 transition-colors">E-Commerce</a>
-            </h2>
-            <p class="text-xs text-gray-400">Admin Panel</p>
+  <body class="admin-bg text-white flex min-h-screen">
+    <!-- Sidebar -->
+    <sidebar
+      id="sidebar"
+      class="glass w-64 min-h-screen fixed transition-all duration-300 transform -translate-x-full md:translate-x-0 z-50 border-r border-white/10 flex flex-col"
+    >
+      <!-- Logo Section -->
+      <div class="p-6 pb-4 flex-shrink-0">
+        <div class="animate-bounce-in">
+          <div class="flex items-center space-x-3">
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center"
+            >
+              <i class="fas fa-store text-white text-lg"></i>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-white">
+                <a
+                  href="../user/home.html"
+                  class="hover:text-blue-400 transition-colors"
+                  >E-Commerce</a
+                >
+              </h2>
+              <p class="text-xs text-gray-400">Admin Panel</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Navigation Menu -->
-    <nav class="flex-1 overflow-y-auto px-6 pb-6">
-      <div class="space-y-2">
-        <!-- Main Navigation -->
-        <div class="mb-6">
-          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
-            Main
-          </p>
-          <ul class="space-y-1">
-            <!-- Dashboard -->
-            <li>
-              <a href="dashboard.html"
-                class="sidebar-item active flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
-                <i class="fas fa-chart-line text-blue-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">Dashboard</span>
-              </a>
-            </li>
+      <!-- Navigation Menu -->
+      <nav class="flex-1 overflow-y-auto px-6 pb-6">
+        <div class="space-y-2">
+          <!-- Main Navigation -->
+          <div class="mb-6">
+            <p
+              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
+            >
+              Main
+            </p>
+            <ul class="space-y-1">
+              <!-- Dashboard -->
+              <li>
+                <a
+                  href="dashboard.html"
+                  class="sidebar-item active flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-chart-line text-blue-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Dashboard</span>
+                </a>
+              </li>
 
-            <!-- Users Management -->
-            <li>
-              <a href="users/index.html"
-                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
-                <i class="fas fa-users text-green-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">Users</span>
-              </a>
-            </li>
+              <!-- Users Management -->
+              <li>
+                <a
+                  href="users/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-users text-green-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Users</span>
+                </a>
+              </li>
 
-            <!-- Roles -->
-            <li>
-              <a href="roles/index.html"
-                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
-                <i class="fas fa-user-shield text-purple-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">Roles</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+              <!-- Roles -->
+              <li>
+                <a
+                  href="roles/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-user-shield text-purple-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Roles</span>
+                </a>
+              </li>
+            </ul>
+          </div>
 
-        <!-- Catalog Management -->
-        <div class="mb-6">
-          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
-            Catalog
-          </p>
-          <ul class="space-y-1">
-            <!-- Categories -->
-            <li>
-              <a href="categories/index.html"
-                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
-                <i class="fas fa-tags text-yellow-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">Categories</span>
-              </a>
-            </li>
+          <!-- Catalog Management -->
+          <div class="mb-6">
+            <p
+              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
+            >
+              Catalog
+            </p>
+            <ul class="space-y-1">
+              <!-- Categories -->
+              <li>
+                <a
+                  href="categories/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-tags text-yellow-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Categories</span>
+                </a>
+              </li>
 
-            <!-- Products -->
-            <li>
-              <a href="products/index.html"
-                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
-                <i class="fas fa-box text-orange-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">Products</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+              <!-- Products -->
+              <li>
+                <a
+                  href="products/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-box text-orange-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Products</span>
+                </a>
+              </li>
+            </ul>
+          </div>
 
-        <!-- Sales & Communication -->
-        <div class="mb-6">
-          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
-            Sales
-          </p>
-          <ul class="space-y-1">
-            <!-- Orders -->
-            <li>
-              <a href="orders/index.html"
-                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
-                <i class="fas fa-shopping-cart text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">Orders</span>
-              </a>
-            </li>
+          <!-- Sales & Communication -->
+          <div class="mb-6">
+            <p
+              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
+            >
+              Sales
+            </p>
+            <ul class="space-y-1">
+              <!-- Orders -->
+              <li>
+                <a
+                  href="orders/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-shopping-cart text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Orders</span>
+                </a>
+              </li>
 
-            <!-- Messages -->
-            <li>
-              <a href="messages/index.html"
-                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
-                <i class="fas fa-envelope text-cyan-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">Messages</span>
-                <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">3</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+              <!-- Messages -->
+              <li>
+                <a
+                  href="messages/index.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-envelope text-cyan-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Messages</span>
+                  <span
+                    class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full"
+                    >3</span
+                  >
+                </a>
+              </li>
+            </ul>
+          </div>
 
-        <!-- Account -->
-        <div class="border-t border-white/10 pt-4">
-          <ul class="space-y-1">
-            <li>
-              <a href="profile.html"
-                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
-                <i class="fas fa-user-circle text-indigo-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">Profile</span>
-              </a>
-            </li>
-            <li>
-              <button type="button"
-                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-red-400 group w-full text-left">
-                <i class="fas fa-sign-out-alt text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
-                <span class="font-medium">Logout</span>
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </sidebar>
-
-  <!-- Main Content -->
-  <main class="max-w-full flex-1 md:ml-64 min-h-screen">
-    <!-- Top Header -->
-    <header class="glass border-b border-white/10 p-4 sticky top-0 z-40">
-      <div class="flex items-center justify-between">
-        <!-- Mobile Menu Button -->
-        <button id="toggleSidebar"
-          class="md:hidden glass p-2 rounded-xl text-white hover:bg-white/10 transition-colors">
-          <i class="fas fa-bars"></i>
-        </button>
-
-        <!-- Page Title Area -->
-        <div class="flex items-center space-x-4">
-          <div class="text-sm text-gray-400">
-            <span>Admin</span>
-            <i class="fas fa-chevron-right mx-2"></i>
-            <span class="text-white">Dashboard</span>
+          <!-- Account -->
+          <div class="border-t border-white/10 pt-4">
+            <ul class="space-y-1">
+              <li>
+                <a
+                  href="profile.html"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
+                >
+                  <i
+                    class="fas fa-user-circle text-indigo-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Profile</span>
+                </a>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-red-400 group w-full text-left"
+                >
+                  <i
+                    class="fas fa-sign-out-alt text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium">Logout</span>
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
+      </nav>
+    </sidebar>
 
-        <!-- Header Actions -->
-        <div class="flex items-center space-x-3">
-          <!-- Notifications -->
+    <!-- Main Content -->
+    <main class="max-w-full flex-1 md:ml-64 min-h-screen">
+      <!-- Top Header -->
+      <header class="glass border-b border-white/10 p-4 sticky top-0 z-40">
+        <div class="flex items-center justify-between">
+          <!-- Mobile Menu Button -->
           <button
-            class="glass p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors relative">
-            <i class="fas fa-bell"></i>
-            <span
-              class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">3</span>
+            id="toggleSidebar"
+            class="md:hidden glass p-2 rounded-xl text-white hover:bg-white/10 transition-colors"
+          >
+            <i class="fas fa-bars"></i>
           </button>
 
-          <!-- User Profile -->
-          <div class="flex items-center space-x-2 glass px-3 py-2 rounded-xl">
-            <div
-              class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
-              A
-            </div>
-            <div class="hidden sm:block">
-              <p class="text-sm font-medium text-white">Admin User</p>
-              <p class="text-xs text-gray-400">Administrator</p>
+          <!-- Page Title Area -->
+          <div class="flex items-center space-x-4">
+            <div class="text-sm text-gray-400">
+              <span>Admin</span>
+              <i class="fas fa-chevron-right mx-2"></i>
+              <span class="text-white">Dashboard</span>
             </div>
           </div>
-        </div>
-      </div>
-    </header>
 
-    <!-- Page Content -->
-    <div class="p-6 animate-fade-in">
-      <!-- Stats Overview -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <!-- Total Orders -->
-        <div class="admin-card stat-card p-6 rounded-2xl animate-slide-in">
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-gray-400 text-sm font-medium">Total Orders</p>
-              <p class="text-3xl font-bold text-white mt-2">245</p>
-              <div class="flex items-center mt-2">
-                <span class="text-green-400 text-sm font-medium">+12%</span>
-                <span class="text-gray-500 text-sm ml-2">vs last month</span>
+          <!-- Header Actions -->
+          <div class="flex items-center space-x-3">
+            <!-- Notifications -->
+            <button
+              class="glass p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors relative"
+            >
+              <i class="fas fa-bell"></i>
+              <span
+                class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center"
+                >3</span
+              >
+            </button>
+
+            <!-- User Profile -->
+            <div class="flex items-center space-x-2 glass px-3 py-2 rounded-xl">
+              <div
+                class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm"
+              >
+                A
+              </div>
+              <div class="hidden sm:block">
+                <p class="text-sm font-medium text-white">Admin User</p>
+                <p class="text-xs text-gray-400">Administrator</p>
               </div>
             </div>
-            <div class="bg-blue-500/20 p-3 rounded-xl">
-              <i class="fas fa-shopping-cart text-blue-400 text-xl"></i>
-            </div>
-          </div>
-          <div class="mt-4 bg-gray-700/30 rounded-full h-2">
-            <div class="progress-bar bg-blue-500 h-2 rounded-full" style="width: 75%"></div>
           </div>
         </div>
+      </header>
 
-        <!-- Total Products -->
-        <div class="admin-card stat-card p-6 rounded-2xl animate-slide-in" style="animation-delay: 0.1s">
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-gray-400 text-sm font-medium">Total Products</p>
-              <p class="text-3xl font-bold text-white mt-2">89</p>
-              <div class="flex items-center mt-2">
-                <span class="text-green-400 text-sm font-medium">+8%</span>
-                <span class="text-gray-500 text-sm ml-2">vs last month</span>
+      <!-- Page Content -->
+      <div class="p-6 animate-fade-in">
+        <!-- Stats Overview -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <!-- Total Orders -->
+          <div class="admin-card stat-card p-6 rounded-2xl animate-slide-in">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-400 text-sm font-medium">Total Orders</p>
+                <p class="text-3xl font-bold text-white mt-2">245</p>
+                <div class="flex items-center mt-2">
+                  <span class="text-green-400 text-sm font-medium">+12%</span>
+                  <span class="text-gray-500 text-sm ml-2">vs last month</span>
+                </div>
+              </div>
+              <div class="bg-blue-500/20 p-3 rounded-xl">
+                <i class="fas fa-shopping-cart text-blue-400 text-xl"></i>
               </div>
             </div>
-            <div class="bg-emerald-500/20 p-3 rounded-xl">
-              <i class="fas fa-box text-emerald-400 text-xl"></i>
+            <div class="mt-4 bg-gray-700/30 rounded-full h-2">
+              <div
+                class="progress-bar bg-blue-500 h-2 rounded-full"
+                style="width: 75%"
+              ></div>
             </div>
           </div>
-          <div class="mt-4 bg-gray-700/30 rounded-full h-2">
-            <div class="progress-bar bg-emerald-500 h-2 rounded-full" style="width: 65%"></div>
-          </div>
-        </div>
 
-        <!-- Total Users -->
-        <div class="admin-card stat-card p-6 rounded-2xl animate-slide-in" style="animation-delay: 0.2s">
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-gray-400 text-sm font-medium">Total Users</p>
-              <p class="text-3xl font-bold text-white mt-2">156</p>
-              <div class="flex items-center mt-2">
-                <span class="text-green-400 text-sm font-medium">+23%</span>
-                <span class="text-gray-500 text-sm ml-2">vs last month</span>
+          <!-- Total Products -->
+          <div
+            class="admin-card stat-card p-6 rounded-2xl animate-slide-in"
+            style="animation-delay: 0.1s"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-400 text-sm font-medium">Total Products</p>
+                <p class="text-3xl font-bold text-white mt-2">89</p>
+                <div class="flex items-center mt-2">
+                  <span class="text-green-400 text-sm font-medium">+8%</span>
+                  <span class="text-gray-500 text-sm ml-2">vs last month</span>
+                </div>
+              </div>
+              <div class="bg-emerald-500/20 p-3 rounded-xl">
+                <i class="fas fa-box text-emerald-400 text-xl"></i>
               </div>
             </div>
-            <div class="bg-purple-500/20 p-3 rounded-xl">
-              <i class="fas fa-users text-purple-400 text-xl"></i>
+            <div class="mt-4 bg-gray-700/30 rounded-full h-2">
+              <div
+                class="progress-bar bg-emerald-500 h-2 rounded-full"
+                style="width: 65%"
+              ></div>
             </div>
           </div>
-          <div class="mt-4 bg-gray-700/30 rounded-full h-2">
-            <div class="progress-bar bg-purple-500 h-2 rounded-full" style="width: 85%"></div>
-          </div>
-        </div>
 
-        <!-- Total Revenue -->
-        <div class="admin-card stat-card p-6 rounded-2xl animate-slide-in" style="animation-delay: 0.3s">
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-gray-400 text-sm font-medium">Total Revenue</p>
-              <p class="text-3xl font-bold text-white mt-2">$24.5K</p>
-              <div class="flex items-center mt-2">
-                <span class="text-green-400 text-sm font-medium">+18%</span>
-                <span class="text-gray-500 text-sm ml-2">vs last month</span>
+          <!-- Total Users -->
+          <div
+            class="admin-card stat-card p-6 rounded-2xl animate-slide-in"
+            style="animation-delay: 0.2s"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-400 text-sm font-medium">Total Users</p>
+                <p class="text-3xl font-bold text-white mt-2">156</p>
+                <div class="flex items-center mt-2">
+                  <span class="text-green-400 text-sm font-medium">+23%</span>
+                  <span class="text-gray-500 text-sm ml-2">vs last month</span>
+                </div>
+              </div>
+              <div class="bg-purple-500/20 p-3 rounded-xl">
+                <i class="fas fa-users text-purple-400 text-xl"></i>
               </div>
             </div>
-            <div class="bg-amber-500/20 p-3 rounded-xl">
-              <i class="fas fa-dollar-sign text-amber-400 text-xl"></i>
+            <div class="mt-4 bg-gray-700/30 rounded-full h-2">
+              <div
+                class="progress-bar bg-purple-500 h-2 rounded-full"
+                style="width: 85%"
+              ></div>
             </div>
           </div>
-          <div class="mt-4 bg-gray-700/30 rounded-full h-2">
-            <div class="progress-bar bg-amber-500 h-2 rounded-full" style="width: 90%"></div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Secondary Stats -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        <!-- Categories -->
-        <div class="admin-card p-6 rounded-2xl animate-fade-in">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold text-white">Categories</h3>
-            <i class="fas fa-tags text-yellow-400"></i>
-          </div>
-          <p class="text-2xl font-bold text-white">12</p>
-          <p class="text-gray-400 text-sm mt-1">Active categories</p>
-        </div>
-
-        <!-- Verified Users -->
-        <div class="admin-card p-6 rounded-2xl animate-fade-in" style="animation-delay: 0.1s">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold text-white">Verified Users</h3>
-            <i class="fas fa-user-check text-green-400"></i>
-          </div>
-          <p class="text-2xl font-bold text-white">142</p>
-          <p class="text-gray-400 text-sm mt-1">91% verification rate</p>
-        </div>
-
-        <!-- Pending Messages -->
-        <div class="admin-card p-6 rounded-2xl animate-fade-in" style="animation-delay: 0.2s">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold text-white">Messages</h3>
-            <div class="relative">
-              <i class="fas fa-envelope text-cyan-400"></i>
-              <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">3</span>
+          <!-- Total Revenue -->
+          <div
+            class="admin-card stat-card p-6 rounded-2xl animate-slide-in"
+            style="animation-delay: 0.3s"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-gray-400 text-sm font-medium">Total Revenue</p>
+                <p class="text-3xl font-bold text-white mt-2">$24.5K</p>
+                <div class="flex items-center mt-2">
+                  <span class="text-green-400 text-sm font-medium">+18%</span>
+                  <span class="text-gray-500 text-sm ml-2">vs last month</span>
+                </div>
+              </div>
+              <div class="bg-amber-500/20 p-3 rounded-xl">
+                <i class="fas fa-dollar-sign text-amber-400 text-xl"></i>
+              </div>
+            </div>
+            <div class="mt-4 bg-gray-700/30 rounded-full h-2">
+              <div
+                class="progress-bar bg-amber-500 h-2 rounded-full"
+                style="width: 90%"
+              ></div>
             </div>
           </div>
-          <p class="text-2xl font-bold text-white">34</p>
-          <p class="text-gray-400 text-sm mt-1">3 unread messages</p>
         </div>
-      </div>
 
-      <!-- Charts Section -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <!-- Orders Chart -->
-        <div class="admin-card p-6 rounded-2xl animate-bounce-in">
-          <div class="flex items-center justify-between mb-6">
-            <h3 class="text-xl font-bold text-white">Orders Overview</h3>
-            <div class="flex space-x-2">
-              <button
-                class="text-gray-400 hover:text-white text-sm px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
-                Month
+        <!-- Secondary Stats -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <!-- Categories -->
+          <div class="admin-card p-6 rounded-2xl animate-fade-in">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-semibold text-white">Categories</h3>
+              <i class="fas fa-tags text-yellow-400"></i>
+            </div>
+            <p class="text-2xl font-bold text-white">12</p>
+            <p class="text-gray-400 text-sm mt-1">Active categories</p>
+          </div>
+
+          <!-- Verified Users -->
+          <div
+            class="admin-card p-6 rounded-2xl animate-fade-in"
+            style="animation-delay: 0.1s"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-semibold text-white">Verified Users</h3>
+              <i class="fas fa-user-check text-green-400"></i>
+            </div>
+            <p class="text-2xl font-bold text-white">142</p>
+            <p class="text-gray-400 text-sm mt-1">91% verification rate</p>
+          </div>
+
+          <!-- Pending Messages -->
+          <div
+            class="admin-card p-6 rounded-2xl animate-fade-in"
+            style="animation-delay: 0.2s"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-semibold text-white">Messages</h3>
+              <div class="relative">
+                <i class="fas fa-envelope text-cyan-400"></i>
+                <span
+                  class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full"
+                  >3</span
+                >
+              </div>
+            </div>
+            <p class="text-2xl font-bold text-white">34</p>
+            <p class="text-gray-400 text-sm mt-1">3 unread messages</p>
+          </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          <!-- Orders Chart -->
+          <div class="admin-card p-6 rounded-2xl animate-bounce-in">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-bold text-white">Orders Overview</h3>
+              <div class="flex space-x-2">
+                <button
+                  class="text-gray-400 hover:text-white text-sm px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                  Month
+                </button>
+                <button
+                  class="text-blue-400 text-sm px-3 py-1 rounded-lg bg-blue-500/20"
+                >
+                  Year
+                </button>
+              </div>
+            </div>
+            <div class="h-64">
+              <canvas id="ordersChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Categories Distribution -->
+          <div
+            class="admin-card p-6 rounded-2xl animate-bounce-in"
+            style="animation-delay: 0.1s"
+          >
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-bold text-white">Products by Category</h3>
+              <button class="text-gray-400 hover:text-white">
+                <i class="fas fa-ellipsis-h"></i>
               </button>
-              <button class="text-blue-400 text-sm px-3 py-1 rounded-lg bg-blue-500/20">
-                Year
-              </button>
             </div>
-          </div>
-          <div class="h-64">
-            <canvas id="ordersChart"></canvas>
+            <div class="h-64">
+              <canvas id="categoriesChart"></canvas>
+            </div>
           </div>
         </div>
 
-        <!-- Categories Distribution -->
-        <div class="admin-card p-6 rounded-2xl animate-bounce-in" style="animation-delay: 0.1s">
-          <div class="flex items-center justify-between mb-6">
-            <h3 class="text-xl font-bold text-white">Products by Category</h3>
-            <button class="text-gray-400 hover:text-white">
-              <i class="fas fa-ellipsis-h"></i>
+        <!-- Additional Charts -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          <!-- Top Products -->
+          <div class="admin-card p-6 rounded-2xl animate-fade-in">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-bold text-white">Top Products</h3>
+              <a
+                href="products/index.html"
+                class="text-blue-400 hover:text-blue-300 text-sm"
+                >View All</a
+              >
+            </div>
+            <div class="h-64">
+              <canvas id="topProductsChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Top Users -->
+          <div
+            class="admin-card p-6 rounded-2xl animate-fade-in"
+            style="animation-delay: 0.1s"
+          >
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-bold text-white">Top Customers</h3>
+              <a
+                href="users/index.html"
+                class="text-blue-400 hover:text-blue-300 text-sm"
+                >View All</a
+              >
+            </div>
+            <div class="h-64">
+              <canvas id="bestSellerUsersChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="admin-card p-6 rounded-2xl animate-slide-in">
+          <h3 class="text-xl font-bold text-white mb-6">Quick Actions</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <button
+              onclick="adminUtils.openModal('addProductModal')"
+              class="glass p-4 rounded-xl text-center hover:bg-white/10 transition-all group cursor-pointer"
+            >
+              <i
+                class="fas fa-plus text-blue-400 text-2xl mb-2 group-hover:scale-110 transition-transform"
+              ></i>
+              <p class="text-white font-medium">Add Product</p>
+            </button>
+            <button
+              onclick="adminUtils.openModal('addUserModal')"
+              class="glass p-4 rounded-xl text-center hover:bg-white/10 transition-all group cursor-pointer"
+            >
+              <i
+                class="fas fa-user-plus text-green-400 text-2xl mb-2 group-hover:scale-110 transition-transform"
+              ></i>
+              <p class="text-white font-medium">Add User</p>
+            </button>
+            <button
+              onclick="adminUtils.openModal('analyticsModal')"
+              class="glass p-4 rounded-xl text-center hover:bg-white/10 transition-all group cursor-pointer"
+            >
+              <i
+                class="fas fa-chart-line text-yellow-400 text-2xl mb-2 group-hover:scale-110 transition-transform"
+              ></i>
+              <p class="text-white font-medium">View Analytics</p>
+            </button>
+            <button
+              onclick="adminUtils.openModal('settingsModal')"
+              class="glass p-4 rounded-xl text-center hover:bg-white/10 transition-all group cursor-pointer"
+            >
+              <i
+                class="fas fa-cog text-purple-400 text-2xl mb-2 group-hover:scale-110 transition-transform"
+              ></i>
+              <p class="text-white font-medium">Settings</p>
             </button>
           </div>
-          <div class="h-64">
-            <canvas id="categoriesChart"></canvas>
-          </div>
         </div>
       </div>
+    </main>
 
-      <!-- Additional Charts -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <!-- Top Products -->
-        <div class="admin-card p-6 rounded-2xl animate-fade-in">
-          <div class="flex items-center justify-between mb-6">
-            <h3 class="text-xl font-bold text-white">Top Products</h3>
-            <a href="products/index.html" class="text-blue-400 hover:text-blue-300 text-sm">View All</a>
-          </div>
-          <div class="h-64">
-            <canvas id="topProductsChart"></canvas>
-          </div>
-        </div>
+    <!-- Mobile Sidebar Overlay -->
+    <div
+      id="sidebarOverlay"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden md:hidden"
+      onclick="adminUtils.toggleMobileSidebar()"
+    ></div>
+    <script>
+      // Initialize animations and functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize progress bars animation
+        setTimeout(() => {
+          const progressBars = document.querySelectorAll(".progress-bar");
+          progressBars.forEach((bar) => {
+            const width = bar.style.width;
+            bar.style.width = "0%";
+            setTimeout(() => {
+              bar.style.width = width;
+            }, 500);
+          });
+        }, 1000);
+      });
 
-        <!-- Top Users -->
-        <div class="admin-card p-6 rounded-2xl animate-fade-in" style="animation-delay: 0.1s">
-          <div class="flex items-center justify-between mb-6">
-            <h3 class="text-xl font-bold text-white">Top Customers</h3>
-            <a href="users/index.html" class="text-blue-400 hover:text-blue-300 text-sm">View All</a>
-          </div>
-          <div class="h-64">
-            <canvas id="bestSellerUsersChart"></canvas>
-          </div>
-        </div>
-      </div>
-
-      <!-- Quick Actions -->
-      <div class="admin-card p-6 rounded-2xl animate-slide-in">
-        <h3 class="text-xl font-bold text-white mb-6">Quick Actions</h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <button onclick="adminUtils.openModal('addProductModal')"
-            class="glass p-4 rounded-xl text-center hover:bg-white/10 transition-all group cursor-pointer">
-            <i class="fas fa-plus text-blue-400 text-2xl mb-2 group-hover:scale-110 transition-transform"></i>
-            <p class="text-white font-medium">Add Product</p>
-          </button>
-          <button onclick="adminUtils.openModal('addUserModal')"
-            class="glass p-4 rounded-xl text-center hover:bg-white/10 transition-all group cursor-pointer">
-            <i class="fas fa-user-plus text-green-400 text-2xl mb-2 group-hover:scale-110 transition-transform"></i>
-            <p class="text-white font-medium">Add User</p>
-          </button>
-          <button onclick="adminUtils.openModal('analyticsModal')"
-            class="glass p-4 rounded-xl text-center hover:bg-white/10 transition-all group cursor-pointer">
-            <i class="fas fa-chart-line text-yellow-400 text-2xl mb-2 group-hover:scale-110 transition-transform"></i>
-            <p class="text-white font-medium">View Analytics</p>
-          </button>
-          <button onclick="adminUtils.openModal('settingsModal')"
-            class="glass p-4 rounded-xl text-center hover:bg-white/10 transition-all group cursor-pointer">
-            <i class="fas fa-cog text-purple-400 text-2xl mb-2 group-hover:scale-110 transition-transform"></i>
-            <p class="text-white font-medium">Settings</p>
-          </button>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- Mobile Sidebar Overlay -->
-  <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden md:hidden"
-    onclick="adminUtils.toggleMobileSidebar()"></div>
-  <script>
-    // Initialize animations and functionality
-    document.addEventListener("DOMContentLoaded", function () {
-      // Initialize progress bars animation
-      setTimeout(() => {
-        const progressBars = document.querySelectorAll(".progress-bar");
-        progressBars.forEach((bar) => {
-          const width = bar.style.width;
-          bar.style.width = "0%";
-          setTimeout(() => {
-            bar.style.width = width;
-          }, 500);
-        });
-      }, 1000);
-    });
-
-    // Quick action handlers
-    function quickAddProduct() {
-      window.location.href = "products/index.html";
-    }
-
-    function quickManageCategories() {
-      window.location.href = "categories/index.html";
-    }
-
-    function quickViewOrders() {
-      window.location.href = "orders/index.html";
-    }
-
-    function quickManageUsers() {
-      window.location.href = "users/index.html";
-    }
-  </script>
-
-  <!-- Modal and Interaction Functions -->
-  <script>
-    // Close modal when clicking outside
-    document.addEventListener("click", function (event) {
-      if (event.target.classList.contains("backdrop-blur-sm")) {
-        const modalId = event.target.id;
-        if (modalId && modalId.includes("Modal")) {
-          adminUtils.closeModal(modalId);
-        }
+      // Quick action handlers
+      function quickAddProduct() {
+        window.location.href = "products/index.html";
       }
-    });
-  </script>
 
-  <!-- Chart.js Configuration -->
-  <script>
-    // Chart.js default configuration
-    Chart.defaults.color = "#9CA3AF";
-    Chart.defaults.borderColor = "rgba(255, 255, 255, 0.1)";
-    Chart.defaults.backgroundColor = "rgba(255, 255, 255, 0.05)";
+      function quickManageCategories() {
+        window.location.href = "categories/index.html";
+      }
 
-    // Sample data
-    const monthlyData = {
-      labels: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-      ],
-      orders: [45, 52, 38, 65, 59, 78, 85, 72, 91, 88, 94, 105],
-      revenue: [
-        4500, 5200, 3800, 6500, 5900, 7800, 8500, 7200, 9100, 8800, 9400,
-        10500,
-      ],
-    };
+      function quickViewOrders() {
+        window.location.href = "orders/index.html";
+      }
 
-    const categoryData = {
-      labels: [
-        "Electronics",
-        "Clothing",
-        "Books",
-        "Home & Garden",
-        "Sports",
-        "Beauty",
-      ],
-      data: [25, 18, 12, 20, 15, 10],
-      colors: [
-        "#3B82F6",
-        "#10B981",
-        "#F59E0B",
-        "#EF4444",
-        "#8B5CF6",
-        "#EC4899",
-      ],
-    };
+      function quickManageUsers() {
+        window.location.href = "users/index.html";
+      }
+    </script>
 
-    const topProducts = {
-      labels: [
-        "iPhone 13",
-        "Samsung TV",
-        "MacBook Pro",
-        "Nike Shoes",
-        "Canon Camera",
-      ],
-      data: [45, 38, 32, 28, 25],
-    };
+    <!-- Modal and Interaction Functions -->
+    <script>
+      // Close modal when clicking outside
+      document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("backdrop-blur-sm")) {
+          const modalId = event.target.id;
+          if (modalId && modalId.includes("Modal")) {
+            adminUtils.closeModal(modalId);
+          }
+        }
+      });
+    </script>
 
-    const topUsers = {
-      labels: [
-        "John Doe",
-        "Jane Smith",
-        "Mike Wilson",
-        "Sarah Johnson",
-        "Tom Brown",
-      ],
-      data: [15, 12, 10, 8, 7],
-    };
+    <!-- Chart.js Configuration -->
+    <script>
+      // Chart.js default configuration
+      Chart.defaults.color = "#9CA3AF";
+      Chart.defaults.borderColor = "rgba(255, 255, 255, 0.1)";
+      Chart.defaults.backgroundColor = "rgba(255, 255, 255, 0.05)";
 
-    // Orders Chart
-    const ordersCtx = document.getElementById("ordersChart").getContext("2d");
-    new Chart(ordersCtx, {
-      type: "line",
-      data: {
-        labels: monthlyData.labels,
-        datasets: [
-          {
-            label: "Orders",
-            data: monthlyData.orders,
-            borderColor: "#3B82F6",
-            backgroundColor: "rgba(59, 130, 246, 0.1)",
-            borderWidth: 3,
-            fill: true,
-            tension: 0.4,
-            pointBackgroundColor: "#3B82F6",
-            pointBorderColor: "#ffffff",
-            pointBorderWidth: 2,
-            pointRadius: 6,
-            pointHoverRadius: 8,
-          },
+      // Sample data
+      const monthlyData = {
+        labels: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
         ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          },
-        },
-        scales: {
-          x: {
-            grid: {
-              color: "rgba(255, 255, 255, 0.1)",
-            },
-          },
-          y: {
-            grid: {
-              color: "rgba(255, 255, 255, 0.1)",
-            },
-            beginAtZero: true,
-          },
-        },
-        elements: {
-          line: {
-            borderJoinStyle: "round",
-          },
-        },
-      },
-    });
-
-    // Categories Chart
-    const categoriesCtx = document
-      .getElementById("categoriesChart")
-      .getContext("2d");
-    new Chart(categoriesCtx, {
-      type: "doughnut",
-      data: {
-        labels: categoryData.labels,
-        datasets: [
-          {
-            data: categoryData.data,
-            backgroundColor: categoryData.colors,
-            borderWidth: 0,
-            hoverBorderWidth: 2,
-            hoverBorderColor: "#ffffff",
-          },
+        orders: [45, 52, 38, 65, 59, 78, 85, 72, 91, 88, 94, 105],
+        revenue: [
+          4500, 5200, 3800, 6500, 5900, 7800, 8500, 7200, 9100, 8800, 9400,
+          10500,
         ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: "bottom",
-            labels: {
-              padding: 20,
-              usePointStyle: true,
-              pointStyle: "circle",
-            },
-          },
-        },
-        cutout: "60%",
-      },
-    });
+      };
 
-    // Top Products Chart
-    const topProductsCtx = document
-      .getElementById("topProductsChart")
-      .getContext("2d");
-    new Chart(topProductsCtx, {
-      type: "bar",
-      data: {
-        labels: topProducts.labels,
-        datasets: [
-          {
-            label: "Orders",
-            data: topProducts.data,
-            backgroundColor: "rgba(239, 68, 68, 0.8)",
-            borderColor: "#EF4444",
-            borderWidth: 1,
-            borderRadius: 8,
-            borderSkipped: false,
-          },
+      const categoryData = {
+        labels: [
+          "Electronics",
+          "Clothing",
+          "Books",
+          "Home & Garden",
+          "Sports",
+          "Beauty",
         ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          },
+        data: [25, 18, 12, 20, 15, 10],
+        colors: [
+          "#3B82F6",
+          "#10B981",
+          "#F59E0B",
+          "#EF4444",
+          "#8B5CF6",
+          "#EC4899",
+        ],
+      };
+
+      const topProducts = {
+        labels: [
+          "iPhone 13",
+          "Samsung TV",
+          "MacBook Pro",
+          "Nike Shoes",
+          "Canon Camera",
+        ],
+        data: [45, 38, 32, 28, 25],
+      };
+
+      const topUsers = {
+        labels: [
+          "John Doe",
+          "Jane Smith",
+          "Mike Wilson",
+          "Sarah Johnson",
+          "Tom Brown",
+        ],
+        data: [15, 12, 10, 8, 7],
+      };
+
+      // Orders Chart
+      const ordersCtx = document.getElementById("ordersChart").getContext("2d");
+      new Chart(ordersCtx, {
+        type: "line",
+        data: {
+          labels: monthlyData.labels,
+          datasets: [
+            {
+              label: "Orders",
+              data: monthlyData.orders,
+              borderColor: "#3B82F6",
+              backgroundColor: "rgba(59, 130, 246, 0.1)",
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4,
+              pointBackgroundColor: "#3B82F6",
+              pointBorderColor: "#ffffff",
+              pointBorderWidth: 2,
+              pointRadius: 6,
+              pointHoverRadius: 8,
+            },
+          ],
         },
-        scales: {
-          x: {
-            grid: {
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
               display: false,
             },
           },
-          y: {
-            grid: {
-              color: "rgba(255, 255, 255, 0.1)",
+          scales: {
+            x: {
+              grid: {
+                color: "rgba(255, 255, 255, 0.1)",
+              },
             },
-            beginAtZero: true,
+            y: {
+              grid: {
+                color: "rgba(255, 255, 255, 0.1)",
+              },
+              beginAtZero: true,
+            },
+          },
+          elements: {
+            line: {
+              borderJoinStyle: "round",
+            },
           },
         },
-      },
-    });
+      });
 
-    // Top Users Chart
-    const topUsersCtx = document
-      .getElementById("bestSellerUsersChart")
-      .getContext("2d");
-    new Chart(topUsersCtx, {
-      type: "bar",
-      data: {
-        labels: topUsers.labels,
-        datasets: [
-          {
-            label: "Orders",
-            data: topUsers.data,
-            backgroundColor: "rgba(16, 185, 129, 0.8)",
-            borderColor: "#10B981",
-            borderWidth: 1,
-            borderRadius: 8,
-            borderSkipped: false,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          },
+      // Categories Chart
+      const categoriesCtx = document
+        .getElementById("categoriesChart")
+        .getContext("2d");
+      new Chart(categoriesCtx, {
+        type: "doughnut",
+        data: {
+          labels: categoryData.labels,
+          datasets: [
+            {
+              data: categoryData.data,
+              backgroundColor: categoryData.colors,
+              borderWidth: 0,
+              hoverBorderWidth: 2,
+              hoverBorderColor: "#ffffff",
+            },
+          ],
         },
-        scales: {
-          x: {
-            grid: {
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: {
+                padding: 20,
+                usePointStyle: true,
+                pointStyle: "circle",
+              },
+            },
+          },
+          cutout: "60%",
+        },
+      });
+
+      // Top Products Chart
+      const topProductsCtx = document
+        .getElementById("topProductsChart")
+        .getContext("2d");
+      new Chart(topProductsCtx, {
+        type: "bar",
+        data: {
+          labels: topProducts.labels,
+          datasets: [
+            {
+              label: "Orders",
+              data: topProducts.data,
+              backgroundColor: "rgba(239, 68, 68, 0.8)",
+              borderColor: "#EF4444",
+              borderWidth: 1,
+              borderRadius: 8,
+              borderSkipped: false,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
               display: false,
             },
           },
-          y: {
-            grid: {
-              color: "rgba(255, 255, 255, 0.1)",
+          scales: {
+            x: {
+              grid: {
+                display: false,
+              },
             },
-            beginAtZero: true,
+            y: {
+              grid: {
+                color: "rgba(255, 255, 255, 0.1)",
+              },
+              beginAtZero: true,
+            },
           },
         },
-      },
-    });
-  </script>
-</body>
+      });
 
+      // Top Users Chart
+      const topUsersCtx = document
+        .getElementById("bestSellerUsersChart")
+        .getContext("2d");
+      new Chart(topUsersCtx, {
+        type: "bar",
+        data: {
+          labels: topUsers.labels,
+          datasets: [
+            {
+              label: "Orders",
+              data: topUsers.data,
+              backgroundColor: "rgba(16, 185, 129, 0.8)",
+              borderColor: "#10B981",
+              borderWidth: 1,
+              borderRadius: 8,
+              borderSkipped: false,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+          scales: {
+            x: {
+              grid: {
+                display: false,
+              },
+            },
+            y: {
+              grid: {
+                color: "rgba(255, 255, 255, 0.1)",
+              },
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
 </html>

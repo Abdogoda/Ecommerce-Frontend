@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -457,7 +457,7 @@
 
         // Set initial payment method
         const initialPayment = document.querySelector(
-          'input[name="paymentMethod"]:checked'
+          'input[name="paymentMethod"]:checked',
         );
         if (initialPayment) {
           initialPayment.dispatchEvent(new Event("change"));

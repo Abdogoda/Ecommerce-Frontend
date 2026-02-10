@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -19,44 +19,10 @@
 
     <!-- User Styles -->
     <link rel="stylesheet" href="../assets/css/user/styles.css" />
-
-    <style>
-      /* Product-specific styles */
-      .tab-btn {
-        background: rgba(255, 255, 255, 0.1);
-        color: rgba(255, 255, 255, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .tab-btn:hover {
-        background: rgba(255, 255, 255, 0.2);
-        color: white;
-      }
-
-      .active-tab {
-        background: linear-gradient(to right, #3b82f6, #8b5cf6) !important;
-        color: white !important;
-        border-color: transparent !important;
-        box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
-        transform: scale(1.05);
-      }
-
-      /* Quantity input styling */
-      input[type="number"]::-webkit-outer-spin-button,
-      input[type="number"]::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      input[type="number"] {
-        -moz-appearance: textfield;
-        appearance: textfield;
-      }
-    </style>
-
     <!-- Tailwind Configuration -->
     <script src="../assets/js/user/tailwind-config.js"></script>
   </head>
+
   <body class="bg-gray-900 text-white">
     <!-- Header -->
     <header
@@ -258,7 +224,15 @@
               <div class="space-y-4">
                 <!-- Add to Cart Button -->
                 <button
-                  onclick="addToCart(1, 'Wireless Bluetooth Headphones', 129.99, getQuantity(), 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"
+                  onclick="
+                    addToCart(
+                      1,
+                      'Wireless Bluetooth Headphones',
+                      129.99,
+                      getQuantity(),
+                      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                    )
+                  "
                   class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-4 rounded-xl text-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105"
                 >
                   <i class="fas fa-cart-plus mr-2"></i>Add to Cart
@@ -353,7 +327,15 @@
                   <p class="text-2xl font-bold text-blue-400">$89.99</p>
                 </div>
                 <button
-                  onclick="addToCart(2, 'Wireless Speaker', 89.99, 1, 'https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80')"
+                  onclick="
+                    addToCart(
+                      2,
+                      'Wireless Speaker',
+                      89.99,
+                      1,
+                      'https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
+                    )
+                  "
                   class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105"
                 >
                   <i class="fas fa-cart-plus mr-2"></i>Add to Cart
@@ -401,7 +383,15 @@
                   <p class="text-2xl font-bold text-purple-400">$49.99</p>
                 </div>
                 <button
-                  onclick="addToCart(3, 'Gaming Mouse', 49.99, 1, 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80')"
+                  onclick="
+                    addToCart(
+                      3,
+                      'Gaming Mouse',
+                      49.99,
+                      1,
+                      'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
+                    )
+                  "
                   class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 transform hover:scale-105"
                 >
                   <i class="fas fa-cart-plus mr-2"></i>Add to Cart
@@ -449,7 +439,15 @@
                   <p class="text-2xl font-bold text-green-400">$299.99</p>
                 </div>
                 <button
-                  onclick="addToCart(4, 'Smart Watch', 299.99, 1, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80')"
+                  onclick="
+                    addToCart(
+                      4,
+                      'Smart Watch',
+                      299.99,
+                      1,
+                      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
+                    )
+                  "
                   class="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-green-500/25 transform hover:scale-105"
                 >
                   <i class="fas fa-cart-plus mr-2"></i>Add to Cart
@@ -497,7 +495,15 @@
                   <p class="text-2xl font-bold text-orange-400">$1299.99</p>
                 </div>
                 <button
-                  onclick="addToCart(5, 'Gaming Laptop', 1299.99, 1, 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80')"
+                  onclick="
+                    addToCart(
+                      5,
+                      'Gaming Laptop',
+                      1299.99,
+                      1,
+                      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80',
+                    )
+                  "
                   class="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/25 transform hover:scale-105"
                 >
                   <i class="fas fa-cart-plus mr-2"></i>Add to Cart
@@ -507,7 +513,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </main>
 
     <!-- Scripts -->
     <!-- Load cart.js first to ensure functions are available -->
@@ -551,11 +557,11 @@
         console.log("Testing cart functions availability:");
         console.log(
           "addToCart function available:",
-          typeof addToCart === "function"
+          typeof addToCart === "function",
         );
         console.log(
           "updateCartBadge function available:",
-          typeof updateCartBadge === "function"
+          typeof updateCartBadge === "function",
         );
       });
     </script>

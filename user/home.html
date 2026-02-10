@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -28,6 +28,7 @@
     <!-- Tailwind Configuration -->
     <script src="../assets/js/user/tailwind-config.js"></script>
   </head>
+
   <body class="bg-gray-900 text-white">
     <!-- Header -->
     <header
@@ -120,12 +121,13 @@
       class="relative w-full flex items-center bg-cover bg-center overflow-hidden"
       style="
         min-height: 80vh;
-        background-image: linear-gradient(
+        background-image:
+          linear-gradient(
             135deg,
             rgba(59, 130, 246, 0.8),
             rgba(147, 51, 234, 0.8)
           ),
-          url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+          url(&quot;https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80&quot;);
       "
     >
       <div
@@ -449,7 +451,15 @@
                 <p class="text-2xl font-bold text-blue-400">$99.99</p>
               </div>
               <button
-                onclick="addToCart(1, 'Premium Headphones', 99.99, 1, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"
+                onclick="
+                  addToCart(
+                    1,
+                    'Premium Headphones',
+                    99.99,
+                    1,
+                    'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                  )
+                "
                 class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105"
               >
                 <i class="fas fa-cart-plus mr-2"></i>Add to Cart
@@ -498,7 +508,15 @@
                 <p class="text-2xl font-bold text-purple-400">$149.99</p>
               </div>
               <button
-                onclick="addToCart(2, 'Smart Watch Pro', 149.99, 1, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"
+                onclick="
+                  addToCart(
+                    2,
+                    'Smart Watch Pro',
+                    149.99,
+                    1,
+                    'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                  )
+                "
                 class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 transform hover:scale-105"
               >
                 <i class="fas fa-cart-plus mr-2"></i>Add to Cart
@@ -578,7 +596,15 @@
                 <p class="text-2xl font-bold text-orange-400">$79.99</p>
               </div>
               <button
-                onclick="addToCart(3, 'Nike Running Shoes', 79.99, 1, 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"
+                onclick="
+                  addToCart(
+                    3,
+                    'Nike Running Shoes',
+                    79.99,
+                    1,
+                    'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                  )
+                "
                 class="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/25 transform hover:scale-105"
               >
                 <i class="fas fa-cart-plus mr-2"></i>Add to Cart
@@ -714,41 +740,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 border-t border-gray-700 py-12 px-6">
-      <div class="max-w-7xl mx-auto text-center">
-        <div class="flex justify-center space-x-6 mb-8">
-          <a
-            href="#"
-            class="text-gray-400 hover:text-blue-400 transition-colors duration-300 hover:scale-110 transform"
-          >
-            <i class="fab fa-facebook-f text-2xl"></i>
-          </a>
-          <a
-            href="#"
-            class="text-gray-400 hover:text-blue-400 transition-colors duration-300 hover:scale-110 transform"
-          >
-            <i class="fab fa-twitter text-2xl"></i>
-          </a>
-          <a
-            href="#"
-            class="text-gray-400 hover:text-blue-400 transition-colors duration-300 hover:scale-110 transform"
-          >
-            <i class="fab fa-instagram text-2xl"></i>
-          </a>
-          <a
-            href="#"
-            class="text-gray-400 hover:text-blue-400 transition-colors duration-300 hover:scale-110 transform"
-          >
-            <i class="fab fa-linkedin-in text-2xl"></i>
-          </a>
-        </div>
-        <p class="text-gray-400">
-          &copy; 2025 E-Commerce. All rights reserved.
-        </p>
-      </div>
-    </footer>
 
     <!-- Scripts -->
     <!-- User Scripts -->

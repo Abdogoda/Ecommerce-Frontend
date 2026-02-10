@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -355,7 +355,10 @@
             </button>
             <button
               type="button"
-              onclick="clearCart(); closeModal('clearCartModal');"
+              onclick="
+                clearCart();
+                closeModal('clearCartModal');
+              "
               class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl transition-all duration-300 hover:scale-105 transform hover:shadow-lg hover:shadow-red-500/25"
             >
               <i class="fas fa-trash mr-2"></i>Clear Cart

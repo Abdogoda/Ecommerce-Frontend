@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,104 +10,16 @@
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/auth/styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-    <style>
-      /* Glass effect */
-      .glass {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      /* OTP input styling */
-      .otp-input {
-        transition: all 0.3s ease;
-      }
-
-      .otp-input:focus {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(34, 197, 94, 0.25);
-      }
-
-      .otp-input.filled {
-        background: rgba(34, 197, 94, 0.2);
-        border-color: rgba(34, 197, 94, 0.5);
-      }
-
-      /* Animated background */
-      .auth-bg {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        background-size: 400% 400%;
-        animation: gradientShift 8s ease infinite;
-      }
-
-      @keyframes gradientShift {
-        0%,
-        100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-      }
-
-      /* Floating animation */
-      .float-animation {
-        animation: float 6s ease-in-out infinite;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px) rotate(0deg);
-        }
-        33% {
-          transform: translateY(-10px) rotate(1deg);
-        }
-        66% {
-          transform: translateY(5px) rotate(-1deg);
-        }
-      }
-
-      /* Pulse animation for icons */
-      .pulse-icon {
-        animation: pulseIcon 2s ease-in-out infinite;
-      }
-
-      @keyframes pulseIcon {
-        0%,
-        100% {
-          transform: scale(1);
-          opacity: 1;
-        }
-        50% {
-          transform: scale(1.1);
-          opacity: 0.8;
-        }
-      }
-
-      /* Timer styling */
-      .timer-circle {
-        stroke-dasharray: 283;
-        stroke-dashoffset: 283;
-        animation: countdown 60s linear forwards;
-      }
-
-      @keyframes countdown {
-        to {
-          stroke-dashoffset: 0;
-        }
-      }
-    </style>
-
     <script src="../assets/js/tailwind-config.js"></script>
   </head>
+
   <body class="auth-bg min-h-screen relative">
     <!-- Animated Background Elements -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
@@ -340,14 +252,7 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="absolute bottom-0 left-0 right-0 py-6 text-center z-10">
-      <p class="text-white/60 text-sm">
-        &copy; 2025 E-Commerce. All rights reserved.
-      </p>
-    </footer>
+    </main>
 
     <script>
       let timer = 60;
@@ -505,7 +410,7 @@
             // Show success message
             toastr.success(
               "A new verification code has been sent to your email",
-              "Code Sent"
+              "Code Sent",
             );
           }
         });
@@ -537,7 +442,7 @@
             if (otp === "123456") {
               toastr.success(
                 "Account verified successfully! Welcome to E-Commerce.",
-                "Verification Successful"
+                "Verification Successful",
               );
 
               setTimeout(() => {

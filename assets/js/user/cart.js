@@ -1,125 +1,125 @@
 // Get cart from localStorage or initialize an empty cart
-    function getCart() {
-        // Clean up any old cartItems data and migrate to cart
-        const oldCartItems = localStorage.getItem("cartItems");
-        const currentCart = localStorage.getItem("cart");
-        
-        if (oldCartItems && !currentCart) {
-            localStorage.setItem("cart", oldCartItems);
-            localStorage.removeItem("cartItems");
-        }
-        
-        return JSON.parse(localStorage.getItem("cart")) || [];
+function getCart() {
+  // Clean up any old cartItems data and migrate to cart
+  const oldCartItems = localStorage.getItem("cartItems");
+  const currentCart = localStorage.getItem("cart");
+
+  if (oldCartItems && !currentCart) {
+    localStorage.setItem("cart", oldCartItems);
+    localStorage.removeItem("cartItems");
+  }
+
+  return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+// Save cart to localStorage
+function saveCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+// Update cart badge quantity
+function updateCartBadge() {
+  let cart = getCart();
+  let totalQuantity = cart.reduce(
+    (sum, item) => sum + parseInt(item.quantity),
+    0,
+  );
+  let cartBadge = document.getElementById("cart-badge");
+
+  if (cartBadge) {
+    if (totalQuantity > 0) {
+      cartBadge.innerText = totalQuantity;
+      cartBadge.classList.remove("hidden");
+    } else {
+      cartBadge.classList.add("hidden");
     }
+  } else {
+    console.error("Cart badge element not found!");
+  }
+}
 
-    // Save cart to localStorage
-    function saveCart(cart) {
-        localStorage.setItem("cart", JSON.stringify(cart));
-    }
+// Add product to cart
+function addToCart(productId, name, price, quantity = 1, image = "") {
+  let cart = getCart();
+  let existingProduct = cart.find((item) => item.id === productId);
 
-    // Update cart badge quantity
-    function updateCartBadge() {
-        
-        let cart = getCart();
-        let totalQuantity = cart.reduce((sum, item) => sum + parseInt(item.quantity), 0);
-        let cartBadge = document.getElementById("cart-badge");
+  if (existingProduct) {
+    existingProduct.quantity += quantity;
+  } else {
+    const newProduct = { id: productId, name, price, quantity, image };
+    cart.push(newProduct);
+  }
 
-        
-        if (cartBadge) {
-            if (totalQuantity > 0) {
-                cartBadge.innerText = totalQuantity;
-                cartBadge.classList.remove("hidden");
-            } else {
-                cartBadge.classList.add("hidden");
-            }
-        } else {
-            console.error("Cart badge element not found!");
-        }
-    }
+  saveCart(cart);
+  updateCartBadge();
+  displayCartButton();
 
-    // Add product to cart
-    function addToCart(productId, name, price, quantity = 1, image = "") {
-        
-        let cart = getCart();
-        let existingProduct = cart.find(item => item.id === productId);
+  // Show success message
+  if (typeof showToast === "function") {
+    showToast("success", `${name} added to cart!`);
+  } else {
+  }
+}
 
-        if (existingProduct) {
-            existingProduct.quantity += quantity;
-        } else {
-            const newProduct = { id: productId, name, price, quantity, image };
-            cart.push(newProduct);
-        }
+// Remove product from cart
+function removeFromCart(productId) {
+  let cart = getCart().filter((item) => item.id !== productId);
+  saveCart(cart);
+  updateCartBadge();
+  displayCartButton();
+  displayCartItems(); // Update the UI
+}
 
-        saveCart(cart);
-        updateCartBadge();
-        displayCartButton();
-        
-        // Show success message
-        if (typeof showToast === 'function') {
-            showToast('success', `${name} added to cart!`);
-        } else {
-        }
-        
-    }
+// Update product quantity in cart
+function updateCartItem(productId, quantity) {
+  let cart = getCart();
+  let product = cart.find((item) => item.id === productId);
 
-    // Remove product from cart
-    function removeFromCart(productId) {
-        let cart = getCart().filter(item => item.id !== productId);
-        saveCart(cart);
-        updateCartBadge();
-        displayCartButton();
-        displayCartItems(); // Update the UI
-    }
+  if (product) {
+    product.quantity = quantity > 0 ? quantity : 1;
+  }
 
-    // Update product quantity in cart
-    function updateCartItem(productId, quantity) {
-        let cart = getCart();
-        let product = cart.find(item => item.id === productId);
+  saveCart(cart);
+  updateCartBadge();
+  displayCartItems(); // Refresh cart items
+}
 
-        if (product) {
-            product.quantity = quantity > 0 ? quantity : 1;
-        }
+// Get total price of cart
+function getTotalPrice() {
+  let cart = getCart();
+  return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+}
 
-        saveCart(cart);
-        updateCartBadge();
-        displayCartItems(); // Refresh cart items
-    }
+// Clear the entire cart
+function clearCart() {
+  localStorage.removeItem("cart");
+  updateCartBadge();
+  displayCartButton();
+  displayCartItems();
+  closeModal("clearCartModal");
+}
 
-    // Get total price of cart
-    function getTotalPrice() {
-        let cart = getCart();
-        return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-    }
+// Display cart items in the cart page
+function displayCartItems() {
+  let cart = getCart();
+  let cartContainer = document.getElementById("cart-items");
+  let subTotalPriceContainer = document.getElementById("cart-subtotal");
+  let totalPriceContainer = document.getElementById("cart-total");
 
-    // Clear the entire cart
-    function clearCart() {
-        localStorage.removeItem("cart");
-        updateCartBadge();
-        displayCartButton();
-        displayCartItems();
-        closeModal('clearCartModal');
-    }
+  if (!cartContainer || !subTotalPriceContainer || !totalPriceContainer) return;
 
-    // Display cart items in the cart page
-    function displayCartItems() {
-        let cart = getCart();
-        let cartContainer = document.getElementById("cart-items");
-        let subTotalPriceContainer = document.getElementById("cart-subtotal");
-        let totalPriceContainer = document.getElementById("cart-total");
+  cartContainer.innerHTML = "";
 
-        if (!cartContainer || !subTotalPriceContainer || !totalPriceContainer) return;
+  if (cart.length === 0) {
+    cartContainer.innerHTML =
+      "<p class='text-center text-gray-600'>Your cart is empty.</p>";
+    subTotalPriceContainer.innerText = "$0.00";
+    totalPriceContainer.innerText = "$0.00";
+    return;
+  }
 
-        cartContainer.innerHTML = "";
-        
-        if (cart.length === 0) {
-            cartContainer.innerHTML = "<p class='text-center text-gray-600'>Your cart is empty.</p>";
-            subTotalPriceContainer.innerText = "$0.00";
-            totalPriceContainer.innerText = "$0.00";
-            return;
-        }
-
-        cart.forEach(item => {
-            cartContainer.innerHTML += `
+  cart.forEach((item) => {
+    cartContainer.innerHTML += `
                 <div class="cart-item flex justify-between items-center border-b border-gray-700 py-3">
                     <div class="flex items-center gap-4">
                         <img src="${item.image}" alt="${item.name}" class="w-16 h-16 rounded">
@@ -139,49 +139,49 @@
                     </div>
                 </div>
             `;
-        });
+  });
 
-        subTotalPriceContainer.innerText = `$${getTotalPrice().toFixed(2)}`;
-        totalPriceContainer.innerText = `$${parseFloat(getTotalPrice().toFixed(2)) + 25.00}`; // Assuming a flat shipping fee of $25.00
-    }
+  subTotalPriceContainer.innerText = `$${getTotalPrice().toFixed(2)}`;
+  totalPriceContainer.innerText = `$${parseFloat(getTotalPrice().toFixed(2)) + 25.0}`; // Assuming a flat shipping fee of $25.00
+}
 
-    function displayCartButton() {
-        let checkoutButton = document.getElementById("checkoutButton");
-        let clearCartButton = document.getElementById("clearCartButton");
-        let cart = getCart();
+function displayCartButton() {
+  let checkoutButton = document.getElementById("checkoutButton");
+  let clearCartButton = document.getElementById("clearCartButton");
+  let cart = getCart();
 
-        if(!checkoutButton || !clearCartButton) return;
-        
-        if (cart.length > 0) {
-            checkoutButton.classList.remove("hidden");
-            clearCartButton.classList.remove("hidden");
-        } else {
-            checkoutButton.classList.add("hidden");
-            clearCartButton.classList.add("hidden");
-        }
-    }
+  if (!checkoutButton || !clearCartButton) return;
 
-    function getCartItemsWithQuantity() {
-        let cart = getCart();
-        return cart.map(item => ({
-            id: item.id,
-            quantity: item.quantity
-        }));
-    }
+  if (cart.length > 0) {
+    checkoutButton.classList.remove("hidden");
+    clearCartButton.classList.remove("hidden");
+  } else {
+    checkoutButton.classList.add("hidden");
+    clearCartButton.classList.add("hidden");
+  }
+}
 
-    // Initialize cart badge & items on page load
-    document.addEventListener("DOMContentLoaded", () => {
-        updateCartBadge();
-        displayCartItems();
-        displayCartButton();
-    });
+function getCartItemsWithQuantity() {
+  let cart = getCart();
+  return cart.map((item) => ({
+    id: item.id,
+    quantity: item.quantity,
+  }));
+}
 
-    // Make functions globally available
-    window.addToCart = addToCart;
-    window.removeFromCart = removeFromCart;
-    window.updateCartItem = updateCartItem;
-    window.updateCartBadge = updateCartBadge;
-    window.clearCart = clearCart;
-    window.getCart = getCart;
-    window.getTotalPrice = getTotalPrice;
-    window.getCartItemsWithQuantity = getCartItemsWithQuantity;
+// Initialize cart badge & items on page load
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartBadge();
+  displayCartItems();
+  displayCartButton();
+});
+
+// Make functions globally available
+window.addToCart = addToCart;
+window.removeFromCart = removeFromCart;
+window.updateCartItem = updateCartItem;
+window.updateCartBadge = updateCartBadge;
+window.clearCart = clearCart;
+window.getCart = getCart;
+window.getTotalPrice = getTotalPrice;
+window.getCartItemsWithQuantity = getCartItemsWithQuantity;

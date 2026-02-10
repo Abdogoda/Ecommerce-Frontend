@@ -1,15 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - E-Commerce</title>
-    
+
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/auth/styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
@@ -18,58 +19,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js"></script>
 
-    <style>
-      /* Glass effect */
-      .glass {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      /* Custom input focus effects */
-      .input-focus:focus {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
-      }
-
-      /* Animated background */
-      .auth-bg {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        background-size: 400% 400%;
-        animation: gradientShift 8s ease infinite;
-      }
-
-      @keyframes gradientShift {
-        0%,
-        100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-      }
-
-      /* Floating animation */
-      .float-animation {
-        animation: float 6s ease-in-out infinite;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px) rotate(0deg);
-        }
-        33% {
-          transform: translateY(-10px) rotate(1deg);
-        }
-        66% {
-          transform: translateY(5px) rotate(-1deg);
-        }
-      }
-    </style>
-
     <script src="../assets/js/tailwind-config.js"></script>
   </head>
+
   <body class="auth-bg min-h-screen relative">
     <!-- Animated Background Elements -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
@@ -119,7 +71,7 @@
 
         <!-- Login Form -->
         <div
-          class="glass rounded-2xl p-8 shadow-2xl animate-fade-in-up mb-5 "
+          class="glass rounded-2xl p-8 shadow-2xl animate-fade-in-up mb-5"
           style="animation-delay: 0.3s"
         >
           <!-- Success/Error Messages -->
@@ -230,37 +182,28 @@
             </div>
           </form>
         </div>
-          <div class="flex justify-center space-x-6 text-sm">
-            <a
-              href="#"
-              class="text-white/60 hover:text-white transition-colors duration-300"
-            >
-              <i class="fas fa-shield-alt mr-1"></i>Security
-            </a>
-            <a
-              href="#"
-              class="text-white/60 hover:text-white transition-colors duration-300"
-            >
-              <i class="fas fa-life-ring mr-1"></i>Support
-            </a>
-            <a
-              href="#"
-              class="text-white/60 hover:text-white transition-colors duration-300"
-            >
-              <i class="fas fa-question-circle mr-1"></i>FAQ
-            </a>
-          </div>
+        <div class="flex justify-center space-x-6 text-sm">
+          <a
+            href="#"
+            class="text-white/60 hover:text-white transition-colors duration-300"
+          >
+            <i class="fas fa-shield-alt mr-1"></i>Security
+          </a>
+          <a
+            href="#"
+            class="text-white/60 hover:text-white transition-colors duration-300"
+          >
+            <i class="fas fa-life-ring mr-1"></i>Support
+          </a>
+          <a
+            href="#"
+            class="text-white/60 hover:text-white transition-colors duration-300"
+          >
+            <i class="fas fa-question-circle mr-1"></i>FAQ
+          </a>
         </div>
       </div>
-    </div>
-
-
-    <!-- Footer -->
-    <footer class="absolute bottom-0 left-0 right-0 py-6 text-center z-10">
-      <p class="text-white/60 text-sm">
-        &copy; 2025 E-Commerce. All rights reserved.
-      </p>
-    </footer>
+    </main>
 
     <!-- Scripts -->
     <script>
@@ -352,22 +295,22 @@
       // Real-time validation functions
       function validateField(fieldId) {
         const element = document.getElementById(fieldId);
-        const value = element ? element.value.trim() : '';
+        const value = element ? element.value.trim() : "";
         let error = null;
 
-        switch(fieldId) {
-          case 'email':
+        switch (fieldId) {
+          case "email":
             if (!value) {
-              error = 'Email is required';
+              error = "Email is required";
             } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-              error = 'Please enter a valid email address';
+              error = "Please enter a valid email address";
             }
             break;
-          case 'password':
+          case "password":
             if (!value) {
-              error = 'Password is required';
+              error = "Password is required";
             } else if (value.length < 6) {
-              error = 'Password must be at least 6 characters';
+              error = "Password must be at least 6 characters";
             }
             break;
         }
@@ -383,23 +326,35 @@
 
       // Add real-time validation listeners
       function initializeValidation() {
-        const emailInput = document.getElementById('email');
-        const passwordInput = document.getElementById('password');
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
 
         if (emailInput) {
-          emailInput.addEventListener('blur', () => validateField('email'));
-          emailInput.addEventListener('input', () => {
-            if (emailInput.value && document.getElementById('email-error').classList.contains('hidden') === false) {
-              validateField('email');
+          emailInput.addEventListener("blur", () => validateField("email"));
+          emailInput.addEventListener("input", () => {
+            if (
+              emailInput.value &&
+              document
+                .getElementById("email-error")
+                .classList.contains("hidden") === false
+            ) {
+              validateField("email");
             }
           });
         }
 
         if (passwordInput) {
-          passwordInput.addEventListener('blur', () => validateField('password'));
-          passwordInput.addEventListener('input', () => {
-            if (passwordInput.value && document.getElementById('password-error').classList.contains('hidden') === false) {
-              validateField('password');
+          passwordInput.addEventListener("blur", () =>
+            validateField("password"),
+          );
+          passwordInput.addEventListener("input", () => {
+            if (
+              passwordInput.value &&
+              document
+                .getElementById("password-error")
+                .classList.contains("hidden") === false
+            ) {
+              validateField("password");
             }
           });
         }
@@ -418,8 +373,8 @@
           let hasErrors = false;
 
           // Validate all fields
-          if (!validateField('email')) hasErrors = true;
-          if (!validateField('password')) hasErrors = true;
+          if (!validateField("email")) hasErrors = true;
+          if (!validateField("password")) hasErrors = true;
 
           if (hasErrors) {
             showToast("error", "Please fix the errors above");
@@ -453,23 +408,23 @@
       initializeValidation();
 
       // Configure Toastr
-      if (typeof toastr !== 'undefined') {
+      if (typeof toastr !== "undefined") {
         toastr.options = {
           closeButton: true,
           debug: false,
           newestOnTop: true,
           progressBar: true,
-          positionClass: 'toast-top-right',
+          positionClass: "toast-top-right",
           preventDuplicates: false,
           onclick: null,
-          showDuration: '300',
-          hideDuration: '1000',
-          timeOut: '5000',
-          extendedTimeOut: '1000',
-          showEasing: 'swing',
-          hideEasing: 'linear',
-          showMethod: 'fadeIn',
-          hideMethod: 'fadeOut'
+          showDuration: "300",
+          hideDuration: "1000",
+          timeOut: "5000",
+          extendedTimeOut: "1000",
+          showEasing: "swing",
+          hideEasing: "linear",
+          showMethod: "fadeIn",
+          hideMethod: "fadeOut",
         };
       }
     </script>
