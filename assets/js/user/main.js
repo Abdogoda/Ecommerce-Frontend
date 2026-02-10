@@ -68,33 +68,6 @@ function showToast(type, message) {
 }
 
 /**
- * Handle user logout
- */
-function logout() {
-  // Clear user data from localStorage
-  localStorage.removeItem('userToken');
-  localStorage.removeItem('userData');
-  localStorage.removeItem('cartItems');
-  localStorage.removeItem('activeTab');
-  
-  // Clear session storage
-  sessionStorage.clear();
-  
-  // Reset global variables
-  isLoggedIn = false;
-  currentUser = null;
-  cartItems = [];
-  
-  // Show logout message
-  showToast('info', 'You have been logged out successfully');
-  
-  // Redirect to login page after a short delay
-  setTimeout(() => {
-    window.location.href = '../auth/login.html';
-  }, 1000);
-}
-
-/**
  * Initialize animations using Intersection Observer
  */
 function initializeAnimations() {
