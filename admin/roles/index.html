@@ -1,1476 +1,1132 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Roles - E-Commerce Admin</title>
 
-    <link rel="stylesheet" href="../../assets/css/admin/styles.css" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="../../assets/js/admin/main.js"></script>
-  </head>
-  <body class="admin-bg text-white flex min-h-screen">
-    <!-- Sidebar -->
-    <div
-      id="sidebar"
-      class="glass w-64 min-h-screen fixed transition-all duration-300 transform -translate-x-full md:translate-x-0 z-50 border-r border-white/10 flex flex-col"
-    >
-      <!-- Logo Section -->
-      <div class="p-6 pb-4 flex-shrink-0">
-        <div class="animate-bounce-in">
-          <div class="flex items-center space-x-3">
-            <div
-              class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center"
-            >
-              <i class="fas fa-store text-white text-lg"></i>
-            </div>
-            <div>
-              <h2 class="text-xl font-bold text-white">E-Commerce</h2>
-              <p class="text-xs text-gray-400">Admin Panel</p>
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roles - E-Commerce Admin</title>
+
+  <link rel="stylesheet" href="../../assets/css/admin/styles.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="../../assets/js/admin/main.js"></script>
+</head>
+
+<body class="admin-bg text-white flex min-h-screen">
+  <!-- Sidebar -->
+  <sidebar id="sidebar"
+    class="glass w-64 min-h-screen fixed transition-all duration-300 transform -translate-x-full md:translate-x-0 z-50 border-r border-white/10 flex flex-col">
+    <!-- Logo Section -->
+    <div class="p-6 pb-4 flex-shrink-0">
+      <div class="animate-bounce-in">
+        <div class="flex items-center space-x-3">
+          <div
+            class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+            <i class="fas fa-store text-white text-lg"></i>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-white">E-Commerce</h2>
+            <p class="text-xs text-gray-400">Admin Panel</p>
           </div>
         </div>
       </div>
-
-      <!-- Navigation Menu -->
-      <nav class="flex-1 overflow-y-auto px-6 pb-6">
-        <div class="space-y-2">
-          <!-- Main Navigation -->
-          <div class="mb-6">
-            <p
-              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
-            >
-              Main
-            </p>
-            <ul class="space-y-1">
-              <!-- Dashboard -->
-              <li>
-                <a
-                  href="../dashboard.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-chart-line text-blue-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Dashboard</span>
-                </a>
-              </li>
-
-              <!-- Users Management -->
-              <li>
-                <a
-                  href="../users/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-users text-green-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Users</span>
-                </a>
-              </li>
-
-              <!-- Roles -->
-              <li>
-                <a
-                  href="index.html"
-                  class="sidebar-item active flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-user-shield text-purple-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Roles</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Catalog Management -->
-          <div class="mb-6">
-            <p
-              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
-            >
-              Catalog
-            </p>
-            <ul class="space-y-1">
-              <!-- Categories -->
-              <li>
-                <a
-                  href="../categories/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-tags text-yellow-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Categories</span>
-                </a>
-              </li>
-
-              <!-- Products -->
-              <li>
-                <a
-                  href="../products/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-box text-orange-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Products</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Sales & Communication -->
-          <div class="mb-6">
-            <p
-              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
-            >
-              Sales
-            </p>
-            <ul class="space-y-1">
-              <!-- Orders -->
-              <li>
-                <a
-                  href="../orders/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-shopping-cart text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Orders</span>
-                </a>
-              </li>
-
-              <!-- Messages -->
-              <li>
-                <a
-                  href="../messages/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-envelope text-cyan-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Messages</span>
-                  <span
-                    class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full"
-                    >3</span
-                  >
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Account -->
-          <div class="border-t border-white/10 pt-4">
-            <ul class="space-y-1">
-              <li>
-                <a
-                  href="../profile.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-user-circle text-indigo-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Profile</span>
-                </a>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-red-400 group w-full text-left"
-                >
-                  <i
-                    class="fas fa-sign-out-alt text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Logout</span>
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
     </div>
 
-    <!-- Main Content -->
-    <div class="flex-1 md:ml-64 min-h-screen">
-      <!-- Top Header -->
-      <header class="glass border-b border-white/10 p-4 sticky top-0 z-40">
-        <div class="flex items-center justify-between">
-          <!-- Mobile Menu Button -->
+    <!-- Navigation Menu -->
+    <nav class="flex-1 overflow-y-auto px-6 pb-6">
+      <div class="space-y-2">
+        <!-- Main Navigation -->
+        <div class="mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            Main
+          </p>
+          <ul class="space-y-1">
+            <!-- Dashboard -->
+            <li>
+              <a href="../dashboard.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-chart-line text-blue-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Dashboard</span>
+              </a>
+            </li>
+
+            <!-- Users Management -->
+            <li>
+              <a href="../users/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-users text-green-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Users</span>
+              </a>
+            </li>
+
+            <!-- Roles -->
+            <li>
+              <a href="index.html"
+                class="sidebar-item active flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-user-shield text-purple-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Roles</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Catalog Management -->
+        <div class="mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            Catalog
+          </p>
+          <ul class="space-y-1">
+            <!-- Categories -->
+            <li>
+              <a href="../categories/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-tags text-yellow-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Categories</span>
+              </a>
+            </li>
+
+            <!-- Products -->
+            <li>
+              <a href="../products/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-box text-orange-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Products</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Sales & Communication -->
+        <div class="mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            Sales
+          </p>
+          <ul class="space-y-1">
+            <!-- Orders -->
+            <li>
+              <a href="../orders/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-shopping-cart text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Orders</span>
+              </a>
+            </li>
+
+            <!-- Messages -->
+            <li>
+              <a href="../messages/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-envelope text-cyan-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Messages</span>
+                <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">3</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Account -->
+        <div class="border-t border-white/10 pt-4">
+          <ul class="space-y-1">
+            <li>
+              <a href="../profile.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-user-circle text-indigo-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Profile</span>
+              </a>
+            </li>
+            <li>
+              <button type="button"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-red-400 group w-full text-left">
+                <i class="fas fa-sign-out-alt text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Logout</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </sidebar>
+
+  <!-- Main Content -->
+  <main class="max-w-full flex-1 md:ml-64 min-h-screen">
+    <!-- Top Header -->
+    <header class="glass border-b border-white/10 p-4 sticky top-0 z-40">
+      <div class="flex items-center justify-between">
+        <!-- Mobile Menu Button -->
+        <button id="toggleSidebar"
+          class="md:hidden glass p-2 rounded-xl text-white hover:bg-white/10 transition-colors">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Page Title Area -->
+        <div class="flex items-center space-x-4">
+          <div id="breadcrumb" class="text-sm text-gray-400">
+            <span>Admin</span>
+            <i class="fas fa-chevron-right mx-2"></i>
+            <span class="text-white">Roles</span>
+          </div>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="flex items-center space-x-3">
+          <!-- Notifications -->
           <button
-            id="toggleSidebar"
-            class="md:hidden glass p-2 rounded-xl text-white hover:bg-white/10 transition-colors"
-          >
-            <i class="fas fa-bars"></i>
+            class="glass p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors relative">
+            <i class="fas fa-bell"></i>
+            <span
+              class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">3</span>
           </button>
 
-          <!-- Page Title Area -->
-          <div class="flex items-center space-x-4">
-            <div id="breadcrumb" class="text-sm text-gray-400">
-              <span>Admin</span>
-              <i class="fas fa-chevron-right mx-2"></i>
-              <span class="text-white">Roles</span>
-            </div>
-          </div>
-
-          <!-- Header Actions -->
-          <div class="flex items-center space-x-3">
-            <!-- Notifications -->
-            <button
-              class="glass p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors relative"
-            >
-              <i class="fas fa-bell"></i>
-              <span
-                class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center"
-                >3</span
-              >
-            </button>
-
-            <!-- User Profile -->
-            <div class="flex items-center space-x-2 glass px-3 py-2 rounded-xl">
-              <div
-                class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm"
-              >
-                A
-              </div>
-              <div class="hidden sm:block">
-                <p class="text-sm font-medium text-white">Admin User</p>
-                <p class="text-xs text-gray-400">Administrator</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <!-- Page Content -->
-      <main class="p-6 animate-fade-in">
-        <!-- Page Header -->
-        <div class="mb-8">
-          <div
-            class="flex flex-col sm:flex-row sm:items-center sm:justify-between"
-          >
-            <div>
-              <h1 class="text-3xl font-bold text-white mb-2">
-                Role Management
-              </h1>
-              <p class="text-gray-400">
-                Manage user roles and permissions across the system
-              </p>
-            </div>
-            <div class="mt-4 sm:mt-0 flex flex-col sm:flex-row gap-3">
-              <button
-                onclick="openModal('addModal')"
-                class="btn-primary px-6 py-2 rounded-xl text-white font-medium flex items-center"
-              >
-                <i class="fas fa-plus mr-2"></i>
-                Add Role
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stats Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div class="admin-card rounded-xl p-6">
-            <div class="flex items-center">
-              <div
-                class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mr-4"
-              >
-                <i class="fas fa-user-shield text-blue-500 text-xl"></i>
-              </div>
-              <div>
-                <p class="text-gray-400 text-sm">Total Roles</p>
-                <p class="text-2xl font-bold text-white">3</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="admin-card rounded-xl p-6">
-            <div class="flex items-center">
-              <div
-                class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mr-4"
-              >
-                <i class="fas fa-users text-green-500 text-xl"></i>
-              </div>
-              <div>
-                <p class="text-gray-400 text-sm">Total Users</p>
-                <p class="text-2xl font-bold text-white">158</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="admin-card rounded-xl p-6">
-            <div class="flex items-center">
-              <div
-                class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mr-4"
-              >
-                <i class="fas fa-key text-purple-500 text-xl"></i>
-              </div>
-              <div>
-                <p class="text-gray-400 text-sm">Permissions</p>
-                <p class="text-2xl font-bold text-white">14</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="admin-card rounded-xl p-6">
-            <div class="flex items-center">
-              <div
-                class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mr-4"
-              >
-                <i class="fas fa-shield-alt text-orange-500 text-xl"></i>
-              </div>
-              <div>
-                <p class="text-gray-400 text-sm">Active Roles</p>
-                <p class="text-2xl font-bold text-white">3</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Roles Table -->
-        <div class="admin-card rounded-xl overflow-hidden">
-          <div class="p-6 border-b border-white/10">
+          <!-- User Profile -->
+          <div class="flex items-center space-x-2 glass px-3 py-2 rounded-xl">
             <div
-              class="flex flex-col sm:flex-row sm:items-center sm:justify-between"
-            >
-              <h2 class="text-xl font-semibold text-white mb-4 sm:mb-0">
-                System Roles
-              </h2>
+              class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+              A
             </div>
-          </div>
-
-          <div class="overflow-x-auto">
-            <table class="w-full">
-              <thead class="bg-white/5">
-                <tr>
-                  <th class="text-left py-4 px-6 text-gray-300 font-medium">
-                    Role
-                  </th>
-                  <th class="text-left py-4 px-6 text-gray-300 font-medium">
-                    Users Count
-                  </th>
-                  <th class="text-left py-4 px-6 text-gray-300 font-medium">
-                    Permissions
-                  </th>
-                  <th class="text-left py-4 px-6 text-gray-300 font-medium">
-                    Status
-                  </th>
-                  <th class="text-left py-4 px-6 text-gray-300 font-medium">
-                    Created
-                  </th>
-                  <th class="text-center py-4 px-6 text-gray-300 font-medium">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody id="rolesTableBody">
-                <tr
-                  class="border-b border-white/5 hover:bg-white/5 transition-colors"
-                  data-role-id="1"
-                >
-                  <td class="py-4 px-6">
-                    <div class="flex items-center">
-                      <div class="flex items-center">
-                        <div
-                          class="w-10 h-10 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl flex items-center justify-center mr-3"
-                        >
-                          <i class="fas fa-crown text-white"></i>
-                        </div>
-                        <div>
-                          <p class="text-white font-medium">Admin</p>
-                          <p class="text-gray-400 text-sm">
-                            Full system access
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="py-4 px-6">
-                    <span class="text-white">3</span>
-                  </td>
-                  <td class="py-4 px-6">
-                    <span
-                      class="bg-green-500/20 text-green-400 px-2 py-1 rounded-lg text-sm"
-                    >
-                      All (14)
-                    </span>
-                  </td>
-                  <td class="py-4 px-6">
-                    <span
-                      class="bg-green-500/20 text-green-400 px-2 py-1 rounded-lg text-sm"
-                    >
-                      Active
-                    </span>
-                  </td>
-                  <td class="py-4 px-6">
-                    <span class="text-gray-400">2024-01-15</span>
-                  </td>
-                  <td class="py-4 px-6">
-                    <div class="flex items-center justify-center space-x-2">
-                      <button
-                        onclick="editRole(1, 'Admin')"
-                        class="bg-yellow-500/20 text-yellow-400 p-2 rounded-lg hover:bg-yellow-500/30 transition-colors"
-                        title="Edit Role"
-                      >
-                        <i class="fas fa-edit"></i>
-                      </button>
-                      <button
-                        onclick="managePermissions(1)"
-                        class="bg-blue-500/20 text-blue-400 p-2 rounded-lg hover:bg-blue-500/30 transition-colors"
-                        title="Manage Permissions"
-                      >
-                        <i class="fas fa-key"></i>
-                      </button>
-                      <button
-                        onclick="deleteRole(1)"
-                        class="bg-red-500/20 text-red-400 p-2 rounded-lg hover:bg-red-500/30 transition-colors"
-                        title="Delete Role"
-                      >
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr
-                  class="border-b border-white/5 hover:bg-white/5 transition-colors"
-                  data-role-id="2"
-                >
-                  <td class="py-4 px-6">
-                    <div class="flex items-center">
-                      <div class="flex items-center">
-                        <div
-                          class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mr-3"
-                        >
-                          <i class="fas fa-user-tie text-white"></i>
-                        </div>
-                        <div>
-                          <p class="text-white font-medium">Manager</p>
-                          <p class="text-gray-400 text-sm">Management access</p>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="py-4 px-6">
-                    <span class="text-white">5</span>
-                  </td>
-                  <td class="py-4 px-6">
-                    <span
-                      class="bg-blue-500/20 text-blue-400 px-2 py-1 rounded-lg text-sm"
-                    >
-                      Limited (8)
-                    </span>
-                  </td>
-                  <td class="py-4 px-6">
-                    <span
-                      class="bg-green-500/20 text-green-400 px-2 py-1 rounded-lg text-sm"
-                    >
-                      Active
-                    </span>
-                  </td>
-                  <td class="py-4 px-6">
-                    <span class="text-gray-400">2024-01-20</span>
-                  </td>
-                  <td class="py-4 px-6">
-                    <div class="flex items-center justify-center space-x-2">
-                      <button
-                        onclick="editRole(2, 'Manager')"
-                        class="bg-yellow-500/20 text-yellow-400 p-2 rounded-lg hover:bg-yellow-500/30 transition-colors"
-                        title="Edit Role"
-                      >
-                        <i class="fas fa-edit"></i>
-                      </button>
-                      <button
-                        onclick="managePermissions(2)"
-                        class="bg-blue-500/20 text-blue-400 p-2 rounded-lg hover:bg-blue-500/30 transition-colors"
-                        title="Manage Permissions"
-                      >
-                        <i class="fas fa-key"></i>
-                      </button>
-                      <button
-                        onclick="deleteRole(2)"
-                        class="bg-red-500/20 text-red-400 p-2 rounded-lg hover:bg-red-500/30 transition-colors"
-                        title="Delete Role"
-                      >
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr
-                  class="border-b border-white/5 hover:bg-white/5 transition-colors"
-                  data-role-id="3"
-                >
-                  <td class="py-4 px-6">
-                    <div class="flex items-center">
-                      <div class="flex items-center">
-                        <div
-                          class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-3"
-                        >
-                          <i class="fas fa-user text-white"></i>
-                        </div>
-                        <div>
-                          <p class="text-white font-medium">Customer</p>
-                          <p class="text-gray-400 text-sm">Basic user access</p>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="py-4 px-6">
-                    <span class="text-white">150</span>
-                  </td>
-                  <td class="py-4 px-6">
-                    <span
-                      class="bg-orange-500/20 text-orange-400 px-2 py-1 rounded-lg text-sm"
-                    >
-                      Basic (5)
-                    </span>
-                  </td>
-                  <td class="py-4 px-6">
-                    <span
-                      class="bg-green-500/20 text-green-400 px-2 py-1 rounded-lg text-sm"
-                    >
-                      Active
-                    </span>
-                  </td>
-                  <td class="py-4 px-6">
-                    <span class="text-gray-400">2024-01-10</span>
-                  </td>
-                  <td class="py-4 px-6">
-                    <div class="flex items-center justify-center space-x-2">
-                      <button
-                        onclick="editRole(3, 'Customer')"
-                        class="bg-yellow-500/20 text-yellow-400 p-2 rounded-lg hover:bg-yellow-500/30 transition-colors"
-                        title="Edit Role"
-                      >
-                        <i class="fas fa-edit"></i>
-                      </button>
-                      <button
-                        onclick="managePermissions(3)"
-                        class="bg-blue-500/20 text-blue-400 p-2 rounded-lg hover:bg-blue-500/30 transition-colors"
-                        title="Manage Permissions"
-                      >
-                        <i class="fas fa-key"></i>
-                      </button>
-                      <button
-                        onclick="deleteRole(3)"
-                        class="bg-red-500/20 text-red-400 p-2 rounded-lg hover:bg-red-500/30 transition-colors"
-                        title="Delete Role"
-                      >
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Table Footer -->
-          <div
-            class="p-4 border-t border-white/10 flex items-center justify-between"
-          >
-            <div class="flex items-center space-x-4">
-              <span class="text-gray-400 text-sm">
-                Showing 1-3 of 3 roles
-              </span>
-              <select
-                class="glass bg-white/5 text-white border-0 rounded-lg px-3 py-1 text-sm"
-              >
-                <option value="10">10 per page</option>
-                <option value="25">25 per page</option>
-                <option value="50">50 per page</option>
-              </select>
-            </div>
-
-            <div class="flex items-center space-x-2">
-              <button
-                class="glass px-3 py-1 rounded-lg text-gray-400 hover:text-white disabled:opacity-50"
-                disabled
-              >
-                <i class="fas fa-chevron-left"></i>
-              </button>
-              <span class="glass px-3 py-1 rounded-lg text-white">1</span>
-              <button
-                class="glass px-3 py-1 rounded-lg text-gray-400 hover:text-white disabled:opacity-50"
-                disabled
-              >
-                <i class="fas fa-chevron-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-
-    <!-- Mobile Sidebar Overlay -->
-    <div
-      id="sidebarOverlay"
-      class="fixed inset-0 bg-black/50 z-40 hidden md:hidden"
-      onclick="closeSidebar()"
-    ></div>
-
-    <!-- Add Role Modal -->
-    <div
-      id="addModal"
-      class="hidden fixed inset-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center"
-    >
-      <div class="p-4 w-full max-w-md">
-        <div
-          class="modal-content rounded-2xl p-8 w-full mx-auto animate-bounce-in"
-        >
-          <div class="flex items-center justify-between mb-6">
-            <div class="flex items-center">
-              <div
-                class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-3"
-              >
-                <i class="fas fa-plus text-white"></i>
-              </div>
-              <h3 class="text-xl font-bold text-white">Add New Role</h3>
-            </div>
-            <button
-              onclick="closeModal('addModal')"
-              class="text-gray-400 hover:text-white transition-colors"
-            >
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-
-          <form id="addForm" class="space-y-6">
-            <div>
-              <label
-                for="roleName"
-                class="block text-sm font-medium text-gray-300 mb-2"
-              >
-                Role Name <span class="text-red-400">*</span>
-              </label>
-              <input
-                type="text"
-                id="roleName"
-                name="name"
-                placeholder="Enter role name"
-                class="w-full px-4 py-3 glass bg-white/5 text-white placeholder-gray-400 rounded-xl border-0 focus:ring-2 focus:ring-blue-500 transition-all"
-                required
-              />
-            </div>
-
-            <div class="flex justify-end space-x-3 pt-4">
-              <button
-                type="button"
-                onclick="closeModal('addModal')"
-                class="px-6 py-2 glass bg-white/5 text-gray-300 rounded-xl hover:bg-white/10 transition-colors"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                class="btn-primary px-6 py-2 rounded-xl text-white font-medium"
-              >
-                <i class="fas fa-plus mr-2"></i>
-                Create Role
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- Edit Role Modal -->
-    <div
-      id="editModal"
-      class="hidden fixed inset-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center"
-    >
-      <div class="p-4 w-full max-w-md">
-        <div
-          class="modal-content rounded-2xl p-8 w-full mx-auto animate-bounce-in"
-        >
-          <div class="flex items-center justify-between mb-6">
-            <div class="flex items-center">
-              <div
-                class="w-10 h-10 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center mr-3"
-              >
-                <i class="fas fa-edit text-white"></i>
-              </div>
-              <h3 class="text-xl font-bold text-white">Edit Role</h3>
-            </div>
-            <button
-              onclick="closeModal('editModal')"
-              class="text-gray-400 hover:text-white transition-colors"
-            >
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-
-          <form id="editForm" class="space-y-6">
-            <div>
-              <label
-                for="editRoleName"
-                class="block text-sm font-medium text-gray-300 mb-2"
-              >
-                Role Name <span class="text-red-400">*</span>
-              </label>
-              <input
-                type="text"
-                id="editRoleName"
-                name="name"
-                placeholder="Enter role name"
-                class="w-full px-4 py-3 glass bg-white/5 text-white placeholder-gray-400 rounded-xl border-0 focus:ring-2 focus:ring-blue-500 transition-all"
-                required
-              />
-            </div>
-
-            <div class="flex justify-end space-x-3 pt-4">
-              <button
-                type="button"
-                onclick="closeModal('editModal')"
-                class="px-6 py-2 glass bg-white/5 text-gray-300 rounded-xl hover:bg-white/10 transition-colors"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                class="bg-gradient-to-r from-yellow-500 to-orange-600 px-6 py-2 rounded-xl text-white font-medium hover:from-yellow-600 hover:to-orange-700 transition-all"
-              >
-                <i class="fas fa-save mr-2"></i>
-                Update Role
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- Manage Permissions Modal -->
-    <div
-      id="permissionsModal"
-      class="hidden fixed inset-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center"
-    >
-      <div class="p-4 w-full max-w-4xl max-h-[90vh]">
-        <div
-          class="modal-content rounded-2xl p-8 w-full mx-auto animate-bounce-in overflow-y-auto max-h-full"
-        >
-          <div class="flex items-center justify-between mb-6">
-            <div class="flex items-center">
-              <div
-                class="w-10 h-10 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center mr-3"
-              >
-                <i class="fas fa-key text-white"></i>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold text-white">
-                  Manage Role Permissions
-                </h3>
-                <p class="text-gray-400 text-sm" id="permissionRoleName">
-                  Configure permissions for this role
-                </p>
-              </div>
-            </div>
-            <button
-              onclick="closeModal('permissionsModal')"
-              class="text-gray-400 hover:text-white transition-colors"
-            >
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- User Management -->
-            <div class="admin-card rounded-xl p-6">
-              <div class="flex items-center mb-4">
-                <div
-                  class="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center mr-3"
-                >
-                  <i class="fas fa-users text-green-500"></i>
-                </div>
-                <h4 class="font-semibold text-white">User Management</h4>
-              </div>
-              <div class="space-y-3">
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="view_users"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >View Users</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="create_users"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >Create Users</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="edit_users"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >Edit Users</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="delete_users"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >Delete Users</span
-                  >
-                </label>
-              </div>
-            </div>
-
-            <!-- Product Management -->
-            <div class="admin-card rounded-xl p-6">
-              <div class="flex items-center mb-4">
-                <div
-                  class="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center mr-3"
-                >
-                  <i class="fas fa-box text-orange-500"></i>
-                </div>
-                <h4 class="font-semibold text-white">Product Management</h4>
-              </div>
-              <div class="space-y-3">
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="view_products"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >View Products</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="create_products"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >Create Products</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="edit_products"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >Edit Products</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="delete_products"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >Delete Products</span
-                  >
-                </label>
-              </div>
-            </div>
-
-            <!-- Category Management -->
-            <div class="admin-card rounded-xl p-6">
-              <div class="flex items-center mb-4">
-                <div
-                  class="w-8 h-8 bg-yellow-500/20 rounded-lg flex items-center justify-center mr-3"
-                >
-                  <i class="fas fa-tags text-yellow-500"></i>
-                </div>
-                <h4 class="font-semibold text-white">Category Management</h4>
-              </div>
-              <div class="space-y-3">
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="view_categories"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >View Categories</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="create_categories"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >Create Categories</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="edit_categories"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >Edit Categories</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="delete_categories"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >Delete Categories</span
-                  >
-                </label>
-              </div>
-            </div>
-
-            <!-- Order Management -->
-            <div class="admin-card rounded-xl p-6">
-              <div class="flex items-center mb-4">
-                <div
-                  class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center mr-3"
-                >
-                  <i class="fas fa-shopping-cart text-red-500"></i>
-                </div>
-                <h4 class="font-semibold text-white">Order Management</h4>
-              </div>
-              <div class="space-y-3">
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="view_orders"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >View Orders</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="manage_orders"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >Manage Orders</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="cancel_orders"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >Cancel Orders</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="refund_orders"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >Process Refunds</span
-                  >
-                </label>
-              </div>
-            </div>
-
-            <!-- System Settings -->
-            <div class="admin-card rounded-xl p-6">
-              <div class="flex items-center mb-4">
-                <div
-                  class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center mr-3"
-                >
-                  <i class="fas fa-cog text-purple-500"></i>
-                </div>
-                <h4 class="font-semibold text-white">System Settings</h4>
-              </div>
-              <div class="space-y-3">
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="view_dashboard"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >View Dashboard</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="manage_roles"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >Manage Roles</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="system_admin"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >System Admin</span
-                  >
-                </label>
-              </div>
-            </div>
-
-            <!-- Communication -->
-            <div class="admin-card rounded-xl p-6">
-              <div class="flex items-center mb-4">
-                <div
-                  class="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center mr-3"
-                >
-                  <i class="fas fa-envelope text-cyan-500"></i>
-                </div>
-                <h4 class="font-semibold text-white">Communication</h4>
-              </div>
-              <div class="space-y-3">
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="view_messages"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >View Messages</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="send_messages"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >Send Messages</span
-                  >
-                </label>
-                <label class="flex items-center group cursor-pointer">
-                  <input
-                    type="checkbox"
-                    class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
-                    value="delete_messages"
-                  />
-                  <span
-                    class="text-gray-300 group-hover:text-white transition-colors"
-                    >Delete Messages</span
-                  >
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="flex items-center justify-between mt-8 pt-6 border-t border-white/10"
-          >
-            <div class="flex items-center space-x-4">
-              <button
-                type="button"
-                onclick="selectAllPermissions()"
-                class="text-blue-400 hover:text-blue-300 text-sm font-medium"
-              >
-                Select All
-              </button>
-              <button
-                type="button"
-                onclick="clearAllPermissions()"
-                class="text-gray-400 hover:text-gray-300 text-sm font-medium"
-              >
-                Clear All
-              </button>
-            </div>
-            <div class="flex space-x-3">
-              <button
-                type="button"
-                onclick="closeModal('permissionsModal')"
-                class="px-6 py-2 glass bg-white/5 text-gray-300 rounded-xl hover:bg-white/10 transition-colors"
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                onclick="savePermissions()"
-                class="bg-gradient-to-r from-purple-500 to-indigo-600 px-6 py-2 rounded-xl text-white font-medium hover:from-purple-600 hover:to-indigo-700 transition-all"
-              >
-                <i class="fas fa-save mr-2"></i>
-                Save Permissions
-              </button>
+            <div class="hidden sm:block">
+              <p class="text-sm font-medium text-white">Admin User</p>
+              <p class="text-xs text-gray-400">Administrator</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </header>
 
-    <!-- Role Details Modal -->
-    <div
-      id="detailsModal"
-      class="hidden fixed inset-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center"
-    >
-      <div class="p-4 w-full max-w-2xl max-h-[90vh]">
-        <div
-          class="modal-content rounded-2xl p-8 w-full mx-auto animate-bounce-in overflow-y-auto max-h-full"
-        >
-          <div class="flex items-center justify-between mb-6">
-            <div class="flex items-center">
-              <div
-                class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center mr-3"
-              >
-                <i class="fas fa-eye text-white"></i>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold text-white">Role Details</h3>
-                <p class="text-gray-400 text-sm">
-                  Detailed information about this role
-                </p>
-              </div>
-            </div>
-            <button
-              onclick="closeModal('detailsModal')"
-              class="text-gray-400 hover:text-white transition-colors"
-            >
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-
-          <div id="roleDetailsContent" class="space-y-6">
-            <!-- Content will be populated by JavaScript -->
-          </div>
-
-          <div class="flex justify-end mt-8 pt-6 border-t border-white/10">
-            <button
-              type="button"
-              onclick="closeModal('detailsModal')"
-              class="px-6 py-2 glass bg-white/5 text-gray-300 rounded-xl hover:bg-white/10 transition-colors"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Delete Confirmation Modal -->
-    <div
-      id="deleteModal"
-      class="hidden fixed inset-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center"
-    >
-      <div class="p-4 w-full max-w-md">
-        <div
-          class="modal-content rounded-2xl p-8 w-full mx-auto animate-bounce-in"
-        >
-          <div class="flex items-center justify-between mb-6">
-            <div class="flex items-center">
-              <div
-                class="w-10 h-10 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl flex items-center justify-center mr-3"
-              >
-                <i class="fas fa-trash text-white"></i>
-              </div>
-              <h3 class="text-xl font-bold text-white">Delete Role</h3>
-            </div>
-            <button
-              onclick="closeModal('deleteModal')"
-              class="text-gray-400 hover:text-white transition-colors"
-            >
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-
-          <div class="mb-6">
-            <div
-              class="bg-red-500/10 border border-red-500/20 rounded-xl p-4 mb-4"
-            >
-              <div class="flex items-center">
-                <i class="fas fa-exclamation-triangle text-red-400 mr-3"></i>
-                <p class="text-red-400 font-medium">
-                  Warning: This action cannot be undone!
-                </p>
-              </div>
-            </div>
-            <p class="text-gray-300" id="deleteMessage">
-              Are you sure you want to delete this role? All users with this
-              role will lose their permissions.
+    <!-- Page Content -->
+    <div class="p-6 animate-fade-in">
+      <!-- Page Header -->
+      <div class="mb-8">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h1 class="text-3xl font-bold text-white mb-2">
+              Role Management
+            </h1>
+            <p class="text-gray-400">
+              Manage user roles and permissions across the system
             </p>
           </div>
-
-          <div class="flex justify-end space-x-3">
-            <button
-              type="button"
-              onclick="closeModal('deleteModal')"
-              class="px-6 py-2 glass bg-white/5 text-gray-300 rounded-xl hover:bg-white/10 transition-colors"
-            >
-              Cancel
+          <div class="mt-4 sm:mt-0 flex flex-col sm:flex-row gap-3">
+            <button onclick="openModal('addModal')"
+              class="btn-primary px-6 py-2 rounded-xl text-white font-medium flex items-center">
+              <i class="fas fa-plus mr-2"></i>
+              Add Role
             </button>
-            <button
-              type="button"
-              id="confirmDelete"
-              class="bg-gradient-to-r from-red-500 to-pink-600 px-6 py-2 rounded-xl text-white font-medium hover:from-red-600 hover:to-pink-700 transition-all"
-            >
-              <i class="fas fa-trash mr-2"></i>
-              Delete Role
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div class="admin-card rounded-xl p-6">
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mr-4">
+              <i class="fas fa-user-shield text-blue-500 text-xl"></i>
+            </div>
+            <div>
+              <p class="text-gray-400 text-sm">Total Roles</p>
+              <p class="text-2xl font-bold text-white">3</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card rounded-xl p-6">
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mr-4">
+              <i class="fas fa-users text-green-500 text-xl"></i>
+            </div>
+            <div>
+              <p class="text-gray-400 text-sm">Total Users</p>
+              <p class="text-2xl font-bold text-white">158</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card rounded-xl p-6">
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mr-4">
+              <i class="fas fa-key text-purple-500 text-xl"></i>
+            </div>
+            <div>
+              <p class="text-gray-400 text-sm">Permissions</p>
+              <p class="text-2xl font-bold text-white">14</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card rounded-xl p-6">
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mr-4">
+              <i class="fas fa-shield-alt text-orange-500 text-xl"></i>
+            </div>
+            <div>
+              <p class="text-gray-400 text-sm">Active Roles</p>
+              <p class="text-2xl font-bold text-white">3</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roles Table -->
+      <div class="admin-card rounded-xl overflow-hidden">
+        <div class="p-6 border-b border-white/10">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+            <h2 class="text-xl font-semibold text-white mb-4 sm:mb-0">
+              System Roles
+            </h2>
+          </div>
+        </div>
+
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table class="w-full">
+            <thead class="bg-white/5">
+              <tr>
+                <th class="text-left py-4 px-6 text-gray-300 font-medium">
+                  Role
+                </th>
+                <th class="text-left py-4 px-6 text-gray-300 font-medium">
+                  Users Count
+                </th>
+                <th class="text-left py-4 px-6 text-gray-300 font-medium">
+                  Permissions
+                </th>
+                <th class="text-left py-4 px-6 text-gray-300 font-medium">
+                  Status
+                </th>
+                <th class="text-left py-4 px-6 text-gray-300 font-medium">
+                  Created
+                </th>
+                <th class="text-center py-4 px-6 text-gray-300 font-medium">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody id="rolesTableBody">
+              <tr class="border-b border-white/5 hover:bg-white/5 transition-colors" data-role-id="1">
+                <td class="py-4 px-6">
+                  <div class="flex items-center">
+                    <div class="flex items-center">
+                      <div
+                        class="w-10 h-10 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl flex items-center justify-center mr-3">
+                        <i class="fas fa-crown text-white"></i>
+                      </div>
+                      <div>
+                        <p class="text-white font-medium">Admin</p>
+                        <p class="text-gray-400 text-sm">
+                          Full system access
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-4 px-6">
+                  <span class="text-white">3</span>
+                </td>
+                <td class="py-4 px-6">
+                  <span class="bg-green-500/20 text-green-400 px-2 py-1 rounded-lg text-sm">
+                    All (14)
+                  </span>
+                </td>
+                <td class="py-4 px-6">
+                  <span class="bg-green-500/20 text-green-400 px-2 py-1 rounded-lg text-sm">
+                    Active
+                  </span>
+                </td>
+                <td class="py-4 px-6">
+                  <span class="text-gray-400">2024-01-15</span>
+                </td>
+                <td class="py-4 px-6">
+                  <div class="flex items-center justify-center space-x-2">
+                    <button onclick="editRole(1, 'Admin')"
+                      class="bg-yellow-500/20 text-yellow-400 p-2 rounded-lg hover:bg-yellow-500/30 transition-colors"
+                      title="Edit Role">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="managePermissions(1)"
+                      class="bg-blue-500/20 text-blue-400 p-2 rounded-lg hover:bg-blue-500/30 transition-colors"
+                      title="Manage Permissions">
+                      <i class="fas fa-key"></i>
+                    </button>
+                    <button onclick="deleteRole(1)"
+                      class="bg-red-500/20 text-red-400 p-2 rounded-lg hover:bg-red-500/30 transition-colors"
+                      title="Delete Role">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="border-b border-white/5 hover:bg-white/5 transition-colors" data-role-id="2">
+                <td class="py-4 px-6">
+                  <div class="flex items-center">
+                    <div class="flex items-center">
+                      <div
+                        class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mr-3">
+                        <i class="fas fa-user-tie text-white"></i>
+                      </div>
+                      <div>
+                        <p class="text-white font-medium">Manager</p>
+                        <p class="text-gray-400 text-sm">Management access</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-4 px-6">
+                  <span class="text-white">5</span>
+                </td>
+                <td class="py-4 px-6">
+                  <span class="bg-blue-500/20 text-blue-400 px-2 py-1 rounded-lg text-sm">
+                    Limited (8)
+                  </span>
+                </td>
+                <td class="py-4 px-6">
+                  <span class="bg-green-500/20 text-green-400 px-2 py-1 rounded-lg text-sm">
+                    Active
+                  </span>
+                </td>
+                <td class="py-4 px-6">
+                  <span class="text-gray-400">2024-01-20</span>
+                </td>
+                <td class="py-4 px-6">
+                  <div class="flex items-center justify-center space-x-2">
+                    <button onclick="editRole(2, 'Manager')"
+                      class="bg-yellow-500/20 text-yellow-400 p-2 rounded-lg hover:bg-yellow-500/30 transition-colors"
+                      title="Edit Role">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="managePermissions(2)"
+                      class="bg-blue-500/20 text-blue-400 p-2 rounded-lg hover:bg-blue-500/30 transition-colors"
+                      title="Manage Permissions">
+                      <i class="fas fa-key"></i>
+                    </button>
+                    <button onclick="deleteRole(2)"
+                      class="bg-red-500/20 text-red-400 p-2 rounded-lg hover:bg-red-500/30 transition-colors"
+                      title="Delete Role">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="border-b border-white/5 hover:bg-white/5 transition-colors" data-role-id="3">
+                <td class="py-4 px-6">
+                  <div class="flex items-center">
+                    <div class="flex items-center">
+                      <div
+                        class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-3">
+                        <i class="fas fa-user text-white"></i>
+                      </div>
+                      <div>
+                        <p class="text-white font-medium">Customer</p>
+                        <p class="text-gray-400 text-sm">Basic user access</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-4 px-6">
+                  <span class="text-white">150</span>
+                </td>
+                <td class="py-4 px-6">
+                  <span class="bg-orange-500/20 text-orange-400 px-2 py-1 rounded-lg text-sm">
+                    Basic (5)
+                  </span>
+                </td>
+                <td class="py-4 px-6">
+                  <span class="bg-green-500/20 text-green-400 px-2 py-1 rounded-lg text-sm">
+                    Active
+                  </span>
+                </td>
+                <td class="py-4 px-6">
+                  <span class="text-gray-400">2024-01-10</span>
+                </td>
+                <td class="py-4 px-6">
+                  <div class="flex items-center justify-center space-x-2">
+                    <button onclick="editRole(3, 'Customer')"
+                      class="bg-yellow-500/20 text-yellow-400 p-2 rounded-lg hover:bg-yellow-500/30 transition-colors"
+                      title="Edit Role">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="managePermissions(3)"
+                      class="bg-blue-500/20 text-blue-400 p-2 rounded-lg hover:bg-blue-500/30 transition-colors"
+                      title="Manage Permissions">
+                      <i class="fas fa-key"></i>
+                    </button>
+                    <button onclick="deleteRole(3)"
+                      class="bg-red-500/20 text-red-400 p-2 rounded-lg hover:bg-red-500/30 transition-colors"
+                      title="Delete Role">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table Footer -->
+        <div class="p-4 border-t border-white/10 flex items-center justify-between">
+          <div class="flex items-center space-x-4">
+            <span class="text-gray-400 text-sm">
+              Showing 1-3 of 3 roles
+            </span>
+            <select class="glass bg-white/5 text-white border-0 rounded-lg px-3 py-1 text-sm">
+              <option value="10">10 per page</option>
+              <option value="25">25 per page</option>
+              <option value="50">50 per page</option>
+            </select>
+          </div>
+
+          <div class="flex items-center space-x-2">
+            <button class="glass px-3 py-1 rounded-lg text-gray-400 hover:text-white disabled:opacity-50" disabled>
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <span class="glass px-3 py-1 rounded-lg text-white">1</span>
+            <button class="glass px-3 py-1 rounded-lg text-gray-400 hover:text-white disabled:opacity-50" disabled>
+              <i class="fas fa-chevron-right"></i>
             </button>
           </div>
         </div>
       </div>
     </div>
+  </main>
 
-    <script>
-      // Global variables
-      let roleToDelete = null;
-      let roleToEdit = null;
-      let roleToManage = null;
+  <!-- Mobile Sidebar Overlay -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden" onclick="closeSidebar()"></div>
 
-      // Role management functions
-      function deleteRole(roleId) {
-        roleToDelete = roleId;
-        const roleRow = document.querySelector(`tr[data-role-id="${roleId}"]`);
-        const roleName = roleRow.querySelector("td:nth-child(1) p").textContent;
+  <!-- Add Role Modal -->
+  <div id="addModal" class="hidden fixed inset-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center">
+    <div class="p-4 w-full max-w-md">
+      <div class="modal-content rounded-2xl p-8 w-full mx-auto animate-bounce-in">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center">
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-3">
+              <i class="fas fa-plus text-white"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Add New Role</h3>
+          </div>
+          <button onclick="closeModal('addModal')" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
 
-        document.getElementById(
-          "deleteMessage"
-        ).innerHTML = `Are you sure you want to delete the role "<strong>${roleName}</strong>"? All users with this role will lose their permissions.`;
+        <form id="addForm" class="space-y-6">
+          <div>
+            <label for="roleName" class="block text-sm font-medium text-gray-300 mb-2">
+              Role Name <span class="text-red-400">*</span>
+            </label>
+            <input type="text" id="roleName" name="name" placeholder="Enter role name"
+              class="w-full px-4 py-3 glass bg-white/5 text-white placeholder-gray-400 rounded-xl border-0 focus:ring-2 focus:ring-blue-500 transition-all"
+              required />
+          </div>
 
-        openModal("deleteModal");
-      }
+          <div class="flex justify-end space-x-3 pt-4">
+            <button type="button" onclick="closeModal('addModal')"
+              class="px-6 py-2 glass bg-white/5 text-gray-300 rounded-xl hover:bg-white/10 transition-colors">
+              Cancel
+            </button>
+            <button type="submit" class="btn-primary px-6 py-2 rounded-xl text-white font-medium">
+              <i class="fas fa-plus mr-2"></i>
+              Create Role
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
-      function editRole(roleId, roleName) {
-        roleToEdit = roleId;
+  <!-- Edit Role Modal -->
+  <div id="editModal" class="hidden fixed inset-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center">
+    <div class="p-4 w-full max-w-md">
+      <div class="modal-content rounded-2xl p-8 w-full mx-auto animate-bounce-in">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center">
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center mr-3">
+              <i class="fas fa-edit text-white"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Edit Role</h3>
+          </div>
+          <button onclick="closeModal('editModal')" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
 
-        // Populate the edit form with current role data
-        document.getElementById("editRoleName").value = roleName;
+        <form id="editForm" class="space-y-6">
+          <div>
+            <label for="editRoleName" class="block text-sm font-medium text-gray-300 mb-2">
+              Role Name <span class="text-red-400">*</span>
+            </label>
+            <input type="text" id="editRoleName" name="name" placeholder="Enter role name"
+              class="w-full px-4 py-3 glass bg-white/5 text-white placeholder-gray-400 rounded-xl border-0 focus:ring-2 focus:ring-blue-500 transition-all"
+              required />
+          </div>
 
-        // Open the edit modal
-        openModal("editModal");
-      }
+          <div class="flex justify-end space-x-3 pt-4">
+            <button type="button" onclick="closeModal('editModal')"
+              class="px-6 py-2 glass bg-white/5 text-gray-300 rounded-xl hover:bg-white/10 transition-colors">
+              Cancel
+            </button>
+            <button type="submit"
+              class="bg-gradient-to-r from-yellow-500 to-orange-600 px-6 py-2 rounded-xl text-white font-medium hover:from-yellow-600 hover:to-orange-700 transition-all">
+              <i class="fas fa-save mr-2"></i>
+              Update Role
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
-      function managePermissions(roleId) {
-        roleToManage = roleId;
-        const roleRow = document.querySelector(`tr[data-role-id="${roleId}"]`);
-        const roleName = roleRow.querySelector("td:nth-child(1) p").textContent;
+  <!-- Manage Permissions Modal -->
+  <div id="permissionsModal"
+    class="hidden fixed inset-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center">
+    <div class="p-4 w-full max-w-4xl max-h-[90vh]">
+      <div class="modal-content rounded-2xl p-8 w-full mx-auto animate-bounce-in overflow-y-auto max-h-full">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center">
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center mr-3">
+              <i class="fas fa-key text-white"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-white">
+                Manage Role Permissions
+              </h3>
+              <p class="text-gray-400 text-sm" id="permissionRoleName">
+                Configure permissions for this role
+              </p>
+            </div>
+          </div>
+          <button onclick="closeModal('permissionsModal')" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
 
-        document.getElementById(
-          "permissionRoleName"
-        ).textContent = `Configure permissions for ${roleName}`;
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- User Management -->
+          <div class="admin-card rounded-xl p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center mr-3">
+                <i class="fas fa-users text-green-500"></i>
+              </div>
+              <h4 class="font-semibold text-white">User Management</h4>
+            </div>
+            <div class="space-y-3">
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="view_users" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">View Users</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="create_users" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">Create Users</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="edit_users" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">Edit Users</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="delete_users" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">Delete Users</span>
+              </label>
+            </div>
+          </div>
 
-        // Load current permissions (this would typically come from an API)
-        loadRolePermissions(roleId);
+          <!-- Product Management -->
+          <div class="admin-card rounded-xl p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center mr-3">
+                <i class="fas fa-box text-orange-500"></i>
+              </div>
+              <h4 class="font-semibold text-white">Product Management</h4>
+            </div>
+            <div class="space-y-3">
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="view_products" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">View Products</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="create_products" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">Create Products</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="edit_products" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">Edit Products</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="delete_products" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">Delete Products</span>
+              </label>
+            </div>
+          </div>
 
-        openModal("permissionsModal");
-      }
+          <!-- Category Management -->
+          <div class="admin-card rounded-xl p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-8 h-8 bg-yellow-500/20 rounded-lg flex items-center justify-center mr-3">
+                <i class="fas fa-tags text-yellow-500"></i>
+              </div>
+              <h4 class="font-semibold text-white">Category Management</h4>
+            </div>
+            <div class="space-y-3">
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="view_categories" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">View Categories</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="create_categories" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">Create Categories</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="edit_categories" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">Edit Categories</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="delete_categories" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">Delete Categories</span>
+              </label>
+            </div>
+          </div>
 
-      function loadRolePermissions(roleId) {
-        // This would typically load from an API
-        // For demo purposes, we'll set some default permissions
+          <!-- Order Management -->
+          <div class="admin-card rounded-xl p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center mr-3">
+                <i class="fas fa-shopping-cart text-red-500"></i>
+              </div>
+              <h4 class="font-semibold text-white">Order Management</h4>
+            </div>
+            <div class="space-y-3">
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="view_orders" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">View Orders</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="manage_orders" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">Manage Orders</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="cancel_orders" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">Cancel Orders</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="refund_orders" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">Process Refunds</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- System Settings -->
+          <div class="admin-card rounded-xl p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center mr-3">
+                <i class="fas fa-cog text-purple-500"></i>
+              </div>
+              <h4 class="font-semibold text-white">System Settings</h4>
+            </div>
+            <div class="space-y-3">
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="view_dashboard" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">View Dashboard</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="manage_roles" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">Manage Roles</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="system_admin" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">System Admin</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Communication -->
+          <div class="admin-card rounded-xl p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center mr-3">
+                <i class="fas fa-envelope text-cyan-500"></i>
+              </div>
+              <h4 class="font-semibold text-white">Communication</h4>
+            </div>
+            <div class="space-y-3">
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="view_messages" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">View Messages</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="send_messages" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">Send Messages</span>
+              </label>
+              <label class="flex items-center group cursor-pointer">
+                <input type="checkbox"
+                  class="mr-3 rounded border-gray-600 bg-transparent text-blue-500 focus:ring-blue-500"
+                  value="delete_messages" />
+                <span class="text-gray-300 group-hover:text-white transition-colors">Delete Messages</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between mt-8 pt-6 border-t border-white/10">
+          <div class="flex items-center space-x-4">
+            <button type="button" onclick="selectAllPermissions()"
+              class="text-blue-400 hover:text-blue-300 text-sm font-medium">
+              Select All
+            </button>
+            <button type="button" onclick="clearAllPermissions()"
+              class="text-gray-400 hover:text-gray-300 text-sm font-medium">
+              Clear All
+            </button>
+          </div>
+          <div class="flex space-x-3">
+            <button type="button" onclick="closeModal('permissionsModal')"
+              class="px-6 py-2 glass bg-white/5 text-gray-300 rounded-xl hover:bg-white/10 transition-colors">
+              Cancel
+            </button>
+            <button type="button" onclick="savePermissions()"
+              class="bg-gradient-to-r from-purple-500 to-indigo-600 px-6 py-2 rounded-xl text-white font-medium hover:from-purple-600 hover:to-indigo-700 transition-all">
+              <i class="fas fa-save mr-2"></i>
+              Save Permissions
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Role Details Modal -->
+  <div id="detailsModal"
+    class="hidden fixed inset-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center">
+    <div class="p-4 w-full max-w-2xl max-h-[90vh]">
+      <div class="modal-content rounded-2xl p-8 w-full mx-auto animate-bounce-in overflow-y-auto max-h-full">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center">
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center mr-3">
+              <i class="fas fa-eye text-white"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-white">Role Details</h3>
+              <p class="text-gray-400 text-sm">
+                Detailed information about this role
+              </p>
+            </div>
+          </div>
+          <button onclick="closeModal('detailsModal')" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div id="roleDetailsContent" class="space-y-6">
+          <!-- Content will be populated by JavaScript -->
+        </div>
+
+        <div class="flex justify-end mt-8 pt-6 border-t border-white/10">
+          <button type="button" onclick="closeModal('detailsModal')"
+            class="px-6 py-2 glass bg-white/5 text-gray-300 rounded-xl hover:bg-white/10 transition-colors">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="deleteModal" class="hidden fixed inset-0 bg-black/50 z-50 backdrop-blur-sm flex items-center justify-center">
+    <div class="p-4 w-full max-w-md">
+      <div class="modal-content rounded-2xl p-8 w-full mx-auto animate-bounce-in">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center">
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl flex items-center justify-center mr-3">
+              <i class="fas fa-trash text-white"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Delete Role</h3>
+          </div>
+          <button onclick="closeModal('deleteModal')" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="mb-6">
+          <div class="bg-red-500/10 border border-red-500/20 rounded-xl p-4 mb-4">
+            <div class="flex items-center">
+              <i class="fas fa-exclamation-triangle text-red-400 mr-3"></i>
+              <p class="text-red-400 font-medium">
+                Warning: This action cannot be undone!
+              </p>
+            </div>
+          </div>
+          <p class="text-gray-300" id="deleteMessage">
+            Are you sure you want to delete this role? All users with this
+            role will lose their permissions.
+          </p>
+        </div>
+
+        <div class="flex justify-end space-x-3">
+          <button type="button" onclick="closeModal('deleteModal')"
+            class="px-6 py-2 glass bg-white/5 text-gray-300 rounded-xl hover:bg-white/10 transition-colors">
+            Cancel
+          </button>
+          <button type="button" id="confirmDelete"
+            class="bg-gradient-to-r from-red-500 to-pink-600 px-6 py-2 rounded-xl text-white font-medium hover:from-red-600 hover:to-pink-700 transition-all">
+            <i class="fas fa-trash mr-2"></i>
+            Delete Role
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Global variables
+    let roleToDelete = null;
+    let roleToEdit = null;
+    let roleToManage = null;
+
+    // Role management functions
+    function deleteRole(roleId) {
+      roleToDelete = roleId;
+      const roleRow = document.querySelector(`tr[data-role-id="${roleId}"]`);
+      const roleName = roleRow.querySelector("td:nth-child(1) p").textContent;
+
+      document.getElementById(
+        "deleteMessage"
+      ).innerHTML = `Are you sure you want to delete the role "<strong>${roleName}</strong>"? All users with this role will lose their permissions.`;
+
+      openModal("deleteModal");
+    }
+
+    function editRole(roleId, roleName) {
+      roleToEdit = roleId;
+
+      // Populate the edit form with current role data
+      document.getElementById("editRoleName").value = roleName;
+
+      // Open the edit modal
+      openModal("editModal");
+    }
+
+    function managePermissions(roleId) {
+      roleToManage = roleId;
+      const roleRow = document.querySelector(`tr[data-role-id="${roleId}"]`);
+      const roleName = roleRow.querySelector("td:nth-child(1) p").textContent;
+
+      document.getElementById(
+        "permissionRoleName"
+      ).textContent = `Configure permissions for ${roleName}`;
+
+      // Load current permissions (this would typically come from an API)
+      loadRolePermissions(roleId);
+
+      openModal("permissionsModal");
+    }
+
+    function loadRolePermissions(roleId) {
+      // This would typically load from an API
+      // For demo purposes, we'll set some default permissions
+      const checkboxes = document.querySelectorAll(
+        '#permissionsModal input[type="checkbox"]'
+      );
+      checkboxes.forEach((checkbox) => {
+        // Simulate some permissions being checked based on role
+        if (roleId === 1) {
+          // Admin - all permissions
+          checkbox.checked = true;
+        } else if (roleId === 2) {
+          // Manager - limited permissions
+          const managerPermissions = [
+            "view_users",
+            "view_products",
+            "create_products",
+            "edit_products",
+            "view_orders",
+            "manage_orders",
+          ];
+          checkbox.checked = managerPermissions.includes(checkbox.value);
+        } else {
+          // Customer - basic permissions
+          const customerPermissions = ["view_products", "view_orders"];
+          checkbox.checked = customerPermissions.includes(checkbox.value);
+        }
+      });
+    }
+
+    function selectAllPermissions() {
+      const checkboxes = document.querySelectorAll(
+        '#permissionsModal input[type="checkbox"]'
+      );
+      checkboxes.forEach((checkbox) => {
+        checkbox.checked = true;
+      });
+    }
+
+    function clearAllPermissions() {
+      const checkboxes = document.querySelectorAll(
+        '#permissionsModal input[type="checkbox"]'
+      );
+      checkboxes.forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+    }
+
+    function savePermissions() {
+      if (roleToManage) {
         const checkboxes = document.querySelectorAll(
           '#permissionsModal input[type="checkbox"]'
         );
+        const selectedPermissions = [];
+
         checkboxes.forEach((checkbox) => {
-          // Simulate some permissions being checked based on role
-          if (roleId === 1) {
-            // Admin - all permissions
-            checkbox.checked = true;
-          } else if (roleId === 2) {
-            // Manager - limited permissions
-            const managerPermissions = [
-              "view_users",
-              "view_products",
-              "create_products",
-              "edit_products",
-              "view_orders",
-              "manage_orders",
-            ];
-            checkbox.checked = managerPermissions.includes(checkbox.value);
-          } else {
-            // Customer - basic permissions
-            const customerPermissions = ["view_products", "view_orders"];
-            checkbox.checked = customerPermissions.includes(checkbox.value);
+          if (checkbox.checked) {
+            selectedPermissions.push(checkbox.value);
           }
         });
-      }
 
-      function selectAllPermissions() {
-        const checkboxes = document.querySelectorAll(
-          '#permissionsModal input[type="checkbox"]'
+        // Get role name for success message
+        const roleRow = document.querySelector(
+          `tr[data-role-id="${roleToManage}"]`
         );
-        checkboxes.forEach((checkbox) => {
-          checkbox.checked = true;
-        });
-      }
+        const roleName =
+          roleRow.querySelector("td:nth-child(1) p").textContent;
 
-      function clearAllPermissions() {
-        const checkboxes = document.querySelectorAll(
-          '#permissionsModal input[type="checkbox"]'
+        // Show loading state
+        const saveBtn = document.querySelector(
+          '#permissionsModal button[onclick="savePermissions()"]'
         );
-        checkboxes.forEach((checkbox) => {
-          checkbox.checked = false;
-        });
+        const originalText = saveBtn.innerHTML;
+        saveBtn.innerHTML =
+          '<i class="fas fa-spinner fa-spin mr-2"></i>Saving...';
+        saveBtn.disabled = true;
+
+        // Simulate API call
+        setTimeout(() => {
+          saveBtn.innerHTML = originalText;
+          saveBtn.disabled = false;
+          showToast("success", `Permissions updated for "${roleName}"`);
+          closeModal("permissionsModal");
+          roleToManage = null;
+        }, 1500);
       }
+    }
 
-      function savePermissions() {
-        if (roleToManage) {
-          const checkboxes = document.querySelectorAll(
-            '#permissionsModal input[type="checkbox"]'
-          );
-          const selectedPermissions = [];
-
-          checkboxes.forEach((checkbox) => {
-            if (checkbox.checked) {
-              selectedPermissions.push(checkbox.value);
-            }
-          });
-
-          // Get role name for success message
+    // Event listeners for modals
+    document
+      .getElementById("confirmDelete")
+      .addEventListener("click", function () {
+        if (roleToDelete) {
           const roleRow = document.querySelector(
-            `tr[data-role-id="${roleToManage}"]`
+            `tr[data-role-id="${roleToDelete}"]`
           );
           const roleName =
             roleRow.querySelector("td:nth-child(1) p").textContent;
 
-          // Show loading state
-          const saveBtn = document.querySelector(
-            '#permissionsModal button[onclick="savePermissions()"]'
-          );
-          const originalText = saveBtn.innerHTML;
-          saveBtn.innerHTML =
-            '<i class="fas fa-spinner fa-spin mr-2"></i>Saving...';
-          saveBtn.disabled = true;
-
           // Simulate API call
+          showToast("success", `Role "${roleName}" deleted successfully`);
+
+          // Remove row with animation
+          roleRow.style.opacity = "0";
+          roleRow.style.transform = "translateX(-100%)";
           setTimeout(() => {
-            saveBtn.innerHTML = originalText;
-            saveBtn.disabled = false;
-            showToast("success", `Permissions updated for "${roleName}"`);
-            closeModal("permissionsModal");
-            roleToManage = null;
-          }, 1500);
+            roleRow.remove();
+          }, 300);
+
+          closeModal("deleteModal");
+          roleToDelete = null;
         }
-      }
+      });
 
-      // Event listeners for modals
-      document
-        .getElementById("confirmDelete")
-        .addEventListener("click", function () {
-          if (roleToDelete) {
-            const roleRow = document.querySelector(
-              `tr[data-role-id="${roleToDelete}"]`
-            );
-            const roleName =
-              roleRow.querySelector("td:nth-child(1) p").textContent;
+    document
+      .getElementById("addForm")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const roleName = formData.get("name");
 
-            // Simulate API call
-            showToast("success", `Role "${roleName}" deleted successfully`);
+        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML =
+          '<i class="fas fa-spinner fa-spin mr-2"></i>Creating...';
+        submitBtn.disabled = true;
 
-            // Remove row with animation
-            roleRow.style.opacity = "0";
-            roleRow.style.transform = "translateX(-100%)";
-            setTimeout(() => {
-              roleRow.remove();
-            }, 300);
+        // Simulate API call
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+          showToast("success", `Role "${roleName}" created successfully`);
+          closeModal("addModal");
+          this.reset();
+        }, 1500);
+      });
 
-            closeModal("deleteModal");
-            roleToDelete = null;
-          }
-        });
+    document
+      .getElementById("editForm")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const roleName = formData.get("name");
 
-      document
-        .getElementById("addForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          const formData = new FormData(this);
-          const roleName = formData.get("name");
+        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML =
+          '<i class="fas fa-spinner fa-spin mr-2"></i>Updating...';
+        submitBtn.disabled = true;
 
-          // Show loading state
-          const submitBtn = this.querySelector('button[type="submit"]');
-          const originalText = submitBtn.innerHTML;
-          submitBtn.innerHTML =
-            '<i class="fas fa-spinner fa-spin mr-2"></i>Creating...';
-          submitBtn.disabled = true;
+        // Simulate API call
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+          showToast("success", `Role "${roleName}" updated successfully`);
+          closeModal("editModal");
+          roleToEdit = null;
+        }, 1500);
+      });
+  </script>
+</body>
 
-          // Simulate API call
-          setTimeout(() => {
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-            showToast("success", `Role "${roleName}" created successfully`);
-            closeModal("addModal");
-            this.reset();
-          }, 1500);
-        });
-
-      document
-        .getElementById("editForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          const formData = new FormData(this);
-          const roleName = formData.get("name");
-
-          // Show loading state
-          const submitBtn = this.querySelector('button[type="submit"]');
-          const originalText = submitBtn.innerHTML;
-          submitBtn.innerHTML =
-            '<i class="fas fa-spinner fa-spin mr-2"></i>Updating...';
-          submitBtn.disabled = true;
-
-          // Simulate API call
-          setTimeout(() => {
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-            showToast("success", `Role "${roleName}" updated successfully`);
-            closeModal("editModal");
-            roleToEdit = null;
-          }, 1500);
-        });
-    </script>
-  </body>
 </html>

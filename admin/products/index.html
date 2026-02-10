@@ -1,1384 +1,1068 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Products - E-Commerce Admin</title>
 
-    <link rel="stylesheet" href="../../assets/css/admin.css" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../../assets/css/admin/styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products - E-Commerce Admin</title>
 
-    <script src="../../assets/js/admin/main.js"></script>
-  </head>
-  <body class="admin-bg text-white flex min-h-screen">
-    <!-- Sidebar -->
-    <div
-      id="sidebar"
-      class="glass w-64 min-h-screen fixed transition-all duration-300 transform -translate-x-full md:translate-x-0 z-50 border-r border-white/10 flex flex-col"
-    >
-      <!-- Logo Section -->
-      <div class="p-6 pb-4 flex-shrink-0">
-        <div class="animate-bounce-in">
-          <div class="flex items-center space-x-3">
+  <link rel="stylesheet" href="../../assets/css/admin.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../assets/css/admin/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+  <script src="../../assets/js/admin/main.js"></script>
+</head>
+
+<body class="admin-bg text-white flex min-h-screen">
+  <!-- Sidebar -->
+  <sidebar id="sidebar"
+    class="glass w-64 min-h-screen fixed transition-all duration-300 transform -translate-x-full md:translate-x-0 z-50 border-r border-white/10 flex flex-col">
+    <!-- Logo Section -->
+    <div class="p-6 pb-4 flex-shrink-0">
+      <div class="animate-bounce-in">
+        <div class="flex items-center space-x-3">
+          <div
+            class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+            <i class="fas fa-store text-white text-lg"></i>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-white">E-Commerce</h2>
+            <p class="text-xs text-gray-400">Admin Panel</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="flex-1 overflow-y-auto px-6 pb-6">
+      <div class="space-y-2">
+        <!-- Main Navigation -->
+        <div class="mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            Main
+          </p>
+          <ul class="space-y-1">
+            <!-- Dashboard -->
+            <li>
+              <a href="../dashboard.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-chart-line text-blue-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Dashboard</span>
+              </a>
+            </li>
+
+            <!-- Users Management -->
+            <li>
+              <a href="../users/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-users text-green-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Users</span>
+              </a>
+            </li>
+
+            <!-- Roles -->
+            <li>
+              <a href="../roles/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-user-shield text-purple-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Roles</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Catalog Management -->
+        <div class="mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            Catalog
+          </p>
+          <ul class="space-y-1">
+            <!-- Categories -->
+            <li>
+              <a href="../categories/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-tags text-yellow-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Categories</span>
+              </a>
+            </li>
+
+            <!-- Products -->
+            <li>
+              <a href="index.html" class="sidebar-item active flex items-center p-3 rounded-xl text-white group">
+                <i class="fas fa-box text-orange-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Products</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Sales & Communication -->
+        <div class="mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            Sales
+          </p>
+          <ul class="space-y-1">
+            <!-- Orders -->
+            <li>
+              <a href="../orders/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-shopping-cart text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Orders</span>
+              </a>
+            </li>
+
+            <!-- Messages -->
+            <li>
+              <a href="../messages/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-envelope text-cyan-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Messages</span>
+                <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">3</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Account -->
+        <div class="border-t border-white/10 pt-4">
+          <ul class="space-y-1">
+            <li>
+              <a href="../profile.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-user-circle text-indigo-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Profile</span>
+              </a>
+            </li>
+            <li>
+              <button type="button"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-red-400 group w-full text-left">
+                <i class="fas fa-sign-out-alt text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Logout</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </sidebar>
+
+  <!-- Main Content -->
+  <main class="max-w-full flex-1 md:ml-64 min-h-screen">
+    <!-- Top Header -->
+    <header class="glass border-b border-white/10 p-4 sticky top-0 z-40">
+      <div class="flex items-center justify-between">
+        <!-- Mobile Menu Button -->
+        <button id="toggleSidebar"
+          class="md:hidden glass p-2 rounded-xl text-white hover:bg-white/10 transition-colors">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Page Title Area -->
+        <div class="flex items-center space-x-4">
+          <div id="breadcrumb" class="text-sm text-gray-400">
+            <span>Admin</span>
+            <i class="fas fa-chevron-right mx-2"></i>
+            <span class="text-white">Products</span>
+          </div>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="flex items-center space-x-3">
+          <!-- Notifications -->
+          <button
+            class="glass p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors relative">
+            <i class="fas fa-bell"></i>
+            <span
+              class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">3</span>
+          </button>
+
+          <!-- User Profile -->
+          <div class="flex items-center space-x-2 glass px-3 py-2 rounded-xl">
             <div
-              class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center"
-            >
-              <i class="fas fa-store text-white text-lg"></i>
+              class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+              A
             </div>
+            <div class="hidden sm:block">
+              <p class="text-sm font-medium text-white">Admin User</p>
+              <p class="text-xs text-gray-400">Administrator</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="p-6">
+      <!-- Page Header -->
+      <div class="mb-8 fade-in-up">
+        <div class="flex justify-between items-center">
+          <div>
+            <h1 class="text-3xl font-bold text-white mb-2">Products</h1>
+            <p class="text-gray-400">Manage your product inventory</p>
+          </div>
+          <button onclick="openAddProductModal()"
+            class="btn-primary px-6 py-3 rounded-lg text-white font-medium hover:shadow-xl transition-all duration-300">
+            <i class="fas fa-plus mr-2"></i>
+            Add Product
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="stats-card admin-card rounded-xl p-6 fade-in-up delay-100">
+          <div class="flex items-center justify-between">
             <div>
-              <h2 class="text-xl font-bold text-white">E-Commerce</h2>
-              <p class="text-xs text-gray-400">Admin Panel</p>
+              <p class="text-gray-400 text-sm">Total Products</p>
+              <p class="text-2xl font-bold text-white">1,234</p>
+            </div>
+            <div class="icon w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+              <i class="fas fa-box text-blue-400 text-xl"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-card admin-card rounded-xl p-6 fade-in-up delay-200">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-400 text-sm">In Stock</p>
+              <p class="text-2xl font-bold text-white">987</p>
+            </div>
+            <div class="icon w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+              <i class="fas fa-check-circle text-green-400 text-xl"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-card admin-card rounded-xl p-6 fade-in-up delay-300">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-400 text-sm">Low Stock</p>
+              <p class="text-2xl font-bold text-white">43</p>
+            </div>
+            <div class="icon w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center">
+              <i class="fas fa-exclamation-triangle text-yellow-400 text-xl"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-card admin-card rounded-xl p-6 fade-in-up delay-400">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-400 text-sm">Out of Stock</p>
+              <p class="text-2xl font-bold text-white">12</p>
+            </div>
+            <div class="icon w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center">
+              <i class="fas fa-times-circle text-red-400 text-xl"></i>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Navigation Menu -->
-      <nav class="flex-1 overflow-y-auto px-6 pb-6">
-        <div class="space-y-2">
-          <!-- Main Navigation -->
-          <div class="mb-6">
-            <p
-              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
-            >
-              Main
-            </p>
-            <ul class="space-y-1">
-              <!-- Dashboard -->
-              <li>
-                <a
-                  href="../dashboard.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-chart-line text-blue-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Dashboard</span>
-                </a>
-              </li>
+      <!-- Products Table -->
+      <div class="admin-card rounded-xl overflow-hidden fade-in-right">
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table class="w-full">
+            <thead class="bg-gray-800/50">
+              <tr>
+                <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  Product
+                </th>
+                <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  Category
+                </th>
+                <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  Price
+                </th>
+                <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  Stock
+                </th>
+                <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  Status
+                </th>
+                <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-700">
+              <!-- Product rows -->
+              <tr class="table-row border-l-4 border-transparent hover:border-blue-500">
+                <td class="px-6 py-4">
+                  <div class="flex items-center">
+                    <img
+                      class="w-12 h-12 rounded-lg object-cover mr-4 transition-transform duration-300 hover:scale-110"
+                      src="https://via.placeholder.com/48x48/374151/9CA3AF?text=P1" alt="Product" />
+                    <div>
+                      <div class="text-sm font-medium text-white">
+                        Premium Wireless Headphones
+                      </div>
+                      <div class="text-sm text-gray-400">
+                        SKU: WH-2024-001
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">Electronics</span>
+                </td>
+                <td class="px-6 py-4 text-white">$299.99</td>
+                <td class="px-6 py-4">
+                  <span class="text-green-400">45 units</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Active</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-2">
+                    <a href="show.html"
+                      class="action-btn p-2 text-blue-400 hover:text-blue-300 rounded-lg hover:bg-blue-500/10">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <button onclick="editProduct(1)"
+                      class="action-btn p-2 text-yellow-400 hover:text-yellow-300 rounded-lg hover:bg-yellow-500/10">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteProduct(1)"
+                      class="action-btn p-2 text-red-400 hover:text-red-300 rounded-lg hover:bg-red-500/10">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
 
-              <!-- Users Management -->
-              <li>
-                <a
-                  href="../users/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-users text-green-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Users</span>
-                </a>
-              </li>
+              <tr class="table-row border-l-4 border-transparent hover:border-blue-500">
+                <td class="px-6 py-4">
+                  <div class="flex items-center">
+                    <img
+                      class="w-12 h-12 rounded-lg object-cover mr-4 transition-transform duration-300 hover:scale-110"
+                      src="https://via.placeholder.com/48x48/374151/9CA3AF?text=P2" alt="Product" />
+                    <div>
+                      <div class="text-sm font-medium text-white">
+                        Smartphone Case
+                      </div>
+                      <div class="text-sm text-gray-400">
+                        SKU: SC-2024-002
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">Electronics</span>
+                </td>
+                <td class="px-6 py-4 text-white">$24.99</td>
+                <td class="px-6 py-4">
+                  <span class="text-yellow-400">8 units</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Active</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-2">
+                    <a href="show.html"
+                      class="action-btn p-2 text-blue-400 hover:text-blue-300 rounded-lg hover:bg-blue-500/10">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <button onclick="editProduct(2)"
+                      class="action-btn p-2 text-yellow-400 hover:text-yellow-300 rounded-lg hover:bg-yellow-500/10">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteProduct(2)"
+                      class="action-btn p-2 text-red-400 hover:text-red-300 rounded-lg hover:bg-red-500/10">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
 
-              <!-- Roles -->
-              <li>
-                <a
-                  href="../roles/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-user-shield text-purple-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Roles</span>
-                </a>
-              </li>
-            </ul>
-          </div>
+              <tr class="table-row border-l-4 border-transparent hover:border-blue-500">
+                <td class="px-6 py-4">
+                  <div class="flex items-center">
+                    <img
+                      class="w-12 h-12 rounded-lg object-cover mr-4 transition-transform duration-300 hover:scale-110"
+                      src="https://via.placeholder.com/48x48/374151/9CA3AF?text=P3" alt="Product" />
+                    <div>
+                      <div class="text-sm font-medium text-white">
+                        Cotton T-Shirt
+                      </div>
+                      <div class="text-sm text-gray-400">
+                        SKU: TS-2024-003
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs">Clothing</span>
+                </td>
+                <td class="px-6 py-4 text-white">$19.99</td>
+                <td class="px-6 py-4">
+                  <span class="text-red-400">0 units</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="px-2 py-1 bg-red-500/20 text-red-400 rounded-full text-xs">Out of Stock</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-2">
+                    <a href="show.html"
+                      class="action-btn p-2 text-blue-400 hover:text-blue-300 rounded-lg hover:bg-blue-500/10">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <button onclick="editProduct(3)"
+                      class="action-btn p-2 text-yellow-400 hover:text-yellow-300 rounded-lg hover:bg-yellow-500/10">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteProduct(3)"
+                      class="action-btn p-2 text-red-400 hover:text-red-300 rounded-lg hover:bg-red-500/10">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
 
-          <!-- Catalog Management -->
-          <div class="mb-6">
-            <p
-              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
-            >
-              Catalog
-            </p>
-            <ul class="space-y-1">
-              <!-- Categories -->
-              <li>
-                <a
-                  href="../categories/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-tags text-yellow-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Categories</span>
-                </a>
-              </li>
+              <tr class="table-row">
+                <td class="px-6 py-4">
+                  <div class="flex items-center">
+                    <img class="w-12 h-12 rounded-lg object-cover mr-4"
+                      src="https://via.placeholder.com/48x48/374151/9CA3AF?text=P4" alt="Product" />
+                    <div>
+                      <div class="text-sm font-medium text-white">
+                        Programming Book
+                      </div>
+                      <div class="text-sm text-gray-400">
+                        SKU: BK-2024-004
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Books</span>
+                </td>
+                <td class="px-6 py-4 text-white">$49.99</td>
+                <td class="px-6 py-4">
+                  <span class="text-green-400">23 units</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Active</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-2">
+                    <a href="show.html" class="p-2 text-blue-400 hover:text-blue-300 transition-colors">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <button class="p-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="p-2 text-red-400 hover:text-red-300 transition-colors">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
 
-              <!-- Products -->
-              <li>
-                <a
-                  href="index.html"
-                  class="sidebar-item active flex items-center p-3 rounded-xl text-white group"
-                >
-                  <i
-                    class="fas fa-box text-orange-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Products</span>
-                </a>
-              </li>
-            </ul>
-          </div>
+              <tr class="table-row">
+                <td class="px-6 py-4">
+                  <div class="flex items-center">
+                    <img class="w-12 h-12 rounded-lg object-cover mr-4"
+                      src="https://via.placeholder.com/48x48/374151/9CA3AF?text=P5" alt="Product" />
+                    <div>
+                      <div class="text-sm font-medium text-white">
+                        Garden Tools Set
+                      </div>
+                      <div class="text-sm text-gray-400">
+                        SKU: GT-2024-005
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="px-2 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs">Home & Garden</span>
+                </td>
+                <td class="px-6 py-4 text-white">$89.99</td>
+                <td class="px-6 py-4">
+                  <span class="text-green-400">15 units</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="px-2 py-1 bg-gray-500/20 text-gray-400 rounded-full text-xs">Draft</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center space-x-2">
+                    <a href="show.html" class="p-2 text-blue-400 hover:text-blue-300 transition-colors">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <button class="p-2 text-yellow-400 hover:text-yellow-300 transition-colors">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="p-2 text-red-400 hover:text-red-300 transition-colors">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-          <!-- Sales & Communication -->
-          <div class="mb-6">
-            <p
-              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
-            >
-              Sales
-            </p>
-            <ul class="space-y-1">
-              <!-- Orders -->
-              <li>
-                <a
-                  href="../orders/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-shopping-cart text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Orders</span>
-                </a>
-              </li>
-
-              <!-- Messages -->
-              <li>
-                <a
-                  href="../messages/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-envelope text-cyan-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Messages</span>
-                  <span
-                    class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full"
-                    >3</span
-                  >
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Account -->
-          <div class="border-t border-white/10 pt-4">
-            <ul class="space-y-1">
-              <li>
-                <a
-                  href="../profile.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-user-circle text-indigo-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Profile</span>
-                </a>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-red-400 group w-full text-left"
-                >
-                  <i
-                    class="fas fa-sign-out-alt text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Logout</span>
-                </button>
-              </li>
-            </ul>
+        <!-- Table Footer with Pagination -->
+        <div class="bg-gray-800/30 px-6 py-4 border-t border-gray-700">
+          <div class="flex items-center justify-between">
+            <div class="text-sm text-gray-400">
+              Showing <span class="font-medium text-white">1</span> to
+              <span class="font-medium text-white">5</span> of
+              <span class="font-medium text-white">1,234</span> results
+            </div>
+            <div class="flex items-center space-x-2">
+              <button
+                class="pagination-btn px-3 py-2 bg-gray-700 text-gray-400 rounded-lg hover:bg-gray-600 hover:text-white transition-all duration-300 disabled:opacity-50"
+                disabled>
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="pagination-btn active px-3 py-2 text-white rounded-lg">
+                1
+              </button>
+              <button
+                class="pagination-btn px-3 py-2 bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white rounded-lg transition-all duration-300">
+                2
+              </button>
+              <button
+                class="pagination-btn px-3 py-2 bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white rounded-lg transition-all duration-300">
+                3
+              </button>
+              <span class="px-3 py-2 text-gray-400">...</span>
+              <button
+                class="pagination-btn px-3 py-2 bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white rounded-lg transition-all duration-300">
+                247
+              </button>
+              <button
+                class="pagination-btn px-3 py-2 bg-gray-700 text-gray-400 rounded-lg hover:bg-gray-600 hover:text-white transition-all duration-300">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
           </div>
         </div>
-      </nav>
+      </div>
     </div>
+  </main>
 
-    <!-- Main Content -->
-    <div class="flex-1 md:ml-64 min-h-screen">
-      <!-- Top Header -->
-      <header class="glass border-b border-white/10 p-4 sticky top-0 z-40">
-        <div class="flex items-center justify-between">
-          <!-- Mobile Menu Button -->
-          <button
-            id="toggleSidebar"
-            class="md:hidden glass p-2 rounded-xl text-white hover:bg-white/10 transition-colors"
-          >
-            <i class="fas fa-bars"></i>
-          </button>
+  <!-- Add Product Modal -->
+  <div id="addProductModal"
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="glass rounded-2xl max-w-2xl w-full p-8 animate-bounce-in max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-xl font-bold text-white">Add New Product</h3>
+        <button onclick="closeModal('addProductModal')" class="text-gray-400 hover:text-white">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
 
-          <!-- Page Title Area -->
-          <div class="flex items-center space-x-4">
-            <div id="breadcrumb" class="text-sm text-gray-400">
-              <span>Admin</span>
-              <i class="fas fa-chevron-right mx-2"></i>
-              <span class="text-white">Products</span>
-            </div>
-          </div>
-
-          <!-- Header Actions -->
-          <div class="flex items-center space-x-3">
-            <!-- Notifications -->
-            <button
-              class="glass p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors relative"
-            >
-              <i class="fas fa-bell"></i>
-              <span
-                class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center"
-                >3</span
-              >
-            </button>
-
-            <!-- User Profile -->
-            <div class="flex items-center space-x-2 glass px-3 py-2 rounded-xl">
-              <div
-                class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm"
-              >
-                A
-              </div>
-              <div class="hidden sm:block">
-                <p class="text-sm font-medium text-white">Admin User</p>
-                <p class="text-xs text-gray-400">Administrator</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <!-- Page Content -->
-      <main class="p-6">
-        <!-- Page Header -->
-        <div class="mb-8 fade-in-up">
-          <div class="flex justify-between items-center">
-            <div>
-              <h1 class="text-3xl font-bold text-white mb-2">Products</h1>
-              <p class="text-gray-400">Manage your product inventory</p>
-            </div>
-            <button
-              onclick="openAddProductModal()"
-              class="btn-primary px-6 py-3 rounded-lg text-white font-medium hover:shadow-xl transition-all duration-300"
-            >
-              <i class="fas fa-plus mr-2"></i>
-              Add Product
-            </button>
-          </div>
-        </div>
-
-        <!-- Stats Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div
-            class="stats-card admin-card rounded-xl p-6 fade-in-up delay-100"
-          >
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-gray-400 text-sm">Total Products</p>
-                <p class="text-2xl font-bold text-white">1,234</p>
-              </div>
-              <div
-                class="icon w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center"
-              >
-                <i class="fas fa-box text-blue-400 text-xl"></i>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="stats-card admin-card rounded-xl p-6 fade-in-up delay-200"
-          >
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-gray-400 text-sm">In Stock</p>
-                <p class="text-2xl font-bold text-white">987</p>
-              </div>
-              <div
-                class="icon w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center"
-              >
-                <i class="fas fa-check-circle text-green-400 text-xl"></i>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="stats-card admin-card rounded-xl p-6 fade-in-up delay-300"
-          >
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-gray-400 text-sm">Low Stock</p>
-                <p class="text-2xl font-bold text-white">43</p>
-              </div>
-              <div
-                class="icon w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center"
-              >
-                <i
-                  class="fas fa-exclamation-triangle text-yellow-400 text-xl"
-                ></i>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="stats-card admin-card rounded-xl p-6 fade-in-up delay-400"
-          >
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-gray-400 text-sm">Out of Stock</p>
-                <p class="text-2xl font-bold text-white">12</p>
-              </div>
-              <div
-                class="icon w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center"
-              >
-                <i class="fas fa-times-circle text-red-400 text-xl"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Products Table -->
-        <div class="admin-card rounded-xl overflow-hidden fade-in-right">
-          <div class="overflow-x-auto">
-            <table class="w-full">
-              <thead class="bg-gray-800/50">
-                <tr>
-                  <th
-                    class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider"
-                  >
-                    Product
-                  </th>
-                  <th
-                    class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider"
-                  >
-                    Category
-                  </th>
-                  <th
-                    class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider"
-                  >
-                    Price
-                  </th>
-                  <th
-                    class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider"
-                  >
-                    Stock
-                  </th>
-                  <th
-                    class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider"
-                  >
-                    Status
-                  </th>
-                  <th
-                    class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider"
-                  >
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-700">
-                <!-- Product rows -->
-                <tr
-                  class="table-row border-l-4 border-transparent hover:border-blue-500"
-                >
-                  <td class="px-6 py-4">
-                    <div class="flex items-center">
-                      <img
-                        class="w-12 h-12 rounded-lg object-cover mr-4 transition-transform duration-300 hover:scale-110"
-                        src="https://via.placeholder.com/48x48/374151/9CA3AF?text=P1"
-                        alt="Product"
-                      />
-                      <div>
-                        <div class="text-sm font-medium text-white">
-                          Premium Wireless Headphones
-                        </div>
-                        <div class="text-sm text-gray-400">
-                          SKU: WH-2024-001
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4">
-                    <span
-                      class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs"
-                      >Electronics</span
-                    >
-                  </td>
-                  <td class="px-6 py-4 text-white">$299.99</td>
-                  <td class="px-6 py-4">
-                    <span class="text-green-400">45 units</span>
-                  </td>
-                  <td class="px-6 py-4">
-                    <span
-                      class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs"
-                      >Active</span
-                    >
-                  </td>
-                  <td class="px-6 py-4">
-                    <div class="flex items-center space-x-2">
-                      <a
-                        href="show.html"
-                        class="action-btn p-2 text-blue-400 hover:text-blue-300 rounded-lg hover:bg-blue-500/10"
-                      >
-                        <i class="fas fa-eye"></i>
-                      </a>
-                      <button
-                        onclick="editProduct(1)"
-                        class="action-btn p-2 text-yellow-400 hover:text-yellow-300 rounded-lg hover:bg-yellow-500/10"
-                      >
-                        <i class="fas fa-edit"></i>
-                      </button>
-                      <button
-                        onclick="deleteProduct(1)"
-                        class="action-btn p-2 text-red-400 hover:text-red-300 rounded-lg hover:bg-red-500/10"
-                      >
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr
-                  class="table-row border-l-4 border-transparent hover:border-blue-500"
-                >
-                  <td class="px-6 py-4">
-                    <div class="flex items-center">
-                      <img
-                        class="w-12 h-12 rounded-lg object-cover mr-4 transition-transform duration-300 hover:scale-110"
-                        src="https://via.placeholder.com/48x48/374151/9CA3AF?text=P2"
-                        alt="Product"
-                      />
-                      <div>
-                        <div class="text-sm font-medium text-white">
-                          Smartphone Case
-                        </div>
-                        <div class="text-sm text-gray-400">
-                          SKU: SC-2024-002
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4">
-                    <span
-                      class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs"
-                      >Electronics</span
-                    >
-                  </td>
-                  <td class="px-6 py-4 text-white">$24.99</td>
-                  <td class="px-6 py-4">
-                    <span class="text-yellow-400">8 units</span>
-                  </td>
-                  <td class="px-6 py-4">
-                    <span
-                      class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs"
-                      >Active</span
-                    >
-                  </td>
-                  <td class="px-6 py-4">
-                    <div class="flex items-center space-x-2">
-                      <a
-                        href="show.html"
-                        class="action-btn p-2 text-blue-400 hover:text-blue-300 rounded-lg hover:bg-blue-500/10"
-                      >
-                        <i class="fas fa-eye"></i>
-                      </a>
-                      <button
-                        onclick="editProduct(2)"
-                        class="action-btn p-2 text-yellow-400 hover:text-yellow-300 rounded-lg hover:bg-yellow-500/10"
-                      >
-                        <i class="fas fa-edit"></i>
-                      </button>
-                      <button
-                        onclick="deleteProduct(2)"
-                        class="action-btn p-2 text-red-400 hover:text-red-300 rounded-lg hover:bg-red-500/10"
-                      >
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr
-                  class="table-row border-l-4 border-transparent hover:border-blue-500"
-                >
-                  <td class="px-6 py-4">
-                    <div class="flex items-center">
-                      <img
-                        class="w-12 h-12 rounded-lg object-cover mr-4 transition-transform duration-300 hover:scale-110"
-                        src="https://via.placeholder.com/48x48/374151/9CA3AF?text=P3"
-                        alt="Product"
-                      />
-                      <div>
-                        <div class="text-sm font-medium text-white">
-                          Cotton T-Shirt
-                        </div>
-                        <div class="text-sm text-gray-400">
-                          SKU: TS-2024-003
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4">
-                    <span
-                      class="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs"
-                      >Clothing</span
-                    >
-                  </td>
-                  <td class="px-6 py-4 text-white">$19.99</td>
-                  <td class="px-6 py-4">
-                    <span class="text-red-400">0 units</span>
-                  </td>
-                  <td class="px-6 py-4">
-                    <span
-                      class="px-2 py-1 bg-red-500/20 text-red-400 rounded-full text-xs"
-                      >Out of Stock</span
-                    >
-                  </td>
-                  <td class="px-6 py-4">
-                    <div class="flex items-center space-x-2">
-                      <a
-                        href="show.html"
-                        class="action-btn p-2 text-blue-400 hover:text-blue-300 rounded-lg hover:bg-blue-500/10"
-                      >
-                        <i class="fas fa-eye"></i>
-                      </a>
-                      <button
-                        onclick="editProduct(3)"
-                        class="action-btn p-2 text-yellow-400 hover:text-yellow-300 rounded-lg hover:bg-yellow-500/10"
-                      >
-                        <i class="fas fa-edit"></i>
-                      </button>
-                      <button
-                        onclick="deleteProduct(3)"
-                        class="action-btn p-2 text-red-400 hover:text-red-300 rounded-lg hover:bg-red-500/10"
-                      >
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr class="table-row">
-                  <td class="px-6 py-4">
-                    <div class="flex items-center">
-                      <img
-                        class="w-12 h-12 rounded-lg object-cover mr-4"
-                        src="https://via.placeholder.com/48x48/374151/9CA3AF?text=P4"
-                        alt="Product"
-                      />
-                      <div>
-                        <div class="text-sm font-medium text-white">
-                          Programming Book
-                        </div>
-                        <div class="text-sm text-gray-400">
-                          SKU: BK-2024-004
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4">
-                    <span
-                      class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs"
-                      >Books</span
-                    >
-                  </td>
-                  <td class="px-6 py-4 text-white">$49.99</td>
-                  <td class="px-6 py-4">
-                    <span class="text-green-400">23 units</span>
-                  </td>
-                  <td class="px-6 py-4">
-                    <span
-                      class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs"
-                      >Active</span
-                    >
-                  </td>
-                  <td class="px-6 py-4">
-                    <div class="flex items-center space-x-2">
-                      <a
-                        href="show.html"
-                        class="p-2 text-blue-400 hover:text-blue-300 transition-colors"
-                      >
-                        <i class="fas fa-eye"></i>
-                      </a>
-                      <button
-                        class="p-2 text-yellow-400 hover:text-yellow-300 transition-colors"
-                      >
-                        <i class="fas fa-edit"></i>
-                      </button>
-                      <button
-                        class="p-2 text-red-400 hover:text-red-300 transition-colors"
-                      >
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr class="table-row">
-                  <td class="px-6 py-4">
-                    <div class="flex items-center">
-                      <img
-                        class="w-12 h-12 rounded-lg object-cover mr-4"
-                        src="https://via.placeholder.com/48x48/374151/9CA3AF?text=P5"
-                        alt="Product"
-                      />
-                      <div>
-                        <div class="text-sm font-medium text-white">
-                          Garden Tools Set
-                        </div>
-                        <div class="text-sm text-gray-400">
-                          SKU: GT-2024-005
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4">
-                    <span
-                      class="px-2 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs"
-                      >Home & Garden</span
-                    >
-                  </td>
-                  <td class="px-6 py-4 text-white">$89.99</td>
-                  <td class="px-6 py-4">
-                    <span class="text-green-400">15 units</span>
-                  </td>
-                  <td class="px-6 py-4">
-                    <span
-                      class="px-2 py-1 bg-gray-500/20 text-gray-400 rounded-full text-xs"
-                      >Draft</span
-                    >
-                  </td>
-                  <td class="px-6 py-4">
-                    <div class="flex items-center space-x-2">
-                      <a
-                        href="show.html"
-                        class="p-2 text-blue-400 hover:text-blue-300 transition-colors"
-                      >
-                        <i class="fas fa-eye"></i>
-                      </a>
-                      <button
-                        class="p-2 text-yellow-400 hover:text-yellow-300 transition-colors"
-                      >
-                        <i class="fas fa-edit"></i>
-                      </button>
-                      <button
-                        class="p-2 text-red-400 hover:text-red-300 transition-colors"
-                      >
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Table Footer with Pagination -->
-          <div class="bg-gray-800/30 px-6 py-4 border-t border-gray-700">
-            <div class="flex items-center justify-between">
-              <div class="text-sm text-gray-400">
-                Showing <span class="font-medium text-white">1</span> to
-                <span class="font-medium text-white">5</span> of
-                <span class="font-medium text-white">1,234</span> results
-              </div>
-              <div class="flex items-center space-x-2">
-                <button
-                  class="pagination-btn px-3 py-2 bg-gray-700 text-gray-400 rounded-lg hover:bg-gray-600 hover:text-white transition-all duration-300 disabled:opacity-50"
-                  disabled
-                >
-                  <i class="fas fa-chevron-left"></i>
-                </button>
-                <button
-                  class="pagination-btn active px-3 py-2 text-white rounded-lg"
-                >
-                  1
-                </button>
-                <button
-                  class="pagination-btn px-3 py-2 bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white rounded-lg transition-all duration-300"
-                >
-                  2
-                </button>
-                <button
-                  class="pagination-btn px-3 py-2 bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white rounded-lg transition-all duration-300"
-                >
-                  3
-                </button>
-                <span class="px-3 py-2 text-gray-400">...</span>
-                <button
-                  class="pagination-btn px-3 py-2 bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white rounded-lg transition-all duration-300"
-                >
-                  247
-                </button>
-                <button
-                  class="pagination-btn px-3 py-2 bg-gray-700 text-gray-400 rounded-lg hover:bg-gray-600 hover:text-white transition-all duration-300"
-                >
-                  <i class="fas fa-chevron-right"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-
-    <!-- Add Product Modal -->
-    <div
-      id="addProductModal"
-      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
-    >
-      <div
-        class="glass rounded-2xl max-w-2xl w-full p-8 animate-bounce-in max-h-[90vh] overflow-y-auto"
-      >
-        <div class="flex items-center justify-between mb-6">
-          <h3 class="text-xl font-bold text-white">Add New Product</h3>
-          <button
-            onclick="closeModal('addProductModal')"
-            class="text-gray-400 hover:text-white"
-          >
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-
-        <form onsubmit="addProduct(event)" class="space-y-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-sm font-medium text-gray-400 mb-2"
-                >Product Name</label
-              >
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter product name"
-                class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-400 mb-2"
-                >SKU</label
-              >
-              <input
-                type="text"
-                name="sku"
-                placeholder="Enter SKU"
-                class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
-          </div>
-
+      <form onsubmit="addProduct(event)" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2"
-              >Description</label
-            >
-            <textarea
-              name="description"
-              rows="3"
-              placeholder="Enter product description"
+            <label class="block text-sm font-medium text-gray-400 mb-2">Product Name</label>
+            <input type="text" name="name" placeholder="Enter product name"
               class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            ></textarea>
+              required />
           </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div>
-              <label class="block text-sm font-medium text-gray-400 mb-2"
-                >Category</label
-              >
-              <select
-                name="category"
-                class="w-full glass px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              >
-                <option value="">Select Category</option>
-                <option value="electronics">Electronics</option>
-                <option value="clothing">Clothing</option>
-                <option value="books">Books</option>
-                <option value="home">Home & Garden</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-400 mb-2"
-                >Price ($)</label
-              >
-              <input
-                type="number"
-                name="price"
-                step="0.01"
-                placeholder="0.00"
-                class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-400 mb-2"
-                >Stock Quantity</label
-              >
-              <input
-                type="number"
-                name="stock"
-                placeholder="0"
-                class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
-          </div>
-
           <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2"
-              >Product Image</label
-            >
-            <input
-              type="file"
-              name="image"
-              accept="image/*"
-              class="w-full glass px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            <label class="block text-sm font-medium text-gray-400 mb-2">SKU</label>
+            <input type="text" name="sku" placeholder="Enter SKU"
+              class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required />
           </div>
+        </div>
 
+        <div>
+          <label class="block text-sm font-medium text-gray-400 mb-2">Description</label>
+          <textarea name="description" rows="3" placeholder="Enter product description"
+            class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2"
-              >Status</label
-            >
-            <select
-              name="status"
+            <label class="block text-sm font-medium text-gray-400 mb-2">Category</label>
+            <select name="category"
               class="w-full glass px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            >
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
-              <option value="draft">Draft</option>
+              required>
+              <option value="">Select Category</option>
+              <option value="electronics">Electronics</option>
+              <option value="clothing">Clothing</option>
+              <option value="books">Books</option>
+              <option value="home">Home & Garden</option>
             </select>
           </div>
-
-          <div class="flex justify-end space-x-3 pt-4">
-            <button
-              type="button"
-              onclick="closeModal('addProductModal')"
-              class="px-6 py-2 bg-gray-600/50 hover:bg-gray-600/70 rounded-lg text-white font-medium transition-colors"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              class="btn-primary px-6 py-2 rounded-lg text-white font-medium"
-            >
-              <i class="fas fa-plus mr-2"></i>
-              Add Product
-            </button>
+          <div>
+            <label class="block text-sm font-medium text-gray-400 mb-2">Price ($)</label>
+            <input type="number" name="price" step="0.01" placeholder="0.00"
+              class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required />
           </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Edit Product Modal -->
-    <div
-      id="editProductModal"
-      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
-    >
-      <div
-        class="glass rounded-2xl max-w-2xl w-full p-8 animate-bounce-in max-h-[90vh] overflow-y-auto"
-      >
-        <div class="flex items-center justify-between mb-6">
-          <h3 class="text-xl font-bold text-white">Edit Product</h3>
-          <button
-            onclick="closeModal('editProductModal')"
-            class="text-gray-400 hover:text-white"
-          >
-            <i class="fas fa-times"></i>
-          </button>
+          <div>
+            <label class="block text-sm font-medium text-gray-400 mb-2">Stock Quantity</label>
+            <input type="number" name="stock" placeholder="0"
+              class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required />
+          </div>
         </div>
 
-        <form onsubmit="updateProduct(event)" class="space-y-6">
-          <input type="hidden" name="id" id="editProductId" />
+        <div>
+          <label class="block text-sm font-medium text-gray-400 mb-2">Product Image</label>
+          <input type="file" name="image" accept="image/*"
+            class="w-full glass px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-sm font-medium text-gray-400 mb-2"
-                >Product Name</label
-              >
-              <input
-                type="text"
-                name="name"
-                id="editProductName"
-                placeholder="Enter product name"
-                class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-400 mb-2"
-                >SKU</label
-              >
-              <input
-                type="text"
-                name="sku"
-                id="editProductSku"
-                placeholder="Enter SKU"
-                class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
-          </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-400 mb-2">Status</label>
+          <select name="status"
+            class="w-full glass px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+            <option value="draft">Draft</option>
+          </select>
+        </div>
 
+        <div class="flex justify-end space-x-3 pt-4">
+          <button type="button" onclick="closeModal('addProductModal')"
+            class="px-6 py-2 bg-gray-600/50 hover:bg-gray-600/70 rounded-lg text-white font-medium transition-colors">
+            Cancel
+          </button>
+          <button type="submit" class="btn-primary px-6 py-2 rounded-lg text-white font-medium">
+            <i class="fas fa-plus mr-2"></i>
+            Add Product
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Product Modal -->
+  <div id="editProductModal"
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="glass rounded-2xl max-w-2xl w-full p-8 animate-bounce-in max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-xl font-bold text-white">Edit Product</h3>
+        <button onclick="closeModal('editProductModal')" class="text-gray-400 hover:text-white">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <form onsubmit="updateProduct(event)" class="space-y-6">
+        <input type="hidden" name="id" id="editProductId" />
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2"
-              >Description</label
-            >
-            <textarea
-              name="description"
-              id="editProductDescription"
-              rows="3"
-              placeholder="Enter product description"
+            <label class="block text-sm font-medium text-gray-400 mb-2">Product Name</label>
+            <input type="text" name="name" id="editProductName" placeholder="Enter product name"
               class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            ></textarea>
+              required />
           </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div>
-              <label class="block text-sm font-medium text-gray-400 mb-2"
-                >Category</label
-              >
-              <select
-                name="category"
-                id="editProductCategory"
-                class="w-full glass px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              >
-                <option value="">Select Category</option>
-                <option value="electronics">Electronics</option>
-                <option value="clothing">Clothing</option>
-                <option value="books">Books</option>
-                <option value="home">Home & Garden</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-400 mb-2"
-                >Price ($)</label
-              >
-              <input
-                type="number"
-                name="price"
-                id="editProductPrice"
-                step="0.01"
-                placeholder="0.00"
-                class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-400 mb-2"
-                >Stock Quantity</label
-              >
-              <input
-                type="number"
-                name="stock"
-                id="editProductStock"
-                placeholder="0"
-                class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
-          </div>
-
           <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2"
-              >Product Image</label
-            >
-            <input
-              type="file"
-              name="image"
-              accept="image/*"
-              class="w-full glass px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <p class="text-xs text-gray-400 mt-1">
-              Leave empty to keep current image
-            </p>
+            <label class="block text-sm font-medium text-gray-400 mb-2">SKU</label>
+            <input type="text" name="sku" id="editProductSku" placeholder="Enter SKU"
+              class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required />
           </div>
+        </div>
 
+        <div>
+          <label class="block text-sm font-medium text-gray-400 mb-2">Description</label>
+          <textarea name="description" id="editProductDescription" rows="3" placeholder="Enter product description"
+            class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2"
-              >Status</label
-            >
-            <select
-              name="status"
-              id="editProductStatus"
+            <label class="block text-sm font-medium text-gray-400 mb-2">Category</label>
+            <select name="category" id="editProductCategory"
               class="w-full glass px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            >
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
-              <option value="draft">Draft</option>
+              required>
+              <option value="">Select Category</option>
+              <option value="electronics">Electronics</option>
+              <option value="clothing">Clothing</option>
+              <option value="books">Books</option>
+              <option value="home">Home & Garden</option>
             </select>
           </div>
-
-          <div class="flex justify-end space-x-3 pt-4">
-            <button
-              type="button"
-              onclick="closeModal('editProductModal')"
-              class="px-6 py-2 bg-gray-600/50 hover:bg-gray-600/70 rounded-lg text-white font-medium transition-colors"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              class="btn-warning px-6 py-2 rounded-lg text-white font-medium"
-            >
-              <i class="fas fa-save mr-2"></i>
-              Update Product
-            </button>
+          <div>
+            <label class="block text-sm font-medium text-gray-400 mb-2">Price ($)</label>
+            <input type="number" name="price" id="editProductPrice" step="0.01" placeholder="0.00"
+              class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required />
           </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Delete Product Modal -->
-    <div
-      id="deleteProductModal"
-      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
-    >
-      <div class="glass rounded-2xl max-w-md w-full p-8 animate-bounce-in">
-        <div class="flex items-center justify-between mb-6">
-          <h3 class="text-xl font-bold text-white">Delete Product</h3>
-          <button
-            onclick="closeModal('deleteProductModal')"
-            class="text-gray-400 hover:text-white"
-          >
-            <i class="fas fa-times"></i>
-          </button>
+          <div>
+            <label class="block text-sm font-medium text-gray-400 mb-2">Stock Quantity</label>
+            <input type="number" name="stock" id="editProductStock" placeholder="0"
+              class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required />
+          </div>
         </div>
 
-        <div class="text-center mb-6">
-          <div
-            class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-500/20 mb-4"
-          >
-            <i class="fas fa-exclamation-triangle text-red-400 text-xl"></i>
-          </div>
-          <h4 class="text-lg font-medium text-white mb-2">Are you sure?</h4>
-          <p class="text-sm text-gray-400">
-            This action cannot be undone. The product "<span
-              id="deleteProductName"
-              class="font-medium text-white"
-            ></span
-            >" will be permanently deleted.
+        <div>
+          <label class="block text-sm font-medium text-gray-400 mb-2">Product Image</label>
+          <input type="file" name="image" accept="image/*"
+            class="w-full glass px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <p class="text-xs text-gray-400 mt-1">
+            Leave empty to keep current image
           </p>
         </div>
 
-        <div class="flex justify-end space-x-3">
-          <button
-            type="button"
-            onclick="closeModal('deleteProductModal')"
-            class="px-6 py-2 bg-gray-600/50 hover:bg-gray-600/70 rounded-lg text-white font-medium transition-colors"
-          >
+        <div>
+          <label class="block text-sm font-medium text-gray-400 mb-2">Status</label>
+          <select name="status" id="editProductStatus"
+            class="w-full glass px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+            <option value="draft">Draft</option>
+          </select>
+        </div>
+
+        <div class="flex justify-end space-x-3 pt-4">
+          <button type="button" onclick="closeModal('editProductModal')"
+            class="px-6 py-2 bg-gray-600/50 hover:bg-gray-600/70 rounded-lg text-white font-medium transition-colors">
             Cancel
           </button>
-          <button
-            onclick="confirmDeleteProduct()"
-            class="btn-danger px-6 py-2 rounded-lg text-white font-medium"
-            id="confirmDeleteBtn"
-          >
-            <i class="fas fa-trash mr-2"></i>
-            Delete Product
+          <button type="submit" class="btn-warning px-6 py-2 rounded-lg text-white font-medium">
+            <i class="fas fa-save mr-2"></i>
+            Update Product
           </button>
         </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Product Modal -->
+  <div id="deleteProductModal"
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="glass rounded-2xl max-w-md w-full p-8 animate-bounce-in">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-xl font-bold text-white">Delete Product</h3>
+        <button onclick="closeModal('deleteProductModal')" class="text-gray-400 hover:text-white">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="text-center mb-6">
+        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-500/20 mb-4">
+          <i class="fas fa-exclamation-triangle text-red-400 text-xl"></i>
+        </div>
+        <h4 class="text-lg font-medium text-white mb-2">Are you sure?</h4>
+        <p class="text-sm text-gray-400">
+          This action cannot be undone. The product "<span id="deleteProductName"
+            class="font-medium text-white"></span>" will be permanently deleted.
+        </p>
+      </div>
+
+      <div class="flex justify-end space-x-3">
+        <button type="button" onclick="closeModal('deleteProductModal')"
+          class="px-6 py-2 bg-gray-600/50 hover:bg-gray-600/70 rounded-lg text-white font-medium transition-colors">
+          Cancel
+        </button>
+        <button onclick="confirmDeleteProduct()" class="btn-danger px-6 py-2 rounded-lg text-white font-medium"
+          id="confirmDeleteBtn">
+          <i class="fas fa-trash mr-2"></i>
+          Delete Product
+        </button>
       </div>
     </div>
+  </div>
 
-    <!-- JavaScript for mobile menu and sidebar -->
-    <script>
-      // Mobile sidebar toggle
-      const toggleSidebar = document.getElementById("toggleSidebar");
-      const sidebar = document.getElementById("sidebar");
+  <!-- JavaScript for mobile menu and sidebar -->
+  <script>
+    // Mobile sidebar toggle
+    const toggleSidebar = document.getElementById("toggleSidebar");
+    const sidebar = document.getElementById("sidebar");
 
-      toggleSidebar.addEventListener("click", () => {
-        sidebar.classList.toggle("-translate-x-full");
-      });
+    toggleSidebar.addEventListener("click", () => {
+      sidebar.classList.toggle("-translate-x-full");
+    });
 
-      // Close sidebar when clicking outside on mobile
-      document.addEventListener("click", (e) => {
-        if (window.innerWidth < 768) {
-          if (
-            !sidebar.contains(e.target) &&
-            !toggleSidebar.contains(e.target)
-          ) {
-            sidebar.classList.add("-translate-x-full");
-          }
-        }
-      });
-
-      // Handle window resize
-      window.addEventListener("resize", () => {
-        if (window.innerWidth >= 768) {
-          sidebar.classList.remove("-translate-x-full");
-        } else {
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener("click", (e) => {
+      if (window.innerWidth < 768) {
+        if (
+          !sidebar.contains(e.target) &&
+          !toggleSidebar.contains(e.target)
+        ) {
           sidebar.classList.add("-translate-x-full");
         }
-      });
-
-      // Modal functions
-      function openModal(modalId) {
-        const modal = document.getElementById(modalId);
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
-        setTimeout(() => {
-          modal.querySelector(".glass").classList.add("animate-bounce-in");
-        }, 10);
       }
+    });
 
-      function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        modal.classList.add("hidden");
-        modal.classList.remove("flex");
-        modal.querySelector(".glass").classList.remove("animate-bounce-in");
-
-        // Reset forms when closing modals
-        if (modalId === "addProductModal") {
-          document.querySelector("#addProductModal form").reset();
-        } else if (modalId === "editProductModal") {
-          document.querySelector("#editProductModal form").reset();
-        }
+    // Handle window resize
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) {
+        sidebar.classList.remove("-translate-x-full");
+      } else {
+        sidebar.classList.add("-translate-x-full");
       }
+    });
 
-      // Product management functions
-      function openAddProductModal() {
-        openModal("addProductModal");
+    // Modal functions
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      setTimeout(() => {
+        modal.querySelector(".glass").classList.add("animate-bounce-in");
+      }, 10);
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      modal.querySelector(".glass").classList.remove("animate-bounce-in");
+
+      // Reset forms when closing modals
+      if (modalId === "addProductModal") {
+        document.querySelector("#addProductModal form").reset();
+      } else if (modalId === "editProductModal") {
+        document.querySelector("#editProductModal form").reset();
       }
+    }
 
-      function editProduct(id) {
-        // Get product data (in real app, this would come from API)
-        const productData = getProductData(id);
+    // Product management functions
+    function openAddProductModal() {
+      openModal("addProductModal");
+    }
 
-        // Populate edit form
-        document.getElementById("editProductId").value = id;
-        document.getElementById("editProductName").value = productData.name;
-        document.getElementById("editProductSku").value = productData.sku;
-        document.getElementById("editProductDescription").value =
-          productData.description;
-        document.getElementById("editProductCategory").value =
-          productData.category;
-        document.getElementById("editProductPrice").value = productData.price;
-        document.getElementById("editProductStock").value = productData.stock;
-        document.getElementById("editProductStatus").value = productData.status;
+    function editProduct(id) {
+      // Get product data (in real app, this would come from API)
+      const productData = getProductData(id);
 
-        openModal("editProductModal");
-      }
+      // Populate edit form
+      document.getElementById("editProductId").value = id;
+      document.getElementById("editProductName").value = productData.name;
+      document.getElementById("editProductSku").value = productData.sku;
+      document.getElementById("editProductDescription").value =
+        productData.description;
+      document.getElementById("editProductCategory").value =
+        productData.category;
+      document.getElementById("editProductPrice").value = productData.price;
+      document.getElementById("editProductStock").value = productData.stock;
+      document.getElementById("editProductStatus").value = productData.status;
 
-      function deleteProduct(id) {
-        // Get product data (in real app, this would come from API)
-        const productData = getProductData(id);
+      openModal("editProductModal");
+    }
 
-        // Store product ID for deletion
-        window.productToDelete = id;
+    function deleteProduct(id) {
+      // Get product data (in real app, this would come from API)
+      const productData = getProductData(id);
 
-        // Set product name in modal
-        document.getElementById("deleteProductName").textContent =
-          productData.name;
+      // Store product ID for deletion
+      window.productToDelete = id;
 
-        openModal("deleteProductModal");
-      }
+      // Set product name in modal
+      document.getElementById("deleteProductName").textContent =
+        productData.name;
 
-      function confirmDeleteProduct() {
-        if (window.productToDelete) {
-          // Here you would make API call to delete product
-          console.log("Deleting product:", window.productToDelete);
+      openModal("deleteProductModal");
+    }
 
-          // Show success message (using toastr if available, or alert as fallback)
-          if (typeof toastr !== "undefined") {
-            toastr.success("Product deleted successfully!");
-          } else {
-            alert("Product deleted successfully!");
-          }
+    function confirmDeleteProduct() {
+      if (window.productToDelete) {
+        // Here you would make API call to delete product
+        console.log("Deleting product:", window.productToDelete);
 
-          closeModal("deleteProductModal");
-
-          // In real app, you would refresh the table or remove the specific row
-          setTimeout(() => {
-            location.reload();
-          }, 1500);
-
-          window.productToDelete = null;
-        }
-      }
-
-      // Form submission handlers
-      function addProduct(event) {
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        const productData = Object.fromEntries(formData);
-
-        // Here you would make API call to create product
-        console.log("Creating product:", productData);
-
-        // Show success message
+        // Show success message (using toastr if available, or alert as fallback)
         if (typeof toastr !== "undefined") {
-          toastr.success("Product added successfully!");
+          toastr.success("Product deleted successfully!");
         } else {
-          alert("Product added successfully!");
+          alert("Product deleted successfully!");
         }
 
-        closeModal("addProductModal");
+        closeModal("deleteProductModal");
 
-        // In real app, you would refresh the table or add the new row
+        // In real app, you would refresh the table or remove the specific row
         setTimeout(() => {
           location.reload();
         }, 1500);
+
+        window.productToDelete = null;
+      }
+    }
+
+    // Form submission handlers
+    function addProduct(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const productData = Object.fromEntries(formData);
+
+      // Here you would make API call to create product
+      console.log("Creating product:", productData);
+
+      // Show success message
+      if (typeof toastr !== "undefined") {
+        toastr.success("Product added successfully!");
+      } else {
+        alert("Product added successfully!");
       }
 
-      function updateProduct(event) {
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        const productData = Object.fromEntries(formData);
+      closeModal("addProductModal");
 
-        // Here you would make API call to update product
-        console.log("Updating product:", productData);
+      // In real app, you would refresh the table or add the new row
+      setTimeout(() => {
+        location.reload();
+      }, 1500);
+    }
 
-        // Show success message
-        if (typeof toastr !== "undefined") {
-          toastr.success("Product updated successfully!");
-        } else {
-          alert("Product updated successfully!");
+    function updateProduct(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const productData = Object.fromEntries(formData);
+
+      // Here you would make API call to update product
+      console.log("Updating product:", productData);
+
+      // Show success message
+      if (typeof toastr !== "undefined") {
+        toastr.success("Product updated successfully!");
+      } else {
+        alert("Product updated successfully!");
+      }
+
+      closeModal("editProductModal");
+
+      // In real app, you would refresh the table or update the specific row
+      setTimeout(() => {
+        location.reload();
+      }, 1500);
+    }
+
+    // Helper function to get product data (mock data for demo)
+    function getProductData(id) {
+      const products = {
+        1: {
+          name: "Premium Wireless Headphones",
+          sku: "WH-2024-001",
+          description:
+            "High-quality wireless headphones with noise cancellation",
+          category: "electronics",
+          price: 299.99,
+          stock: 45,
+          status: "active",
+        },
+        2: {
+          name: "Smartphone Case",
+          sku: "SC-2024-002",
+          description: "Protective case for smartphones",
+          category: "electronics",
+          price: 24.99,
+          stock: 8,
+          status: "active",
+        },
+        3: {
+          name: "Cotton T-Shirt",
+          sku: "TS-2024-003",
+          description: "Comfortable cotton t-shirt",
+          category: "clothing",
+          price: 19.99,
+          stock: 0,
+          status: "active",
+        },
+      };
+
+      return (
+        products[id] || {
+          name: "Unknown Product",
+          sku: "UNKNOWN",
+          description: "",
+          category: "",
+          price: 0,
+          stock: 0,
+          status: "active",
         }
+      );
+    }
 
-        closeModal("editProductModal");
-
-        // In real app, you would refresh the table or update the specific row
-        setTimeout(() => {
-          location.reload();
-        }, 1500);
-      }
-
-      // Helper function to get product data (mock data for demo)
-      function getProductData(id) {
-        const products = {
-          1: {
-            name: "Premium Wireless Headphones",
-            sku: "WH-2024-001",
-            description:
-              "High-quality wireless headphones with noise cancellation",
-            category: "electronics",
-            price: 299.99,
-            stock: 45,
-            status: "active",
-          },
-          2: {
-            name: "Smartphone Case",
-            sku: "SC-2024-002",
-            description: "Protective case for smartphones",
-            category: "electronics",
-            price: 24.99,
-            stock: 8,
-            status: "active",
-          },
-          3: {
-            name: "Cotton T-Shirt",
-            sku: "TS-2024-003",
-            description: "Comfortable cotton t-shirt",
-            category: "clothing",
-            price: 19.99,
-            stock: 0,
-            status: "active",
-          },
+    // Initialize animations on page load
+    document.addEventListener("DOMContentLoaded", function () {
+      // Initialize toastr if available
+      if (typeof toastr !== "undefined") {
+        toastr.options = {
+          closeButton: true,
+          progressBar: true,
+          timeOut: "3500",
+          positionClass: "toast-top-right",
+          showDuration: "300",
+          hideDuration: "300",
+          showEasing: "swing",
+          hideEasing: "linear",
+          showMethod: "fadeIn",
+          hideMethod: "fadeOut",
         };
-
-        return (
-          products[id] || {
-            name: "Unknown Product",
-            sku: "UNKNOWN",
-            description: "",
-            category: "",
-            price: 0,
-            stock: 0,
-            status: "active",
-          }
-        );
       }
 
-      // Initialize animations on page load
-      document.addEventListener("DOMContentLoaded", function () {
-        // Initialize toastr if available
-        if (typeof toastr !== "undefined") {
-          toastr.options = {
-            closeButton: true,
-            progressBar: true,
-            timeOut: "3500",
-            positionClass: "toast-top-right",
-            showDuration: "300",
-            hideDuration: "300",
-            showEasing: "swing",
-            hideEasing: "linear",
-            showMethod: "fadeIn",
-            hideMethod: "fadeOut",
-          };
-        }
+      // Trigger animations for elements that should animate on load
+      const animatedElements = document.querySelectorAll(
+        ".fade-in-up, .fade-in-left, .fade-in-right"
+      );
 
-        // Trigger animations for elements that should animate on load
-        const animatedElements = document.querySelectorAll(
-          ".fade-in-up, .fade-in-left, .fade-in-right"
-        );
-
-        // Add a small delay to ensure smooth loading
-        setTimeout(() => {
-          animatedElements.forEach((element) => {
-            element.style.opacity = "0";
-            element.style.transform = element.classList.contains("fade-in-up")
-              ? "translateY(30px)"
-              : element.classList.contains("fade-in-left")
+      // Add a small delay to ensure smooth loading
+      setTimeout(() => {
+        animatedElements.forEach((element) => {
+          element.style.opacity = "0";
+          element.style.transform = element.classList.contains("fade-in-up")
+            ? "translateY(30px)"
+            : element.classList.contains("fade-in-left")
               ? "translateX(-30px)"
               : "translateX(30px)";
 
-            // Trigger animation
-            setTimeout(() => {
-              element.style.transition = "all 0.6s ease-out";
-              element.style.opacity = "1";
-              element.style.transform = "translate(0, 0)";
-            }, 100);
-          });
-        }, 100);
+          // Trigger animation
+          setTimeout(() => {
+            element.style.transition = "all 0.6s ease-out";
+            element.style.opacity = "1";
+            element.style.transform = "translate(0, 0)";
+          }, 100);
+        });
+      }, 100);
 
-        // Add table row hover effect enhancement
-        const tableRows = document.querySelectorAll(".table-row");
-        tableRows.forEach((row, index) => {
-          row.addEventListener("mouseenter", function () {
-            this.style.transform = "translateX(8px)";
-          });
-
-          row.addEventListener("mouseleave", function () {
-            this.style.transform = "translateX(0)";
-          });
+      // Add table row hover effect enhancement
+      const tableRows = document.querySelectorAll(".table-row");
+      tableRows.forEach((row, index) => {
+        row.addEventListener("mouseenter", function () {
+          this.style.transform = "translateX(8px)";
         });
 
-        // Close modals when clicking outside
-        document.addEventListener("click", function (e) {
-          if (
-            e.target.classList.contains("fixed") &&
-            e.target.classList.contains("inset-0")
-          ) {
-            const modal = e.target;
-            const modalId = modal.id;
-            if (modalId && modalId.includes("Modal")) {
-              closeModal(modalId);
-            }
-          }
-        });
-
-        // Keyboard shortcuts
-        document.addEventListener("keydown", function (e) {
-          // Escape key to close modals
-          if (e.key === "Escape") {
-            const openModals = document.querySelectorAll(
-              ".fixed.inset-0:not(.hidden)"
-            );
-            openModals.forEach((modal) => {
-              if (modal.id && modal.id.includes("Modal")) {
-                closeModal(modal.id);
-              }
-            });
-          }
+        row.addEventListener("mouseleave", function () {
+          this.style.transform = "translateX(0)";
         });
       });
-    </script>
-  </body>
+
+      // Close modals when clicking outside
+      document.addEventListener("click", function (e) {
+        if (
+          e.target.classList.contains("fixed") &&
+          e.target.classList.contains("inset-0")
+        ) {
+          const modal = e.target;
+          const modalId = modal.id;
+          if (modalId && modalId.includes("Modal")) {
+            closeModal(modalId);
+          }
+        }
+      });
+
+      // Keyboard shortcuts
+      document.addEventListener("keydown", function (e) {
+        // Escape key to close modals
+        if (e.key === "Escape") {
+          const openModals = document.querySelectorAll(
+            ".fixed.inset-0:not(.hidden)"
+          );
+          openModals.forEach((modal) => {
+            if (modal.id && modal.id.includes("Modal")) {
+              closeModal(modal.id);
+            }
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
 </html>

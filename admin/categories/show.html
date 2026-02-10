@@ -1,258 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Category Details - E-Commerce Admin</title>
 
-    <link rel="stylesheet" href="../../assets/css/admin.css" />
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../../assets/css/admin-common.css" />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <!-- Toastr CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-    />
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- Toastr JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Category Details - E-Commerce Admin</title>
 
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            animation: {
-              fadeIn: "fadeIn 0.6s ease-out forwards",
-              slideIn: "slideIn 0.6s ease-out forwards",
-              bounceIn: "bounceIn 0.8s ease-out forwards",
+  <link rel="stylesheet" href="../../assets/css/admin.css" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../assets/css/admin-common.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Toastr CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!-- Toastr JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            fadeIn: "fadeIn 0.6s ease-out forwards",
+            slideIn: "slideIn 0.6s ease-out forwards",
+            bounceIn: "bounceIn 0.8s ease-out forwards",
+          },
+          keyframes: {
+            fadeIn: {
+              "0%": { opacity: "0", transform: "translateY(20px)" },
+              "100%": { opacity: "1", transform: "translateY(0)" },
             },
-            keyframes: {
-              fadeIn: {
-                "0%": { opacity: "0", transform: "translateY(20px)" },
-                "100%": { opacity: "1", transform: "translateY(0)" },
-              },
-              slideIn: {
-                "0%": { opacity: "0", transform: "translateX(-20px)" },
-                "100%": { opacity: "1", transform: "translateX(0)" },
-              },
-              bounceIn: {
-                "0%": { opacity: "0", transform: "scale(0.3)" },
-                "50%": { opacity: "1", transform: "scale(1.05)" },
-                "70%": { transform: "scale(0.9)" },
-                "100%": { opacity: "1", transform: "scale(1)" },
-              },
+            slideIn: {
+              "0%": { opacity: "0", transform: "translateX(-20px)" },
+              "100%": { opacity: "1", transform: "translateX(0)" },
+            },
+            bounceIn: {
+              "0%": { opacity: "0", transform: "scale(0.3)" },
+              "50%": { opacity: "1", transform: "scale(1.05)" },
+              "70%": { transform: "scale(0.9)" },
+              "100%": { opacity: "1", transform: "scale(1)" },
             },
           },
         },
-      };
-    </script>
-  </head>
+      },
+    };
+  </script>
+</head>
 
-  <body class="admin-bg text-white flex min-h-screen">
-    <!-- Sidebar -->
-    <div
-      id="sidebar"
-      class="glass w-64 min-h-screen fixed transition-all duration-300 transform -translate-x-full md:translate-x-0 z-50 border-r border-white/10 flex flex-col"
-    >
-      <!-- Logo Section -->
-      <div class="p-6 pb-4 flex-shrink-0">
-        <div class="animate-bounce-in">
-          <div class="flex items-center space-x-3">
-            <div
-              class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center"
-            >
-              <i class="fas fa-store text-white text-lg"></i>
-            </div>
-            <div>
-              <h2 class="text-xl font-bold text-white">
-                <a
-                  href="../../user/home.html"
-                  class="hover:text-blue-400 transition-colors"
-                  >E-Commerce</a
-                >
-              </h2>
-              <p class="text-xs text-gray-400">Admin Panel</p>
-            </div>
+<body class="admin-bg text-white flex min-h-screen">
+  <!-- Sidebar -->
+  <sidebar id="sidebar"
+    class="glass w-64 min-h-screen fixed transition-all duration-300 transform -translate-x-full md:translate-x-0 z-50 border-r border-white/10 flex flex-col">
+    <!-- Logo Section -->
+    <div class="p-6 pb-4 flex-shrink-0">
+      <div class="animate-bounce-in">
+        <div class="flex items-center space-x-3">
+          <div
+            class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+            <i class="fas fa-store text-white text-lg"></i>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-white">
+              <a href="../../user/home.html" class="hover:text-blue-400 transition-colors">E-Commerce</a>
+            </h2>
+            <p class="text-xs text-gray-400">Admin Panel</p>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Navigation Menu -->
-      <nav class="flex-1 overflow-y-auto px-6 pb-6">
-        <div class="space-y-2">
-          <!-- Main Navigation -->
-          <div class="mb-6">
-            <p
-              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
-            >
-              Main
-            </p>
-            <ul class="space-y-1">
-              <!-- Dashboard -->
-              <li>
-                <a
-                  href="../dashboard.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-chart-line text-blue-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Dashboard</span>
-                </a>
-              </li>
+    <!-- Navigation Menu -->
+    <nav class="flex-1 overflow-y-auto px-6 pb-6">
+      <div class="space-y-2">
+        <!-- Main Navigation -->
+        <div class="mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            Main
+          </p>
+          <ul class="space-y-1">
+            <!-- Dashboard -->
+            <li>
+              <a href="../dashboard.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-chart-line text-blue-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Dashboard</span>
+              </a>
+            </li>
 
-              <!-- Users Management -->
-              <li>
-                <a
-                  href="../users/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-users text-green-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Users</span>
-                </a>
-              </li>
+            <!-- Users Management -->
+            <li>
+              <a href="../users/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-users text-green-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Users</span>
+              </a>
+            </li>
 
-              <!-- Roles -->
-              <li>
-                <a
-                  href="../roles/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-user-shield text-purple-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Roles</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Catalog Management -->
-          <div class="mb-6">
-            <p
-              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
-            >
-              Catalog
-            </p>
-            <ul class="space-y-1">
-              <!-- Categories -->
-              <li>
-                <a
-                  href="index.html"
-                  class="sidebar-item active flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-tags text-yellow-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Categories</span>
-                </a>
-              </li>
-
-              <!-- Products -->
-              <li>
-                <a
-                  href="../products/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-box text-orange-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Products</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Sales & Communication -->
-          <div class="mb-6">
-            <p
-              class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3"
-            >
-              Sales
-            </p>
-            <ul class="space-y-1">
-              <!-- Orders -->
-              <li>
-                <a
-                  href="../orders/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-shopping-cart text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Orders</span>
-                </a>
-              </li>
-
-              <!-- Messages -->
-              <li>
-                <a
-                  href="../messages/index.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-envelope text-cyan-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Messages</span>
-                  <span
-                    class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full"
-                    >3</span
-                  >
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Account -->
-          <div class="border-t border-white/10 pt-4">
-            <ul class="space-y-1">
-              <li>
-                <a
-                  href="../profile.html"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group"
-                >
-                  <i
-                    class="fas fa-user-circle text-indigo-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Profile</span>
-                </a>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-red-400 group w-full text-left"
-                >
-                  <i
-                    class="fas fa-sign-out-alt text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"
-                  ></i>
-                  <span class="font-medium">Logout</span>
-                </button>
-              </li>
-            </ul>
-          </div>
+            <!-- Roles -->
+            <li>
+              <a href="../roles/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-user-shield text-purple-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Roles</span>
+              </a>
+            </li>
+          </ul>
         </div>
-      </nav>
+
+        <!-- Catalog Management -->
+        <div class="mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            Catalog
+          </p>
+          <ul class="space-y-1">
+            <!-- Categories -->
+            <li>
+              <a href="index.html"
+                class="sidebar-item active flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-tags text-yellow-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Categories</span>
+              </a>
+            </li>
+
+            <!-- Products -->
+            <li>
+              <a href="../products/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-box text-orange-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Products</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Sales & Communication -->
+        <div class="mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            Sales
+          </p>
+          <ul class="space-y-1">
+            <!-- Orders -->
+            <li>
+              <a href="../orders/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-shopping-cart text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Orders</span>
+              </a>
+            </li>
+
+            <!-- Messages -->
+            <li>
+              <a href="../messages/index.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-envelope text-cyan-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Messages</span>
+                <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">3</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Account -->
+        <div class="border-t border-white/10 pt-4">
+          <ul class="space-y-1">
+            <li>
+              <a href="../profile.html"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-white group">
+                <i class="fas fa-user-circle text-indigo-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Profile</span>
+              </a>
+            </li>
+            <li>
+              <button type="button"
+                class="sidebar-item flex items-center p-3 rounded-xl text-gray-300 hover:text-red-400 group w-full text-left">
+                <i class="fas fa-sign-out-alt text-red-500 w-5 mr-3 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium">Logout</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     </div>
 
     <!-- Main Content -->
-    <div class="flex-1 md:ml-64 min-h-screen">
+    <main class="max-w-full flex-1 md:ml-64 min-h-screen">
       <!-- Top Header -->
       <header class="glass border-b border-white/10 p-4 sticky top-0 z-40">
         <div class="flex items-center justify-between">
           <!-- Mobile Menu Button -->
-          <button
-            id="toggleSidebar"
-            class="md:hidden glass p-2 rounded-xl text-white hover:bg-white/10 transition-colors"
-          >
+          <button id="toggleSidebar"
+            class="md:hidden glass p-2 rounded-xl text-white hover:bg-white/10 transition-colors">
             <i class="fas fa-bars"></i>
           </button>
 
@@ -263,9 +204,7 @@
               <i class="fas fa-chevron-right mx-2"></i>
               <span>Catalog</span>
               <i class="fas fa-chevron-right mx-2"></i>
-              <a href="index.html" class="hover:text-white transition-colors"
-                >Categories</a
-              >
+              <a href="index.html" class="hover:text-white transition-colors">Categories</a>
               <i class="fas fa-chevron-right mx-2"></i>
               <span class="text-white">Electronics</span>
             </div>
@@ -275,20 +214,16 @@
           <div class="flex items-center space-x-3">
             <!-- Notifications -->
             <button
-              class="glass p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors relative"
-            >
+              class="glass p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors relative">
               <i class="fas fa-bell"></i>
               <span
-                class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center"
-                >3</span
-              >
+                class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">3</span>
             </button>
 
             <!-- User Profile -->
             <div class="flex items-center space-x-2 glass px-3 py-2 rounded-xl">
               <div
-                class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm"
-              >
+                class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
                 A
               </div>
               <div class="hidden sm:block">
@@ -301,22 +236,17 @@
       </header>
 
       <!-- Page Content -->
-      <main class="p-6 animate-fade-in">
+      <div class="p-6 animate-fade-in">
         <!-- Category Header -->
         <div class="admin-card p-8 rounded-2xl mb-8 animate-bounce-in">
-          <div
-            class="flex flex-col lg:flex-row items-center lg:items-start gap-8"
-          >
+          <div class="flex flex-col lg:flex-row items-center lg:items-start gap-8">
             <!-- Category Icon -->
             <div class="relative">
               <div
-                class="w-32 h-32 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center category-icon"
-              >
+                class="w-32 h-32 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center category-icon">
                 <i class="fas fa-laptop text-white text-6xl"></i>
               </div>
-              <div
-                class="absolute -bottom-2 -right-2 bg-green-500 p-2 rounded-full"
-              >
+              <div class="absolute -bottom-2 -right-2 bg-green-500 p-2 rounded-full">
                 <i class="fas fa-check text-white text-sm"></i>
               </div>
             </div>
@@ -329,9 +259,7 @@
                 modern living
               </p>
 
-              <div
-                class="flex flex-wrap gap-4 justify-center lg:justify-start mb-6"
-              >
+              <div class="flex flex-wrap gap-4 justify-center lg:justify-start mb-6">
                 <div class="glass px-4 py-2 rounded-xl">
                   <i class="fas fa-box text-blue-400 mr-2"></i>
                   <span class="text-sm">342 Products</span>
@@ -347,17 +275,13 @@
               </div>
 
               <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
-                <button
-                  onclick="openModal('editCategoryModal')"
-                  class="btn-warning px-6 py-3 rounded-xl text-white font-bold"
-                >
+                <button onclick="openModal('editCategoryModal')"
+                  class="btn-warning px-6 py-3 rounded-xl text-white font-bold">
                   <i class="fas fa-edit mr-2"></i>
                   Edit Category
                 </button>
-                <button
-                  onclick="openModal('deleteCategoryModal')"
-                  class="btn-danger px-6 py-3 rounded-xl text-white font-bold"
-                >
+                <button onclick="openModal('deleteCategoryModal')"
+                  class="btn-danger px-6 py-3 rounded-xl text-white font-bold">
                   <i class="fas fa-trash mr-2"></i>
                   Delete Category
                 </button>
@@ -369,9 +293,7 @@
         <!-- Category Products Section -->
         <div class="admin-card rounded-2xl animate-slide-in mb-8">
           <div class="p-6 border-b border-white/10">
-            <div
-              class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
-            >
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <h2 class="text-xl font-bold text-white">
                 Products in this Category
               </h2>
@@ -380,20 +302,13 @@
 
           <!-- Products Grid -->
           <div class="p-6">
-            <div
-              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-            >
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               <!-- Product Card 1 -->
               <div class="product-card admin-card p-4 rounded-xl">
                 <div class="relative mb-4">
-                  <img
-                    src="https://via.placeholder.com/200x150/4f46e5/ffffff?text=iPhone+15"
-                    alt="iPhone 15"
-                    class="w-full h-36 object-cover rounded-lg"
-                  />
-                  <div
-                    class="absolute top-2 right-2 bg-green-500 px-2 py-1 rounded-full text-xs text-white"
-                  >
+                  <img src="https://via.placeholder.com/200x150/4f46e5/ffffff?text=iPhone+15" alt="iPhone 15"
+                    class="w-full h-36 object-cover rounded-lg" />
+                  <div class="absolute top-2 right-2 bg-green-500 px-2 py-1 rounded-full text-xs text-white">
                     In Stock
                   </div>
                 </div>
@@ -409,22 +324,16 @@
                   </div>
                 </div>
                 <div class="grid grid-cols-3 gap-2">
-                  <button
-                    onclick="viewProduct(1)"
-                    class="glass px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
+                  <button onclick="viewProduct(1)"
+                    class="glass px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center">
                     <i class="fas fa-eye mr-1"></i> View
                   </button>
-                  <button
-                    onclick="editProduct(1, 'iPhone 15 Pro', '999.99', '25', 'active')"
-                    class="glass px-2 py-2 rounded-lg text-yellow-400 hover:bg-yellow-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
+                  <button onclick="editProduct(1, 'iPhone 15 Pro', '999.99', '25', 'active')"
+                    class="glass px-2 py-2 rounded-lg text-yellow-400 hover:bg-yellow-500/20 transition-colors text-xs flex items-center justify-center">
                     <i class="fas fa-edit mr-1"></i> Edit
                   </button>
-                  <button
-                    onclick="deleteProduct(1, 'iPhone 15 Pro')"
-                    class="glass px-2 py-2 rounded-lg text-red-400 hover:bg-red-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
+                  <button onclick="deleteProduct(1, 'iPhone 15 Pro')"
+                    class="glass px-2 py-2 rounded-lg text-red-400 hover:bg-red-500/20 transition-colors text-xs flex items-center justify-center">
                     <i class="fas fa-trash mr-1"></i> Del
                   </button>
                 </div>
@@ -433,14 +342,9 @@
               <!-- Product Card 2 -->
               <div class="product-card admin-card p-4 rounded-xl">
                 <div class="relative mb-4">
-                  <img
-                    src="https://via.placeholder.com/200x150/8b5cf6/ffffff?text=MacBook+Pro"
-                    alt="MacBook Pro"
-                    class="w-full h-36 object-cover rounded-lg"
-                  />
-                  <div
-                    class="absolute top-2 right-2 bg-green-500 px-2 py-1 rounded-full text-xs text-white"
-                  >
+                  <img src="https://via.placeholder.com/200x150/8b5cf6/ffffff?text=MacBook+Pro" alt="MacBook Pro"
+                    class="w-full h-36 object-cover rounded-lg" />
+                  <div class="absolute top-2 right-2 bg-green-500 px-2 py-1 rounded-full text-xs text-white">
                     In Stock
                   </div>
                 </div>
@@ -456,22 +360,16 @@
                   </div>
                 </div>
                 <div class="grid grid-cols-3 gap-2">
-                  <button
-                    onclick="viewProduct(2)"
-                    class="glass px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
+                  <button onclick="viewProduct(2)"
+                    class="glass px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center">
                     <i class="fas fa-eye mr-1"></i> View
                   </button>
-                  <button
-                    onclick="editProduct(2, 'MacBook Pro', '1999.99', '10', 'active')"
-                    class="glass px-2 py-2 rounded-lg text-yellow-400 hover:bg-yellow-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
+                  <button onclick="editProduct(2, 'MacBook Pro', '1999.99', '10', 'active')"
+                    class="glass px-2 py-2 rounded-lg text-yellow-400 hover:bg-yellow-500/20 transition-colors text-xs flex items-center justify-center">
                     <i class="fas fa-edit mr-1"></i> Edit
                   </button>
-                  <button
-                    onclick="deleteProduct(2, 'MacBook Pro')"
-                    class="glass px-2 py-2 rounded-lg text-red-400 hover:bg-red-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
+                  <button onclick="deleteProduct(2, 'MacBook Pro')"
+                    class="glass px-2 py-2 rounded-lg text-red-400 hover:bg-red-500/20 transition-colors text-xs flex items-center justify-center">
                     <i class="fas fa-trash mr-1"></i> Del
                   </button>
                 </div>
@@ -480,14 +378,9 @@
               <!-- Product Card 3 -->
               <div class="product-card admin-card p-4 rounded-xl">
                 <div class="relative mb-4">
-                  <img
-                    src="https://via.placeholder.com/200x150/10b981/ffffff?text=AirPods+Pro"
-                    alt="AirPods Pro"
-                    class="w-full h-36 object-cover rounded-lg"
-                  />
-                  <div
-                    class="absolute top-2 right-2 bg-yellow-500 px-2 py-1 rounded-full text-xs text-white"
-                  >
+                  <img src="https://via.placeholder.com/200x150/10b981/ffffff?text=AirPods+Pro" alt="AirPods Pro"
+                    class="w-full h-36 object-cover rounded-lg" />
+                  <div class="absolute top-2 right-2 bg-yellow-500 px-2 py-1 rounded-full text-xs text-white">
                     Low Stock
                   </div>
                 </div>
@@ -505,22 +398,16 @@
                   </div>
                 </div>
                 <div class="grid grid-cols-3 gap-2">
-                  <button
-                    onclick="viewProduct(3)"
-                    class="glass px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
+                  <button onclick="viewProduct(3)"
+                    class="glass px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center">
                     <i class="fas fa-eye mr-1"></i> View
                   </button>
-                  <button
-                    onclick="editProduct(3, 'iPad Air', '599.99', '15', 'active')"
-                    class="glass px-2 py-2 rounded-lg text-yellow-400 hover:bg-yellow-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
+                  <button onclick="editProduct(3, 'iPad Air', '599.99', '15', 'active')"
+                    class="glass px-2 py-2 rounded-lg text-yellow-400 hover:bg-yellow-500/20 transition-colors text-xs flex items-center justify-center">
                     <i class="fas fa-edit mr-1"></i> Edit
                   </button>
-                  <button
-                    onclick="deleteProduct(3, 'iPad Air')"
-                    class="glass px-2 py-2 rounded-lg text-red-400 hover:bg-red-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
+                  <button onclick="deleteProduct(3, 'iPad Air')"
+                    class="glass px-2 py-2 rounded-lg text-red-400 hover:bg-red-500/20 transition-colors text-xs flex items-center justify-center">
                     <i class="fas fa-trash mr-1"></i> Del
                   </button>
                 </div>
@@ -529,14 +416,9 @@
               <!-- Product Card 4 -->
               <div class="product-card admin-card p-4 rounded-xl">
                 <div class="relative mb-4">
-                  <img
-                    src="https://via.placeholder.com/200x150/f59e0b/ffffff?text=iPad+Air"
-                    alt="iPad Air"
-                    class="w-full h-36 object-cover rounded-lg"
-                  />
-                  <div
-                    class="absolute top-2 right-2 bg-red-500 px-2 py-1 rounded-full text-xs text-white"
-                  >
+                  <img src="https://via.placeholder.com/200x150/f59e0b/ffffff?text=iPad+Air" alt="iPad Air"
+                    class="w-full h-36 object-cover rounded-lg" />
+                  <div class="absolute top-2 right-2 bg-red-500 px-2 py-1 rounded-full text-xs text-white">
                     Out of Stock
                   </div>
                 </div>
@@ -552,22 +434,16 @@
                   </div>
                 </div>
                 <div class="grid grid-cols-3 gap-2">
-                  <button
-                    onclick="viewProduct(4)"
-                    class="glass px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
+                  <button onclick="viewProduct(4)"
+                    class="glass px-2 py-2 rounded-lg text-blue-400 hover:bg-blue-500/20 transition-colors text-xs flex items-center justify-center">
                     <i class="fas fa-eye mr-1"></i> View
                   </button>
-                  <button
-                    onclick="editProduct(4, 'Apple Watch', '299.99', '30', 'active')"
-                    class="glass px-2 py-2 rounded-lg text-yellow-400 hover:bg-yellow-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
+                  <button onclick="editProduct(4, 'Apple Watch', '299.99', '30', 'active')"
+                    class="glass px-2 py-2 rounded-lg text-yellow-400 hover:bg-yellow-500/20 transition-colors text-xs flex items-center justify-center">
                     <i class="fas fa-edit mr-1"></i> Edit
                   </button>
-                  <button
-                    onclick="deleteProduct(4, 'Apple Watch')"
-                    class="glass px-2 py-2 rounded-lg text-red-400 hover:bg-red-500/20 transition-colors text-xs flex items-center justify-center"
-                  >
+                  <button onclick="deleteProduct(4, 'Apple Watch')"
+                    class="glass px-2 py-2 rounded-lg text-red-400 hover:bg-red-500/20 transition-colors text-xs flex items-center justify-center">
                     <i class="fas fa-trash mr-1"></i> Del
                   </button>
                 </div>
@@ -575,28 +451,20 @@
             </div>
           </div>
         </div>
-      </main>
+    </main>
     </div>
 
     <!-- Mobile Sidebar Overlay -->
-    <div
-      id="sidebarOverlay"
-      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden md:hidden"
-      onclick="toggleMobileSidebar()"
-    ></div>
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden md:hidden"
+      onclick="toggleMobileSidebar()"></div>
 
     <!-- Edit Category Modal -->
-    <div
-      id="editCategoryModal"
-      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
-    >
+    <div id="editCategoryModal"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
       <div class="glass rounded-2xl max-w-md w-full p-8 animate-bounce-in">
         <div class="flex items-center justify-between mb-6">
           <h3 class="text-xl font-bold text-white">Edit Category</h3>
-          <button
-            onclick="closeModal('editCategoryModal')"
-            class="text-gray-400 hover:text-white"
-          >
+          <button onclick="closeModal('editCategoryModal')" class="text-gray-400 hover:text-white">
             <i class="fas fa-times"></i>
           </button>
         </div>
@@ -604,27 +472,13 @@
         <form onsubmit="updateCategory(event)" class="space-y-6">
           <!-- Category Image -->
           <div class="flex items-center space-x-4">
-            <label
-              for="categoryImageInput"
-              class="cursor-pointer w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center relative group"
-            >
-              <input
-                type="file"
-                id="categoryImageInput"
-                accept="image/*"
-                class="hidden"
-                onchange="previewCategoryImage(event)"
-              />
-              <img
-                id="categoryImagePreview"
-                src=""
-                alt="Category Image"
-                class="w-16 h-16 object-cover rounded-full absolute inset-0 hidden"
-              />
-              <i
-                id="categoryImageIcon"
-                class="fas fa-camera text-white text-2xl group-hover:opacity-80"
-              ></i>
+            <label for="categoryImageInput"
+              class="cursor-pointer w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center relative group">
+              <input type="file" id="categoryImageInput" accept="image/*" class="hidden"
+                onchange="previewCategoryImage(event)" />
+              <img id="categoryImagePreview" src="" alt="Category Image"
+                class="w-16 h-16 object-cover rounded-full absolute inset-0 hidden" />
+              <i id="categoryImageIcon" class="fas fa-camera text-white text-2xl group-hover:opacity-80"></i>
             </label>
             <div>
               <p class="text-gray-400 text-sm">Category Image</p>
@@ -632,41 +486,26 @@
             </div>
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2"
-              >Category Name</label
-            >
-            <input
-              type="text"
-              value="Electronics"
+            <label class="block text-sm font-medium text-gray-400 mb-2">Category Name</label>
+            <input type="text" value="Electronics"
               class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
+              required />
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2"
-              >Description</label
-            >
-            <textarea
-              rows="3"
-              class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-            >
-Electronic devices and accessories including smartphones, tablets, computers, and smart home products.</textarea
-            >
+            <label class="block text-sm font-medium text-gray-400 mb-2">Description</label>
+            <textarea rows="3"
+              class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none">
+Electronic devices and accessories including smartphones, tablets, computers, and smart home products.</textarea>
           </div>
 
           <div class="flex items-center space-x-4">
-            <button
-              type="button"
-              onclick="closeModal('editCategoryModal')"
-              class="flex-1 glass px-6 py-3 rounded-xl text-gray-400 hover:text-white transition-colors"
-            >
+            <button type="button" onclick="closeModal('editCategoryModal')"
+              class="flex-1 glass px-6 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">
               Cancel
             </button>
-            <button
-              type="submit"
-              class="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-xl text-white font-bold hover:scale-105 transition-transform"
-            >
+            <button type="submit"
+              class="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-xl text-white font-bold hover:scale-105 transition-transform">
               Update Category
             </button>
           </div>
@@ -675,26 +514,19 @@ Electronic devices and accessories including smartphones, tablets, computers, an
     </div>
 
     <!-- Delete Category Modal -->
-    <div
-      id="deleteCategoryModal"
-      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
-    >
+    <div id="deleteCategoryModal"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
       <div class="glass rounded-2xl max-w-md w-full p-8 animate-bounce-in">
         <div class="flex items-center justify-between mb-6">
           <h3 class="text-xl font-bold text-white">Delete Category</h3>
-          <button
-            onclick="closeModal('deleteCategoryModal')"
-            class="text-gray-400 hover:text-white"
-          >
+          <button onclick="closeModal('deleteCategoryModal')" class="text-gray-400 hover:text-white">
             <i class="fas fa-times"></i>
           </button>
         </div>
 
         <div class="space-y-6">
           <div class="text-center">
-            <div
-              class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4"
-            >
+            <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
               <i class="fas fa-exclamation-triangle text-red-400 text-2xl"></i>
             </div>
             <h4 class="text-lg font-semibold text-white mb-2">Are you sure?</h4>
@@ -713,17 +545,12 @@ Electronic devices and accessories including smartphones, tablets, computers, an
           </div>
 
           <div class="flex items-center space-x-4">
-            <button
-              type="button"
-              onclick="closeModal('deleteCategoryModal')"
-              class="flex-1 glass px-6 py-3 rounded-xl text-gray-400 hover:text-white transition-colors"
-            >
+            <button type="button" onclick="closeModal('deleteCategoryModal')"
+              class="flex-1 glass px-6 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">
               Cancel
             </button>
-            <button
-              onclick="confirmDeleteCategory()"
-              class="flex-1 bg-gradient-to-r from-red-500 to-red-600 px-6 py-3 rounded-xl text-white font-bold hover:scale-105 transition-transform"
-            >
+            <button onclick="confirmDeleteCategory()"
+              class="flex-1 bg-gradient-to-r from-red-500 to-red-600 px-6 py-3 rounded-xl text-white font-bold hover:scale-105 transition-transform">
               Delete Category
             </button>
           </div>
@@ -732,67 +559,42 @@ Electronic devices and accessories including smartphones, tablets, computers, an
     </div>
 
     <!-- Edit Product Modal -->
-    <div
-      id="editProductModal"
-      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
-    >
+    <div id="editProductModal"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
       <div class="glass rounded-2xl max-w-md w-full p-8 animate-bounce-in">
         <div class="flex items-center justify-between mb-6">
           <h3 class="text-xl font-bold text-white">Edit Product</h3>
-          <button
-            onclick="closeModal('editProductModal')"
-            class="text-gray-400 hover:text-white"
-          >
+          <button onclick="closeModal('editProductModal')" class="text-gray-400 hover:text-white">
             <i class="fas fa-times"></i>
           </button>
         </div>
 
         <form onsubmit="updateProduct(event)" class="space-y-6">
           <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2"
-              >Product Name</label
-            >
-            <input
-              type="text"
-              id="editProductName"
+            <label class="block text-sm font-medium text-gray-400 mb-2">Product Name</label>
+            <input type="text" id="editProductName"
               class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
+              required />
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2"
-              >Price</label
-            >
-            <input
-              type="number"
-              id="editProductPrice"
-              step="0.01"
+            <label class="block text-sm font-medium text-gray-400 mb-2">Price</label>
+            <input type="number" id="editProductPrice" step="0.01"
               class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
+              required />
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2"
-              >Stock Quantity</label
-            >
-            <input
-              type="number"
-              id="editProductStock"
+            <label class="block text-sm font-medium text-gray-400 mb-2">Stock Quantity</label>
+            <input type="number" id="editProductStock"
               class="w-full glass px-4 py-3 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
+              required />
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-400 mb-2"
-              >Status</label
-            >
-            <select
-              id="editProductStatus"
-              class="w-full glass px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
+            <label class="block text-sm font-medium text-gray-400 mb-2">Status</label>
+            <select id="editProductStatus"
+              class="w-full glass px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
               <option value="out_of_stock">Out of Stock</option>
@@ -800,17 +602,12 @@ Electronic devices and accessories including smartphones, tablets, computers, an
           </div>
 
           <div class="flex items-center space-x-4">
-            <button
-              type="button"
-              onclick="closeModal('editProductModal')"
-              class="flex-1 glass px-6 py-3 rounded-xl text-gray-400 hover:text-white transition-colors"
-            >
+            <button type="button" onclick="closeModal('editProductModal')"
+              class="flex-1 glass px-6 py-3 rounded-xl text-gray-400 hover:text-white transition-colors">
               Cancel
             </button>
-            <button
-              type="submit"
-              class="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-xl text-white font-bold hover:scale-105 transition-transform"
-            >
+            <button type="submit"
+              class="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-xl text-white font-bold hover:scale-105 transition-transform">
               Update Product
             </button>
           </div>
@@ -1010,5 +807,6 @@ Electronic devices and accessories including smartphones, tablets, computers, an
         }
       }
     </script>
-  </body>
+</body>
+
 </html>
