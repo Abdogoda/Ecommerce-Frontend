@@ -4,7 +4,7 @@ A modern, responsive e-commerce web application frontend built with HTML, CSS, a
 
 ## Live Demo
 
-🔗 **[View Live Demo](https://abdogoda.github.io/Ecommerce-Frontend/)**
+🔗 **[View Live Demo](https://abdogoda.github.io/ecommerce-app-frontend/)**
 
 ## Features
 
